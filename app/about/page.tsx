@@ -1,5 +1,6 @@
 import Section from "@/components/Section";
-import { Twitter, Linkedin, MessageSquare, Globe } from "lucide-react";
+import { Instagram, Globe } from "lucide-react";
+import { DiscordIcon, GroupMeIcon } from "@/components/Icons";
 import Link from "next/link";
 
 export default function AboutPage() {
@@ -34,31 +35,31 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold text-center text-primary mb-10">Connect With Us</h2>
                 <div className="flex justify-center gap-6 flex-wrap">
                     <a
-                        href="https://twitter.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 px-6 py-4 bg-[#1DA1F2] text-white rounded-lg hover:opacity-90 transition-opacity font-bold shadow-sm"
-                    >
-                        <Twitter size={24} />
-                        Twitter / X
-                    </a>
-                    <a
-                        href="https://linkedin.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 px-6 py-4 bg-[#0A66C2] text-white rounded-lg hover:opacity-90 transition-opacity font-bold shadow-sm"
-                    >
-                        <Linkedin size={24} />
-                        LinkedIn
-                    </a>
-                    <a
                         href="https://discord.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 px-6 py-4 bg-[#5865F2] text-white rounded-lg hover:opacity-90 transition-opacity font-bold shadow-sm"
                     >
-                        <MessageSquare size={24} />
-                        Discord Community
+                        <DiscordIcon size={24} />
+                        Discord
+                    </a>
+                    <a
+                        href="https://groupme.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 px-6 py-4 bg-[#00AFF0] text-white rounded-lg hover:opacity-90 transition-opacity font-bold shadow-sm"
+                    >
+                        <GroupMeIcon size={24} />
+                        GroupMe
+                    </a>
+                    <a
+                        href="https://instagram.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 px-6 py-4 bg-[#E1306C] text-white rounded-lg hover:opacity-90 transition-opacity font-bold shadow-sm"
+                    >
+                        <Instagram size={24} />
+                        Instagram
                     </a>
                 </div>
             </Section>

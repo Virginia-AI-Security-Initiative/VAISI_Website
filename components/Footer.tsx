@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Twitter, Linkedin } from 'lucide-react';
+import { Instagram } from 'lucide-react';
+import { DiscordIcon, GroupMeIcon } from './Icons';
 // Note: Discord icon is not in standard lucide-react export names sometimes, but let's try standard.
 // If Discord is missing, we can use a generic link or check docs. Lucide has 'MessageCircle' or similar.
 // Actually, Lucide does have 'Discord' in newer versions, or we can use SVG.
@@ -12,19 +13,22 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-4 md:mb-0">
                         <p className="text-sm text-gray-500">
-                            © {new Date().getFullYear()} Virginia AI Safety Initiative. All rights reserved.
+                            {new Date().getFullYear()} Virginia AI Safety Initiative.
                         </p>
                     </div>
                     <div className="flex space-x-6">
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors">
-                            <span className="sr-only">Twitter</span>
-                            <Twitter size={20} />
+                        <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#5865F2] transition-colors">
+                            <span className="sr-only">Discord</span>
+                            <DiscordIcon size={20} />
                         </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors">
-                            <span className="sr-only">LinkedIn</span>
-                            <Linkedin size={20} />
+                        <a href="https://groupme.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#00AFF0] transition-colors">
+                            <span className="sr-only">GroupMe</span>
+                            <GroupMeIcon size={20} />
                         </a>
-                        {/* Add Discord link if needed, using a generic icon or text if specific icon unavailable */}
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#E1306C] transition-colors">
+                            <span className="sr-only">Instagram</span>
+                            <Instagram size={20} />
+                        </a>
                     </div>
                 </div>
             </div>
