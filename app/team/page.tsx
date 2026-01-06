@@ -5,39 +5,33 @@ import TeamMemberCard from "@/components/TeamMemberCard";
 const teamMembers = [
     {
         id: 1,
-        name: "Alex Johnson",
+        name: "Jason Chin",
         title: "President",
-        imageSrc: "" // Placeholder
+        imageSrc: "/team/jason.png"
     },
     {
         id: 2,
-        name: "Samantha Lee",
-        title: "Vice President of Research",
-        imageSrc: ""
+        name: "Seth Lifland",
+        title: "Vice President",
+        imageSrc: "/team/seth.png"
     },
     {
         id: 3,
-        name: "David Chen",
-        title: "Vice President of Operations",
-        imageSrc: ""
+        name: "Andrew Broughton",
+        title: "Operations Lead",
+        imageSrc: "/team/andrew.png"
     },
     {
         id: 4,
-        name: "Sarah Williams",
-        title: "Head of Communications",
-        imageSrc: ""
+        name: "Lily Egenrieder",
+        title: "Lead Editor",
+        imageSrc: "/team/lily.png"
     },
     {
         id: 5,
-        name: "Michael Brown",
-        title: "Technical Lead",
-        imageSrc: ""
-    },
-    {
-        id: 6,
-        name: "Emily Davis",
-        title: "Fellowship Coordinator",
-        imageSrc: ""
+        name: "Elias Krasny",
+        title: "Event Coordinator",
+        imageSrc: "/team/elias.png"
     }
 ];
 
