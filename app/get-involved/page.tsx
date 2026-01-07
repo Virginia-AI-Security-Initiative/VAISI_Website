@@ -57,9 +57,6 @@ export default function GetInvolvedPage() {
             <Section className="bg-primary text-white py-20">
                 <div className="max-w-3xl mx-auto text-center">
                     <h1 className="text-4xl md:text-5xl font-bold mb-6">Get Involved</h1>
-                    <p className="text-xl text-blue-100">
-                        Join a community of students dedicated to ensuring the safe development of AI.
-                    </p>
                 </div>
             </Section>
 
