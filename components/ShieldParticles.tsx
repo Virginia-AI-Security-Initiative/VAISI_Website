@@ -23,69 +23,73 @@ export default function ShieldParticles() {
     const [repulseEnabled, setRepulseEnabled] = useState(false);
 
     const options: ISourceOptions = {
-        fpsLimit: 120,
+        fpsLimit: 120, // Limits frame rate (e.g. 30, 60, 120) for performance
         interactivity: {
             events: {
                 onHover: {
                     enable: true,
-                    mode: repulseEnabled ? ["grab", "repulse"] : "grab",
+                    // Modes: "grab" (connect lines), "repulse" (push away), "bubble" (grow), "trail" (leave trail)
+                    mode: repulseEnabled ? ["grab", "repulse"] : "grab", 
                 },
                 onClick: {
                     enable: true,
+                    // Modes: "push" (add particles), "remove" (delete particles), "repulse", "bubble"
                     mode: "push",
                 },
             },
             modes: {
                 grab: {
-                    distance: 140,
+                    distance: 100, // Distance for linking to mouse 
                     links: {
-                        opacity: 0.5,
+                        opacity: 0.1, 
                     },
                 },
                 repulse: {
-                    distance: 200,
-                    duration: 0.4,
+                    distance: 50, // Radius of repulsion circle
+                    duration: 0.4, // Time to return to normal
                 },
                 push: {
-                    quantity: 4,
+                    quantity: 2, // How many particles to add on click
                 },
             },
         },
         particles: {
             color: {
-                value: "#232D4B", // UVA Blue
+                value: "#232D4B", // Hex code, "random", or array ["#ff0000", "#00ff00"]
             },
             links: {
                 color: "#232D4B",
-                distance: 150,
+                distance: 100, // Max distance to link particles
                 enable: true,
-                opacity: 0.3,
-                width: 1,
+                opacity: 0.3, // 0 to 1
+                width: 1, // Line thickness
             },
             move: {
-                direction: "none",
+                // Direction: "none", "top", "top-right", "right", "bottom-right", "bottom", "bottom-left", "left", "top-left"
+                direction: "none", 
                 enable: true,
                 outModes: {
-                    default: "bounce",
+                    default: "bounce", // "bounce" (reflect), "out" (leave screen), "destroy" (disappear)
                 },
                 random: false,
-                speed: 1, // Slower movement
+                speed: 1, // Lower = slower, Higher = faster
                 straight: false,
             },
             number: {
                 density: {
-                    enable: false, // Disable density to have fixed number of particles for the mask
+                    enable: false, // Must be false for fixed polygon shape
                 },
-                value: 200, // Higher density for shape definition
+                value: 100, // Total number of particles in the shape
             },
             opacity: {
-                value: 0.5,
+                value: 0.5, // 0.0 (transparent) to 1.0 (opaque)
             },
             shape: {
-                type: "circle",
+                // Types: "circle", "square", "triangle", "polygon", "star", "image"
+                type: "circle", 
             },
             size: {
-                value: { min: 1, max: 3 },
+                value: { min: 1, max: 3 }, // Fixed value (e.g. 3) or range { min, max }
             },
         },
         detectRetina: true,
@@ -94,23 +98,32 @@ export default function ShieldParticles() {
         },
         polygon: {
             draw: {
-                enable: false, // Don't draw the path lines
+                enable: false, // If true, draws the path outline
             },
-            enable: true,
+            enable: true, // Must be true for mask to work
             inline: {
+                // "equidistant": particles spaced evenly on path
+                // "one-per-point": one particle per SVG path point
+                // "random-point": particles on random points of path
+                // "random-length": particles on random positions along path length
                 arrangement: "equidistant",
             },
             move: {
-                radius: 10,
-                type: "path",
+                radius: 10, // Max distance particles wander from their spot
+                // "path": particles follow the path
+                // "radius": particles wander within radius
+                type: "path", 
             },
             position: {
-                x: 50,
-                y: 50,
+                x: 70, // Horizontal % (0-100)
+                y: 50, // Vertical % (0-100)
             },
-            scale: 1, // Adjust based on container size vs image size
-            type: "inline",
-            url: "/shield-mask.png",
+            scale: 1, // Resize mask (0.5 = half size, 2 = double size)
+            // "inline": particles stick to path lines
+            // "inside": particles fill inside of shape
+            // "outside": particles stay outside shape
+            type: "inline", 
+            url: "/shield.svg", // Path to SVG mask
         }
     };
 

@@ -28,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        suppressHydrationWarning
         className={`${inter.variable} ${playfair.variable} antialiased min-h-screen flex flex-col`}
       >
         <Navbar />
