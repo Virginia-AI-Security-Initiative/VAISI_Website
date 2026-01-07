@@ -28,7 +28,7 @@ export default function AboutPage() {
                     <div className="mb-12">
                         <h2 className="text-2xl font-bold text-primary mb-4">History</h2>
                         <p className="mb-4">
-                            VAISI was founded in Summer 2025 by Jason Chin and Andrew Broughton, who recognized that UVA lacked a dedicated community for students passionate about AI safety. With support from the <a href="https://pathfinder.kairos-project.org/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline font-medium">Kairos Pathfinders Fellowship</a>, they secured the mentorship, funding, and global network to build something lasting.
+                            VAISI was founded in Summer 2025 by UVA students who recognized that UVA lacked a dedicated community for students passionate about AI safety. With support from the <a href="https://pathfinder.kairos-project.org/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline font-medium">Kairos Pathfinders Fellowship</a>, they secured the mentorship, funding, and global network to establish a meaningful and enduring initiative.
                         </p>
                         <p className="mb-4">
                             We launched in Fall 2025 with weekly discussions exploring core AI safety concepts including technical alignment and governance challenges. This semester, we&apos;re expanding with a dedicated AI governance fellowship, deepening our engagement with both the technical and policy dimensions of this critical field.
