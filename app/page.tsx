@@ -1,32 +1,7 @@
 import Link from "next/link";
 import Section from "@/components/Section";
-import { ArrowRight, Calendar, Megaphone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-
-// Mock Data for Announcements
-const announcements = [
-  {
-    id: 1,
-    title: "Fall Semester Kickoff Meeting",
-    date: "August 28, 2024",
-    summary: "Join us for our first meeting of the semester! We'll be discussing our plans for the year and introducing the executive board.",
-    link: "/get-involved"
-  },
-  {
-    id: 2,
-    title: "Guest Speaker: Dr. Jane Smith",
-    date: "September 15, 2024",
-    summary: "Dr. Smith from the Future of Humanity Institute will be joining us via Zoom to discuss AI Governance.",
-    link: "/get-involved"
-  },
-  {
-    id: 3,
-    title: "AI Safety Fellowship Applications Open",
-    date: "September 1, 2024",
-    summary: "Apply now for our semester-long fellowship program. Learn the fundamentals of AI alignment and safety.",
-    link: "/get-involved"
-  }
-];
 
 export default function Home() {
   return (
@@ -74,29 +49,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Announcements Section */}
-      <Section className="bg-white">
-        <div className="flex items-center gap-2 mb-8">
-          <Megaphone className="text-primary" size={28} />
-          <h2 className="text-3xl font-bold text-primary">Latest Announcements</h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {announcements.map((announcement) => (
-            <div key={announcement.id} className="bg-slate-50 p-6 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                <Calendar size={16} />
-                <span>{announcement.date}</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{announcement.title}</h3>
-              <p className="text-gray-600 mb-4">{announcement.summary}</p>
-              <Link href={announcement.link} className="text-secondary font-medium hover:underline flex items-center gap-1">
-                Read more <ArrowRight size={16} />
-              </Link>
-            </div>
-          ))}
-        </div>
-      </Section>
 
       {/* Club Info Section */}
       <Section className="bg-slate-50 border-t border-slate-200">
