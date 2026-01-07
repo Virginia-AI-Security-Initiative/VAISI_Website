@@ -10,14 +10,14 @@ const eventTypes = [
         iconBg: "bg-blue-50",
         iconColor: "text-primary",
         details: {
-            day: "Mondays",
-            time: "6:00 PM - 7:30 PM",
-            location: "Rice Hall 130"
+            day: "TBA",
+            time: "TBA",
+            location: "TBA"
         },
-        description: "An 8-week structured program exploring AI policy, governance frameworks, and the regulatory landscape. Fellows engage with key readings, participate in discussions, and develop policy proposals addressing real-world AI governance challenges.",
+        description: "Complete a 12-week tailored curriculum heavily inspired by BlueDot Impact's AI Governance Course with a small cohort of motivated peers. You'll examine risks posed by advanced AI systems, standards and regulations to address them, and foreign policy approaches. Apply what you've learned through an individual or group capstone project!",
         cta: {
-            text: "Apply Now",
-            link: "#"
+            text: "Learn More",
+            link: "https://docs.google.com/document/d/1kBuALjKsSeOYSiuaGTbJ9oK26Jvx6S6k76fh5w1qbvg/edit?usp=sharing"
         }
     },
     {
@@ -27,11 +27,11 @@ const eventTypes = [
         iconBg: "bg-orange-50",
         iconColor: "text-secondary",
         details: {
-            day: "Sundays",
-            time: "4:30 PM - 5:30 PM",
-            location: "Newcomb Hall 389"
+            day: "TBA",
+            time: "TBA",
+            location: "TBA"
         },
-        description: "Our general body meetings are open to all UVA students, regardless of background or experience. Each week we explore different AI safety concepts through presentations, discussions, and interactive activities. A great way to learn and connect with like-minded peers.",
+        description: "Open to all UVA students! Our weekly meetings vary and include reading groups, workshops on AI safety and governance concepts, interactive discussions, and more. A great way to get involved and learn about AI safety. No prior experience required.",
         cta: null
     },
     {
@@ -41,11 +41,11 @@ const eventTypes = [
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         details: {
-            day: "Varies",
-            time: "Check calendar",
+            day: "TBA",
+            time: "TBA",
             location: "TBA"
         },
-        description: "Throughout the semester, we host guest speakers, workshops, movie screenings, and collaborative events with other organizations. These events provide unique opportunities to engage with experts and explore AI safety topics in depth.",
+        description: "Throughout the semester, we host special events including guest speakers, hackathons (both technical and policy-focused), collaborations with other student organizations, and fun community activities. Stay tuned for announcements!",
         cta: null
     }
 ];
@@ -128,18 +128,12 @@ export default function GetInvolvedPage() {
                         title="VAISI Event Calendar"
                     />
                 </div>
-                <p className="text-center text-gray-500 text-sm mt-4">
-                    Events shown in Eastern Time (ET)
-                </p>
             </Section>
 
             {/* Join CTA */}
             <Section className="bg-primary text-white">
                 <div className="max-w-3xl mx-auto text-center">
                     <h2 className="text-3xl font-bold mb-4">Ready to Join?</h2>
-                    <p className="text-xl text-blue-100 mb-8">
-                        No prior experience required. All UVA students are welcome!
-                    </p>
                     <div className="flex justify-center gap-4 flex-wrap">
                         <a
                             href="https://discord.gg/XyqmJE5emc"
