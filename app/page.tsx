@@ -38,7 +38,7 @@ export default function Home() {
             {/* Hero Graphic */}
             <div className="flex justify-center lg:justify-end">
               <Image
-                src="/AISI_Logo.png"
+                src="/VAISI_Logo.jpg"
                 alt="VAISI Logo"
                 width={500}
                 height={500}

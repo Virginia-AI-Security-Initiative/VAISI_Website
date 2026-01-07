@@ -25,13 +25,13 @@ const teamMembers = [
         id: 4,
         name: "Lily Egenrieder",
         title: "Lead Editor",
-        imageSrc: "/team/AISI_Logo.png"
+        imageSrc: "/team/VAISI_Logo.jpg"
     },
     {
         id: 5,
         name: "Elias Krasny",
         title: "Event Coordinator",
-        imageSrc: "/team/AISI_Logo.png"
+        imageSrc: "/team/VAISI_Logo.jpg"
     }
 ];
 
