@@ -16,7 +16,7 @@ export default function BlogPage() {
                     </p>
 
                     <a
-                        href="https://substack.com"
+                        href="https://substack.com/@vaisi"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-blue-900 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1"
