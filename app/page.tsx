@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Section from "@/components/Section";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
@@ -9,16 +8,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-background py-20 md:py-28 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-            {/* Text Content */}
-            <div className="text-left">
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 items-center">
+            {/* Text Content - takes more space (3/5) */}
+            <div className="text-left lg:col-span-3">
               <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-[#1a1a1a] mb-8">
-                We are UVA students dedicated to researching the{" "}
-                <span className="text-secondary">safe development</span> of advanced AI.
+                A community at the University of Virginia dedicated to mitigating the{" "}
+                <span className="text-secondary">risks of advanced AI</span>.
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 max-w-xl mb-8">
-                The Virginia AI Safety Initiative (VAISI) fosters critical thinking and technical research on the responsible development of artificial intelligence.
-              </p>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/get-involved"
@@ -26,17 +22,11 @@ export default function Home() {
                 >
                   Get Involved <ArrowRight size={20} />
                 </Link>
-                <Link
-                  href="/about"
-                  className="px-8 py-3 bg-transparent border-2 border-primary text-primary font-bold rounded-md hover:bg-primary/5 transition-colors"
-                >
-                  Learn More
-                </Link>
               </div>
             </div>
 
-            {/* Hero Graphic */}
-            <div className="flex justify-center lg:justify-end">
+            {/* Hero Graphic - takes less space (2/5) */}
+            <div className="flex justify-center lg:justify-end lg:col-span-2">
               <Image
                 src="/VAISI_Logo.jpg"
                 alt="VAISI Logo"
@@ -50,30 +40,74 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Club Info Section */}
-      <Section className="bg-slate-50 border-t border-slate-200">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-primary mb-6">About VAISI</h2>
-          <p className="text-lg text-gray-700 leading-relaxed mb-8">
-            The Virginia AI Safety Initiative (VAISI) is a student-run organization dedicated to understanding and mitigating the risks associated with advanced artificial intelligence. We believe that as AI systems become more powerful, ensuring they are{" "}
-            <span className="text-primary font-semibold">aligned with human values</span> is one of the most important challenges of our time.
-          </p>
-          <div className="grid md:grid-cols-2 gap-8 text-left mt-12">
+      {/* Problem & What We Do Section */}
+      <section className="bg-slate-50 border-t border-slate-200 py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+            {/* Why AI Safety? */}
             <div>
-              <h3 className="text-xl font-bold text-primary mb-2">Education</h3>
-              <p className="text-gray-600">
-                We run semester-long fellowships, reading groups, and workshops to help students engage with the technical and strategic landscapes of AI safety.
-              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Why AI Safety?</h2>
+              <ul className="space-y-4 text-gray-700">
+                <li className="flex gap-3">
+                  <span className="text-secondary font-bold">•</span>
+                  <span>
+                    Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit, sed do <strong>eiusmod tempor</strong>.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-secondary font-bold">•</span>
+                  <span>
+                    Ut enim ad minim veniam, quis nostrud <strong>exercitation ullamco</strong> laboris nisi ut <strong>aliquip ex ea</strong>.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-secondary font-bold">•</span>
+                  <span>
+                    Duis aute irure dolor in <strong>reprehenderit</strong> in voluptate velit esse cillum <strong>dolore eu fugiat</strong> nulla pariatur.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-secondary font-bold">•</span>
+                  <span>
+                    Excepteur sint occaecat <strong>cupidatat non proident</strong>, sunt in culpa qui officia <strong>deserunt mollit</strong> anim id est laborum.
+                  </span>
+                </li>
+              </ul>
             </div>
+
+            {/* Our Approach */}
             <div>
-              <h3 className="text-xl font-bold text-primary mb-2">Research</h3>
-              <p className="text-gray-600">
-                We support students in conducting original research, connecting with mentors in the field, and contributing to the broader AI safety community.
-              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Our Approach</h2>
+              <ul className="space-y-4 text-gray-700">
+                <li className="flex gap-3">
+                  <span className="text-secondary font-bold">•</span>
+                  <span>
+                    Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit sed do <strong>eiusmod</strong>.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-secondary font-bold">•</span>
+                  <span>
+                    Ut enim ad minim veniam, quis <strong>nostrud exercitation</strong> ullamco laboris <strong>nisi ut aliquip</strong>.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-secondary font-bold">•</span>
+                  <span>
+                    Duis aute irure dolor in reprehenderit in <strong>voluptate velit</strong> esse cillum dolore eu <strong>fugiat nulla</strong>.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-secondary font-bold">•</span>
+                  <span>
+                    Excepteur sint <strong>occaecat cupidatat</strong> non proident sunt in culpa qui <strong>officia deserunt</strong>.
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </Section>
+      </section>
     </div>
   );
 }
