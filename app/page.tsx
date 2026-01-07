@@ -63,8 +63,8 @@ export default function Home() {
             {/* Hero Graphic */}
             <div className="flex justify-center lg:justify-end">
               <Image
-                src="/hero-graphic.png"
-                alt="Abstract wireframe mesh"
+                src="/AISI_Logo.png"
+                alt="VAISI Logo"
                 width={500}
                 height={500}
                 className="w-full max-w-md lg:max-w-lg"

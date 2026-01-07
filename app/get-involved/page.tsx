@@ -1,17 +1,59 @@
 import Section from "@/components/Section";
-import { Calendar, MapPin, Users, BookOpen, Clock } from "lucide-react";
+import { Calendar, MapPin, Clock, Users, BookOpen, Sparkles } from "lucide-react";
 
-// Mock Data for Schedule
-const schedule = [
-    { week: "Week 1", topic: "Intro to AI Safety", date: "Sept 5", location: "Rice Hall 130" },
-    { week: "Week 2", topic: "Neural Networks Overview", date: "Sept 12", location: "Rice Hall 130" },
-    { week: "Week 3", topic: "Alignment Failure Modes", date: "Sept 19", location: "Rice Hall 130" },
-    { week: "Week 4", topic: "Guest Speaker: Research Agenda", date: "Sept 26", location: "Rice Hall 130" },
+// Event Types Data
+const eventTypes = [
+    {
+        id: 1,
+        title: "AI Governance Fellowship",
+        icon: BookOpen,
+        iconBg: "bg-blue-50",
+        iconColor: "text-primary",
+        details: {
+            day: "Mondays",
+            time: "6:00 PM - 7:30 PM",
+            location: "Rice Hall 130"
+        },
+        description: "An 8-week structured program exploring AI policy, governance frameworks, and the regulatory landscape. Fellows engage with key readings, participate in discussions, and develop policy proposals addressing real-world AI governance challenges.",
+        cta: {
+            text: "Apply Now",
+            link: "#"
+        }
+    },
+    {
+        id: 2,
+        title: "Weekly Meetings",
+        icon: Users,
+        iconBg: "bg-orange-50",
+        iconColor: "text-secondary",
+        details: {
+            day: "Sundays",
+            time: "4:30 PM - 5:30 PM",
+            location: "Newcomb Hall 389"
+        },
+        description: "Our general body meetings are open to all UVA students, regardless of background or experience. Each week we explore different AI safety concepts through presentations, discussions, and interactive activities. A great way to learn and connect with like-minded peers.",
+        cta: null
+    },
+    {
+        id: 3,
+        title: "Special Events",
+        icon: Sparkles,
+        iconBg: "bg-purple-50",
+        iconColor: "text-purple-600",
+        details: {
+            day: "Varies",
+            time: "Check calendar",
+            location: "TBA"
+        },
+        description: "Throughout the semester, we host guest speakers, workshops, movie screenings, and collaborative events with other organizations. These events provide unique opportunities to engage with experts and explore AI safety topics in depth.",
+        cta: null
+    }
 ];
 
 export default function GetInvolvedPage() {
     return (
         <div className="flex flex-col min-h-screen">
+            {/* Hero Section */}
             <Section className="bg-primary text-white py-20">
                 <div className="max-w-3xl mx-auto text-center">
                     <h1 className="text-4xl md:text-5xl font-bold mb-6">Get Involved</h1>
@@ -21,80 +63,100 @@ export default function GetInvolvedPage() {
                 </div>
             </Section>
 
-            {/* Meeting Info */}
-            <Section className="bg-white transform -translate-y-8 pt-0">
-                <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
-                        <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <Clock className="text-primary w-6 h-6" />
-                        </div>
-                        <h3 className="font-bold text-lg mb-2">Time</h3>
-                        <p className="text-gray-600">Thursdays, 6:00 PM</p>
-                    </div>
-                    <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
-                        <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <MapPin className="text-secondary w-6 h-6" />
-                        </div>
-                        <h3 className="font-bold text-lg mb-2">Location</h3>
-                        <p className="text-gray-600">Rice Hall, Room 130</p>
-                    </div>
-                    <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
-                        <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <Users className="text-primary w-6 h-6" />
-                        </div>
-                        <h3 className="font-bold text-lg mb-2">Open to All</h3>
-                        <p className="text-gray-600">No prior experience required</p>
-                    </div>
+            {/* Event Types Section */}
+            <Section className="bg-white">
+                <h2 className="text-3xl font-bold text-primary mb-10 text-center">Our Events</h2>
+                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    {eventTypes.map((event) => {
+                        const IconComponent = event.icon;
+                        return (
+                            <div key={event.id} className="bg-slate-50 rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+                                {/* Header */}
+                                <div className="p-6 border-b border-gray-100">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className={`w-12 h-12 ${event.iconBg} rounded-full flex items-center justify-center`}>
+                                            <IconComponent className={`w-6 h-6 ${event.iconColor}`} />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-gray-800">{event.title}</h3>
+                                    </div>
+
+                                    {/* Details */}
+                                    <div className="space-y-2 text-sm">
+                                        <div className="flex items-center gap-2 text-gray-600">
+                                            <Calendar className="w-4 h-4 text-gray-400" />
+                                            <span>{event.details.day}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-gray-600">
+                                            <Clock className="w-4 h-4 text-gray-400" />
+                                            <span>{event.details.time}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-gray-600">
+                                            <MapPin className="w-4 h-4 text-gray-400" />
+                                            <span>{event.details.location}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Description */}
+                                <div className="p-6">
+                                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                                        {event.description}
+                                    </p>
+                                    {event.cta && (
+                                        <a
+                                            href={event.cta.link}
+                                            className="inline-block px-6 py-2 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors text-sm"
+                                        >
+                                            {event.cta.text}
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </Section>
 
-            {/* Schedule */}
-            <Section className="bg-slate-50">
-                <h2 className="text-3xl font-bold text-primary mb-8 text-center">Upcoming Schedule</h2>
-                <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden max-w-4xl mx-auto">
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-left">
-                            <thead className="bg-gray-50 border-b border-gray-100">
-                                <tr>
-                                    <th className="px-6 py-4 font-semibold text-gray-700">Week</th>
-                                    <th className="px-6 py-4 font-semibold text-gray-700">Topic</th>
-                                    <th className="px-6 py-4 font-semibold text-gray-700">Date</th>
-                                    <th className="px-6 py-4 font-semibold text-gray-700">Location</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-100">
-                                {schedule.map((event, idx) => (
-                                    <tr key={idx} className="hover:bg-gray-50 transition-colors">
-                                        <td className="px-6 py-4 text-primary font-medium">{event.week}</td>
-                                        <td className="px-6 py-4 text-gray-800 font-medium">{event.topic}</td>
-                                        <td className="px-6 py-4 text-gray-600">{event.date}</td>
-                                        <td className="px-6 py-4 text-gray-600">{event.location}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+            {/* Calendar Section */}
+            <Section className="bg-slate-50 border-t border-gray-100">
+                <h2 className="text-3xl font-bold text-primary mb-8 text-center">Event Calendar</h2>
+                <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <iframe
+                        src=""
+                        className="w-full border-0"
+                        style={{ height: "600px" }}
+                        title="VAISI Event Calendar"
+                    />
                 </div>
+                <p className="text-center text-gray-500 text-sm mt-4">
+                    Events shown in Eastern Time (ET)
+                </p>
             </Section>
 
-            {/* Fellowship */}
-            <Section className="bg-white border-t border-gray-100">
-                <div className="max-w-4xl mx-auto">
-                    <div className="flex items-center gap-3 mb-6">
-                        <BookOpen className="text-secondary w-8 h-8" />
-                        <h2 className="text-3xl font-bold text-primary">VAISI Fellowship</h2>
-                    </div>
-                    <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                        For students who want to dive deeper, we offer an 8-week structured reading group aimed at understanding the core arguments in AI safety. Fellows meet weekly to discuss key papers and complete a final project proposal.
+            {/* Join CTA */}
+            <Section className="bg-primary text-white">
+                <div className="max-w-3xl mx-auto text-center">
+                    <h2 className="text-3xl font-bold mb-4">Ready to Join?</h2>
+                    <p className="text-xl text-blue-100 mb-8">
+                        No prior experience required. All UVA students are welcome!
                     </p>
-                    <div className="bg-blue-50 border-l-4 border-primary p-6 rounded-r-lg">
-                        <h3 className="font-bold text-primary text-xl mb-2">Apply for Fall 2024</h3>
-                        <p className="text-gray-700 mb-4">
-                            Applications are currently open for the upcoming cohort. We are looking for motivated students from all majors.
-                        </p>
-                        <button className="px-6 py-2 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors">
-                            Apply Now
-                        </button>
+                    <div className="flex justify-center gap-4 flex-wrap">
+                        <a
+                            href="https://discord.gg/XyqmJE5emc"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-8 py-3 bg-white text-primary font-bold rounded-md hover:bg-gray-100 transition-colors"
+                        >
+                            Join our Discord
+                        </a>
+                        <a
+                            href="https://groupme.com/join_group/110490963/bxseYw8L"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-md hover:bg-white/10 transition-colors"
+                        >
+                            Join our GroupMe
+                        </a>
                     </div>
                 </div>
             </Section>
