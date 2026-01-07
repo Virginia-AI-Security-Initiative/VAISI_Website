@@ -12,23 +12,26 @@ export default function AboutPage() {
                 <div className="prose prose-lg max-w-4xl mx-auto text-gray-700">
                     <div className="mb-12">
                         <h2 className="text-2xl font-bold text-primary mb-4 flex items-center gap-2">
-                            <Globe className="text-secondary" /> Mission Statement
+                            <Globe className="text-secondary" /> Mission
                         </h2>
+                        <p className="mb-4 text-lg font-medium text-gray-800">
+                            Managing risks from advanced AI is one of the most important issues of our time, yet it lacks the attention it urgently requires.
+                        </p>
+                        <p className="mb-4">
+                            <span className="font-semibold text-primary">Short-term:</span> Bring together UVA students to learn, discuss, and take action on AI safety.
+                        </p>
                         <p>
-                            The Virginia AI Safety Initiative (VAISI) aims to equip students at the University of Virginia with the knowledge and resources to contribute to the safety and alignment of advanced artificial intelligence systems. We believe AI safety is one of the most pressing issues facing our society, and we strive to foster a community of critical thinkers who can navigate the technical, ethical, and societal challenges posed by transformative AI.
+                            <span className="font-semibold text-primary">Long-term:</span> Maintain a thriving community that equips talented individuals at UVA to ultimately contribute in meaningful ways to AI safety&apos;s most pressing problems in policy/governance and technical alignment.
                         </p>
                     </div>
 
                     <div className="mb-12">
                         <h2 className="text-2xl font-bold text-primary mb-4">History</h2>
                         <p className="mb-4">
-                            Founded in Fall 2025, VAISI emerged from a shared conviction that ensuring the safe development of AI is one of the most important challenges of our time.
+                            VAISI was founded in Summer 2025 by Jason Chin and Andrew Broughton, who recognized that UVA lacked a dedicated community for students passionate about AI safety. With support from the <a href="https://pathfinder.kairos-project.org/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline font-medium">Kairos Pathfinders Fellowship</a>, they secured the mentorship, funding, and global network to build something lasting.
                         </p>
                         <p className="mb-4">
-                            We are proud to be part of the <a href="https://pathfinder.kairos-project.org/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline font-medium">Kairos Pathfinder Fellowship</a>, which has helped guide our growth and connect us with the broader AI safety community.
-                        </p>
-                        <p>
-                            In our first semester, we held weekly meetings exploring core AI safety concepts. This semester, we&apos;re expanding our offerings to include a weekly AI governance fellowship, deepening our engagement with both the technical and policy dimensions of AI safety.
+                            We launched in Fall 2025 with weekly discussions exploring core AI safety concepts including technical alignment and governance challenges. This semester, we&apos;re expanding with a dedicated AI governance fellowship, deepening our engagement with both the technical and policy dimensions of this critical field.
                         </p>
                     </div>
                 </div>
