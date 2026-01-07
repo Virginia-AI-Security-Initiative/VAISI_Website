@@ -15,17 +15,20 @@ export default function AboutPage() {
                             <Globe className="text-secondary" /> Mission Statement
                         </h2>
                         <p>
-                            The Virginia AI Safety Initiative (VAISI) aims to equip students at the University of Virginia with the knowledge and resources to contribute to the safety and alignment of advanced artificial intelligence systems. We strive to foster a community of critical thinkers who can navigate the technical, ethical, and societal challenges posed by transformative AI.
+                            The Virginia AI Safety Initiative (VAISI) aims to equip students at the University of Virginia with the knowledge and resources to contribute to the safety and alignment of advanced artificial intelligence systems. We believe AI safety is one of the most pressing issues facing our society, and we strive to foster a community of critical thinkers who can navigate the technical, ethical, and societal challenges posed by transformative AI.
                         </p>
                     </div>
 
                     <div className="mb-12">
                         <h2 className="text-2xl font-bold text-primary mb-4">History</h2>
                         <p className="mb-4">
-                            Founded in 2023, VAISI emerged from a growing recognition of the urgent need for AI safety research and education at UVA. Started by a small group of computer science and philosophy students, the club has arguably grown to become a hub for interdisciplinary discussion on campus.
+                            Founded in Fall 2025, VAISI emerged from a shared conviction that ensuring the safe development of AI is one of the most important challenges of our time.
+                        </p>
+                        <p className="mb-4">
+                            We are proud to be part of the <a href="https://pathfinder.kairos-project.org/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline font-medium">Kairos Pathfinder Fellowship</a>, which has helped guide our growth and connect us with the broader AI safety community.
                         </p>
                         <p>
-                            We have hosted numerous workshops, reading groups, and guest speakers, connecting UVA students with the global AI safety community.
+                            In our first semester, we held weekly meetings exploring core AI safety concepts. This semester, we&apos;re expanding our offerings to include a weekly AI governance fellowship, deepening our engagement with both the technical and policy dimensions of AI safety.
                         </p>
                     </div>
                 </div>
