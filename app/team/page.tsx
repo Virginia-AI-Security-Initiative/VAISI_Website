@@ -7,13 +7,13 @@ const teamMembers = [
         id: 1,
         name: "Jason Chin",
         title: "President",
-        imageSrc: "/team/jason.png"
+        imageSrc: "/team/jason.jpg"
     },
     {
         id: 2,
         name: "Seth Lifland",
         title: "Vice President",
-        imageSrc: "/team/seth.png"
+        imageSrc: "/team/seth.jpeg"
     },
     {
         id: 3,
@@ -25,13 +25,13 @@ const teamMembers = [
         id: 4,
         name: "Lily Egenrieder",
         title: "Lead Editor",
-        imageSrc: "/team/lily.png"
+        imageSrc: "/team/AISI_Logo.png"
     },
     {
         id: 5,
         name: "Elias Krasny",
         title: "Event Coordinator",
-        imageSrc: "/team/elias.png"
+        imageSrc: "/team/AISI_Logo.png"
     }
 ];
 
