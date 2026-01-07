@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc; /* slate-50 */
-  --foreground: #232D4B; /* UVA Blue for text */
+  --background: #f8fafc;
+  /* slate-50 */
+  --foreground: #232D4B;
+  /* UVA Blue for text */
   --primary: #232D4B;
   --secondary: #E57200;
+  --accent-cream: #f8f5f0;
+  --text-dark: #1a1a1a;
 }
 
 @theme inline {
