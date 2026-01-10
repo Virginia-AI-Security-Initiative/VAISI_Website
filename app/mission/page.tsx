@@ -6,10 +6,10 @@ export default function MissionPage() {
     return (
         <div className="flex flex-col min-h-screen">
             <Section className="bg-slate-50">
-                <h1 className="text-5xl font-bold text-primary mb-4 text-center">Mission</h1>
                 <div className="prose prose-lg max-w-4xl mx-auto text-gray-700">
                     <div className="mb-12">
-                        <p className="mb-14 text-lg font-bold text-gray-900 text-center">
+                        <h1 className="text-5xl font-bold text-primary mb-4 text-left">Mission</h1>
+                        <p className="mb-14 text-lg font-bold text-gray-900 text-left">
                             Mitigate catastrophic risks from advanced AI.
                         </p>
                         <h3 className="text-xl font-bold text-gray-900 mb-6">Our Path Forward</h3>
