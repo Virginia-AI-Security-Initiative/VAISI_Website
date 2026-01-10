@@ -45,7 +45,7 @@ const eventTypes = [
             time: "TBA",
             location: "TBA"
         },
-        description: "Throughout the semester, we host special events including guest speakers, hackathons (both technical and policy-focused), collaborations with other student organizations, and fun community activities. Stay tuned for announcements!",
+        description: "Throughout the semester, we will host special events including guest speakers, hackathons (both technical and policy-focused), collaborations with other student organizations, and fun community activities. Stay tuned for announcements!",
         cta: null
     }
 ];
