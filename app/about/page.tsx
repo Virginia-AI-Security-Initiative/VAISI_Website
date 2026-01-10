@@ -7,31 +7,36 @@ const teamMembers = [
         id: 1,
         name: "Jason Chin",
         title: "President",
-        imageSrc: "/team/jason.jpg"
+        imageSrc: "/team/jason.jpg",
+        linkedinUrl: "https://www.linkedin.com/in/jasonchin9/"
     },
     {
         id: 2,
         name: "Seth Lifland",
         title: "Vice President",
-        imageSrc: "/team/seth.jpeg"
+        imageSrc: "/team/seth.jpeg",
+        linkedinUrl: "https://www.linkedin.com/in/seth-lifland-8a604b326/"
     },
     {
         id: 3,
         name: "Andrew Broughton",
         title: "Operations Lead",
-        imageSrc: "/team/andrew.png"
+        imageSrc: "/team/andrew.png",
+        linkedinUrl: "https://www.linkedin.com/in/andrewmbroughton/"
     },
     {
         id: 4,
         name: "Lily Egenrieder",
         title: "Lead Editor",
-        imageSrc: "/team/VAISI_Logo.jpg"
+        imageSrc: "/team/VAISI_Logo.jpg",
+        linkedinUrl: "https://www.linkedin.com/in/lily-egenrieder/"
     },
     {
         id: 5,
         name: "Elias Krasny",
         title: "Event Coordinator",
-        imageSrc: "/team/VAISI_Logo.jpg"
+        imageSrc: "/team/VAISI_Logo.jpg",
+        linkedinUrl: "https://www.linkedin.com/in/elias-krasny-82b433305/"
     },
     {
         id: 6,
@@ -54,6 +59,7 @@ export default function AboutPage() {
                             name={member.name}
                             title={member.title}
                             imageSrc={member.imageSrc}
+                            linkedinUrl={member.linkedinUrl}
                         />
                     ))}
                 </div>
