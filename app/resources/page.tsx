@@ -3,7 +3,7 @@ import { Lightbulb, Newspaper, Briefcase, ExternalLink, Play } from "lucide-reac
 
 // Resource data organized by section
 const introResources = [
-    { title: "AI Safety in 5 Minutes (Robert Miles)", url: "https://www.youtube.com/watch?v=pYXy-A4siMw" },
+    { title: "Article on catastrophic AI risk", url: "https://safe.ai/ai-risk" },
     { title: "Why AI Safety? (80,000 Hours)", url: "https://80000hours.org/problem-profiles/artificial-intelligence/" },
     { title: "AI Alignment: Why It's Hard, and Where to Start", url: "https://www.cold-takes.com/ai-safety-seems-hard-to-measure/" },
     { title: "The AI Safety Landscape (BlueDot Impact)", url: "https://bluedot.org/courses/governance" },

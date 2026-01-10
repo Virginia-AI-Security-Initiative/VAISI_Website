@@ -152,6 +152,22 @@ export default function GetInvolvedPage() {
                     </div>
                 </div>
             </Section>
+
+            {/* Faculty Call to Action */}
+            <Section className="bg-slate-50 border-t border-gray-100">
+                <div className="max-w-3xl mx-auto text-center">
+                    <h2 className="text-2xl font-bold text-primary mb-4">Faculty & Advisors</h2>
+                    <p className="text-gray-700 mb-6">
+                        Are you a UVA professor or faculty member interested in AI safety? We're looking for passionate advisors and faculty champions to help guide our mission. Your expertise and mentorship would be invaluable to our community.
+                    </p>
+                    <p className="text-gray-700">
+                        Contact us at{" "}
+                        <a href="mailto:vaisi.club@gmail.com" className="text-secondary font-semibold hover:underline">
+                            vaisi.club@gmail.com
+                        </a>
+                    </p>
+                </div>
+            </Section>
         </div>
     );
 }
