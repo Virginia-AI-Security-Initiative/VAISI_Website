@@ -119,10 +119,11 @@ export default function GetInvolvedPage() {
                 <h2 className="text-3xl font-bold text-primary mb-8 text-center">Event Calendar</h2>
                 <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                     <iframe
-                        src=""
+                        src="https://calendar.google.com/calendar/embed?src=vaisi.club%40gmail.com&ctz=America%2FNew_York"
                         className="w-full border-0"
                         style={{ height: "600px" }}
                         title="VAISI Event Calendar"
+                        scrolling="no"
                     />
                 </div>
             </Section>
@@ -133,7 +134,7 @@ export default function GetInvolvedPage() {
                     <h2 className="text-3xl font-bold mb-4">Ready to Join?</h2>
                     <div className="flex justify-center gap-4 flex-wrap">
                         <a
-                            href="https://discord.gg/XyqmJE5emc"
+                            href="https://discord.gg/CNrRYtbtAu"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-8 py-3 bg-white text-primary font-bold rounded-md hover:bg-gray-100 transition-colors"

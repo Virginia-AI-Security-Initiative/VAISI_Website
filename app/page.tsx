@@ -28,7 +28,7 @@ export default function Home() {
             {/* Hero Graphic - takes less space (2/5) */}
             <div className="flex justify-center lg:justify-end lg:col-span-2">
               <Image
-                src="/VAISI_Logo.jpg"
+                src="/Transparent_VAISI_Logo.png"
                 alt="VAISI Logo"
                 width={500}
                 height={500}
@@ -51,7 +51,7 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit, sed do <strong>eiusmod tempor</strong>.
+                    Managing risks from advanced AI is one of the <a href="https://arxiv.org/pdf/2310.17688" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">most important issues</a> of our time.
                   </span>
                 </li>
                 <li className="flex gap-3">
