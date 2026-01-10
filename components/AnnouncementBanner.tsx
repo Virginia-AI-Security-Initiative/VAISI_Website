@@ -11,12 +11,14 @@ const announcements = [
         title: "Fellowship Applications Open!",
         summary: "Apply now until next Friday to join the AI Governance Fellowship.",
         link: "/get-involved",
+        linkText: "Learn More",
     },
     {
-        id: "socials-position",
+        id: "media-lead",
         title: "We're Hiring!",
-        summary: "Looking for someone to run our social media accounts.",
-        link: "/get-involved",
+        summary: "Media Lead - Position Description",
+        link: "https://docs.google.com/document/d/1qzBc_o9ffhQZt9GiIfbPYhQhRoy6pzid34510jpl4Nw/edit?usp=sharing",
+        linkText: "Media Lead - Position Description",
     },
 ];
 
@@ -53,9 +55,11 @@ export default function AnnouncementBanner() {
                             <div className="flex items-center gap-3 flex-shrink-0">
                                 <Link
                                     href={announcement.link}
+                                    target={announcement.link.startsWith("http") ? "_blank" : undefined}
+                                    rel={announcement.link.startsWith("http") ? "noopener noreferrer" : undefined}
                                     className="text-sm font-semibold text-secondary hover:text-orange-300 transition-colors flex items-center gap-1 whitespace-nowrap"
                                 >
-                                    Learn More <ArrowRight size={16} />
+                                    {announcement.linkText} <ArrowRight size={16} />
                                 </Link>
                                 <button
                                     onClick={() => handleDismiss(announcement.id)}
