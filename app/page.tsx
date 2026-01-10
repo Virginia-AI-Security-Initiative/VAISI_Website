@@ -57,19 +57,19 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Ut enim ad minim veniam, quis nostrud <strong>exercitation ullamco</strong> laboris nisi ut <strong>aliquip ex ea</strong>.
+                    Advanced AI could <a href="https://ai-2027.com/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">arrive sooner</a> <a href="https://open.substack.com/pub/helentoner/p/long-timelines-to-advanced-ai-have?utm_campaign=post-expanded-share&utm_medium=web" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">than expected</a>, bringing transformative benefits but also existential risks if developed without adequate safety measures and governance.
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Duis aute irure dolor in <strong>reprehenderit</strong> in voluptate velit esse cillum <strong>dolore eu fugiat</strong> nulla pariatur.
+                    The field desperately needs more researchers, policymakers, and bridge-builders to tackle technical alignment challenges and create robust governance frameworks.
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Excepteur sint occaecat <strong>cupidatat non proident</strong>, sunt in culpa qui officia <strong>deserunt mollit</strong> anim id est laborum.
+                    We're racing to ensure AI goes well for humanity during this critical window when thoughtful action can meaningfully influence our future.
                   </span>
                 </li>
               </ul>
@@ -82,25 +82,25 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit sed do <strong>eiusmod</strong>.
+                    Equip UVA community with the knowledge and skills needed to contribute to AI safety through structured learning programs, research opportunities, and public discourse.
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Ut enim ad minim veniam, quis <strong>nostrud exercitation</strong> ullamco laboris <strong>nisi ut aliquip</strong>.
+                    Create clear pathways from interest to impact by connecting members with mentors, career opportunities, and projects in both technical alignment and AI governance.
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Duis aute irure dolor in reprehenderit in <strong>voluptate velit</strong> esse cillum dolore eu <strong>fugiat nulla</strong>.
+                    Develop both technical expertise and policy fluency in our members, preparing them to be the bridge-builders between researchers and decision-makers that the field lacks.
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
-                  <span>
-                    Excepteur sint <strong>occaecat cupidatat</strong> non proident sunt in culpa qui <strong>officia deserunt</strong>.
+                    <span>
+                    In short, we're UVA's home for talented, motivated individuals committed to making AI go well for humanity.
                   </span>
                 </li>
               </ul>
