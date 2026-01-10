@@ -17,18 +17,18 @@ export default function Footer() {
                         </p>
                     </div>
                     <div className="flex space-x-6">
-                        <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#5865F2] transition-colors">
+                        <a href="https://discord.gg/XyqmJE5emc" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#5865F2] transition-colors">
                             <span className="sr-only">Discord</span>
                             <DiscordIcon size={20} />
                         </a>
-                        <a href="https://groupme.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#00AFF0] transition-colors">
+                        <a href="https://groupme.com/join_group/110490963/bxseYw8L" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#00AFF0] transition-colors">
                             <span className="sr-only">GroupMe</span>
                             <GroupMeIcon size={20} />
                         </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#E1306C] transition-colors">
-                            <span className="sr-only">Instagram</span>
+                        <span className="text-gray-300 cursor-not-allowed" title="Coming Soon">
+                            <span className="sr-only">Instagram (Coming Soon)</span>
                             <Instagram size={20} />
-                        </a>
+                        </span>
                     </div>
                 </div>
             </div>
