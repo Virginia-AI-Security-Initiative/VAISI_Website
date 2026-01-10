@@ -46,7 +46,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
             {/* Why AI Safety? */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Why AI Safety?</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">An Under-Discussed Challenge</h2>
               <ul className="space-y-4 text-gray-700">
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
