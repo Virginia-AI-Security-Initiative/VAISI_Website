@@ -6,18 +6,18 @@ export default function MissionPage() {
     return (
         <div className="flex flex-col min-h-screen">
             <Section className="bg-slate-50">
-                <h1 className="text-4xl font-bold text-primary mb-8 text-center">Our Mission</h1>
-
+                <h1 className="text-5xl font-bold text-primary mb-4 text-center">Mission</h1>
                 <div className="prose prose-lg max-w-4xl mx-auto text-gray-700">
                     <div className="mb-12">
-                        <p className="mb-4 text-lg font-medium text-gray-800">
-                            Managing risks from advanced AI is one of the most important issues of our time, yet it lacks the attention it urgently requires.
+                        <p className="mb-14 text-lg font-bold text-gray-900 text-center">
+                            Mitigate catastrophic risks from advanced AI.
                         </p>
+                        <h3 className="text-xl font-bold text-gray-900 mb-6">Our Path Forward</h3>
                         <p className="mb-4">
-                            <span className="font-semibold text-primary">Short-term:</span> Bring together UVA students to learn, discuss, and take action on AI safety.
+                            <span className="font-semibold text-primary">Short-term:</span> Further establish our presence at UVA and build a core group of active and dedicated members. Internally, expand operational capacity to support future programs.
                         </p>
                         <p>
-                            <span className="font-semibold text-primary">Long-term:</span> Maintain a thriving community that equips talented individuals at UVA to ultimately contribute in meaningful ways to AI safety&apos;s most pressing problems in policy/governance and technical alignment.
+                            <span className="font-semibold text-primary">Long-term:</span> Maintain a thriving organization that provides the UVA community with opportunities to upskill, discuss, research, and meaningfully contribute to AI safety's most pressing challenges in governance and technical alignment.
                         </p>
                     </div>
                 </div>
