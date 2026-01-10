@@ -6,7 +6,7 @@ const introResources = [
     { title: "Article on catastrophic AI risk", url: "https://safe.ai/ai-risk" },
     { title: "Why AI Safety? (80,000 Hours)", url: "https://80000hours.org/problem-profiles/artificial-intelligence/" },
     { title: "AI Alignment: Why It's Hard, and Where to Start", url: "https://www.cold-takes.com/ai-safety-seems-hard-to-measure/" },
-    { title: "The AI Safety Landscape (BlueDot Impact)", url: "https://bluedot.org/courses/governance" },
+    { title: "We're Not Ready for Superintelligence", url: "https://www.youtube.com/watch?v=5KVDDfAkRgc" },
 ];
 
 const newsResources = [
