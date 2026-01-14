@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="bg-background py-20 md:py-28 lg:py-32">
+      <section className="bg-background pt-8 pb-20 md:pt-12 md:pb-28 lg:pt-16 lg:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 items-center">
             {/* Text Content - takes more space (3/5) */}
