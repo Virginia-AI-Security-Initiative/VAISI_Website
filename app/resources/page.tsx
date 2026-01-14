@@ -3,25 +3,24 @@ import { Lightbulb, Newspaper, Briefcase, ExternalLink, Play } from "lucide-reac
 
 // Resource data organized by section
 const introResources = [
-    { title: "Article on catastrophic AI risk", url: "https://safe.ai/ai-risk" },
-    { title: "Why AI Safety? (80,000 Hours)", url: "https://80000hours.org/problem-profiles/artificial-intelligence/" },
-    { title: "AI Alignment: Why It's Hard, and Where to Start", url: "https://www.cold-takes.com/ai-safety-seems-hard-to-measure/" },
-    { title: "We're Not Ready for Superintelligence", url: "https://www.youtube.com/watch?v=5KVDDfAkRgc" },
+    { title: "A Case for AI Safety", url: "https://aisafety.info/questions/NM3T/" },
+    { title: "An Overview of Catastrophic AI Risks (Center for AI Safety)", url: "https://safe.ai/ai-risk" },
+    { title: "Intro to AI Safety (Video)", url: "https://www.youtube.com/watch?v=pYXy-A4siMw&t=1s" },
+    { title: "The Catastrophic Risks of AI — and a Safer Path (Yoshua Bengio, TED)", url: "https://www.youtube.com/watch?v=qe9QSCF-d88" },
+    { title: "We're Not Ready for Superintelligence (Video)", url: "https://www.youtube.com/watch?v=5KVDDfAkRgc" },
 ];
 
 const newsResources = [
-    { title: "The New York Times: AI Coverage", url: "https://www.nytimes.com/spotlight/artificial-intelligence" },
-    { title: "MIT Technology Review: AI", url: "https://www.technologyreview.com/topic/artificial-intelligence/" },
-    { title: "The AI Policy Newsletter", url: "https://www.governance.ai/" },
-    { title: "Import AI Newsletter (Jack Clark)", url: "https://importai.substack.com/" },
+    { title: "The AI Safety Newsletter (Center for AI Safety)", url: "https://safe.ai/newsletter" },
+    { title: "Import AI Newsletter", url: "https://jack-clark.net/" },
+    { title: "World 'may not have time' to prepare for AI safety risks (The Guardian)", url: "https://www.theguardian.com/technology/2026/jan/04/world-may-not-have-time-to-prepare-for-ai-safety-risks-says-leading-researcher" },
 ];
 
 const careerResources = [
-    { title: "80,000 Hours AI Safety Career Guide", url: "https://80000hours.org/career-guide/how-to-find-technical-ai-safety-jobs/" },
-    { title: "AI Safety Career Opportunities (Alignment Forum)", url: "https://www.alignmentforum.org/" },
+    { title: "How to Use Your Career to Reduce Risks from AI (80,000 Hours)", url: "https://80000hours.org/agi/" },
+    { title: "AI Safety Career Advice (Video)", url: "https://www.youtube.com/watch?v=OpufM6yK4Go" },
+    { title: "Find Your Place in the AI Safety Ecosystem", url: "https://www.aisafety.com/" },
     { title: "BlueDot Impact Courses", url: "https://bluedot.org/" },
-    { title: "AI Safety Camp", url: "https://aisafety.camp/" },
-    { title: "MATS (ML Alignment Theory Scholars)", url: "https://www.matsprogram.org/" },
 ];
 
 export default function ResourcesPage() {
@@ -50,16 +49,6 @@ export default function ResourcesPage() {
                         High-level, accessible resources to understand why AI safety is one of the most important challenges of our time.
                     </p>
 
-                    {/* Embedded Video */}
-                    <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <iframe
-                            className="w-full aspect-video"
-                            src="https://www.youtube.com/embed/pYXy-A4siMw"
-                            title="AI Safety Video"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        />
-                    </div>
 
                     {/* Resource Links */}
                     <ul className="space-y-3">
@@ -82,14 +71,14 @@ export default function ResourcesPage() {
                 </div>
             </Section>
 
-            {/* Section 2: AI Safety in the News */}
+            {/* Section 2: AI Safety News */}
             <Section className="bg-slate-50 border-t border-gray-100">
                 <div className="max-w-4xl mx-auto">
                     <div className="flex items-center gap-3 mb-4">
                         <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center">
                             <Newspaper className="w-6 h-6 text-primary" />
                         </div>
-                        <h2 className="text-3xl font-bold text-primary">AI Safety in the News</h2>
+                        <h2 className="text-3xl font-bold text-primary">AI Safety News</h2>
                     </div>
                     <p className="text-lg text-gray-600 mb-8">
                         Stay up to date with the latest developments, policy announcements, and media coverage of AI safety.
