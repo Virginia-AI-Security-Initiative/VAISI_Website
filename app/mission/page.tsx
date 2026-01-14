@@ -1,5 +1,5 @@
 import Section from "@/components/Section";
-import { Instagram, Globe } from "lucide-react";
+import { Globe } from "lucide-react";
 import { DiscordIcon, GroupMeIcon } from "@/components/Icons";
 
 export default function MissionPage() {
@@ -44,14 +44,6 @@ export default function MissionPage() {
                         <GroupMeIcon size={24} />
                         GroupMe
                     </a>
-                    <div
-                        className="flex items-center gap-3 px-6 py-4 bg-gray-300 text-gray-500 rounded-lg font-bold shadow-sm cursor-not-allowed relative"
-                        title="Coming Soon"
-                    >
-                        <Instagram size={24} />
-                        Instagram
-                        <span className="absolute -top-2 -right-2 bg-secondary text-white text-xs px-2 py-0.5 rounded-full">Soon</span>
-                    </div>
                 </div>
             </Section>
         </div>

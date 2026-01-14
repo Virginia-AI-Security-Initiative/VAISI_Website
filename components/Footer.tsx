@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Instagram } from 'lucide-react';
+
 import { DiscordIcon, GroupMeIcon } from './Icons';
 // Note: Discord icon is not in standard lucide-react export names sometimes, but let's try standard.
 // If Discord is missing, we can use a generic link or check docs. Lucide has 'MessageCircle' or similar.
@@ -25,10 +25,6 @@ export default function Footer() {
                             <span className="sr-only">GroupMe</span>
                             <GroupMeIcon size={20} />
                         </a>
-                        <span className="text-gray-300 cursor-not-allowed" title="Coming Soon">
-                            <span className="sr-only">Instagram (Coming Soon)</span>
-                            <Instagram size={20} />
-                        </span>
                     </div>
                 </div>
             </div>
