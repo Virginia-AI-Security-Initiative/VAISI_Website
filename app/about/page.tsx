@@ -1,7 +1,6 @@
 import Section from "@/components/Section";
 import TeamMemberCard from "@/components/TeamMemberCard";
 
-// Mock Data for Team Members
 const teamMembers = [
     {
         id: 1,
@@ -28,14 +27,14 @@ const teamMembers = [
         id: 4,
         name: "Lily Egenrieder",
         title: "Lead Editor",
-        imageSrc: "/team/VAISI_Logo.jpg",
+        imageSrc: "/team/lily.jpeg",
         linkedinUrl: "https://www.linkedin.com/in/lily-egenrieder/"
     },
     {
         id: 5,
         name: "Elias Krasny",
         title: "Event Coordinator",
-        imageSrc: "/team/VAISI_Logo.jpg",
+        imageSrc: "/team/elias.jpeg",
         linkedinUrl: "https://www.linkedin.com/in/elias-krasny-82b433305/"
     },
     {
@@ -43,7 +42,7 @@ const teamMembers = [
         name: "Open Position",
         title: "Media Lead",
         imageSrc: "/team/VAISI_Logo.jpg"
-    }    
+    }
 ];
 
 export default function AboutPage() {
