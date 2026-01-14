@@ -101,11 +101,12 @@ export default function ResourcesPage() {
                                     className="group flex items-center justify-between p-4 rounded-lg bg-white hover:bg-gray-50 transition-colors border border-gray-100 hover:border-gray-200"
                                 >
                                     <div className="flex items-center gap-3">
-                                        {resource.type === "video" ? (
+                                        {/*{resource.type === "video" ? (
                                             <Play size={16} className="text-red-500 flex-shrink-0" />
                                         ) : (
                                             <FileText size={16} className="text-blue-500 flex-shrink-0" />
-                                        )}
+                                        )}*/}
+                                        <FileText size={16} className="text-blue-500 flex-shrink-0" />
                                         <span className="font-medium text-gray-700 group-hover:text-primary transition-colors">
                                             {resource.title}
                                         </span>
