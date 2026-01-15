@@ -23,10 +23,10 @@ const announcements = [
     {
         id: "website-under-construction",
         title: "Website Under Construction!",
-        summary: "We're currently working on updating our website. Expect a more refined product soon!",
+        summary: "We are currently working on updating our website. Expect a more refined product soon!",
         link: "",
         linkText: "",
-    },    
+    },
 ];
 
 export default function AnnouncementBanner() {
