@@ -7,26 +7,12 @@ import { X, Megaphone, ArrowRight } from "lucide-react";
 // Announcements array - update this to change the banner content
 const announcements = [
     {
-        id: "fellowship-apps",
-        title: "Fellowship Applications Open!",
-        summary: "Apply now until next Friday to join the AI Governance Fellowship.",
-        link: "/get-involved",
-        linkText: "Learn More",
-    },
-    {
         id: "media-lead",
         title: "We're Hiring!",
         summary: "Media Lead - Position Description",
         link: "https://docs.google.com/document/d/1qzBc_o9ffhQZt9GiIfbPYhQhRoy6pzid34510jpl4Nw/edit?usp=sharing",
         linkText: "Media Lead - Position Description",
     },
-    {
-        id: "website-under-construction",
-        title: "Website Under Construction!",
-        summary: "We're currently working on updating our website. Expect a more refined product soon!",
-        link: "",
-        linkText: "",
-    },    
 ];
 
 export default function AnnouncementBanner() {
