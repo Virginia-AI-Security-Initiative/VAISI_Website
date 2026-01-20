@@ -158,7 +158,7 @@ export default function GetInvolvedPage() {
                 <div className="max-w-3xl mx-auto text-center">
                     <h2 className="text-2xl font-bold text-primary mb-4">Faculty & Advisors</h2>
                     <p className="text-gray-700 mb-6">
-                        Are you a UVA professor or faculty member interested in AI safety? We're looking for passionate advisors and faculty champions to help guide our mission. Your expertise and mentorship would be invaluable to our community.
+                        Are you a UVA professor or faculty member interested in AI safety? We are looking for passionate advisors and faculty champions to help guide our mission. Your expertise and mentorship would be invaluable to our community.
                     </p>
                     <p className="text-gray-700">
                         Contact us at{" "}
