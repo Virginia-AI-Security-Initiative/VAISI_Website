@@ -41,7 +41,7 @@ const teamMembers = [
         id: 6,
         name: "Shubhrangshu Debsarkar",
         title: "Outreach Lead",
-        imageSrc: "/team/VAISI_Logo.jpg",
+        imageSrc: "/team/shubs.JPG",
         linkedinUrl: "https://www.linkedin.com/in/shubhrangshu-debsarkar-204683257/"
     },
     {
