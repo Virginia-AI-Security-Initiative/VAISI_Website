@@ -60,8 +60,29 @@ export default function GetInvolvedPage() {
                 </div>
             </Section>
 
-            {/* Event Types Section */}
+            {/* General Interest Form Section */}
             <Section className="bg-white">
+                <div className="max-w-3xl mx-auto text-center">
+                    {/* <h2 className="text-3xl font-bold text-primary mb-4">Join VAISI</h2> */}
+                    <p className="text-gray-700 font-semibold mb-3 text-center">
+                        Interested in joining VAISI?
+                    </p>
+                    <p className="text-gray-700 mb-6">
+                        Fill out this form to express your interest and stay updated on opportunities, events, and more!
+                    </p>
+                    <a
+                        href="https://forms.gle/tMM3iyH7us1emrGr6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block px-8 py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors"
+                    >
+                        Express Interest
+                    </a>
+                </div>
+            </Section>
+
+            {/* Event Types Section */}
+            <Section className="bg-slate-50 border-t border-gray-100">
                 <h2 className="text-3xl font-bold text-primary mb-10 text-center">Our Events</h2>
                 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     {eventTypes.map((event) => {
