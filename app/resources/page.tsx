@@ -8,6 +8,8 @@ const introResources = [
     { title: "Intro to AI Safety - Rob Miles", url: "https://www.youtube.com/watch?v=pYXy-A4siMw&t=1s", type: "video" as const },
     { title: "The Catastrophic Risks of AI — and a Safer Path - Yoshua Bengio", url: "https://www.youtube.com/watch?v=qe9QSCF-d88", type: "video" as const },
     { title: "We're Not Ready for Superintelligence - AI in Context", url: "https://www.youtube.com/watch?v=5KVDDfAkRgc", type: "video" as const },
+    //{ title: "Unresolved Debates About the Future of AI - Helen Toner", url: "https://open.substack.com/pub/helentoner/p/unresolved-debates-about-the-future?utm_campaign=post-expanded-share&utm_medium=web", type: "article" as const },
+    //{ title: "Long Timelines to Advanced AI Have Been Overestimated - Helen Toner", url: "https://open.substack.com/pub/helentoner/p/long-timelines-to-advanced-ai-have?utm_campaign=post-expanded-share&utm_medium=web", type: "article" as const },
 ];
 
 const newsResources = [
