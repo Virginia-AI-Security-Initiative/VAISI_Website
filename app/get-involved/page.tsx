@@ -10,9 +10,9 @@ const eventTypes = [
         iconBg: "bg-blue-50",
         iconColor: "text-primary",
         details: {
-            day: "TBA",
-            time: "TBA",
-            location: "TBA"
+            day: "Mondays",
+            time: "6-8pm",
+            location: "Fellows will be made aware"
         },
         description: "Complete a 12-week tailored curriculum heavily inspired by BlueDot Impact's AI Governance Course with a small cohort of motivated peers. You'll examine risks posed by advanced AI systems, standards and regulations to address them, and foreign policy approaches. Apply what you've learned through an individual or group capstone project!",
         cta: {
@@ -27,9 +27,9 @@ const eventTypes = [
         iconBg: "bg-orange-50",
         iconColor: "text-secondary",
         details: {
-            day: "TBA",
-            time: "TBA",
-            location: "TBA"
+            day: "Tuesdays",
+            time: "6-7pm",
+            location: "Variable (see groupme)"
         },
         description: "Open to all UVA students! Our weekly meetings vary and include reading groups, workshops on AI safety and governance concepts, interactive discussions, and more. A great way to get involved and learn about AI safety. No prior experience required.",
         cta: null
@@ -41,9 +41,9 @@ const eventTypes = [
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         details: {
-            day: "TBA",
-            time: "TBA",
-            location: "TBA"
+            day: "Event dependent",
+            time: "Event dependent",
+            location: "Event dependent"
         },
         description: "Throughout the semester, we will host special events including guest speakers, hackathons (both technical and policy-focused), collaborations with other student organizations, and fun community activities. Stay tuned for announcements!",
         cta: null
