@@ -13,6 +13,13 @@ const announcements = [
         link: "https://docs.google.com/document/d/1qzBc_o9ffhQZt9GiIfbPYhQhRoy6pzid34510jpl4Nw/edit?usp=sharing",
         linkText: "Media Lead - Position Description",
     },
+    {
+        id: "estimation-competition",
+        title: "Estimation Challenge THIS Tuesday (2/3)",
+        summary: "AI progress estimathon-style competition with hundreds in cash prizes!",
+        link: "https://forms.gle/yYpbSpQiGL3m9BRf6",
+        linkText: "Learn More and Sign Up",
+    },    
 ];
 
 export default function AnnouncementBanner() {
