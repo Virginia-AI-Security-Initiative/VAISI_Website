@@ -19,14 +19,14 @@ const teamMembers = [
     {
         id: 3,
         name: "Andrew Broughton",
-        title: "Operations Lead",
+        title: "Operations Co-Lead",
         imageSrc: "/team/andrew.png",
         linkedinUrl: "https://www.linkedin.com/in/andrewmbroughton/"
     },
     {
         id: 4,
         name: "Lily Egenrieder",
-        title: "Lead Editor",
+        title: "Operations Co-Lead",
         imageSrc: "/team/lily.jpeg",
         linkedinUrl: "https://www.linkedin.com/in/lily-egenrieder/"
     },
