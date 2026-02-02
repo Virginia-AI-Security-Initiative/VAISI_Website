@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { DiscordIcon, GroupMeIcon } from './Icons';
+import { DiscordIcon, GroupMeIcon, LinkedInIcon } from './Icons';
 // Note: Discord icon is not in standard lucide-react export names sometimes, but let's try standard.
 // If Discord is missing, we can use a generic link or check docs. Lucide has 'MessageCircle' or similar.
 // Actually, Lucide does have 'Discord' in newer versions, or we can use SVG.
@@ -24,6 +24,10 @@ export default function Footer() {
                         <a href="https://groupme.com/join_group/110490963/bxseYw8L" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#00AFF0] transition-colors">
                             <span className="sr-only">GroupMe</span>
                             <GroupMeIcon size={20} />
+                        </a>
+                        <a href="https://www.linkedin.com/company/vaisi" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0A66C2] transition-colors">
+                            <span className="sr-only">LinkedIn</span>
+                            <LinkedInIcon size={20} />
                         </a>
                     </div>
                 </div>
