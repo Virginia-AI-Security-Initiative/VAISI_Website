@@ -16,7 +16,7 @@ const announcements = [
     {
         id: "estimation-competition",
         title: "Estimation Challenge THIS Tuesday (2/3)",
-        summary: "AI progress estimathon-style competition with hundreds in cash prizes!",
+        summary: "AI progress estimathon-style competition with hundreds in prizes!",
         link: "https://forms.gle/yYpbSpQiGL3m9BRf6",
         linkText: "Learn More and Sign Up",
     },    
