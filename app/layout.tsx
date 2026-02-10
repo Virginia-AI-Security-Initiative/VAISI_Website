@@ -13,7 +13,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Virginia AI Safety Initiative",
+  title: "Virginia AI Security Initiative",
   description: "Official website for the Virginia AI Safety Initiative (VAISI) at the University of Virginia.",
 };
 

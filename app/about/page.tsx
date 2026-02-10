@@ -48,7 +48,7 @@ const teamMembers = [
         id: 7,
         name: "Open Position",
         title: "Media Lead",
-        imageSrc: "/team/VAISI_Logo.jpg"
+        imageSrc: "/VAISI_Security_Logo_transparent.png"
     }
 ];
 
