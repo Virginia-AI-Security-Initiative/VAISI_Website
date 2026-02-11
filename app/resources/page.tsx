@@ -9,9 +9,9 @@ const introResources = [
 ];
 
 const newsResources = [
+    { title: "CSET Georgetown Newsletter", url: "https://cset.georgetown.edu/newsletters/", type: "article" as const },
     { title: "Import AI Newsletter - Jack Clark", url: "https://jack-clark.net/", type: "article" as const },
     { title: "ChinAI Newsletter - Jeffrey Ding", url: "https://chinai.substack.com/", type: "article" as const },
-    { title: "CSET Georgetown Newsletter", url: "https://cset.georgetown.edu/newsletters/", type: "article" as const },
 ];
 
 const careerResources = [
@@ -112,6 +112,13 @@ export default function ResourcesPage() {
                             </li>
                         ))}
                     </ul>
+                    
+                    {/* UVA-specific note */}
+                    <div className="mt-6 p-4 bg-blue-50 border border-blue-100 rounded-lg">
+                        <p className="text-sm text-gray-700">
+                            <span className="font-semibold text-primary">UVA Students:</span> If you have access to UVA's resources, we highly recommend <span className="font-medium">Inside AI Policy's Weekly Report</span> (accessible via ProQuest).
+                        </p>
+                    </div>
                 </div>
             </Section>
 
