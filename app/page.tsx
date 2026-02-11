@@ -82,7 +82,7 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Equip the UVA community with the knowledge and skills needed to contribute to AI safety through structured learning programs, research opportunities, and public discourse.
+                    Equip the UVA community with the knowledge and skills needed to contribute to AI risk mitigation through structured learning programs, research opportunities, and public discourse.
                   </span>
                 </li>
                 <li className="flex gap-3">
