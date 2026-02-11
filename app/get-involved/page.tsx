@@ -31,7 +31,7 @@ const eventTypes = [
             time: "6-7pm",
             location: "Variable (see groupme)"
         },
-        description: "Open to all UVA students! Our weekly meetings vary and include reading groups, workshops on AI safety and governance concepts, interactive discussions, and more. A great way to get involved and learn about AI safety. No prior experience required.",
+        description: "Open to all UVA students! Our weekly meetings vary and include reading groups, workshops on AI governance and alignment concepts, interactive discussions, and more. A great way to get involved and learn about AI risk and policy. No prior experience required.",
         cta: null
     },
     {
@@ -179,7 +179,7 @@ export default function GetInvolvedPage() {
                 <div className="max-w-3xl mx-auto text-center">
                     <h2 className="text-2xl font-bold text-primary mb-4">Faculty & Advisors</h2>
                     <p className="text-gray-700 mb-6">
-                        Are you a UVA professor or faculty member interested in AI safety? We are looking for passionate advisors and faculty champions to help guide our mission. Your expertise and mentorship would be invaluable to our community.
+                        Are you a UVA professor or faculty member interested in AI governance and alignment? We are looking for passionate advisors and faculty champions to help guide our mission. Your expertise and mentorship would be invaluable to our community.
                     </p>
                     <p className="text-gray-700">
                         Contact us at{" "}
