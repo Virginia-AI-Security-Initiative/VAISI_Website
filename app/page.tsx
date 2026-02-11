@@ -57,7 +57,7 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Advanced AI could <a href="https://ai-2027.com/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">arrive sooner</a> <a href="https://open.substack.com/pub/helentoner/p/long-timelines-to-advanced-ai-have?utm_campaign=post-expanded-share&utm_medium=web" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">than expected</a>, bringing transformative benefits but also existential risks if developed without adequate safety measures and governance.
+                    Advanced AI could <a href="https://ai-2027.com/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">arrive sooner</a> <a href="https://open.substack.com/pub/helentoner/p/long-timelines-to-advanced-ai-have?utm_campaign=post-expanded-share&utm_medium=web" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">than expected</a>, bringing transformative benefits but also existential risks if developed without adequate safeguards and governance.
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -82,7 +82,7 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Equip the UVA community with the knowledge and skills needed to contribute to AI risk mitigation through structured learning programs, research opportunities, and public discourse.
+                    Equip the UVA community with the knowledge and skills needed to contribute to AI governance and risk reduction through structured learning programs, research opportunities, and public discourse.
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -100,7 +100,7 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                     <span>
-                    In short, we're UVA's home for talented, motivated individuals committed to making AI go well for humanity.
+                    In short, we're UVA's home for talented, motivated individuals committed to ensuring advanced AI benefits humanity.
                   </span>
                 </li>
               </ul>
