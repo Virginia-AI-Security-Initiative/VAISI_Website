@@ -1,5 +1,5 @@
 import Section from "@/components/Section";
-import { Lightbulb, Newspaper, Briefcase, ExternalLink, Play, FileText } from "lucide-react";
+import { Lightbulb, Newspaper, Briefcase, ExternalLink, Play, FileText, Mail } from "lucide-react";
 
 // Resource data organized by section
 const introResources = [
@@ -33,22 +33,22 @@ export default function ResourcesPage() {
                 <div className="max-w-3xl mx-auto text-center">
                     <h1 className="text-4xl md:text-5xl font-bold mb-4">Resources</h1>
                     <p className="text-xl text-blue-100">
-                        Curated materials to help you learn about AI safety and get involved.
+                        Curated materials on AI risk, governance, and security to help you engage with the field.
                     </p>
                 </div>
             </Section>
 
-            {/* Section 1: Why AI Safety Matters */}
+            {/* Section 1: Understanding AI Risk */}
             <Section className="bg-white">
                 <div className="max-w-4xl mx-auto">
                     <div className="flex items-center gap-3 mb-4">
                         <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center">
                             <Lightbulb className="w-6 h-6 text-secondary" />
                         </div>
-                        <h2 className="text-3xl font-bold text-primary">Why AI Safety Matters</h2>
+                        <h2 className="text-3xl font-bold text-primary">Understanding AI Risk</h2>
                     </div>
                     <p className="text-lg text-gray-600 mb-8 ml-15">
-                        High-level, accessible resources to understand why AI safety is one of the most important challenges of our time.
+                        Accessible introductions to the technical and policy challenges posed by advanced AI systems.
                     </p>
 
 
@@ -80,17 +80,17 @@ export default function ResourcesPage() {
                 </div>
             </Section>
 
-            {/* Section 2: AI Safety News */}
+            {/* Section 2: AI Policy & Risk News */}
             <Section className="bg-slate-50 border-t border-gray-100">
                 <div className="max-w-4xl mx-auto">
                     <div className="flex items-center gap-3 mb-4">
                         <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center">
                             <Newspaper className="w-6 h-6 text-primary" />
                         </div>
-                        <h2 className="text-3xl font-bold text-primary">AI Safety News</h2>
+                        <h2 className="text-3xl font-bold text-primary">AI Policy & Risk News</h2>
                     </div>
                     <p className="text-lg text-gray-600 mb-8">
-                        Stay up to date with the latest developments, policy announcements, and media coverage of AI safety.
+                        Stay up to date with the latest developments in AI governance, risk research, and policy.
                     </p>
 
                     <ul className="space-y-3">
@@ -131,7 +131,7 @@ export default function ResourcesPage() {
                         <h2 className="text-3xl font-bold text-primary">Career Resources</h2>
                     </div>
                     <p className="text-lg text-gray-600 mb-8">
-                        Interested in pursuing AI safety as a career? Explore job boards, fellowship programs, and career guidance.
+                        Explore career paths in AI governance, technical research, and policy. Find fellowships, job boards, and guidance.
                     </p>
 
                     <ul className="space-y-3">
@@ -158,6 +158,29 @@ export default function ResourcesPage() {
                             </li>
                         ))}
                     </ul>
+                </div>
+            </Section>
+
+            {/* Contact CTA */}
+            <Section className="bg-primary text-white border-t border-blue-800">
+                <div className="max-w-3xl mx-auto text-center">
+                    <div className="flex justify-center mb-4">
+                        <div className="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center">
+                            <Mail className="w-6 h-6 text-white" />
+                        </div>
+                    </div>
+                    <h2 className="text-2xl font-bold mb-3">Get in Touch</h2>
+                    <p className="text-lg text-blue-100 mb-6">
+                        Interested in learning more or exploring opportunities in AI governance and technical research?
+                        Reach out with your background and interests.
+                    </p>
+                    <a
+                        href="mailto:vaisi.club@gmail.com"
+                        className="inline-flex items-center gap-2 bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors"
+                    >
+                        <Mail size={18} />
+                        vaisi.club@gmail.com
+                    </a>
                 </div>
             </Section>
         </div>
