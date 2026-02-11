@@ -3,25 +3,19 @@ import { Lightbulb, Newspaper, Briefcase, ExternalLink, Play, FileText, Mail } f
 
 // Resource data organized by section
 const introResources = [
-    { title: "A Case for AI Safety - AI Safety.info", url: "https://aisafety.info/questions/NM3T/", type: "article" as const },
-    { title: "An Overview of Catastrophic AI Risks - Center for AI Safety", url: "https://safe.ai/ai-risk", type: "article" as const },
-    { title: "Intro to AI Safety - Rob Miles", url: "https://www.youtube.com/watch?v=pYXy-A4siMw&t=1s", type: "video" as const },
+    { title: "An Overview of Catastrophic AI Risks", url: "https://safe.ai/ai-risk", type: "article" as const },
     { title: "The Catastrophic Risks of AI — and a Safer Path - Yoshua Bengio", url: "https://www.youtube.com/watch?v=qe9QSCF-d88", type: "video" as const },
-    { title: "We're Not Ready for Superintelligence - AI in Context", url: "https://www.youtube.com/watch?v=5KVDDfAkRgc", type: "video" as const },
-    //{ title: "Unresolved Debates About the Future of AI - Helen Toner", url: "https://open.substack.com/pub/helentoner/p/unresolved-debates-about-the-future?utm_campaign=post-expanded-share&utm_medium=web", type: "article" as const },
-    //{ title: "Long Timelines to Advanced AI Have Been Overestimated - Helen Toner", url: "https://open.substack.com/pub/helentoner/p/long-timelines-to-advanced-ai-have?utm_campaign=post-expanded-share&utm_medium=web", type: "article" as const },
+    { title: "The Operational Risks of AI in Large-Scale Biological Attacks - RAND Corporation", url: "https://www.rand.org/pubs/research_reports/RRA2977-2.html", type: "article" as const },
 ];
 
 const newsResources = [
-    { title: "The AI Safety Newsletter - Center for AI Safety", url: "https://safe.ai/newsletter", type: "article" as const },
     { title: "Import AI Newsletter - Jack Clark", url: "https://jack-clark.net/", type: "article" as const },
-    { title: "World 'may not have time' to prepare for AI safety risks - The Guardian", url: "https://www.theguardian.com/technology/2026/jan/04/world-may-not-have-time-to-prepare-for-ai-safety-risks-says-leading-researcher", type: "article" as const },
+    { title: "ChinAI Newsletter - Jeffrey Ding", url: "https://chinai.substack.com/", type: "article" as const },
+    { title: "CSET Georgetown Newsletter", url: "https://cset.georgetown.edu/newsletters/", type: "article" as const },
 ];
 
 const careerResources = [
-    { title: "How to Use Your Career to Reduce Risks from AI - 80,000 Hours", url: "https://80000hours.org/agi/", type: "article" as const },
-    { title: "AI Safety Career Advice - Rob Miles", url: "https://www.youtube.com/watch?v=OpufM6yK4Go", type: "video" as const },
-    { title: "Find Your Place in the AI Safety Ecosystem - AISafety.com", url: "https://www.aisafety.com/", type: "article" as const },
+    { title: "Emerging Technology Policy Careers - Horizon Institute", url: "https://emergingtechpolicy.org/", type: "article" as const },
     { title: "BlueDot Impact Courses", url: "https://bluedot.org/", type: "article" as const },
 ];
 
