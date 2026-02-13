@@ -26,9 +26,9 @@ export default function Home() {
             </div>
 
             {/* Hero Graphic - takes less space (2/5) */}
-            <div className="flex justify-center lg:justify-end lg:col-span-2">
+            <div className="flex justify-center lg:justify-end lg:col-span-2 -mt-10">
               <Image
-                src="/VAISI_Security_Logo_transparent.png"
+                src="/VAISI_Logo_cropped_smaller_png.png"
                 alt="VAISI Logo"
                 width={500}
                 height={500}
