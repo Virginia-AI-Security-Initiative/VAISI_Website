@@ -28,7 +28,6 @@ const events: Event[] = [
         imageSrc: "/images/past-events/ai-progress-estimation-game-flyer.png",
         photos: [
             "/images/past-events/estimation-game-1.jpg",
-            "/images/past-events/estimation-game-2.jpg",
             "/images/past-events/estimation-game-3.jpg",
         ],
     },
@@ -47,8 +46,6 @@ const events: Event[] = [
         imageSrc: "/images/past-events/eli-lifland-flyer.PNG",
         photos: [
             "/images/past-events/eli-lifland-1.jpg",
-            "/images/past-events/eli-lifland-2.jpg",
-            "/images/past-events/eli-lifland-3.jpg",
         ],
         links: [
             { label: "Watch the recording", url: "https://youtu.be/bXSP2OMexdM?si=TRvVyP1AdpR2Rkuh" },
@@ -83,7 +80,7 @@ function PhotoLightbox({ photos, eventTitle, onClose }: { photos: string[]; even
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80" onClick={onClose}>
-            <div className="relative w-full max-w-md mx-4" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-full max-w-3xl mx-4" onClick={(e) => e.stopPropagation()}>
                 {/* Close button */}
                 <button
                     onClick={onClose}
@@ -93,12 +90,13 @@ function PhotoLightbox({ photos, eventTitle, onClose }: { photos: string[]; even
                 </button>
 
                 {/* Image */}
-                <div className="relative w-full bg-black rounded-lg overflow-hidden" style={{ aspectRatio: '8.5 / 11' }}>
+                <div className="bg-black rounded-lg overflow-hidden">
                     <Image
                         src={photos[currentIndex]}
                         alt={`${eventTitle} photo ${currentIndex + 1}`}
-                        fill
-                        className="object-contain"
+                        width={800}
+                        height={600}
+                        className="w-full h-auto"
                     />
                 </div>
 
