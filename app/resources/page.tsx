@@ -16,7 +16,7 @@ const newsResources = [
 
 const careerResources = [
     { title: "Emerging Technology Policy Careers - Horizon Institute", url: "https://emergingtechpolicy.org/", type: "article" as const },
-    { title: "BlueDot Impact Courses", url: "https://bluedot.org/", type: "article" as const },
+    { title: "Upskilling Courses - BlueDot Impact", url: "https://bluedot.org/", type: "article" as const },
 ];
 
 export default function ResourcesPage() {
