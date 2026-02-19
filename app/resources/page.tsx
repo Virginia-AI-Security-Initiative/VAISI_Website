@@ -3,7 +3,7 @@ import { Lightbulb, Newspaper, Briefcase, ExternalLink, Play, FileText, Mail } f
 
 // Resource data organized by section
 const introResources = [
-    { title: "An Overview of Catastrophic AI Risks", url: "https://safe.ai/ai-risk", type: "article" as const },
+    { title: "An Overview of Catastrophic AI Risks - CAIS", url: "https://safe.ai/ai-risk", type: "article" as const },
     { title: "The Catastrophic Risks of AI — and a Safer Path - Yoshua Bengio", url: "https://www.youtube.com/watch?v=qe9QSCF-d88", type: "video" as const },
     { title: "The Operational Risks of AI in Large-Scale Biological Attacks - RAND Corporation", url: "https://www.rand.org/pubs/research_reports/RRA2977-2.html", type: "article" as const },
 ];
