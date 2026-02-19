@@ -27,7 +27,7 @@ export default function ResourcesPage() {
                 <div className="max-w-3xl mx-auto text-center">
                     <h1 className="text-4xl md:text-5xl font-bold mb-4">Resources</h1>
                     <p className="text-xl text-blue-100">
-                        Curated materials on AI risk, governance, and security to help you engage with the field.
+                        Curated materials on AI risk, governance, and security to help you get started.
                     </p>
                 </div>
             </Section>
