@@ -5,15 +5,13 @@ import Link from "next/link";
 import { X, Megaphone, ArrowRight } from "lucide-react";
 
 // Announcements array - update this to change the banner content
-const announcements = [
-    {
-        id: "media-lead",
-        title: "We're Hiring!",
-        summary: "Media Lead - Position Description",
-        link: "https://docs.google.com/document/d/1qzBc_o9ffhQZt9GiIfbPYhQhRoy6pzid34510jpl4Nw/edit?usp=sharing",
-        linkText: "Media Lead - Position Description",
-    },
-];
+const announcements: {
+    id: string;
+    title: string;
+    summary: string;
+    link: string;
+    linkText: string;
+}[] = [];
 
 export default function AnnouncementBanner() {
     const [dismissedIds, setDismissedIds] = useState<Set<string>>(new Set());
