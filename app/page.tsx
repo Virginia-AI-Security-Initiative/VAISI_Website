@@ -96,7 +96,7 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Create clear pathways from interest to impact by connecting members with mentors, career opportunities, and projects in both technical alignment and AI governance.
+                    Create clear pathways from interest to impact by connecting members with mentors, career opportunities, and projects in both technical alignment and AI policy/governance.
                   </span>
                 </li>
                 <li className="flex gap-3">
