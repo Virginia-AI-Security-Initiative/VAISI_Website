@@ -69,7 +69,7 @@ const pastEvents: PastEvent[] = [
         description: "Virginia's biggest hackathon and one of the top 50 collegiate hackathons in the US. VAISI sponsored the AI Safety and Alignment Evaluations track, challenging participants to build projects focused on the safe creation and deployment of AI models.",
         imageSrc: "/images/past-events/hoohacks.png",
         photos: [
-            "/images/past-events/hoohacks.png",
+            //"/images/past-events/hoohacks.png",
         ],
         links: [
             { label: "hoohacks.io", url: "https://hoohacks.io/" },
