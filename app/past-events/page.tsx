@@ -64,6 +64,18 @@ const upcomingEvents: UpcomingEvent[] = [
 
 const pastEvents: PastEvent[] = [
     {
+        title: "HooHacks",
+        date: "March 21–22, 2026",
+        description: "Virginia's biggest hackathon and one of the top 50 collegiate hackathons in the US. VAISI sponsored the AI Safety and Alignment Evaluations track, challenging participants to build projects focused on the safe creation and deployment of AI models.",
+        imageSrc: "/images/past-events/hoohacks.png",
+        photos: [
+            "/images/past-events/hoohacks.png",
+        ],
+        links: [
+            { label: "hoohacks.io", url: "https://hoohacks.io/" },
+        ],
+    },
+    {
         title: "AI Progress Estimation Game",
         date: "February 3, 2026",
         description:
