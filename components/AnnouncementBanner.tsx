@@ -11,7 +11,22 @@ const announcements: {
     summary: string;
     link: string;
     linkText: string;
-}[] = [];
+}[] = [
+    {
+        id: "future-of-ai-panel",
+        title: "Future of AI Panel",
+        summary: "Tuesday, March 24 · 5:00–6:30pm · Clark 108",
+        link: "https://docs.google.com/forms/d/e/1FAIpQLSelw5_D-VHhiYYlErqxmW7oDctG6C3i9ms9_Pg2Gv6ZZvPnhQ/viewform?usp=dialog",
+        linkText: "RSVP",
+    },
+    {
+        id: "ai-policy-hackathon",
+        title: "AI Policy Hackathon",
+        summary: "March 28 – April 4, 2026",
+        link: "https://docs.google.com/forms/d/e/1FAIpQLScvmH8Vh1h-Hnbwa5_vKD5E_fl4J9dKVTRud-xmLO2RbNbEbQ/viewform",
+        linkText: "Sign up",
+    },
+];
 
 export default function AnnouncementBanner() {
     const [dismissedIds, setDismissedIds] = useState<Set<string>>(new Set());
