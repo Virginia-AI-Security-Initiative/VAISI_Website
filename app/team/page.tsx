@@ -18,19 +18,19 @@ const teamMembers = [
     {
         id: 3,
         name: "Andrew Broughton",
-        title: "Operations Lead",
+        title: "Operations Co-lead",
         imageSrc: "/team/andrew.png"
     },
     {
         id: 4,
         name: "Lily Egenrieder",
-        title: "Lead Editor",
+        title: "Operations Co-lead",
         imageSrc: "/team/VAISI_Logo.jpg"
     },
     {
         id: 5,
         name: "Elias Krasny",
-        title: "Event Coordinator",
+        title: "Forecasting Lead",
         imageSrc: "/team/VAISI_Logo.jpg"
     }
 ];
