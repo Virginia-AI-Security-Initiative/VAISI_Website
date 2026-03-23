@@ -11,8 +11,8 @@ const eventTypes = [
         iconColor: "text-primary",
         details: {
             day: "Mondays",
-            time: "6-8pm",
-            location: "Fellows will be made aware"
+            time: "6:15-8:15pm",
+            location: "Fellows have been made aware"
         },
         description: "Complete a 12-week tailored curriculum heavily inspired by BlueDot Impact's AI Governance Course with a small cohort of motivated peers. You'll examine risks posed by advanced AI systems, standards and regulations to address them, and foreign policy approaches. Apply what you've learned through an individual or group capstone project!",
         cta: {

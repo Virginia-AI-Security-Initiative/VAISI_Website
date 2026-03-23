@@ -33,7 +33,7 @@ const teamMembers = [
     {
         id: 5,
         name: "Elias Krasny",
-        title: "Event Coordinator",
+        title: "Forecasting Lead",
         imageSrc: "/team/elias.jpeg",
         linkedinUrl: "https://www.linkedin.com/in/elias-krasny-82b433305/"
     },
@@ -46,8 +46,14 @@ const teamMembers = [
     },
     {
         id: 7,
-        name: "Open Position",
+        name: "Matthew Janicki",
         title: "Media Lead",
+        imageSrc: "/VAISI_Security_Logo_transparent.png"
+    },
+    {
+        id: 8,
+        name: "Charlie Meyer",
+        title: "Technical Team Lead",
         imageSrc: "/VAISI_Security_Logo_transparent.png"
     }
 ];

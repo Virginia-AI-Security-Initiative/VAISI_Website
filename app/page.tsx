@@ -16,6 +16,14 @@ export default function Home() {
                 <span className="text-secondary">risks of advanced AI</span>.
               </h1>
               <div className="flex flex-wrap gap-4">
+                <a
+                  href="https://groupme.com/join_group/110490963/bxseYw8L"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-3 bg-[#3c16d3] text-white font-bold rounded-md hover:bg-[#3211b8] transition-colors shadow-lg flex items-center gap-2"
+                >
+                  Join GroupMe
+                </a>
                 <Link
                   href="/get-involved"
                   className="px-8 py-3 bg-secondary text-white font-bold rounded-md hover:bg-orange-600 transition-colors shadow-lg flex items-center gap-2"
@@ -88,7 +96,7 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    Create clear pathways from interest to impact by connecting members with mentors, career opportunities, and projects in both technical alignment and AI governance.
+                    Create clear pathways from interest to impact by connecting members with mentors, career opportunities, and projects in both technical alignment and AI policy/governance.
                   </span>
                 </li>
                 <li className="flex gap-3">

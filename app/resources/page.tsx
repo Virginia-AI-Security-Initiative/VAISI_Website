@@ -3,7 +3,7 @@ import { Lightbulb, Newspaper, Briefcase, ExternalLink, Play, FileText, Mail } f
 
 // Resource data organized by section
 const introResources = [
-    { title: "An Overview of Catastrophic AI Risks", url: "https://safe.ai/ai-risk", type: "article" as const },
+    { title: "An Overview of Catastrophic AI Risks - CAIS", url: "https://safe.ai/ai-risk", type: "article" as const },
     { title: "The Catastrophic Risks of AI — and a Safer Path - Yoshua Bengio", url: "https://www.youtube.com/watch?v=qe9QSCF-d88", type: "video" as const },
     { title: "The Operational Risks of AI in Large-Scale Biological Attacks - RAND Corporation", url: "https://www.rand.org/pubs/research_reports/RRA2977-2.html", type: "article" as const },
 ];
@@ -16,7 +16,7 @@ const newsResources = [
 
 const careerResources = [
     { title: "Emerging Technology Policy Careers - Horizon Institute", url: "https://emergingtechpolicy.org/", type: "article" as const },
-    { title: "BlueDot Impact Courses", url: "https://bluedot.org/", type: "article" as const },
+    { title: "Upskilling Courses - BlueDot Impact", url: "https://bluedot.org/", type: "article" as const },
 ];
 
 export default function ResourcesPage() {
@@ -27,7 +27,7 @@ export default function ResourcesPage() {
                 <div className="max-w-3xl mx-auto text-center">
                     <h1 className="text-4xl md:text-5xl font-bold mb-4">Resources</h1>
                     <p className="text-xl text-blue-100">
-                        Curated materials on AI risk, governance, and security to help you engage with the field.
+                        Curated materials on AI risk, governance, and security to help you get started.
                     </p>
                 </div>
             </Section>
