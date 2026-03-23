@@ -41,7 +41,7 @@ const upcomingEvents: UpcomingEvent[] = [
                 <a href="https://www.cs.virginia.edu/~evans/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">David Evans</a>
                 , and{" "}
                 <a href="https://www.daviddanks.org/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">David Danks</a>
-                {" "}will discuss the future of AI, moderated by VAISI president Jason Chin. Roots for those who RSVP before Sunday! Format: 5–6pm guided panel discussion, 6–6:30pm audience Q&A.
+                {" "}will discuss the future of AI, moderated by VAISI president Jason Chin. Roots for those who RSVP! Format: 5–6pm guided panel discussion, 6–6:30pm audience Q&A.
             </>
         ),
         imageSrc: "/images/past-events/AI Future Panel.png",
