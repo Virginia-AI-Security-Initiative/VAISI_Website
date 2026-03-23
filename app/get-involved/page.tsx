@@ -1,5 +1,5 @@
 import Section from "@/components/Section";
-import { Calendar, MapPin, Clock, Users, BookOpen, Sparkles } from "lucide-react";
+import { Calendar, MapPin, Clock, BookOpen, Sparkles } from "lucide-react";
 
 // Event Types Data
 const eventTypes = [
@@ -22,20 +22,6 @@ const eventTypes = [
     },
     {
         id: 2,
-        title: "Weekly Meetings",
-        icon: Users,
-        iconBg: "bg-orange-50",
-        iconColor: "text-secondary",
-        details: {
-            day: "Tuesdays",
-            time: "6-7pm",
-            location: "Variable (see groupme)"
-        },
-        description: "Open to all UVA students! Our weekly meetings vary and include reading groups, workshops on AI governance and alignment concepts, interactive discussions, and more. A great way to get involved and learn about AI risk and policy. No prior experience required.",
-        cta: null
-    },
-    {
-        id: 3,
         title: "Special Events",
         icon: Sparkles,
         iconBg: "bg-purple-50",
@@ -46,7 +32,10 @@ const eventTypes = [
             location: "Event dependent"
         },
         description: "Throughout the semester, we will host special events including guest speakers, hackathons (both technical and policy-focused), collaborations with other student organizations, and fun community activities. Stay tuned for announcements!",
-        cta: null
+        cta: {
+            text: "View Events",
+            link: "/past-events"
+        }
     }
 ];
 
@@ -84,7 +73,7 @@ export default function GetInvolvedPage() {
             {/* Event Types Section */}
             <Section className="bg-slate-50 border-t border-gray-100">
                 <h2 className="text-3xl font-bold text-primary mb-10 text-center">Our Events</h2>
-                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     {eventTypes.map((event) => {
                         const IconComponent = event.icon;
                         return (
