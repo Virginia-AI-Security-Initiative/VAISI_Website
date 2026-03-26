@@ -13,13 +13,6 @@ const announcements: {
     linkText: string;
 }[] = [
     {
-        id: "future-of-ai-panel",
-        title: "Future of AI Panel",
-        summary: "Tuesday, March 24 · 5:00–6:30pm · Clark 108",
-        link: "https://docs.google.com/forms/d/e/1FAIpQLSelw5_D-VHhiYYlErqxmW7oDctG6C3i9ms9_Pg2Gv6ZZvPnhQ/viewform?usp=dialog",
-        linkText: "RSVP",
-    },
-    {
         id: "ai-policy-hackathon",
         title: "AI Policy Hackathon",
         summary: "March 28 – April 4, 2026",

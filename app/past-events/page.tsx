@@ -30,26 +30,6 @@ interface PastEvent {
 
 const upcomingEvents: UpcomingEvent[] = [
     {
-        title: "Future of AI Panel",
-        dateRange: "Tuesday, March 24 · 5:00 – 6:30pm",
-        location: "Clark 108",
-        description: (
-            <>
-                Professors{" "}
-                <a href="https://www.korinek.com/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">Anton Korinek</a>
-                ,{" "}
-                <a href="https://www.cs.virginia.edu/~evans/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">David Evans</a>
-                , and{" "}
-                <a href="https://www.daviddanks.org/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">David Danks</a>
-                {" "}will discuss the future of AI, moderated by VAISI president Jason Chin. Roots for those who RSVP! Format: 5–6pm guided panel discussion, 6–6:30pm audience Q&A.
-            </>
-        ),
-        imageSrc: "/images/past-events/AI Future Panel.png",
-        links: [
-            { label: "RSVP", url: "https://docs.google.com/forms/d/e/1FAIpQLSelw5_D-VHhiYYlErqxmW7oDctG6C3i9ms9_Pg2Gv6ZZvPnhQ/viewform?usp=dialog" },
-        ],
-    },
-    {
         title: "AI Policy Hackathon",
         dateRange: "March 28 – April 4, 2026",
         description:
@@ -63,6 +43,23 @@ const upcomingEvents: UpcomingEvent[] = [
 ];
 
 const pastEvents: PastEvent[] = [
+    {
+        title: "Future of AI Panel",
+        date: "March 24, 2026",
+        description: (
+            <>
+                Professors{" "}
+                <a href="https://www.korinek.com/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">Anton Korinek</a>
+                ,{" "}
+                <a href="https://www.cs.virginia.edu/~evans/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">David Evans</a>
+                , and{" "}
+                <a href="https://www.daviddanks.org/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">David Danks</a>
+                {" "}discussed the future of AI, moderated by VAISI president Jason Chin. Format: 5–6pm guided panel discussion, 6–6:30pm audience Q&A.
+            </>
+        ),
+        imageSrc: "/images/past-events/AI Future Panel.png",
+        photos: [],
+    },
     {
         title: "HooHacks",
         date: "March 21–22, 2026",
