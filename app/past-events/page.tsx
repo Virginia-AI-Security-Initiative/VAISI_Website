@@ -58,7 +58,12 @@ const pastEvents: PastEvent[] = [
             </>
         ),
         imageSrc: "/images/past-events/AI Future Panel.png",
-        photos: [],
+        photos: [
+            "/images/past-events/Future of AI Panel/IMG_4366.JPG",
+            "/images/past-events/Future of AI Panel/IMG_2316.jpg",
+            "/images/past-events/Future of AI Panel/IMG_7741.JPG",
+            "/images/past-events/Future of AI Panel/IMG_7743.JPG",
+        ],
     },
     {
         title: "HooHacks",
@@ -66,7 +71,17 @@ const pastEvents: PastEvent[] = [
         description: "Virginia's biggest hackathon and one of the top 50 collegiate hackathons in the US. VAISI sponsored the AI Safety and Alignment Evaluations track, challenging participants to build projects focused on the safe creation and deployment of AI models.",
         imageSrc: "/images/past-events/hoohacks.png",
         photos: [
-            //"/images/past-events/hoohacks.png",
+            "/images/past-events/HooHacks/IMG_4264.JPG",
+            "/images/past-events/HooHacks/IMG_4291.JPG",
+            "/images/past-events/HooHacks/IMG_4292.JPG",
+            "/images/past-events/HooHacks/IMG_4295.JPG",
+            "/images/past-events/HooHacks/IMG_4297.JPG",
+            "/images/past-events/HooHacks/IMG_4301.JPG",
+            "/images/past-events/HooHacks/IMG_4303.JPG",
+            "/images/past-events/HooHacks/IMG_4306.JPG",
+            "/images/past-events/HooHacks/IMG_4310.JPG",
+            "/images/past-events/HooHacks/IMG_4349.JPG",
+            "/images/past-events/HooHacks/IMG_4353.JPG",
         ],
         links: [
             { label: "hoohacks.io", url: "https://hoohacks.io/" },
@@ -267,7 +282,7 @@ function PastEventCard({ event }: { event: PastEvent }) {
                         <div className="mt-3">
                             <button
                                 onClick={() => setLightboxOpen(true)}
-                                className="inline-flex items-center gap-1.5 text-sm font-medium text-secondary hover:text-primary transition-colors"
+                                className="inline-flex items-center gap-1.5 text-sm font-medium text-secondary hover:text-primary transition-colors cursor-pointer"
                             >
                                 <Camera size={14} />
                                 View photos ({event.photos.length})
