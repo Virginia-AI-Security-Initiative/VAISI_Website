@@ -2,7 +2,7 @@ Reverting main branch to previous commit
 
 # Virginia AI Security Initiative (VAISI) Website
 
-This is the official website for the Virginia AI Security Initiative at the University of Virginia. It is built with Next.js 14+ (App Router), TypeScript, and Tailwind CSS.
+This is the official website for the Virginia AI Security Initiative at the University of Virginia. It's built with Next.js 14+ (App Router), TypeScript, and Tailwind CSS.
 
 ## Getting Started
 
