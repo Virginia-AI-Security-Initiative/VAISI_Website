@@ -12,13 +12,6 @@ const announcements: {
     link: string;
     linkText: string;
 }[] = [
-    {
-        id: "ai-policy-hackathon",
-        title: "AI Policy Hackathon",
-        summary: "March 28 – April 4, 2026",
-        link: "https://docs.google.com/forms/d/e/1FAIpQLScvmH8Vh1h-Hnbwa5_vKD5E_fl4J9dKVTRud-xmLO2RbNbEbQ/viewform",
-        linkText: "Sign up",
-    },
 ];
 
 export default function AnnouncementBanner() {
