@@ -28,21 +28,19 @@ interface PastEvent {
     links?: EventLink[];
 }
 
-const upcomingEvents: UpcomingEvent[] = [
+const upcomingEvents: UpcomingEvent[] = [];
+
+const pastEvents: PastEvent[] = [
     {
         title: "AI Policy Hackathon",
-        dateRange: "March 28 – April 4, 2026",
+        date: "March 28 – April 4, 2026",
         description:
             "A week-long hackathon focused on AI policy. Participants will work in teams to develop policy proposals and solutions to pressing AI governance challenges.",
         imageSrc: "/images/past-events/VAISI Policy Hackathon.png",
         links: [
             { label: "Event details", url: "https://docs.google.com/document/d/1OMX8OoSnwxvP-Hb9O4aZ58GOCFGYL2svoEdk3f4MPjE/edit?tab=t.0" },
-            { label: "Sign up / Interest form", url: "https://docs.google.com/forms/d/e/1FAIpQLScvmH8Vh1h-Hnbwa5_vKD5E_fl4J9dKVTRud-xmLO2RbNbEbQ/viewform" },
         ],
     },
-];
-
-const pastEvents: PastEvent[] = [
     {
         title: "Future of AI Panel",
         date: "March 24, 2026",
