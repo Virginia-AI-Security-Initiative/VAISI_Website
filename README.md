@@ -71,8 +71,3 @@ vaisi-website/
   - Background: `#f8fafc` (Slate 50)
 - **Fonts**: Uses `Inter` via `next/font/google`.
 
-## Deployment
-
-The easiest way to deploy this Next.js app is to use the [Vercel Platform](https://vercel.com/new).
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
