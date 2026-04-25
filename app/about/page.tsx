@@ -48,13 +48,15 @@ const teamMembers = [
         id: 7,
         name: "Matthew Janicki",
         title: "Media Lead",
-        imageSrc: "/VAISI_Security_Logo_transparent.png"
+        imageSrc: "/team/matthew.jpeg",
+        linkedinUrl: "https://www.linkedin.com/in/matthew-janicki-b69b12326/"
     },
     {
         id: 8,
         name: "Charlie Meyer",
         title: "Technical Team Lead",
-        imageSrc: "/VAISI_Security_Logo_transparent.png"
+        imageSrc: "/team/charlie.jpeg",
+        linkedinUrl: "https://www.linkedin.com/in/charlie-meyer-loves-you/"
     }
 ];
 
