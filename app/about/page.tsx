@@ -32,10 +32,10 @@ const teamMembers = [
     },
     {
         id: 5,
-        name: "Elias Krasny",
-        title: "Forecasting Lead",
-        imageSrc: "/team/elias.jpeg",
-        linkedinUrl: "https://www.linkedin.com/in/elias-krasny-82b433305/"
+        name: "Charlie Meyer",
+        title: "Technical Team Co-Lead",
+        imageSrc: "/team/charlie.jpeg",
+        linkedinUrl: "https://www.linkedin.com/in/charlie-meyer-loves-you/"
     },
     {
         id: 6,
@@ -46,17 +46,17 @@ const teamMembers = [
     },
     {
         id: 7,
+        name: "Elias Krasny",
+        title: "Forecasting Lead",
+        imageSrc: "/team/elias.jpeg",
+        linkedinUrl: "https://www.linkedin.com/in/elias-krasny-82b433305/"
+    },
+    {
+        id: 8,
         name: "Matthew Janicki",
         title: "Media Lead",
         imageSrc: "/team/matthew.jpeg",
         linkedinUrl: "https://www.linkedin.com/in/matthew-janicki-b69b12326/"
-    },
-    {
-        id: 8,
-        name: "Charlie Meyer",
-        title: "Technical Team Co-Lead",
-        imageSrc: "/team/charlie.jpeg",
-        linkedinUrl: "https://www.linkedin.com/in/charlie-meyer-loves-you/"
     }
 ];
 
