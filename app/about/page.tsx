@@ -40,7 +40,7 @@ const teamMembers = [
     {
         id: 6,
         name: "Shubhrangshu Debsarkar",
-        title: "Outreach Lead",
+        title: "Technical Team Co-Lead",
         imageSrc: "/team/shubs.JPG",
         linkedinUrl: "https://www.linkedin.com/in/shubhrangshu-debsarkar-204683257/"
     },
@@ -54,7 +54,7 @@ const teamMembers = [
     {
         id: 8,
         name: "Charlie Meyer",
-        title: "Technical Team Lead",
+        title: "Technical Team Co-Lead",
         imageSrc: "/team/charlie.jpeg",
         linkedinUrl: "https://www.linkedin.com/in/charlie-meyer-loves-you/"
     }
