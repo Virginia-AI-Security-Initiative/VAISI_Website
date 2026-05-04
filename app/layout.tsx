@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import SiteChrome from "@/components/SiteChrome";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,10 +18,6 @@ export const metadata: Metadata = {
   description: "Official website for the Virginia AI Safety Initiative (VAISI) at the University of Virginia.",
 };
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import AnnouncementBanner from "@/components/AnnouncementBanner";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,12 +28,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} antialiased min-h-screen flex flex-col`}
       >
-        <Navbar />
-        <main className="flex-grow pt-16">
-          <AnnouncementBanner />
-          {children}
-        </main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );
