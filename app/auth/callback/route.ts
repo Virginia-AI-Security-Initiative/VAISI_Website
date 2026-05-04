@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCurrentExecAccess } from '@/lib/admin/data';
 import { createSupabaseServerClient, getSupabaseConfig } from '@/lib/supabase/server';
+import { siteUrl } from '@/lib/site-url';
 
 function safeNextPath(value: string | null) {
   if (!value || !value.startsWith('/') || value.startsWith('//')) {
@@ -12,21 +13,21 @@ function safeNextPath(value: string | null) {
 
 export async function GET(request: NextRequest) {
   if (!getSupabaseConfig()) {
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(siteUrl('/', request));
   }
 
   const code = request.nextUrl.searchParams.get('code');
   const nextPath = safeNextPath(request.nextUrl.searchParams.get('next'));
 
   if (!code) {
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(siteUrl('/', request));
   }
 
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase.auth.exchangeCodeForSession(code);
 
   if (error) {
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(siteUrl('/', request));
   }
 
   const {
@@ -35,15 +36,15 @@ export async function GET(request: NextRequest) {
 
   if (!user?.email) {
     await supabase.auth.signOut();
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(siteUrl('/', request));
   }
 
   const access = await getCurrentExecAccess(supabase, user.email);
 
   if (!access) {
     await supabase.auth.signOut();
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(siteUrl('/', request));
   }
 
-  return NextResponse.redirect(new URL(nextPath, request.url));
+  return NextResponse.redirect(siteUrl(nextPath, request));
 }

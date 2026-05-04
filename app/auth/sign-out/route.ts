@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createSupabaseServerClient, getSupabaseConfig } from '@/lib/supabase/server';
+import { siteUrl } from '@/lib/site-url';
 
 export async function GET(request: NextRequest) {
   if (getSupabaseConfig()) {
@@ -7,5 +8,5 @@ export async function GET(request: NextRequest) {
     await supabase.auth.signOut();
   }
 
-  return NextResponse.redirect(new URL('/admin', request.url));
+  return NextResponse.redirect(siteUrl('/admin', request));
 }
