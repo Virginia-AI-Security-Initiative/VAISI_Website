@@ -137,20 +137,13 @@ export default function ResearchPage() {
                                 Policy Briefs
                                 <span className="text-xs text-gray-400">({policyBriefs.length})</span>
                             </button>
-                            <button
-                                onClick={() => quickAccess('tech-research', techRef)}
-                                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors"
-                            >
-                                <FlaskConical size={15} />
-                                Technical Research
-                                <span className="text-xs text-gray-400">({techPapers.length})</span>
-                            </button>
+                            {/* Technical Research quick-access button hidden until section has content */}
                             <button
                                 onClick={() => quickAccess('fellowship-projects', fellowshipRef)}
                                 className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors"
                             >
                                 <FileText size={15} />
-                                Fellowship Projects
+                                Fellowship Capstone Projects
                                 <span className="text-xs text-gray-400">({fellowshipProjects.length})</span>
                             </button>
                         </div>
@@ -363,8 +356,8 @@ export default function ResearchPage() {
                             )}
                         </div>
 
-                        {/* Technical Research */}
-                        <div ref={techRef} className="border-b border-gray-200">
+                        {/* Technical Research — hidden until section has content */}
+                        {false && <div ref={techRef} className="border-b border-gray-200">
                             <button
                                 onClick={() => toggleSection('tech-research')}
                                 className="w-full flex items-center justify-between py-5 text-left group"
@@ -435,7 +428,7 @@ export default function ResearchPage() {
                                     )}
                                 </div>
                             )}
-                        </div>
+                        </div>}
 
                         {/* Fellowship Projects */}
                         <div ref={fellowshipRef} className="border-b border-gray-200">
@@ -446,7 +439,7 @@ export default function ResearchPage() {
                                 <div className="flex items-center gap-3">
                                     <FileText size={18} className="text-purple-600 flex-shrink-0" />
                                     <span className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">
-                                        Fellowship Projects
+                                        Fellowship Capstone Projects
                                     </span>
                                     <span className="text-sm text-gray-400">
                                         {fellowshipProjects.length} {fellowshipProjects.length === 1 ? 'entry' : 'entries'}

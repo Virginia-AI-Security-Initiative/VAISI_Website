@@ -95,11 +95,11 @@ export const allPublications: AnyPub[] = [
 export const KIND_LABELS: Record<AnyPub['kind'], string> = {
     policy: 'Policy Briefs',
     tech: 'Technical Research',
-    fellowship: 'Fellowship Projects',
+    fellowship: 'Fellowship Capstone Projects',
 };
 
 export const tagGroups: { label: string; tags: string[] }[] = [
-    { label: 'Type', tags: ['Policy Briefs', 'Technical Research', 'Fellowship Projects'] },
+    { label: 'Type', tags: ['Policy Briefs', 'Technical Research', 'Fellowship Capstone Projects'] },
     { label: 'Source', tags: [...new Set(policyBriefs.map((b) => b.source))] },
     { label: 'Venue', tags: [...new Set(techPapers.map((p) => p.venue))] },
     { label: 'Fellowship', tags: [...new Set(fellowshipProjects.map((f) => f.fellowship))] },
