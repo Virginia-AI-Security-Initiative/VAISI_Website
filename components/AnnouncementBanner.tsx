@@ -12,6 +12,13 @@ const announcements: {
     link: string;
     linkText: string;
 }[] = [
+    {
+        id: "summer-reading-group-eoi-2026",
+        title: "Summer Reading Group",
+        summary: "Interested in joining our summer reading group? Fill out our expression of interest form.",
+        link: "https://forms.gle/niHJ5AvKRZW51uHR7",
+        linkText: "Express Interest",
+    },
 ];
 
 export default function AnnouncementBanner() {
