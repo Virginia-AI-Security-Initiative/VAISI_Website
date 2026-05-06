@@ -30,14 +30,14 @@ export type AnyPub =
 export const policyBriefs: PolicyBrief[] = [
     {
         title: "AI Market Structure Reform Act",
-        url: "/research/policy_briefs/AI Policy Hackathon (3) - Ricardo Bruinton.pdf",
+        url: "/research/policy_briefs/AI Policy Hackathon - Ricardo Bruinton FINAL.pdf",
         authors: "Ricardo Bruinton, Jason Chen, Ryan Healy",
         source: "AI Policy Hackathon",
         date: "2026-04-04",
     },
     {
         title: "The AI Safety Investigation Act: A Federal AI Incident Investigation and Reporting Authority",
-        url: "/research/policy_briefs/Logan Bradley, Ishan Ajwani - AI Safety Investigation Act Brief - Logan Bradley.pdf",
+        url: "/research/policy_briefs/Logan Bradley, Ishan Ajwani - AI Safety Investigation Act Brief.pdf",
         authors: "Logan Bradley, Ishan Ajwani",
         source: "AI Policy Hackathon",
         date: "2026-04-04",
@@ -65,7 +65,7 @@ export const policyBriefs: PolicyBrief[] = [
     },
     {
         title: "Proposal for the National AI Security Organization (NASO)",
-        url: "/research/policy_briefs/Untitled document - Binit M.pdf",
+        url: "/research/policy_briefs/Binit M FINAL.pdf",
         authors: "Binit Maharjan",
         source: "AI Policy Hackathon",
         date: "2026-04-04",
