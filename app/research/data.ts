@@ -81,7 +81,7 @@ export const fellowshipProjects: FellowshipProject[] = [
         title: "Location Verification is not Enough: A Dual Framework to Combat Large-Scale AI Chip Smuggling",
         url: "/research/fellowship_projects/ICML_Governance_Paper-12.pdf",
         authors: "Seth Lifland, Shubhrangshu Debsarkar",
-        fellowship: "Technical Governance Fellowship",
+        fellowship: "AI Governance (Spring '26)",
         date: "2026-04-24",
     },
 ];
