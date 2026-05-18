@@ -76,14 +76,14 @@ export const teamMembers: MemberGroup[] = [
             id: 1,
             name: "Shubhrangshu Debsarkar",
             title: "Technical Team Lead",
-            imageSrc: "/team/shubs.JPG",
+            imageSrc: "/team/shubs1.JPG",
             linkedinUrl: "https://www.linkedin.com/in/shubhrangshu-debsarkar-204683257/"
         },
         {
             id: 2,
             name: "Aarav Lodha",
             title: "Technical Team",
-            imageSrc: "/team/aarav_lodha.jpg",
+            imageSrc: "/team/aarav_lodha (1).jpg",
             linkedinUrl: "https://www.linkedin.com/in/aaravtlodha/"
         },
         {
