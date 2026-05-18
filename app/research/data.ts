@@ -77,12 +77,61 @@ export const techPapers: TechPaper[] = [
 ];
 
 export const fellowshipProjects: FellowshipProject[] = [
-        {
-        title: "Location Verification is not Enough: A Dual Framework to Combat Large-Scale AI Chip Smuggling",
-        url: "/research/fellowship_projects/ICML_Governance_Paper-12.pdf",
-        authors: "Seth Lifland, Shubhrangshu Debsarkar",
-        fellowship: "AI Governance (Spring '26)",
-        date: "2026-04-24",
+    {
+    title: "Location Verification is not Enough: A Dual Framework to Combat Large-Scale AI Chip Smuggling",
+    url: "research/fellowship_projects/A Dual Framework to Combat Large-Scale AI Chip Smuggling – Seth Lifland and Shubhrangshu Debsarkar – 4_17_26.pdf",
+    authors: "Seth Lifland, Shubhrangshu Debsarkar",
+    fellowship: "AI Governance (Spring '26)",
+    date: "2026-04-24",
+    },
+    {
+    title: "A Comparative Analysis of US-Chinese Approaches to AI",
+    url: "/research/fellowship_projects/A Comparative Analysis of US-Chinese Approaches to AI – Maeve Myers – 5_6_26.pdf",
+    authors: "Maeve Myers",
+    fellowship: "AI Governance (Spring '26)",
+    date: "2026-05-06",
+    },
+    {
+    title: "AI and Jobs: The Ideas Exist. The Action Doesn't.",
+    url: "/research/fellowship_projects/AI and Jobs_ The Ideas Exist. The Action Doesn_t – Andrew Broughton – 4_27_26.pdf",
+    authors: "Andrew Broughton",
+    fellowship: "AI Governance (Spring '26)",
+    date: "2026-04-27",
+    },
+    {
+    title: "How AI Enhances Surveillance Against Communities Without Their Knowledge",
+    url: "/research/fellowship_projects/How AI Enhances Surveillance Against Communities Without Their Knowledge – Rishi Chandra and Shaina Kumar – 5_11_26.pdf",
+    authors: "Shaina Kumar, Rishi Chandra",
+    fellowship: "AI Governance (Spring '26)",
+    date: "2026-05-11",
+    },
+    {
+    title: "How AI Escapes Governance",
+    url: "/research/fellowship_projects/How AI Escapes Governance – Kate McCray – 5_1_26 .pdf",
+    authors: "Kate McCray",
+    fellowship: "AI Governance (Spring '26)",
+    date: "2026-05-01",
+    },
+    {
+    title: "Where Governance Fails on AI-Generated Nonconsensual Intimate Imagery",
+    url: "/research/fellowship_projects/Sara Alterazi & Patrick Gilmartin – Opinion Essay – 5_11_26.pdf",
+    authors: "Sara Alterazi, Patrick Gilmartin",
+    fellowship: "AI Governance (Spring '26)",
+    date: "2026-05-11",
+    },
+    {
+    title: "Should I Work at a Frontier Lab?",
+    url: "/research/fellowship_projects/Should I Work At A Frontier Lab – Vincent Trang.pdf",
+    authors: "Vincent Trang",
+    fellowship: "AI Governance (Spring '26)",
+    date: "2026-04-21",
+    },
+    {
+    title: "What Armenia’s Tech Emergence Can Teach Us About Compute Diplomacy",
+    url: "/research/fellowship_projects/What Armenia’s Tech Emergence Can Teach Us About Compute Diplomacy – Hovsep Seferian – 4_28_26.pdf",
+    authors: "Hovsep Seferian",
+    fellowship: "AI Governance (Spring '26)",
+    date: "2026-04-28",
     },
 ];
 
