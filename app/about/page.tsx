@@ -1,64 +1,6 @@
 import Section from "@/components/Section";
-import TeamMemberCard from "@/components/TeamMemberCard";
-
-const teamMembers = [
-    {
-        id: 1,
-        name: "Jason Chin",
-        title: "President",
-        imageSrc: "/team/jason.jpg",
-        linkedinUrl: "https://www.linkedin.com/in/jasonchin9/"
-    },
-    {
-        id: 2,
-        name: "Seth Lifland",
-        title: "Vice President",
-        imageSrc: "/team/seth.jpeg",
-        linkedinUrl: "https://www.linkedin.com/in/seth-lifland-8a604b326/"
-    },
-    {
-        id: 3,
-        name: "Andrew Broughton",
-        title: "Operations Co-Lead",
-        imageSrc: "/team/andrew.png",
-        linkedinUrl: "https://www.linkedin.com/in/andrewmbroughton/"
-    },
-    {
-        id: 4,
-        name: "Lily Egenrieder",
-        title: "Operations Co-Lead",
-        imageSrc: "/team/lily.jpeg",
-        linkedinUrl: "https://www.linkedin.com/in/lily-egenrieder/"
-    },
-    {
-        id: 5,
-        name: "Charlie Meyer",
-        title: "Technical Team Co-Lead",
-        imageSrc: "/team/charlie.jpeg",
-        linkedinUrl: "https://www.linkedin.com/in/charlie-meyer-loves-you/"
-    },
-    {
-        id: 6,
-        name: "Shubhrangshu Debsarkar",
-        title: "Technical Team Co-Lead",
-        imageSrc: "/team/shubs.JPG",
-        linkedinUrl: "https://www.linkedin.com/in/shubhrangshu-debsarkar-204683257/"
-    },
-    {
-        id: 7,
-        name: "Elias Krasny",
-        title: "Forecasting Lead",
-        imageSrc: "/team/elias.jpeg",
-        linkedinUrl: "https://www.linkedin.com/in/elias-krasny-82b433305/"
-    },
-    {
-        id: 8,
-        name: "Matthew Janicki",
-        title: "Media Lead",
-        imageSrc: "/team/matthew.jpeg",
-        linkedinUrl: "https://www.linkedin.com/in/matthew-janicki-b69b12326/"
-    }
-];
+import TeamSection from "@/components/TeamSection";
+import { teamMembers, facultyAdvisors, formerMembers } from "./members";
 
 export default function AboutPage() {
     return (
@@ -93,19 +35,11 @@ export default function AboutPage() {
                     </div>
                 </div>
 
-                <h2 className="text-3xl font-bold text-primary mb-4 text-center">Meet the Team</h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                    {teamMembers.map((member) => (
-                        <TeamMemberCard
-                            key={member.id}
-                            name={member.name}
-                            title={member.title}
-                            imageSrc={member.imageSrc}
-                            linkedinUrl={member.linkedinUrl}
-                        />
-                    ))}
-                </div>
+                <TeamSection
+                    currentMembers={teamMembers}
+                    facultyAdvisors={facultyAdvisors}
+                    formerMembers={formerMembers}
+                />
             </Section>
         </div>
     );
