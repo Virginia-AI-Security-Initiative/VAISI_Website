@@ -4,6 +4,7 @@ export type PolicyBrief = {
     authors: string;
     source: string;
     date: string; // YYYY-MM-DD
+    award?: string;
 };
 
 export type TechPaper = {
@@ -41,6 +42,7 @@ export const policyBriefs: PolicyBrief[] = [
         authors: "Logan Bradley, Ishan Ajwani",
         source: "AI Policy Competition Spring 2026",
         date: "2026-04-04",
+        award: "Winner",
     },
     {
         title: "The Making AI Governable for Americans Act (MAGA Act)",

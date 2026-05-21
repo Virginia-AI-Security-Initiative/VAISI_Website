@@ -329,8 +329,14 @@ export default function ResearchPage() {
                                                             <div className="flex items-start gap-3">
                                                                 <FileText size={16} className="text-blue-500 flex-shrink-0 mt-0.5" />
                                                                 <div>
-                                                                    <span className="font-medium text-gray-800 group-hover:text-primary transition-colors block">
-                                                                        {brief.title}
+                                                                    <span className="flex flex-wrap items-center gap-2 font-medium text-gray-800 group-hover:text-primary transition-colors">
+                                                                        <span>{brief.title}</span>
+                                                                        {brief.award && (
+                                                                            <span className="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700">
+                                                                                <span aria-hidden="true">🏅</span>
+                                                                                {brief.award}
+                                                                            </span>
+                                                                        )}
                                                                     </span>
                                                                     <span className="text-sm text-gray-500">{brief.authors}</span>
                                                                 </div>
