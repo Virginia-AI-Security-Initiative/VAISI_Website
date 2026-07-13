@@ -18,6 +18,10 @@ const eventTypes = [
         cta: {
             text: "Apply here by September 13",
             link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form"
+        },
+        syllabus: {
+            text: "Syllabus",
+            link: "https://docs.google.com/document/d/10HcHGxPJ5VpnWoK1sq2nQQ6N85vsy95vgF_T9XGw3Es/edit?tab=t.0"
         }
     },
     {
@@ -35,6 +39,10 @@ const eventTypes = [
         cta: {
             text: "Apply here by September 13",
             link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form"
+        },
+        syllabus: {
+            text: "Syllabus",
+            link: "https://docs.google.com/document/d/10HcHGxPJ5VpnWoK1sq2nQQ6N85vsy95vgF_T9XGw3Es/edit?tab=t.uuornxg83lhk"
         }
     }
 ];
@@ -98,16 +106,24 @@ export default function GetInvolvedPage() {
                                     <p className="text-gray-600 text-sm leading-relaxed mb-4">
                                         {event.description}
                                     </p>
-                                    {event.cta && (
+                                    <div className="flex flex-wrap gap-3">
                                         <a
                                             href={event.cta.link}
-                                            target={event.cta.link.startsWith("http") ? "_blank" : undefined}
-                                            rel={event.cta.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             className="inline-block px-6 py-2 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors text-sm"
                                         >
                                             {event.cta.text}
                                         </a>
-                                    )}
+                                        <a
+                                            href={event.syllabus.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-block px-6 py-2 border border-primary text-primary font-bold rounded-md hover:bg-primary/5 transition-colors text-sm"
+                                        >
+                                            {event.syllabus.text}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         );

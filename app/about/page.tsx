@@ -29,9 +29,6 @@ export default function AboutPage() {
                         <p className="mb-4">
                             We launched in Fall 2025 with weekly discussions exploring core concepts in AI governance, risk, and alignment. This semester, we&apos;re expanding with a dedicated AI governance fellowship, deepening our engagement with both the technical and policy dimensions of this critical field.
                         </p>
-                        <p className="mb-4">
-                            We are in the process of becoming a UVA Contracted Independent Organization (CIO).
-                        </p>
                     </div>
                 </div>
 
