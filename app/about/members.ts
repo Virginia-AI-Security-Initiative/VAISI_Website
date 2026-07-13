@@ -162,6 +162,13 @@ export const facultyAdvisors: Member[] = [
         imageSrc: "/faculty_advisors/lee_lockwood.jpg",
         linkedinUrl: "https://www.linkedin.com/in/lee-lockwood/"
     },
+    {
+        id: 2,
+        name: "Chirag Agarwal",
+        title: "Assistant Professor of Data Science, UVA",
+        imageSrc: "/faculty_advisors/chirag_agarwal.png",
+        linkedinUrl: "https://www.linkedin.com/in/chirag-agarwal-0a6a43a1/"
+    },
 ];
 
 export const formerMembers: MemberGroup[] = [
