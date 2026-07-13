@@ -18,6 +18,12 @@ import {
 
 type SortDir = 'asc' | 'desc' | null;
 
+const MEDALS: Record<string, string> = {
+    '1st': '🥇',
+    '2nd': '🥈',
+    '3rd': '🥉',
+};
+
 function SortIcon({ dir }: { dir: SortDir }) {
     if (dir === 'asc') return <ChevronUp size={14} className="inline ml-1" />;
     if (dir === 'desc') return <ChevronDown size={14} className="inline ml-1" />;
@@ -329,12 +335,12 @@ export default function ResearchPage() {
                                                             <div className="flex items-start gap-3">
                                                                 <FileText size={16} className="text-blue-500 flex-shrink-0 mt-0.5" />
                                                                 <div>
-                                                                    <span className="flex flex-wrap items-center gap-2 font-medium text-gray-800 group-hover:text-primary transition-colors">
-                                                                        <span>{brief.title}</span>
+                                                                    <span className="block font-medium text-gray-800 group-hover:text-primary transition-colors">
+                                                                        {brief.title}
                                                                         {brief.award && (
-                                                                            <span className="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700">
-                                                                                <span aria-hidden="true">🏅</span>
-                                                                                {brief.award}
+                                                                            <span className="ml-2 inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 align-middle text-xs font-semibold text-amber-700 whitespace-nowrap">
+                                                                                <span aria-hidden="true">{MEDALS[brief.award] ?? '🏅'}</span>
+                                                                                {brief.award} Place
                                                                             </span>
                                                                         )}
                                                                     </span>

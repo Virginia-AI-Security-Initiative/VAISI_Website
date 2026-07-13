@@ -81,6 +81,13 @@ export const teamMembers: MemberGroup[] = [
         },
         {
             id: 2,
+            name: "Nia Mucher",
+            title: "Vice President",
+            imageSrc: "/team/nia_mucher.jpg",
+            linkedinUrl: "https://www.linkedin.com/in/nia-m-a50406379/"
+        },
+        {
+            id: 3,
             name: "Aarav Lodha",
             title: "Technical Team",
             imageSrc: "/team/aarav_lodha (1).jpg",
@@ -94,21 +101,21 @@ export const teamMembers: MemberGroup[] = [
             //linkedinUrl: "https://www.linkedin.com/in/aaravtlodha/"
         },
         {
-            id: 4,
+            id: 5,
             name: "Ethan Cao",
             title: "Technical Team",
             imageSrc: "/team/ethan_cao.jpg",
             linkedinUrl: "https://www.linkedin.com/in/ethan-cao-82236a242/"
         },
         {
-            id: 5,
+            id: 6,
             name: "Joshua Yoo",
             title: "Technical Team",
             imageSrc: "/team/Joshua_Yoo.jpeg",
             linkedinUrl: "https://www.linkedin.com/in/joshua-yoo-3b9b7a267/"
         },
         {
-            id: 6,
+            id: 7,
             name: "Luis Tercero Herman",
             title: "Technical Team",
             imageSrc: "/team/luis_tercero_herman.JPG",

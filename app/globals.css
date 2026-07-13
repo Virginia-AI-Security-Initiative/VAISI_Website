@@ -25,3 +25,15 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+/*
+ * Tailwind v4 Preflight sets buttons to `cursor: default`. Restore the
+ * pointer cursor on all interactive buttons (and role="button" elements),
+ * while leaving disabled controls with the default arrow.
+ */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
