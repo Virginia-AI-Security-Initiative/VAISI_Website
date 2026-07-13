@@ -1,5 +1,5 @@
 import Section from "@/components/Section";
-import { Calendar, Clock, BookOpen, Sparkles, Users } from "lucide-react";
+import { Calendar, Clock, BookOpen, Check, Users } from "lucide-react";
 
 // Event Types Data
 const eventTypes = [
@@ -10,7 +10,7 @@ const eventTypes = [
         iconBg: "bg-blue-50",
         iconColor: "text-primary",
         details: {
-            schedule: "Monday, Tuesday, or Wednesday",
+            schedule: "Monday, Tuesday, and Wednesday",
             time: "6:15-8:15 PM",
             duration: "8 weeks"
         },
@@ -27,7 +27,7 @@ const eventTypes = [
         iconBg: "bg-orange-50",
         iconColor: "text-secondary",
         details: {
-            schedule: "Monday, Tuesday, or Thursday",
+            schedule: "Monday, Tuesday, and Thursday",
             time: "6:15-8:15 PM",
             duration: "10 weeks"
         },
@@ -36,41 +36,17 @@ const eventTypes = [
             text: "Apply here by September 13",
             link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form"
         }
-    },
-    {
-        id: 3,
-        title: "VAISI Membership",
-        icon: Users,
-        iconBg: "bg-emerald-50",
-        iconColor: "text-emerald-700",
-        details: {
-            schedule: "Applications reviewed on a rolling basis",
-            time: "Ongoing",
-            duration: "Active membership"
-        },
-        description: "Join VAISI's core community for members-only Slack, career advising and mentorship, travel and compute grant opportunities, exclusive socials, talks, networking, and weekly discussions. Strong applicants will have completed a VAISI fellowship or have equivalent experience; members are expected to participate actively.",
-        cta: {
-            text: "Apply for Membership",
-            link: "https://airtable.com/appM8XoHX2voW3LQe/pagzBI6YepuXbbfBr/form"
-        }
-    },
-    {
-        id: 4,
-        title: "Special Events",
-        icon: Sparkles,
-        iconBg: "bg-purple-50",
-        iconColor: "text-purple-600",
-        details: {
-            schedule: "Event dependent",
-            time: "Event dependent",
-            duration: "Event dependent"
-        },
-        description: "Throughout the semester, we will host special events including guest speakers, hackathons (both technical and policy-focused), collaborations with other student organizations, and fun community activities. Stay tuned for announcements!",
-        cta: {
-            text: "View Events",
-            link: "/past-events"
-        }
     }
+];
+
+const membershipBenefits = [
+    "Members-only Slack",
+    "1:1 career advising and mentorship",
+    "Preferential access to travel grants for conferences such as EA Global and ControlConf",
+    "Applications for compute grants",
+    "Biweekly exclusive socials with catered food, games, movies, discussions, and occasional special guests",
+    "Member-only talks and networking opportunities",
+    "Weekly member meetings discussing recent news and papers in AI safety, security, and policy",
 ];
 
 export default function GetInvolvedPage() {
@@ -83,24 +59,31 @@ export default function GetInvolvedPage() {
                 </div>
             </Section>
 
-            {/* General Interest Form Section */}
+            {/* Stay Updated Section */}
             <Section className="bg-white">
                 <div className="max-w-3xl mx-auto text-center">
-                    {/* <h2 className="text-3xl font-bold text-primary mb-4">Join VAISI</h2> */}
-                    <p className="text-gray-700 font-semibold mb-3 text-center">
-                        Interested in joining VAISI?
-                    </p>
+                    <h2 className="text-2xl font-bold text-primary mb-3">Stay Updated</h2>
                     <p className="text-gray-700 mb-6">
-                        Fill out this form to express your interest and stay updated on opportunities, events, and more!
+                        Get announcements about upcoming programs, events, and opportunities.
                     </p>
-                    <a
-                        href="https://forms.gle/tMM3iyH7us1emrGr6"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block px-8 py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors"
-                    >
-                        Express Interest
-                    </a>
+                    <div className="flex justify-center gap-4 flex-wrap">
+                        <a
+                            href="https://groupme.com/join_group/110490963/bxseYw8L"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-8 py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors"
+                        >
+                            Join our GroupMe
+                        </a>
+                        <a
+                            href="https://lists.virginia.edu/sympa/subscribe/vaisi_announcements"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-8 py-3 border-2 border-primary text-primary font-bold rounded-md hover:bg-slate-50 transition-colors"
+                        >
+                            Join Mailing List
+                        </a>
+                    </div>
                 </div>
             </Section>
 
@@ -157,20 +140,54 @@ export default function GetInvolvedPage() {
                             </div>
                         );
                     })}
-                </div>
-            </Section>
 
-            {/* Calendar Section */}
-            <Section className="bg-slate-50 border-t border-gray-100">
-                <h2 className="text-3xl font-bold text-primary mb-8 text-center">Event Calendar</h2>
-                <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                    <iframe
-                        src="https://calendar.google.com/calendar/embed?src=vaisi.club%40gmail.com&ctz=America%2FNew_York"
-                        className="w-full border-0"
-                        style={{ height: "600px" }}
-                        title="VAISI Event Calendar"
-                        scrolling="no"
-                    />
+                    <div className="md:col-span-2 bg-slate-50 rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+                        <div className="p-6 border-b border-gray-100">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center shrink-0">
+                                    <Users className="w-6 h-6 text-emerald-700" />
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-800">VAISI Membership</h3>
+                            </div>
+                            <div className="grid sm:grid-cols-3 gap-2 text-sm">
+                                <div className="flex items-center gap-2 text-gray-600">
+                                    <Calendar className="w-4 h-4 text-gray-400 shrink-0" />
+                                    <span>Applications reviewed on a rolling basis</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-gray-600">
+                                    <Clock className="w-4 h-4 text-gray-400 shrink-0" />
+                                    <span>Ongoing</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-gray-600">
+                                    <BookOpen className="w-4 h-4 text-gray-400 shrink-0" />
+                                    <span>Active membership</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="p-6">
+                            <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                                Join VAISI&apos;s core community. Strong applicants will have completed a VAISI fellowship or have equivalent experience. Members are expected to remain active through events, socials, co-working, workshops, and competitions.
+                            </p>
+                            <h4 className="text-sm font-bold text-gray-800 mb-3">Membership benefits</h4>
+                            <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 mb-6">
+                                {membershipBenefits.map((benefit) => (
+                                    <li key={benefit} className="flex items-start gap-2.5 text-sm text-gray-600 leading-relaxed">
+                                        <Check className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                                        <span>{benefit}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <a
+                                href="https://airtable.com/appM8XoHX2voW3LQe/pagzBI6YepuXbbfBr/form"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block px-6 py-2 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors text-sm"
+                            >
+                                Apply for Membership
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </Section>
 
@@ -196,6 +213,20 @@ export default function GetInvolvedPage() {
                             Join our GroupMe
                         </a>
                     </div>
+                </div>
+            </Section>
+
+            {/* Calendar Section */}
+            <Section className="bg-slate-50 border-t border-gray-100">
+                <h2 className="text-3xl font-bold text-primary mb-8 text-center">Event Calendar</h2>
+                <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <iframe
+                        src="https://calendar.google.com/calendar/embed?src=vaisi.club%40gmail.com&ctz=America%2FNew_York"
+                        className="w-full border-0"
+                        style={{ height: "600px" }}
+                        title="VAISI Event Calendar"
+                        scrolling="no"
+                    />
                 </div>
             </Section>
 
