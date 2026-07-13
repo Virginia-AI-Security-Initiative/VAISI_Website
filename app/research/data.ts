@@ -77,7 +77,20 @@ export const policyBriefs: PolicyBrief[] = [
 ];
 
 export const techPapers: TechPaper[] = [
-
+    {
+        title: "Geometric Concept Representations in Language Models: A 3D Hue-Saturation Manifold in Gemma 2 9B and Manifold Steering",
+        url: "https://substack.com/home/post/p-202068395",
+        authors: "Aarav Lodha",
+        venue: "VAISI Substack",
+        date: "2026-06-14",
+    },
+    {
+        title: "A Direction for Some, Not All: Cross-Model Transfer of Steering Vectors and the Limits of Steering-Based Safety Interventions",
+        url: "https://substack.com/home/post/p-202505766",
+        authors: "Joshua Yoo",
+        venue: "VAISI Substack",
+        date: "2026-06-17",
+    },
 ];
 
 export const fellowshipProjects: FellowshipProject[] = [
@@ -161,12 +174,12 @@ export const allPublications: AnyPub[] = [
 
 export const KIND_LABELS: Record<AnyPub['kind'], string> = {
     policy: 'Policy Briefs',
-    tech: 'Technical Research',
+    tech: 'Technical Team Research',
     fellowship: 'Fellowship Capstone Projects',
 };
 
 export const tagGroups: { label: string; tags: string[] }[] = [
-    { label: 'Type', tags: ['Policy Briefs', 'Technical Research', 'Fellowship Capstone Projects'] },
+    { label: 'Type', tags: ['Policy Briefs', 'Technical Team Research', 'Fellowship Capstone Projects'] },
     { label: 'Source', tags: [...new Set(policyBriefs.map((b) => b.source))] },
     { label: 'Venue', tags: [...new Set(techPapers.map((p) => p.venue))] },
     { label: 'Fellowship', tags: [...new Set(fellowshipProjects.map((f) => f.fellowship))] },

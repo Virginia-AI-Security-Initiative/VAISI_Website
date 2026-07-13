@@ -42,6 +42,7 @@ function MemberGrid({ members }: { members: Member[] }) {
                     title={member.title}
                     imageSrc={member.imageSrc}
                     linkedinUrl={member.linkedinUrl}
+                    chatUrl={member.chatUrl}
                     graduatingYear={member.graduatingYear}
                 />
             ))}

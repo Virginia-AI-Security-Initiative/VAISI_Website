@@ -24,6 +24,14 @@ export default function Home() {
                 >
                   Join GroupMe
                 </a>
+                <a
+                  href="https://lists.virginia.edu/sympa/subscribe/vaisi_announcements"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-3 bg-white border-2 border-primary text-primary font-bold rounded-md hover:bg-slate-100 transition-colors shadow-lg flex items-center gap-2"
+                >
+                  Join Mailing List
+                </a>
                 <Link
                   href="/get-involved"
                   className="px-8 py-3 bg-secondary text-white font-bold rounded-md hover:bg-orange-600 transition-colors shadow-lg flex items-center gap-2"

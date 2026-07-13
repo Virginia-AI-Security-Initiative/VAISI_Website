@@ -4,6 +4,7 @@ export type Member = {
     title: string;
     imageSrc: string;
     linkedinUrl?: string;
+    chatUrl?: string;
     graduatingYear?: string;
 };
 
@@ -19,7 +20,8 @@ export const teamMembers: MemberGroup[] = [
             name: "Seth Lifland",
             title: "President",
             imageSrc: "/team/seth.jpeg",
-            linkedinUrl: "https://www.linkedin.com/in/seth-lifland-8a604b326/"
+            linkedinUrl: "https://www.linkedin.com/in/seth-lifland-8a604b326/",
+            chatUrl: "https://cal.com/seth-lifland"
         },
         {
             id: 2,
@@ -77,7 +79,8 @@ export const teamMembers: MemberGroup[] = [
             name: "Shubhrangshu Debsarkar",
             title: "Technical Team Lead",
             imageSrc: "/team/shubs1.JPG",
-            linkedinUrl: "https://www.linkedin.com/in/shubhrangshu-debsarkar-204683257/"
+            linkedinUrl: "https://www.linkedin.com/in/shubhrangshu-debsarkar-204683257/",
+            chatUrl: "https://cal.com/shubs-debsarkar/15min?overlayCalendar=true"
         },
         {
             id: 2,
@@ -94,7 +97,7 @@ export const teamMembers: MemberGroup[] = [
             linkedinUrl: "https://www.linkedin.com/in/aaravtlodha/"
         },
         {
-            id: 3,
+            id: 4,
             name: "Avery Li",
             title: "Technical Team",
             imageSrc: "/team/avery_li.jpeg",
