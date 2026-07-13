@@ -59,34 +59,6 @@ export default function GetInvolvedPage() {
                 </div>
             </Section>
 
-            {/* Stay Updated Section */}
-            <Section className="bg-white">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-2xl font-bold text-primary mb-3">Stay Updated</h2>
-                    <p className="text-gray-700 mb-6">
-                        Get announcements about upcoming programs, events, and opportunities.
-                    </p>
-                    <div className="flex justify-center gap-4 flex-wrap">
-                        <a
-                            href="https://groupme.com/join_group/110490963/bxseYw8L"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-8 py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors"
-                        >
-                            Join our GroupMe
-                        </a>
-                        <a
-                            href="https://lists.virginia.edu/sympa/subscribe/vaisi_announcements"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-8 py-3 border-2 border-primary text-primary font-bold rounded-md hover:bg-slate-50 transition-colors"
-                        >
-                            Join Mailing List
-                        </a>
-                    </div>
-                </div>
-            </Section>
-
             {/* Event Types Section */}
             <Section className="bg-slate-50 border-t border-gray-100">
                 <h2 className="text-3xl font-bold text-primary mb-10 text-center">Ways to Get Involved</h2>
@@ -191,26 +163,29 @@ export default function GetInvolvedPage() {
                 </div>
             </Section>
 
-            {/* Join CTA */}
-            <Section className="bg-primary text-white">
+            {/* Stay Updated Section */}
+            <Section className="bg-white border-t border-gray-100">
                 <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-3xl font-bold mb-4">Ready to Join?</h2>
+                    <h2 className="text-2xl font-bold text-primary mb-3">Stay Updated</h2>
+                    <p className="text-gray-700 mb-6">
+                        Get announcements about upcoming programs, events, and opportunities.
+                    </p>
                     <div className="flex justify-center gap-4 flex-wrap">
-                        <a
-                            href="https://lists.virginia.edu/sympa/subscribe/vaisi_announcements"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-8 py-3 bg-white text-primary font-bold rounded-md hover:bg-gray-100 transition-colors"
-                        >
-                            Join Mailing List
-                        </a>
                         <a
                             href="https://groupme.com/join_group/110490963/bxseYw8L"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-md hover:bg-white/10 transition-colors"
+                            className="px-8 py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors"
                         >
                             Join our GroupMe
+                        </a>
+                        <a
+                            href="https://lists.virginia.edu/sympa/subscribe/vaisi_announcements"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-8 py-3 border-2 border-primary text-primary font-bold rounded-md hover:bg-slate-50 transition-colors"
+                        >
+                            Join Mailing List
                         </a>
                     </div>
                 </div>
