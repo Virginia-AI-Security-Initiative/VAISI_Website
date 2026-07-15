@@ -19,6 +19,13 @@ const announcements: {
         link: "https://forms.gle/niHJ5AvKRZW51uHR7",
         linkText: "Express Interest",
     },
+    {
+        id: "fellowship-applications-open-2026",
+        title: "Fellowship Applications Open",
+        summary: "Check out the curriculum outlines for our upcoming intro to AI safety and AI policy fellowships. Apply by September 13.",
+        link: "https://docs.google.com/document/d/10HcHGxPJ5VpnWoK1sq2nQQ6N85vsy95vgF_T9XGw3Es/edit?usp=sharing",
+        linkText: "Fellowship Syllabi",
+    },
 ];
 
 export default function AnnouncementBanner() {
