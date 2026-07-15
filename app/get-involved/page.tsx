@@ -10,7 +10,7 @@ const eventTypes = [
         iconBg: "bg-blue-50",
         iconColor: "text-primary",
         details: {
-            schedule: "Cohorts on Monday, Tuesday, and Wednesday",
+            schedule: "Monday, Tuesday, or Wednesday",
             time: "6:15-8:15 PM",
             duration: "8 weeks"
         },
@@ -31,7 +31,7 @@ const eventTypes = [
         iconBg: "bg-orange-50",
         iconColor: "text-secondary",
         details: {
-            schedule: "Cohorts on Monday, Tuesday, and Thursday",
+            schedule: "Monday, Tuesday, or Thursday",
             time: "6:15-8:15 PM",
             duration: "10 weeks"
         },
