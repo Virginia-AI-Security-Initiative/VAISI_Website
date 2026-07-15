@@ -3,7 +3,7 @@
 import Section from "@/components/Section";
 import Image from "next/image";
 import { Calendar, Camera, ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
-import { ReactNode, useCallback, useEffect, useState} from "react";
+import { ReactNode, useCallback, useEffect, useState } from "react";
 
 interface EventLink {
     label: string;
