@@ -20,16 +20,6 @@ export default function AboutPage() {
                             <span className="font-semibold text-primary">Long-term:</span> Maintain a thriving organization that provides the UVA community with opportunities to upskill, discuss, research, and meaningfully contribute to the most pressing challenges in AI governance and technical alignment.
                         </p>
                     </div>
-
-                    <div className="mb-12">
-                        <h2 className="text-2xl font-bold text-primary mb-4 text-left">History</h2>
-                        <p className="mb-4">
-                            VAISI was founded in Summer 2025 by UVA students who recognized that UVA lacked a dedicated community for students passionate about AI risk and alignment. With support from the <a href="https://pathfinder.kairos-project.org/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline font-medium">Kairos Pathfinders Fellowship</a>, they secured the mentorship, funding, and global network to establish a meaningful and enduring initiative.
-                        </p>
-                        <p className="mb-4">
-                            We launched in Fall 2025 with weekly discussions exploring core concepts in AI governance, risk, and alignment. This semester, we&apos;re expanding with a dedicated AI governance fellowship, deepening our engagement with both the technical and policy dimensions of this critical field.
-                        </p>
-                    </div>
                 </div>
 
                 <TeamSection
