@@ -34,7 +34,7 @@ function MemberGrid({ members }: { members: Member[] }) {
             : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
     return (
-        <div className={`${gridClass} gap-8`}>
+        <div className={`${gridClass} gap-5`}>
             {members.map((member) => (
                 <TeamMemberCard
                     key={member.id}
@@ -88,7 +88,7 @@ function GroupedMembers({ groups }: { groups: MemberGroup[] }) {
         return <p className="text-center text-gray-500">No members to display.</p>;
     }
     return (
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-8">
             {populated.map((group) => (
                 <CollapsibleGroup key={group.label} group={group} />
             ))}
