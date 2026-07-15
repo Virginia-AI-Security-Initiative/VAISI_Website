@@ -84,78 +84,71 @@ export const teamMembers: MemberGroup[] = [
         },
         {
             id: 2,
-            name: "Nia Mucher",
-            title: "Vice President",
-            imageSrc: "/team/nia_mucher.jpg",
-            linkedinUrl: "https://www.linkedin.com/in/nia-m-a50406379/"
-        },
-        {
-            id: 3,
             name: "Aarav Lodha",
             title: "Technical Team",
             imageSrc: "/team/aarav_lodha (1).jpg",
             linkedinUrl: "https://www.linkedin.com/in/aaravtlodha/"
         },
         {
-            id: 4,
+            id: 3,
             name: "Avery Li",
             title: "Technical Team",
             imageSrc: "/team/avery_li.jpeg",
             //linkedinUrl: "https://www.linkedin.com/in/aaravtlodha/"
         },
         {
-            id: 5,
+            id: 4,
             name: "Ethan Cao",
             title: "Technical Team",
             imageSrc: "/team/ethan_cao.jpg",
             linkedinUrl: "https://www.linkedin.com/in/ethan-cao-82236a242/"
         },
         {
-            id: 6,
+            id: 5,
             name: "Joshua Yoo",
             title: "Technical Team",
             imageSrc: "/team/Joshua_Yoo.jpeg",
             linkedinUrl: "https://www.linkedin.com/in/joshua-yoo-3b9b7a267/"
         },
-        {
-            id: 7,
-            name: "Luis Tercero Herman",
-            title: "Technical Team",
-            imageSrc: "/team/luis_tercero_herman.JPG",
-            linkedinUrl: "https://www.linkedin.com/in/ltercero/"
-        },
     ] },
     { label: "Policy", members: [
         {
             id: 1,
+            name: "Taylor Petrofski",
+            title: "Policy Team Lead",
+            imageSrc: "/team/taylor_petrofski_headshot.png",
+            linkedinUrl: "https://www.linkedin.com/in/taylor-petrofski-1a0523327/"
+        },
+        {
+            id: 2,
             name: "Ricardo Bruinton",
             title: "Policy Team",
             imageSrc: "/team/ricardo.png",
             linkedinUrl: "https://www.linkedin.com/in/ricardobruinton/"
         },
         {
-            id: 2,
+            id: 3,
             name: "Owen Watzlavick",
             title: "Policy Team",
             imageSrc: "/team/owen_watzlavick.png",
             linkedinUrl: "https://www.linkedin.com/in/owen-watzlavick/"
         },
         {
-            id: 3,
+            id: 4,
             name: "Amith Polineni",
             title: "Policy Team",
             imageSrc: "/team/amith_polineni.jpeg",
             linkedinUrl: "https://www.linkedin.com/in/amithpolineni/"
         },
         {
-            id: 4,
+            id: 5,
             name: "Rishi Chandra",
             title: "Policy Team",
             imageSrc: "/team/rishi_chandra.jpeg",
             linkedinUrl: "https://www.linkedin.com/in/rishi-chandra12/"
         },
         {
-            id: 5,
+            id: 6,
             name: "Hovsep Seferian",
             title: "Policy Team",
             imageSrc: "/team/hovsep.png",
