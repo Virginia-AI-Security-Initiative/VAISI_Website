@@ -16,7 +16,7 @@ const eventTypes = [
         },
         description: "Build a foundation in AI safety through a weekly reading and discussion group covering advanced AI risks and current safety research. Dinner is provided, there is no mandatory reading outside the fellowship, and participants may complete an optional capstone project.",
         cta: {
-            text: "Apply here by September 13",
+            text: "Apply by September 13",
             link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form"
         },
         syllabus: {
@@ -37,7 +37,7 @@ const eventTypes = [
         },
         description: "Explore AI policy and governance in a weekly cohort covering technical foundations, frontier policy, national security, safety regulation, corporate governance, and careers. Dinner is provided, with 0-30 minutes of weekly reading and an optional capstone project.",
         cta: {
-            text: "Apply here by September 13",
+            text: "Apply by September 13",
             link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form"
         },
         syllabus: {
