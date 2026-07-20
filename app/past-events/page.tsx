@@ -144,11 +144,12 @@ function PhotoLightbox({ photos, eventTitle, onClose }: { photos: string[]; even
     }, [onClose, goNext, goPrev]);
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80" onClick={onClose}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80" onClick={onClose} role="dialog" aria-modal="true" aria-label={`${eventTitle} photo gallery`}>
             <div className="relative w-full max-w-3xl mx-4" onClick={(e) => e.stopPropagation()}>
                 <button
                     onClick={onClose}
-                    className="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors"
+                    className="tap-scale absolute -top-12 right-0 flex size-11 items-center justify-center rounded-xl text-white/80 hover:bg-white/10 hover:text-white"
+                    aria-label="Close photo gallery"
                 >
                     <X size={28} />
                 </button>
@@ -159,7 +160,7 @@ function PhotoLightbox({ photos, eventTitle, onClose }: { photos: string[]; even
                         alt={`${eventTitle} photo ${currentIndex + 1}`}
                         width={800}
                         height={600}
-                        className="w-full h-auto"
+                    className="image-outline w-full h-auto"
                     />
                 </div>
 
@@ -167,20 +168,22 @@ function PhotoLightbox({ photos, eventTitle, onClose }: { photos: string[]; even
                     <>
                         <button
                             onClick={goPrev}
-                            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 text-white/80 hover:text-white transition-colors"
+                            className="tap-scale absolute left-0 top-1/2 flex size-11 -translate-x-12 -translate-y-1/2 items-center justify-center rounded-xl text-white/80 hover:bg-white/10 hover:text-white"
+                            aria-label="Previous photo"
                         >
                             <ChevronLeft size={36} />
                         </button>
                         <button
                             onClick={goNext}
-                            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 text-white/80 hover:text-white transition-colors"
+                            className="tap-scale absolute right-0 top-1/2 flex size-11 translate-x-12 -translate-y-1/2 items-center justify-center rounded-xl text-white/80 hover:bg-white/10 hover:text-white"
+                            aria-label="Next photo"
                         >
                             <ChevronRight size={36} />
                         </button>
                     </>
                 )}
 
-                <p className="text-center text-white/70 text-sm mt-3">
+                <p className="mt-3 text-center text-sm text-white/70 tabular-nums">
                     {currentIndex + 1} / {photos.length}
                 </p>
             </div>
@@ -190,14 +193,14 @@ function PhotoLightbox({ photos, eventTitle, onClose }: { photos: string[]; even
 
 function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
     return (
-        <div className="bg-white rounded-lg border-2 border-secondary overflow-hidden hover:shadow-lg transition-shadow">
+        <div className="surface-card overflow-hidden rounded-2xl bg-white">
             {event.imageSrc && (
                 <div className="bg-slate-100 flex items-center justify-center relative overflow-hidden" style={{ aspectRatio: '8.5 / 11' }}>
                     <Image
                         src={event.imageSrc}
                         alt={event.title}
                         fill
-                        className="object-cover"
+                        className="image-outline object-cover"
                     />
                 </div>
             )}
@@ -218,7 +221,7 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 text-sm font-semibold text-secondary hover:text-primary transition-colors"
+                                className="tap-scale inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-secondary hover:text-primary"
                             >
                                 <ExternalLink size={14} />
                                 {link.label}
@@ -236,14 +239,14 @@ function PastEventCard({ event }: { event: PastEvent }) {
 
     return (
         <>
-            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+            <div className="surface-card overflow-hidden rounded-2xl bg-white">
                 <div className="bg-slate-100 flex items-center justify-center relative overflow-hidden" style={{ aspectRatio: '8.5 / 11' }}>
                     {event.imageSrc ? (
                         <Image
                             src={event.imageSrc}
                             alt={event.title}
                             fill
-                            className="object-cover"
+                            className="image-outline object-cover"
                         />
                     ) : (
                         <Calendar className="w-12 h-12 text-gray-300" />
@@ -267,7 +270,7 @@ function PastEventCard({ event }: { event: PastEvent }) {
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1.5 text-sm font-medium text-secondary hover:text-primary transition-colors"
+                                    className="tap-scale inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-secondary hover:text-primary"
                                 >
                                     <ExternalLink size={14} />
                                     {link.label}
@@ -280,7 +283,7 @@ function PastEventCard({ event }: { event: PastEvent }) {
                         <div className="mt-3">
                             <button
                                 onClick={() => setLightboxOpen(true)}
-                                className="inline-flex items-center gap-1.5 text-sm font-medium text-secondary hover:text-primary transition-colors cursor-pointer"
+                                className="tap-scale inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-secondary hover:text-primary"
                             >
                                 <Camera size={14} />
                                 View photos ({event.photos.length})

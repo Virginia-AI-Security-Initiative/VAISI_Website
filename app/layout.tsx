@@ -24,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body
-        className={`${inter.variable} ${playfair.variable} antialiased min-h-screen flex flex-col`}
+        className="antialiased min-h-screen flex flex-col"
       >
         <SiteChrome>{children}</SiteChrome>
       </body>

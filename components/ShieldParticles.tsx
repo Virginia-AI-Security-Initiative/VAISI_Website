@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { type Container, type ISourceOptions } from "@tsparticles/engine";
+import { type ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
 import { loadPolygonMaskPlugin } from "@tsparticles/plugin-polygon-mask";
@@ -146,7 +146,7 @@ export default function ShieldParticles() {
                 {/* Toggle Button */}
                 <button
                     onClick={() => setRepulseEnabled(!repulseEnabled)}
-                    className="absolute bottom-4 right-4 z-20 px-4 py-2 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full text-xs font-bold text-primary shadow-sm hover:bg-white transition-all"
+                    className="tap-scale button-outline absolute bottom-4 right-4 z-20 min-h-10 rounded-full bg-white/80 px-4 py-2 text-xs font-bold text-primary backdrop-blur-sm hover:bg-white"
                 >
                     {repulseEnabled ? "Disable Repulsion" : "Enable Repulsion"}
                 </button>

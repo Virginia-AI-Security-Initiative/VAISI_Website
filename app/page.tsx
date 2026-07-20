@@ -11,16 +11,16 @@ export default function Home() {
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 items-center">
             {/* Text Content - takes more space (3/5) */}
             <div className="text-left lg:col-span-3">
-              <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-[#1a1a1a] mb-8">
+              <h1 className="hero-enter font-[family-name:var(--font-playfair)] text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-[#1a1a1a] mb-8">
                 A community at the University of Virginia dedicated to mitigating the{" "}
                 <span className="text-secondary">risks of advanced AI</span>.
               </h1>
-              <div className="flex flex-wrap gap-4">
+              <div className="hero-enter hero-enter-delay-1 flex flex-wrap gap-4">
                 <a
                   href="https://groupme.com/join_group/110490963/bxseYw8L"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-3 bg-[#3c16d3] text-white font-bold rounded-md hover:bg-[#3211b8] transition-colors shadow-lg flex items-center gap-2"
+                  className="tap-scale button-raised flex min-h-12 items-center gap-2 rounded-lg bg-[#3c16d3] px-8 py-3 font-bold text-white hover:bg-[#3211b8]"
                 >
                   Join GroupMe
                 </a>
@@ -28,13 +28,13 @@ export default function Home() {
                   href="https://lists.virginia.edu/sympa/subscribe/vaisi_announcements"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-3 bg-white border-2 border-primary text-primary font-bold rounded-md hover:bg-slate-100 transition-colors shadow-lg flex items-center gap-2"
+                  className="tap-scale button-outline flex min-h-12 items-center gap-2 rounded-lg bg-white px-8 py-3 font-bold text-primary hover:bg-slate-100"
                 >
                   Join Mailing List
                 </a>
                 <Link
                   href="/get-involved"
-                  className="px-8 py-3 bg-secondary text-white font-bold rounded-md hover:bg-orange-600 transition-colors shadow-lg flex items-center gap-2"
+                  className="tap-scale button-raised flex min-h-12 items-center gap-2 rounded-lg bg-secondary px-8 py-3 font-bold text-white hover:bg-orange-600"
                 >
                   Get Involved <ArrowRight size={20} />
                 </Link>
@@ -42,7 +42,7 @@ export default function Home() {
             </div>
 
             {/* Hero Graphic - takes less space (2/5) */}
-            <div className="flex justify-center lg:justify-end lg:col-span-2 -mt-10">
+            <div className="hero-enter hero-enter-delay-2 flex justify-center lg:justify-end lg:col-span-2 -mt-10">
               <Image
                 src="/VAISI_Logo_cropped_smaller_png.png"
                 alt="VAISI Logo"
@@ -85,7 +85,7 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                   <span>
-                    We're racing to ensure AI goes well for humanity during this critical window when thoughtful action can meaningfully influence our future.
+                    We&apos;re racing to ensure AI goes well for humanity during this critical window when thoughtful action can meaningfully influence our future.
                   </span>
                 </li>
               </ul>
@@ -116,7 +116,7 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-secondary font-bold">•</span>
                     <span>
-                    In short, we're UVA's home for talented, motivated individuals committed to ensuring advanced AI benefits humanity.
+                    In short, we&apos;re UVA&apos;s home for talented, motivated individuals committed to ensuring advanced AI benefits humanity.
                   </span>
                 </li>
               </ul>

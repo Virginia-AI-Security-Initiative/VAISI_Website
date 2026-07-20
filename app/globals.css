@@ -9,6 +9,22 @@
   --secondary: #E57200;
   --accent-cream: #f8f5f0;
   --text-dark: #1a1a1a;
+  --shadow-border:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-border-hover:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 1px 2px -1px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.07);
+  --shadow-raised:
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    0 8px 20px rgba(35, 45, 75, 0.1);
+  --shadow-raised-hover:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 3px 6px rgba(0, 0, 0, 0.1),
+    0 12px 28px rgba(35, 45, 75, 0.14);
 }
 
 @theme inline {
@@ -18,6 +34,11 @@
   --color-secondary: var(--secondary);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-serif: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -32,8 +53,113 @@ body {
  * while leaving disabled controls with the default arrow.
  */
 @layer base {
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  figcaption,
+  blockquote {
+    text-wrap: pretty;
+  }
+
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+
+  :where(a, button):focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .surface-card {
+    box-shadow: var(--shadow-border);
+    transition-property: box-shadow, transform;
+    transition-duration: 180ms;
+    transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .surface-card:hover {
+    box-shadow: var(--shadow-border-hover);
+    transform: translateY(-2px);
+  }
+
+  .surface-panel {
+    box-shadow: var(--shadow-border);
+  }
+
+  .button-raised {
+    box-shadow: var(--shadow-raised);
+  }
+
+  .button-raised:hover {
+    box-shadow: var(--shadow-raised-hover);
+  }
+
+  .button-outline {
+    box-shadow: inset 0 0 0 1px rgba(35, 45, 75, 0.24), var(--shadow-border);
+  }
+
+  .button-outline:hover {
+    box-shadow: inset 0 0 0 1px rgba(35, 45, 75, 0.38), var(--shadow-border-hover);
+  }
+
+  .tap-scale {
+    transition-property: scale, background-color, border-color, color, box-shadow, opacity;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .tap-scale:active {
+    scale: 0.96;
+  }
+
+  .image-outline {
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+    outline-offset: -1px;
+  }
+
+  .hero-enter {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(12px);
+    animation: hero-enter 480ms cubic-bezier(0.2, 0, 0, 1) forwards;
+  }
+
+  .hero-enter-delay-1 {
+    animation-delay: 100ms;
+  }
+
+  .hero-enter-delay-2 {
+    animation-delay: 200ms;
+  }
+}
+
+@keyframes hero-enter {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-card,
+  .tap-scale,
+  .hero-enter {
+    animation: none;
+    transition-duration: 0ms;
+  }
+
+  .hero-enter {
+    opacity: 1;
+    filter: none;
+    transform: none;
   }
 }

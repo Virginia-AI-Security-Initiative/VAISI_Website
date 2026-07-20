@@ -45,7 +45,7 @@ function AdminSignIn() {
         <div className="mt-8">
           <a
             href="/auth/sign-in?next=/admin"
-            className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+            className="tap-scale inline-flex min-h-12 items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-slate-100"
           >
             Continue with Google
           </a>

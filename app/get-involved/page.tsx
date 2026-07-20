@@ -74,7 +74,7 @@ export default function GetInvolvedPage() {
                     {eventTypes.map((event) => {
                         const IconComponent = event.icon;
                         return (
-                            <div key={event.id} className="bg-slate-50 rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+                            <div key={event.id} className="surface-card overflow-hidden rounded-2xl bg-white">
                                 {/* Header */}
                                 <div className="p-6 border-b border-gray-100">
                                     <div className="flex items-center gap-3 mb-4">
@@ -111,7 +111,7 @@ export default function GetInvolvedPage() {
                                             href={event.cta.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-block px-6 py-2 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors text-sm"
+                                            className="tap-scale button-raised inline-flex min-h-10 items-center rounded-lg bg-primary px-6 py-2 text-sm font-bold text-white hover:bg-blue-900"
                                         >
                                             {event.cta.text}
                                         </a>
@@ -119,7 +119,7 @@ export default function GetInvolvedPage() {
                                             href={event.syllabus.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-block px-6 py-2 border border-primary text-primary font-bold rounded-md hover:bg-primary/5 transition-colors text-sm"
+                                            className="tap-scale button-outline inline-flex min-h-10 items-center rounded-lg px-6 py-2 text-sm font-bold text-primary hover:bg-primary/5"
                                         >
                                             {event.syllabus.text}
                                         </a>
@@ -129,7 +129,7 @@ export default function GetInvolvedPage() {
                         );
                     })}
 
-                    <div className="md:col-span-2 bg-slate-50 rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+                    <div className="surface-card md:col-span-2 overflow-hidden rounded-2xl bg-white">
                         <div className="p-6 border-b border-gray-100">
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center shrink-0">
@@ -170,7 +170,7 @@ export default function GetInvolvedPage() {
                                 href="https://airtable.com/appM8XoHX2voW3LQe/pagzBI6YepuXbbfBr/form"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-block px-6 py-2 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors text-sm"
+                                className="tap-scale button-raised inline-flex min-h-10 items-center rounded-lg bg-primary px-6 py-2 text-sm font-bold text-white hover:bg-blue-900"
                             >
                                 Apply for Membership
                             </a>
@@ -191,7 +191,7 @@ export default function GetInvolvedPage() {
                             href="https://groupme.com/join_group/110490963/bxseYw8L"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-8 py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-900 transition-colors"
+                            className="tap-scale button-raised inline-flex min-h-12 items-center rounded-lg bg-primary px-8 py-3 font-bold text-white hover:bg-blue-900"
                         >
                             Join our GroupMe
                         </a>
@@ -199,7 +199,7 @@ export default function GetInvolvedPage() {
                             href="https://lists.virginia.edu/sympa/subscribe/vaisi_announcements"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-8 py-3 border-2 border-primary text-primary font-bold rounded-md hover:bg-slate-50 transition-colors"
+                            className="tap-scale button-outline inline-flex min-h-12 items-center rounded-lg px-8 py-3 font-bold text-primary hover:bg-slate-50"
                         >
                             Join Mailing List
                         </a>
@@ -210,7 +210,7 @@ export default function GetInvolvedPage() {
             {/* Calendar Section */}
             <Section className="bg-slate-50 border-t border-gray-100">
                 <h2 className="text-3xl font-bold text-primary mb-8 text-center">Event Calendar</h2>
-                <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div className="surface-panel max-w-5xl mx-auto overflow-hidden rounded-2xl bg-white">
                     <iframe
                         src="https://calendar.google.com/calendar/embed?src=vaisi.club%40gmail.com&ctz=America%2FNew_York"
                         className="w-full border-0"

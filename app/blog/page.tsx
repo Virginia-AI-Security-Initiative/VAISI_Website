@@ -5,7 +5,7 @@ export default function BlogPage() {
     return (
         <div className="flex flex-col min-h-screen bg-slate-50">
             <Section className="flex flex-col items-center justify-center flex-grow text-center py-20">
-                <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 max-w-2xl w-full">
+                <div className="surface-panel bg-white p-12 rounded-2xl max-w-2xl w-full">
                     <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
                         <BookOpen className="text-primary w-8 h-8" />
                     </div>
@@ -19,7 +19,7 @@ export default function BlogPage() {
                         href="https://substack.com/@vaisi"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-blue-900 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                        className="tap-scale button-raised inline-flex min-h-12 items-center gap-2 rounded-lg bg-primary px-8 py-4 font-bold text-white hover:-translate-y-1 hover:bg-blue-900"
                     >
                         Read on Substack
                         <ArrowRight size={20} />

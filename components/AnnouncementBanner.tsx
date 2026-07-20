@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { X, Megaphone, ArrowRight } from "lucide-react";
 
@@ -30,52 +30,73 @@ const announcements: {
 
 export default function AnnouncementBanner() {
     const [dismissedIds, setDismissedIds] = useState<Set<string>>(new Set());
+    const [exitingIds, setExitingIds] = useState<Set<string>>(new Set());
 
     const visibleAnnouncements = announcements.filter(
         (a) => !dismissedIds.has(a.id)
     );
 
+    useEffect(() => {
+        if (exitingIds.size === 0) return;
+
+        const timeoutId = window.setTimeout(() => {
+            setDismissedIds((prev) => new Set([...prev, ...exitingIds]));
+            setExitingIds(new Set());
+        }, 160);
+
+        return () => window.clearTimeout(timeoutId);
+    }, [exitingIds]);
+
     if (visibleAnnouncements.length === 0) return null;
 
     const handleDismiss = (id: string) => {
-        setDismissedIds((prev) => new Set(prev).add(id));
+        setExitingIds((prev) => new Set(prev).add(id));
     };
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col" aria-live="polite">
             {visibleAnnouncements.map((announcement, index) => (
                 <div
                     key={announcement.id}
-                    className={`bg-gradient-to-r from-primary to-primary/90 text-white relative ${index > 0 ? "border-t border-white/20" : ""
-                        }`}
+                    className={`grid overflow-hidden transition-[grid-template-rows,opacity,transform] duration-150 ease-in ${
+                        exitingIds.has(announcement.id)
+                            ? "grid-rows-[0fr] -translate-y-3 opacity-0"
+                            : "grid-rows-[1fr] translate-y-0 opacity-100"
+                    }`}
                 >
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex items-center justify-between py-3 gap-4">
-                            <div className="flex items-center gap-3 flex-1 min-w-0">
-                                <Megaphone className="text-secondary flex-shrink-0" size={20} />
-                                <p className="text-sm md:text-base font-medium truncate">
-                                    <span className="font-bold">{announcement.title}</span>
-                                    <span className="hidden sm:inline"> — {announcement.summary}</span>
-                                </p>
-                            </div>
-                            <div className="flex items-center gap-3 flex-shrink-0">
-                                {announcement.link && (
-                                    <Link
-                                        href={announcement.link}
-                                        target={announcement.link.startsWith("http") ? "_blank" : undefined}
-                                        rel={announcement.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                                        className="text-sm font-semibold text-secondary hover:text-orange-300 transition-colors flex items-center gap-1 whitespace-nowrap"
-                                    >
-                                        {announcement.linkText} <ArrowRight size={16} />
-                                    </Link>
-                                )}
-                                <button
-                                    onClick={() => handleDismiss(announcement.id)}
-                                    className="p-1 hover:bg-white/10 rounded-full transition-colors"
-                                    aria-label="Dismiss announcement"
-                                >
-                                    <X size={20} />
-                                </button>
+                    <div className="min-h-0 overflow-hidden">
+                        <div className={`bg-gradient-to-r from-primary to-primary/90 text-white relative ${index > 0 ? "border-t border-white/20" : ""}`}>
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <div className="flex items-center justify-between py-2.5 gap-3">
+                                    <div className="flex items-center gap-3 flex-1 min-w-0">
+                                        <Megaphone className="text-secondary flex-shrink-0" size={20} />
+                                        <p className="text-sm md:text-base font-medium truncate">
+                                            <span className="font-bold">{announcement.title}</span>
+                                            <span className="hidden sm:inline"> — {announcement.summary}</span>
+                                        </p>
+                                    </div>
+                                    <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+                                        {announcement.link && (
+                                            <Link
+                                                href={announcement.link}
+                                                target={announcement.link.startsWith("http") ? "_blank" : undefined}
+                                                rel={announcement.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                                                aria-label={announcement.linkText}
+                                                className="tap-scale flex min-h-10 items-center gap-1 whitespace-nowrap px-2 text-sm font-semibold text-secondary hover:text-orange-300"
+                                            >
+                                                <span className="hidden sm:inline">{announcement.linkText}</span>
+                                                <ArrowRight size={16} />
+                                            </Link>
+                                        )}
+                                        <button
+                                            onClick={() => handleDismiss(announcement.id)}
+                                            className="tap-scale flex size-11 items-center justify-center rounded-xl hover:bg-white/10"
+                                            aria-label={`Dismiss ${announcement.title} announcement`}
+                                        >
+                                            <X size={20} />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

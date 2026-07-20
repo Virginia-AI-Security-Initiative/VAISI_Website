@@ -12,8 +12,8 @@ interface TeamMemberCardProps {
 
 export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, chatUrl, graduatingYear }: TeamMemberCardProps) {
     return (
-        <div className="bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-center gap-4 p-4">
-            <div className="relative shrink-0 w-24 h-24 rounded-md overflow-hidden bg-gray-100">
+        <div className="surface-card flex items-center gap-4 rounded-3xl bg-white p-4">
+            <div className="image-outline relative shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-gray-100">
                 {imageSrc ? (
                     <Image
                         src={imageSrc}
@@ -42,7 +42,7 @@ export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, cha
                                 href={linkedinUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-7 h-7 rounded-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+                                className="tap-scale flex size-10 items-center justify-center rounded-lg hover:bg-gray-100"
                                 aria-label={`${name}'s LinkedIn profile`}
                             >
                                 <svg
@@ -60,7 +60,7 @@ export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, cha
                                 href={chatUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="h-7 px-2 rounded-md border border-primary text-primary text-xs font-semibold flex items-center gap-1.5 hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
+                                className="tap-scale button-outline flex min-h-10 items-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-xs font-semibold text-primary hover:bg-primary hover:text-white"
                                 aria-label={`Schedule a chat with ${name}`}
                             >
                                 <CalendarDays className="w-3.5 h-3.5" />

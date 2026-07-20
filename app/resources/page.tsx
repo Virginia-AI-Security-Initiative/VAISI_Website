@@ -54,7 +54,7 @@ export default function ResourcesPage() {
                                     href={resource.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group flex items-center justify-between p-4 rounded-lg hover:bg-slate-50 transition-colors border border-gray-100 hover:border-gray-200"
+                                    className="surface-card group flex min-h-14 items-center justify-between rounded-xl p-4 hover:bg-slate-50"
                                 >
                                     <div className="flex items-center gap-3">
                                         {resource.type === "video" ? (
@@ -94,7 +94,7 @@ export default function ResourcesPage() {
                                     href={resource.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group flex items-center justify-between p-4 rounded-lg bg-white hover:bg-gray-50 transition-colors border border-gray-100 hover:border-gray-200"
+                                    className="surface-card group flex min-h-14 items-center justify-between rounded-xl bg-white p-4 hover:bg-gray-50"
                                 >
                                     <div className="flex items-center gap-3">
                                         {/*{resource.type === "video" ? (
@@ -116,7 +116,7 @@ export default function ResourcesPage() {
                     {/* UVA-specific note */}
                     <div className="mt-6 p-4 bg-blue-50 border border-blue-100 rounded-lg">
                         <p className="text-sm text-gray-700">
-                            <span className="font-semibold text-primary">UVA Students:</span> If you have access to UVA's resources, we highly recommend <span className="font-medium">Inside AI Policy's Weekly Report</span> (accessible via ProQuest).
+                            <span className="font-semibold text-primary">UVA Students:</span> If you have access to UVA&apos;s resources, we highly recommend <span className="font-medium">Inside AI Policy&apos;s Weekly Report</span> (accessible via ProQuest).
                         </p>
                     </div>
                 </div>
@@ -142,7 +142,7 @@ export default function ResourcesPage() {
                                     href={resource.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group flex items-center justify-between p-4 rounded-lg hover:bg-slate-50 transition-colors border border-gray-100 hover:border-gray-200"
+                                    className="surface-card group flex min-h-14 items-center justify-between rounded-xl p-4 hover:bg-slate-50"
                                 >
                                     <div className="flex items-center gap-3">
                                         <FileText size={16} className="text-blue-500 flex-shrink-0" />
@@ -173,7 +173,7 @@ export default function ResourcesPage() {
                     </p>
                     <a
                         href="mailto:vaisi.club@gmail.com"
-                        className="inline-flex items-center gap-2 bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors"
+                        className="tap-scale button-raised inline-flex min-h-12 items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-primary hover:bg-blue-50"
                     >
                         <Mail size={18} />
                         vaisi.club@gmail.com

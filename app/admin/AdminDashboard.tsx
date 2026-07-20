@@ -194,7 +194,7 @@ function OwnerSelect({
         name={name}
         required
         defaultValue={defaultValue}
-        className="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+        className="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 outline-none transition-colors focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
       >
         <option value="">Select owner</option>
         {members.map((member) => (
@@ -273,7 +273,7 @@ function OwnerFilter({
           value={ownerId}
           onChange={(event) => onOwnerChange(event.target.value)}
           disabled={mode === 'all'}
-          className="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 outline-none transition disabled:bg-slate-100 disabled:text-slate-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+          className="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 outline-none transition-colors disabled:bg-slate-100 disabled:text-slate-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
         >
           <option value="">Choose exec</option>
           {members.map((member) => (
@@ -367,7 +367,7 @@ function TaskEditForm({
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+          className="tap-scale inline-flex min-h-10 items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
         >
           <Save size={16} aria-hidden="true" />
           Save Task
@@ -375,7 +375,7 @@ function TaskEditForm({
         <button
           type="button"
           onClick={onCancel}
-          className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+          className="tap-scale inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
         >
           <X size={16} aria-hidden="true" />
           Cancel
@@ -470,7 +470,7 @@ function EventEditForm({
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+          className="tap-scale inline-flex min-h-10 items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
         >
           <Save size={16} aria-hidden="true" />
           Save Event
@@ -478,7 +478,7 @@ function EventEditForm({
         <button
           type="button"
           onClick={onCancel}
-          className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+          className="tap-scale inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
         >
           <X size={16} aria-hidden="true" />
           Cancel
@@ -656,7 +656,7 @@ export default function AdminDashboard({
             </div>
             <a
               href="/auth/sign-out"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-slate-200 transition hover:bg-white/10"
+              className="tap-scale inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-slate-200 hover:bg-white/10"
               aria-label="Sign out"
               title="Sign out"
             >
@@ -675,7 +675,7 @@ export default function AdminDashboard({
                   type="button"
                   onClick={() => setActiveTab(item.key)}
                   className={cx(
-                    'inline-flex min-w-max items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition lg:w-full',
+                    'tap-scale inline-flex min-h-10 min-w-max items-center gap-3 rounded-md px-3 py-2 text-sm font-medium lg:w-full',
                     selected
                       ? 'bg-white text-slate-950'
                       : 'text-slate-300 hover:bg-white/10 hover:text-white'
@@ -770,7 +770,7 @@ export default function AdminDashboard({
                   <button
                     type="submit"
                     disabled={isPending}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+                    className="tap-scale inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
                   >
                     <Plus size={16} aria-hidden="true" />
                     Add Task
@@ -844,7 +844,7 @@ export default function AdminDashboard({
                                     type="button"
                                     disabled={isPending}
                                     onClick={() => setEditingTaskId(task.id)}
-                                    className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-600 transition hover:border-orange-300 hover:text-orange-700 disabled:cursor-not-allowed"
+                                    className="tap-scale inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 text-slate-600 hover:border-orange-300 hover:text-orange-700 disabled:cursor-not-allowed"
                                     aria-label="Edit task"
                                     title="Edit task"
                                   >
@@ -855,7 +855,7 @@ export default function AdminDashboard({
                                       href={task.external_url}
                                       target="_blank"
                                       rel="noreferrer"
-                                      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-600 transition hover:border-orange-300 hover:text-orange-700"
+                                      className="tap-scale inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 text-slate-600 hover:border-orange-300 hover:text-orange-700"
                                       aria-label="Open external link"
                                       title="Open external link"
                                     >
@@ -866,7 +866,7 @@ export default function AdminDashboard({
                                     type="button"
                                     disabled={isPending}
                                     onClick={() => handleDelete(deleteTask, 'taskId', task.id)}
-                                    className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-500 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700 disabled:cursor-not-allowed"
+                                    className="tap-scale inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:border-red-200 hover:bg-red-50 hover:text-red-700 disabled:cursor-not-allowed"
                                     aria-label="Delete task"
                                     title="Delete task"
                                   >
@@ -967,7 +967,7 @@ export default function AdminDashboard({
                   <button
                     type="submit"
                     disabled={isPending}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+                    className="tap-scale inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
                   >
                     <Plus size={16} aria-hidden="true" />
                     Add Event
@@ -1022,7 +1022,7 @@ export default function AdminDashboard({
 	                                  type="button"
 	                                  disabled={isPending}
 	                                  onClick={() => setEditingEventId(event.id)}
-	                                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-600 transition hover:border-orange-300 hover:text-orange-700 disabled:cursor-not-allowed"
+	                                  className="tap-scale inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 text-slate-600 hover:border-orange-300 hover:text-orange-700 disabled:cursor-not-allowed"
 	                                  aria-label="Edit event"
 	                                  title="Edit event"
 	                                >
@@ -1032,7 +1032,7 @@ export default function AdminDashboard({
 	                                  type="button"
 	                                  disabled={isPending}
 	                                  onClick={() => handleDelete(deleteEvent, 'eventId', event.id)}
-	                                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-500 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700 disabled:cursor-not-allowed"
+	                                  className="tap-scale inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:border-red-200 hover:bg-red-50 hover:text-red-700 disabled:cursor-not-allowed"
 	                                  aria-label="Delete event"
 	                                  title="Delete event"
 	                                >
@@ -1073,14 +1073,14 @@ export default function AdminDashboard({
 
           {activeTab === 'calendar' ? (
             <div className="grid gap-5 xl:grid-cols-[1fr_320px]">
-              <div className="rounded-md border border-slate-200 bg-white shadow-sm">
+              <div className="rounded-md border border-slate-200 bg-white shadow-sm tabular-nums">
                 <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
                   <h3 className="text-base font-semibold">{formatMonth(calendarMonth)}</h3>
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
                       onClick={() => changeCalendarMonth(-1)}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-600 transition hover:bg-slate-50"
+                      className="tap-scale inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 text-slate-600 hover:bg-slate-50"
                       aria-label="Previous month"
                       title="Previous month"
                     >
@@ -1089,14 +1089,14 @@ export default function AdminDashboard({
                     <button
                       type="button"
                       onClick={() => setCalendarMonth(new Date())}
-                      className="rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                      className="tap-scale min-h-10 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
                     >
                       Today
                     </button>
                     <button
                       type="button"
                       onClick={() => changeCalendarMonth(1)}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-600 transition hover:bg-slate-50"
+                      className="tap-scale inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 text-slate-600 hover:bg-slate-50"
                       aria-label="Next month"
                       title="Next month"
                     >
@@ -1210,7 +1210,7 @@ export default function AdminDashboard({
                   <button
                     type="submit"
                     disabled={isPending}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+                    className="tap-scale inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
                   >
                     <Plus size={16} aria-hidden="true" />
                     Add Email
@@ -1221,7 +1221,7 @@ export default function AdminDashboard({
               <div className="rounded-md border border-slate-200 bg-white shadow-sm">
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 px-4 py-3">
                   <h3 className="text-base font-semibold">Approved Google Accounts</h3>
-                  <span className="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">
+                  <span className="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700 tabular-nums">
                     {activeAccessRows.length} active
                   </span>
                 </div>
@@ -1250,7 +1250,7 @@ export default function AdminDashboard({
                         type="button"
                         disabled={isPending}
                         onClick={() => handleDelete(removeExecAccess, 'emailId', email.id)}
-                        className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700 disabled:cursor-not-allowed"
+                        className="tap-scale inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 hover:border-red-200 hover:bg-red-50 hover:text-red-700 disabled:cursor-not-allowed"
                       >
                         <Trash2 size={15} aria-hidden="true" />
                         Remove
@@ -1289,7 +1289,7 @@ export default function AdminDashboard({
               <button
                 type="button"
                 onClick={() => setNotice(null)}
-                className="inline-flex items-center justify-center rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                className="tap-scale inline-flex min-h-10 items-center justify-center rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
               >
                 Got it
               </button>

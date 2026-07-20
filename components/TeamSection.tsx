@@ -56,7 +56,8 @@ function CollapsibleGroup({ group }: { group: MemberGroup }) {
         <div>
             <button
                 onClick={() => setOpen((o) => !o)}
-                className="flex items-center gap-2 text-xl font-semibold text-primary mb-6 hover:opacity-75 transition-opacity"
+                className="tap-scale flex min-h-11 items-center gap-2 text-xl font-semibold text-primary mb-6 hover:opacity-75"
+                aria-expanded={open}
             >
                 {group.label}
                 <svg
@@ -109,20 +110,21 @@ export default function TeamSection({
 
     return (
         <div>
-            <div className="shadow-md rounded-xl mb-10">
-                <div className="bg-white rounded-t-xl px-8 py-5">
+            <div className="surface-panel overflow-hidden rounded-2xl mb-10">
+                <div className="bg-white px-8 py-5">
                     <h2 className="text-3xl font-bold text-primary text-center">Meet Our Team</h2>
                 </div>
-                <div className="bg-slate-50 rounded-b-xl border-t border-gray-100 px-6 py-3 flex justify-center gap-2">
+                <div className="bg-slate-50 border-t border-gray-100 px-6 py-3 flex justify-center gap-2">
                     {tabs.map((tab) => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-150 border ${
+                            className={`tap-scale flex min-h-11 items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold ${
                                 activeTab === tab.id
-                                    ? 'bg-primary text-white border-primary'
-                                    : 'bg-white text-primary border-primary hover:bg-primary/10'
+                                    ? 'bg-primary text-white shadow-sm'
+                                    : 'button-outline bg-white text-primary hover:bg-primary/10'
                             }`}
+                            aria-pressed={activeTab === tab.id}
                         >
                             {tabIcons[tab.id]}
                             {tab.label}
@@ -141,7 +143,7 @@ export default function TeamSection({
 
             {facultyAdvisors.length > 0 && (
                 <div className="mb-16">
-                    <div className="bg-white rounded-xl shadow-md px-8 py-5 mb-8">
+                    <div className="surface-panel rounded-2xl bg-white px-8 py-5 mb-8">
                         <h2 className="text-3xl font-bold text-primary text-center">Faculty Advisors</h2>
                     </div>
                     <MemberGrid members={facultyAdvisors} />

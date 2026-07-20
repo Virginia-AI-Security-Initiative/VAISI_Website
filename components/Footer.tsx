@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import { DiscordIcon, GroupMeIcon, LinkedInIcon } from './Icons';
 // Note: Discord icon is not in standard lucide-react export names sometimes, but let's try standard.
 // If Discord is missing, we can use a generic link or check docs. Lucide has 'MessageCircle' or similar.
@@ -17,15 +15,15 @@ export default function Footer() {
                         </p>
                     </div>
                     <div className="flex space-x-6">
-                        <a href="https://discord.gg/XyqmJE5emc" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#5865F2] transition-colors">
+                        <a href="https://discord.gg/XyqmJE5emc" target="_blank" rel="noopener noreferrer" className="tap-scale flex size-11 items-center justify-center rounded-xl text-gray-400 hover:bg-white hover:text-[#5865F2]">
                             <span className="sr-only">Discord</span>
                             <DiscordIcon size={20} />
                         </a>
-                        <a href="https://groupme.com/join_group/110490963/bxseYw8L" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#00AFF0] transition-colors">
+                        <a href="https://groupme.com/join_group/110490963/bxseYw8L" target="_blank" rel="noopener noreferrer" className="tap-scale flex size-11 items-center justify-center rounded-xl text-gray-400 hover:bg-white hover:text-[#00AFF0]">
                             <span className="sr-only">GroupMe</span>
                             <GroupMeIcon size={20} />
                         </a>
-                        <a href="https://www.linkedin.com/company/vaisi" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0A66C2] transition-colors">
+                        <a href="https://www.linkedin.com/company/vaisi" target="_blank" rel="noopener noreferrer" className="tap-scale flex size-11 items-center justify-center rounded-xl text-gray-400 hover:bg-white hover:text-[#0A66C2]">
                             <span className="sr-only">LinkedIn</span>
                             <LinkedInIcon size={20} />
                         </a>

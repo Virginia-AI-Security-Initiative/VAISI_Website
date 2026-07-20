@@ -30,6 +30,27 @@ function SortIcon({ dir }: { dir: SortDir }) {
     return <ChevronsUpDown size={14} className="inline ml-1 opacity-40" />;
 }
 
+function SectionToggleIcon({ open }: { open: boolean }) {
+    return (
+        <span className="relative flex size-4 items-center justify-center" aria-hidden="true">
+            <span
+                className={`absolute inset-0 flex items-center justify-center transition-[opacity,filter,scale] duration-300 ease-[cubic-bezier(0.2,0,0,1)] ${
+                    open ? 'scale-100 opacity-100 blur-0' : 'scale-[0.25] opacity-0 blur-[4px]'
+                }`}
+            >
+                <Minus size={14} />
+            </span>
+            <span
+                className={`flex items-center justify-center transition-[opacity,filter,scale] duration-300 ease-[cubic-bezier(0.2,0,0,1)] ${
+                    open ? 'scale-[0.25] opacity-0 blur-[4px]' : 'scale-100 opacity-100 blur-0'
+                }`}
+            >
+                <Plus size={14} />
+            </span>
+        </span>
+    );
+}
+
 function formatDate(dateStr: string) {
     const [year, month, day] = dateStr.split('-').map(Number);
     return new Date(year, month - 1, day).toLocaleDateString('en-US', {
@@ -137,27 +158,27 @@ export default function ResearchPage() {
                         <div className="flex flex-wrap gap-3">
                             <button
                                 onClick={() => quickAccess('policy-briefs', policyRef)}
-                                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors"
+                                className="tap-scale button-outline flex min-h-10 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary"
                             >
                                 <ScrollText size={15} />
                                 Policy Briefs
-                                <span className="text-xs text-gray-400">({policyBriefs.length})</span>
+                                <span className="text-xs text-gray-400 tabular-nums">({policyBriefs.length})</span>
                             </button>
                             <button
                                 onClick={() => quickAccess('tech-research', techRef)}
-                                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors"
+                                className="tap-scale button-outline flex min-h-10 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary"
                             >
                                 <FlaskConical size={15} />
                                 Technical Team Research
-                                <span className="text-xs text-gray-400">({techPapers.length})</span>
+                                <span className="text-xs text-gray-400 tabular-nums">({techPapers.length})</span>
                             </button>
                             <button
                                 onClick={() => quickAccess('fellowship-projects', fellowshipRef)}
-                                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors"
+                                className="tap-scale button-outline flex min-h-10 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary"
                             >
                                 <FileText size={15} />
                                 Fellowship Capstone Projects
-                                <span className="text-xs text-gray-400">({fellowshipProjects.length})</span>
+                                <span className="text-xs text-gray-400 tabular-nums">({fellowshipProjects.length})</span>
                             </button>
                         </div>
                     </div>
@@ -212,10 +233,10 @@ export default function ResearchPage() {
                                                                 <button
                                                                     key={tag}
                                                                     onMouseDown={() => toggleTag(tag)}
-                                                                    className={`text-xs font-medium px-2.5 py-1 rounded-full border transition-colors ${
+                                                                    className={`tap-scale min-h-10 rounded-full px-2.5 py-1 text-xs font-medium ${
                                                                         selectedTags.has(tag)
-                                                                            ? 'bg-primary text-white border-primary'
-                                                                            : 'bg-slate-50 text-gray-600 border-gray-200 hover:border-primary hover:text-primary'
+                                                                            ? 'bg-primary text-white shadow-sm'
+                                                                            : 'button-outline bg-slate-50 text-gray-600 hover:text-primary'
                                                                     }`}
                                                                 >
                                                                     {tag}
@@ -280,6 +301,7 @@ export default function ResearchPage() {
                             <button
                                 onClick={() => toggleSection('policy-briefs')}
                                 className="w-full flex items-center justify-between py-5 text-left group"
+                                aria-expanded={openSections.has('policy-briefs')}
                             >
                                 <div className="flex items-center gap-3">
                                     <ScrollText size={18} className="text-secondary flex-shrink-0" />
@@ -287,11 +309,11 @@ export default function ResearchPage() {
                                         Policy Briefs
                                     </span>
                                     <span className="text-sm text-gray-400">
-                                        {policyBriefs.length} {policyBriefs.length === 1 ? 'entry' : 'entries'}
+                                        <span className="tabular-nums">{policyBriefs.length}</span> {policyBriefs.length === 1 ? 'entry' : 'entries'}
                                     </span>
                                 </div>
                                 <div className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 group-hover:border-primary group-hover:text-primary transition-colors flex-shrink-0">
-                                    {openSections.has('policy-briefs') ? <Minus size={14} /> : <Plus size={14} />}
+                                    <SectionToggleIcon open={openSections.has('policy-briefs')} />
                                 </div>
                             </button>
 
@@ -380,6 +402,7 @@ export default function ResearchPage() {
                             <button
                                 onClick={() => toggleSection('tech-research')}
                                 className="w-full flex items-center justify-between py-5 text-left group"
+                                aria-expanded={openSections.has('tech-research')}
                             >
                                 <div className="flex items-center gap-3">
                                     <FlaskConical size={18} className="text-green-600 flex-shrink-0" />
@@ -387,11 +410,11 @@ export default function ResearchPage() {
                                         Technical Team Research
                                     </span>
                                     <span className="text-sm text-gray-400">
-                                        {techPapers.length} {techPapers.length === 1 ? 'entry' : 'entries'}
+                                        <span className="tabular-nums">{techPapers.length}</span> {techPapers.length === 1 ? 'entry' : 'entries'}
                                     </span>
                                 </div>
                                 <div className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 group-hover:border-primary group-hover:text-primary transition-colors flex-shrink-0">
-                                    {openSections.has('tech-research') ? <Minus size={14} /> : <Plus size={14} />}
+                                    <SectionToggleIcon open={openSections.has('tech-research')} />
                                 </div>
                             </button>
 
@@ -454,6 +477,7 @@ export default function ResearchPage() {
                             <button
                                 onClick={() => toggleSection('fellowship-projects')}
                                 className="w-full flex items-center justify-between py-5 text-left group"
+                                aria-expanded={openSections.has('fellowship-projects')}
                             >
                                 <div className="flex items-center gap-3">
                                     <FileText size={18} className="text-purple-600 flex-shrink-0" />
@@ -461,11 +485,11 @@ export default function ResearchPage() {
                                         Fellowship Capstone Projects
                                     </span>
                                     <span className="text-sm text-gray-400">
-                                        {fellowshipProjects.length} {fellowshipProjects.length === 1 ? 'entry' : 'entries'}
+                                        <span className="tabular-nums">{fellowshipProjects.length}</span> {fellowshipProjects.length === 1 ? 'entry' : 'entries'}
                                     </span>
                                 </div>
                                 <div className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 group-hover:border-primary group-hover:text-primary transition-colors flex-shrink-0">
-                                    {openSections.has('fellowship-projects') ? <Minus size={14} /> : <Plus size={14} />}
+                                    <SectionToggleIcon open={openSections.has('fellowship-projects')} />
                                 </div>
                             </button>
 
