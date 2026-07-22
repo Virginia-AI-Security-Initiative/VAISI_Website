@@ -28,7 +28,8 @@ export const teamMembers: MemberGroup[] = [
             name: "Nia Mucher",
             title: "Vice President",
             imageSrc: "/team/nia_mucher.jpg",
-            linkedinUrl: "https://www.linkedin.com/in/nia-m-a50406379/"
+            linkedinUrl: "https://www.linkedin.com/in/nia-m-a50406379/",
+            chatUrl: "https://outlook.office.com/bookwithme/user/ce671a40730e45f89d8baac38714e128@virginia.edu?anonymous&ismsaljsauthenabled&ep=bwmEmailSignature"
         },
         {
             id: 3,
