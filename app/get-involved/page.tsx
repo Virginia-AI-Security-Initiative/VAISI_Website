@@ -15,6 +15,7 @@ const eventTypes = [
             duration: "8 weeks"
         },
         description: "Build a foundation in AI safety through a weekly reading and discussion group covering advanced AI risks and current safety research. Dinner is provided, there is no mandatory reading outside the fellowship, and participants may complete an optional capstone project.",
+        applicationNote: "Applications are reviewed on a rolling basis.",
         cta: {
             text: "Apply by September 13",
             link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form"
@@ -36,6 +37,7 @@ const eventTypes = [
             duration: "10 weeks"
         },
         description: "Explore AI policy and governance in a weekly cohort covering technical foundations, frontier policy, national security, safety regulation, corporate governance, and careers. Dinner is provided, with 0-30 minutes of weekly reading and an optional capstone project.",
+        applicationNote: "Applications are reviewed on a rolling basis.",
         cta: {
             text: "Apply by September 13",
             link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form"
@@ -106,6 +108,10 @@ export default function GetInvolvedPage() {
                                     <p className="text-gray-600 text-sm leading-relaxed mb-4">
                                         {event.description}
                                     </p>
+                                    <div className="mb-4 flex items-start gap-2 rounded-lg bg-blue-50 px-3 py-2.5 text-sm leading-relaxed text-primary">
+                                        <Check className="mt-0.5 h-4 w-4 shrink-0" />
+                                        <span>{event.applicationNote}</span>
+                                    </div>
                                     <div className="flex flex-wrap gap-3">
                                         <a
                                             href={event.cta.link}
