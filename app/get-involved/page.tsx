@@ -108,9 +108,8 @@ export default function GetInvolvedPage() {
                                     <p className="text-gray-600 text-sm leading-relaxed mb-4">
                                         {event.description}
                                     </p>
-                                    <div className="mb-4 flex items-start gap-2 rounded-lg bg-blue-50 px-3 py-2.5 text-sm leading-relaxed text-primary">
-                                        <Check className="mt-0.5 h-4 w-4 shrink-0" />
-                                        <span>{event.applicationNote}</span>
+                                    <div className="mb-4 rounded-lg bg-blue-50 px-3 py-2.5 text-sm leading-relaxed text-primary">
+                                        {event.applicationNote}
                                     </div>
                                     <div className="flex flex-wrap gap-3">
                                         <a
