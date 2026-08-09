@@ -1,9 +1,13 @@
 'use client';
 
-import { useState, useRef } from "react";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Section from "@/components/Section";
+import PageHero from "@/components/PageHero";
+import { Reveal, revealTransition } from "@/components/motion";
+import { sectionTitleClass } from "@/components/sectionTitle";
 import {
-    FileText, ExternalLink, ScrollText, FlaskConical,
+    ExternalLink,
     ChevronUp, ChevronDown, ChevronsUpDown, Search, Plus, Minus, X,
 } from "lucide-react";
 
@@ -68,10 +72,6 @@ export default function ResearchPage() {
     const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
     const [tagDropdownOpen, setTagDropdownOpen] = useState(false);
 
-    const policyRef = useRef<HTMLDivElement>(null);
-    const techRef = useRef<HTMLDivElement>(null);
-    const fellowshipRef = useRef<HTMLDivElement>(null);
-
     function toggleSection(id: string) {
         setOpenSections((prev) => {
             const next = new Set(prev);
@@ -111,13 +111,6 @@ export default function ResearchPage() {
     const recentDisplayed =
         rq || selectedTags.size > 0 ? recentFiltered : recentFiltered.slice(0, 6);
 
-    function quickAccess(id: string, ref: React.RefObject<HTMLDivElement | null>) {
-        setOpenSections((prev) => new Set([...prev, id]));
-        setTimeout(() => {
-            ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 50);
-    }
-
     const q = policyQuery.toLowerCase();
     const filteredBriefs = q
         ? policyBriefs.filter(
@@ -137,58 +130,20 @@ export default function ResearchPage() {
 
     return (
         <div className="flex flex-col min-h-screen">
-            {/* Page Header */}
-            <Section className="bg-primary text-white py-16">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">Research</h1>
-                    <p className="text-xl text-blue-100">
-                        Original policy work and research produced by VAISI members.
-                    </p>
-                </div>
-            </Section>
+            <PageHero
+                title="Research"
+                subtitle="Original policy work and research produced by VAISI members."
+            />
 
             <Section className="bg-white">
-                <div className="max-w-5xl mx-auto space-y-10">
-
-                    {/* Quick Access */}
-                    <div>
-                        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
-                            Quick Access
-                        </p>
-                        <div className="flex flex-wrap gap-3">
-                            <button
-                                onClick={() => quickAccess('policy-briefs', policyRef)}
-                                className="tap-scale button-outline flex min-h-10 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary"
-                            >
-                                <ScrollText size={15} />
-                                Policy Briefs
-                                <span className="text-xs text-gray-400 tabular-nums">({policyBriefs.length})</span>
-                            </button>
-                            <button
-                                onClick={() => quickAccess('tech-research', techRef)}
-                                className="tap-scale button-outline flex min-h-10 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary"
-                            >
-                                <FlaskConical size={15} />
-                                Technical Team Research
-                                <span className="text-xs text-gray-400 tabular-nums">({techPapers.length})</span>
-                            </button>
-                            <button
-                                onClick={() => quickAccess('fellowship-projects', fellowshipRef)}
-                                className="tap-scale button-outline flex min-h-10 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary"
-                            >
-                                <FileText size={15} />
-                                Fellowship Capstone Projects
-                                <span className="text-xs text-gray-400 tabular-nums">({fellowshipProjects.length})</span>
-                            </button>
-                        </div>
-                    </div>
+                <div className="max-w-6xl mx-auto space-y-10">
 
                     {/* Recently Published */}
                     {allPublications.length > 0 && (
-                        <div>
-                            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+                        <Reveal>
+                            <h2 className={`${sectionTitleClass} text-gray-900 mb-6`}>
                                 Recently Published
-                            </p>
+                            </h2>
 
                             {/* Search + tag filter */}
                             <div className="mb-4">
@@ -236,7 +191,7 @@ export default function ResearchPage() {
                                                                     className={`tap-scale min-h-10 rounded-full px-2.5 py-1 text-xs font-medium ${
                                                                         selectedTags.has(tag)
                                                                             ? 'bg-primary text-white shadow-sm'
-                                                                            : 'button-outline bg-slate-50 text-gray-600 hover:text-primary'
+                                                                            : 'button-outline bg-gray-50 text-gray-600 hover:text-primary'
                                                                     }`}
                                                                 >
                                                                     {tag}
@@ -264,16 +219,10 @@ export default function ResearchPage() {
                                             href={pub.item.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group flex flex-col p-4 rounded-lg border border-gray-200 hover:border-primary/40 hover:bg-slate-50 transition-colors"
+                                            className="group flex flex-col p-4 rounded-lg border border-gray-200 hover:border-primary/40 hover:bg-gray-50 transition-colors"
                                         >
                                             <div className="flex items-center justify-between mb-3">
-                                                <span className={`text-xs font-medium px-2 py-0.5 rounded-full border ${
-                                                    pub.kind === 'policy'
-                                                        ? 'bg-blue-50 text-primary border-blue-100'
-                                                        : pub.kind === 'tech'
-                                                        ? 'bg-green-50 text-green-700 border-green-100'
-                                                        : 'bg-purple-50 text-purple-700 border-purple-100'
-                                                }`}>
+                                                <span className="text-xs font-medium px-2 py-0.5 rounded-full border bg-primary/10 text-primary border-primary/20">
                                                     {pub.kind === 'policy' ? 'Policy Brief' : pub.kind === 'tech' ? 'Tech Paper' : 'Fellowship'}
                                                 </span>
                                                 <ExternalLink size={14} className="text-gray-300 group-hover:text-secondary transition-colors" />
@@ -290,21 +239,20 @@ export default function ResearchPage() {
                                 </div>
                             )}
                             </div>
-                        </div>
+                        </Reveal>
                     )}
 
                     {/* Accordion Sections */}
                     <div className="border-t border-gray-200">
 
                         {/* Policy Briefs */}
-                        <div ref={policyRef} className="border-b border-gray-200">
+                        <div className="border-b border-gray-200">
                             <button
                                 onClick={() => toggleSection('policy-briefs')}
                                 className="w-full flex items-center justify-between py-5 text-left group"
                                 aria-expanded={openSections.has('policy-briefs')}
                             >
                                 <div className="flex items-center gap-3">
-                                    <ScrollText size={18} className="text-secondary flex-shrink-0" />
                                     <span className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">
                                         Policy Briefs
                                     </span>
@@ -317,7 +265,16 @@ export default function ResearchPage() {
                                 </div>
                             </button>
 
+                            <AnimatePresence initial={false}>
                             {openSections.has('policy-briefs') && (
+                                <motion.div
+                                    key="policy-briefs-body"
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={revealTransition}
+                                    className="overflow-hidden"
+                                >
                                 <div className="pb-6">
                                     <div className="relative mb-4">
                                         <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
@@ -332,7 +289,7 @@ export default function ResearchPage() {
                                     <div className="border border-gray-200 rounded-lg overflow-y-auto max-h-80">
                                         <table className="w-full">
                                             <thead>
-                                                <tr className="bg-slate-50 border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                <tr className="bg-gray-50 border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-500">
                                                     <th className="px-4 py-3 text-left font-semibold">Title &amp; Authors</th>
                                                     <th className="px-4 py-3 text-center font-semibold">Source</th>
                                                     <th className="px-4 py-3 text-left font-semibold">
@@ -358,27 +315,24 @@ export default function ResearchPage() {
                                                     <tr
                                                         key={idx}
                                                         onClick={() => window.open(brief.url, '_blank')}
-                                                        className="group cursor-pointer hover:bg-slate-50 transition-colors border-b border-gray-100 last:border-0"
+                                                        className="group cursor-pointer hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
                                                     >
                                                         <td className="px-4 py-4">
-                                                            <div className="flex items-start gap-3">
-                                                                <FileText size={16} className="text-blue-500 flex-shrink-0 mt-0.5" />
-                                                                <div>
-                                                                    <span className="block font-medium text-gray-800 group-hover:text-primary transition-colors">
-                                                                        {brief.title}
-                                                                        {brief.award && (
-                                                                            <span className="ml-2 inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 align-middle text-xs font-semibold text-amber-700 whitespace-nowrap">
-                                                                                <span aria-hidden="true">{MEDALS[brief.award] ?? '🏅'}</span>
-                                                                                {brief.award} Place
-                                                                            </span>
-                                                                        )}
-                                                                    </span>
-                                                                    <span className="text-sm text-gray-500">{brief.authors}</span>
-                                                                </div>
+                                                            <div>
+                                                                <span className="block font-medium text-gray-800 group-hover:text-primary transition-colors">
+                                                                    {brief.title}
+                                                                    {brief.award && (
+                                                                        <span className="ml-2 inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 align-middle text-xs font-semibold text-amber-700 whitespace-nowrap">
+                                                                            <span aria-hidden="true">{MEDALS[brief.award] ?? '🏅'}</span>
+                                                                            {brief.award} Place
+                                                                        </span>
+                                                                    )}
+                                                                </span>
+                                                                <span className="text-sm text-gray-500">{brief.authors}</span>
                                                             </div>
                                                         </td>
                                                         <td className="px-4 py-4 text-center">
-                                                            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-blue-50 text-primary border border-blue-100 whitespace-nowrap">
+                                                            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 whitespace-nowrap">
                                                                 {brief.source}
                                                             </span>
                                                         </td>
@@ -394,18 +348,19 @@ export default function ResearchPage() {
                                         </table>
                                     </div>
                                 </div>
+                                </motion.div>
                             )}
+                            </AnimatePresence>
                         </div>
 
                         {/* Technical Team Research */}
-                        <div ref={techRef} className="border-b border-gray-200">
+                        <div className="border-b border-gray-200">
                             <button
                                 onClick={() => toggleSection('tech-research')}
                                 className="w-full flex items-center justify-between py-5 text-left group"
                                 aria-expanded={openSections.has('tech-research')}
                             >
                                 <div className="flex items-center gap-3">
-                                    <FlaskConical size={18} className="text-green-600 flex-shrink-0" />
                                     <span className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">
                                         Technical Team Research
                                     </span>
@@ -418,7 +373,16 @@ export default function ResearchPage() {
                                 </div>
                             </button>
 
+                            <AnimatePresence initial={false}>
                             {openSections.has('tech-research') && (
+                                <motion.div
+                                    key="tech-research-body"
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={revealTransition}
+                                    className="overflow-hidden"
+                                >
                                 <div className="pb-6">
                                     {techPapers.length === 0 ? (
                                         <p className="text-sm text-gray-400 italic">Research papers coming soon.</p>
@@ -426,7 +390,7 @@ export default function ResearchPage() {
                                         <div className="border border-gray-200 rounded-lg overflow-y-auto max-h-80">
                                             <table className="w-full">
                                                 <thead className="sticky top-0 z-10">
-                                                    <tr className="bg-slate-50 border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                    <tr className="bg-gray-50 border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-500">
                                                         <th className="px-4 py-3 text-left font-semibold">Title &amp; Authors</th>
                                                         <th className="px-4 py-3 text-center font-semibold">Venue</th>
                                                         <th className="px-4 py-3 text-left font-semibold">Published</th>
@@ -438,21 +402,18 @@ export default function ResearchPage() {
                                                         <tr
                                                             key={idx}
                                                             onClick={() => window.open(paper.url, '_blank')}
-                                                            className="group cursor-pointer hover:bg-slate-50 transition-colors border-b border-gray-100 last:border-0"
+                                                            className="group cursor-pointer hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
                                                         >
                                                             <td className="px-4 py-4">
-                                                                <div className="flex items-start gap-3">
-                                                                    <FileText size={16} className="text-green-500 flex-shrink-0 mt-0.5" />
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-800 group-hover:text-primary transition-colors block">
-                                                                            {paper.title}
-                                                                        </span>
-                                                                        <span className="text-sm text-gray-500">{paper.authors}</span>
-                                                                    </div>
+                                                                <div>
+                                                                    <span className="font-medium text-gray-800 group-hover:text-primary transition-colors block">
+                                                                        {paper.title}
+                                                                    </span>
+                                                                    <span className="text-sm text-gray-500">{paper.authors}</span>
                                                                 </div>
                                                             </td>
                                                             <td className="px-4 py-4 text-center">
-                                                                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-green-50 text-green-700 border border-green-100 whitespace-nowrap">
+                                                                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 whitespace-nowrap">
                                                                     {paper.venue}
                                                                 </span>
                                                             </td>
@@ -469,18 +430,19 @@ export default function ResearchPage() {
                                         </div>
                                     )}
                                 </div>
+                                </motion.div>
                             )}
+                            </AnimatePresence>
                         </div>
 
                         {/* Fellowship Projects */}
-                        <div ref={fellowshipRef} className="border-b border-gray-200">
+                        <div className="border-b border-gray-200">
                             <button
                                 onClick={() => toggleSection('fellowship-projects')}
                                 className="w-full flex items-center justify-between py-5 text-left group"
                                 aria-expanded={openSections.has('fellowship-projects')}
                             >
                                 <div className="flex items-center gap-3">
-                                    <FileText size={18} className="text-purple-600 flex-shrink-0" />
                                     <span className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">
                                         Fellowship Capstone Projects
                                     </span>
@@ -493,7 +455,16 @@ export default function ResearchPage() {
                                 </div>
                             </button>
 
+                            <AnimatePresence initial={false}>
                             {openSections.has('fellowship-projects') && (
+                                <motion.div
+                                    key="fellowship-projects-body"
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={revealTransition}
+                                    className="overflow-hidden"
+                                >
                                 <div className="pb-6">
                                     {fellowshipProjects.length === 0 ? (
                                         <p className="text-sm text-gray-400 italic">Fellowship projects coming soon.</p>
@@ -501,7 +472,7 @@ export default function ResearchPage() {
                                         <div className="border border-gray-200 rounded-lg overflow-y-auto max-h-80">
                                             <table className="w-full">
                                                 <thead className="sticky top-0 z-10">
-                                                    <tr className="bg-slate-50 border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                    <tr className="bg-gray-50 border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-500">
                                                         <th className="px-4 py-3 text-left font-semibold">Title &amp; Authors</th>
                                                         <th className="px-4 py-3 text-center font-semibold">Fellowship</th>
                                                         <th className="px-4 py-3 text-left font-semibold">Published</th>
@@ -513,21 +484,18 @@ export default function ResearchPage() {
                                                         <tr
                                                             key={idx}
                                                             onClick={() => window.open(project.url, '_blank')}
-                                                            className="group cursor-pointer hover:bg-slate-50 transition-colors border-b border-gray-100 last:border-0"
+                                                            className="group cursor-pointer hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
                                                         >
                                                             <td className="px-4 py-4">
-                                                                <div className="flex items-start gap-3">
-                                                                    <FileText size={16} className="text-purple-500 flex-shrink-0 mt-0.5" />
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-800 group-hover:text-primary transition-colors block">
-                                                                            {project.title}
-                                                                        </span>
-                                                                        <span className="text-sm text-gray-500">{project.authors}</span>
-                                                                    </div>
+                                                                <div>
+                                                                    <span className="font-medium text-gray-800 group-hover:text-primary transition-colors block">
+                                                                        {project.title}
+                                                                    </span>
+                                                                    <span className="text-sm text-gray-500">{project.authors}</span>
                                                                 </div>
                                                             </td>
                                                             <td className="px-4 py-4 text-center">
-                                                                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-100 whitespace-nowrap">
+                                                                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 whitespace-nowrap">
                                                                     {project.fellowship}
                                                                 </span>
                                                             </td>
@@ -544,7 +512,9 @@ export default function ResearchPage() {
                                         </div>
                                     )}
                                 </div>
+                                </motion.div>
                             )}
+                            </AnimatePresence>
                         </div>
 
                     </div>

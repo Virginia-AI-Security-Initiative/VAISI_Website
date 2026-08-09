@@ -1,7 +1,13 @@
-import Section from "@/components/Section";
-import { Lightbulb, Newspaper, Briefcase, ExternalLink, Play, FileText, Mail } from "lucide-react";
+'use client';
 
-// Resource data organized by section
+import Image from "next/image";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { RotateCcw } from "lucide-react";
+import Section from "@/components/Section";
+import PageHero from "@/components/PageHero";
+import { Reveal, StaggerGroup, StaggerItem, hoverLift } from "@/components/motion";
+
 const introResources = [
     { title: "An Overview of Catastrophic AI Risks - CAIS", url: "https://safe.ai/ai-risk", type: "article" as const },
     { title: "The Catastrophic Risks of AI — and a Safer Path - Yoshua Bengio", url: "https://www.youtube.com/watch?v=qe9QSCF-d88", type: "video" as const },
@@ -19,165 +25,164 @@ const careerResources = [
     { title: "Upskilling Courses - BlueDot Impact", url: "https://bluedot.org/", type: "article" as const },
 ];
 
-export default function ResourcesPage() {
+const resourceSections = [
+    {
+        id: "understanding-ai-risk",
+        title: "Understanding AI Risk",
+        description: "Accessible introductions to the technical and policy challenges posed by advanced AI systems.",
+        imageSrc: "/ai_risk.png",
+        imagePosition: "center top",
+        imagePaddingBottom: "1.5rem",
+        resources: introResources,
+        note: null as React.ReactNode,
+    },
+    {
+        id: "ai-policy-risk-news",
+        title: "AI Policy & Risk News",
+        description: "Stay up to date with the latest developments in AI governance, risk research, and policy.",
+        imageSrc: "/ai_news2.png",
+        resources: newsResources,
+        note: (
+            <>
+                <span className="font-semibold text-gray-800">UVA Students:</span> We highly recommend <span className="font-medium text-gray-800">Inside AI Policy&apos;s Weekly Report</span> (accessible via ProQuest).
+            </>
+        ),
+    },
+    {
+        id: "career-resources",
+        title: "Career Resources",
+        description: "Explore career paths in AI governance, technical research, and policy.",
+        imageSrc: "/career_resources2.png",
+        imagePosition: "60% center",
+        resources: careerResources,
+        note: null as React.ReactNode,
+    },
+];
+
+function ResourceList({ resources }: { resources: typeof introResources }) {
     return (
-        <div className="flex flex-col min-h-screen">
-            {/* Page Header */}
-            <Section className="bg-primary text-white py-16">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">Resources</h1>
-                    <p className="text-xl text-blue-100">
-                        Curated materials on AI risk, governance, and security to help you get started.
-                    </p>
-                </div>
-            </Section>
+        <StaggerGroup className="space-y-2.5" stagger={0.04}>
+            {resources.map((resource, idx) => (
+                <StaggerItem key={idx}>
+                    <a
+                        href={resource.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-link text-base text-gray-700 block"
+                    >
+                        {resource.title}
+                    </a>
+                </StaggerItem>
+            ))}
+        </StaggerGroup>
+    );
+}
 
-            {/* Section 1: Understanding AI Risk */}
-            <Section className="bg-white">
-                <div className="max-w-4xl mx-auto">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center">
-                            <Lightbulb className="w-6 h-6 text-secondary" />
-                        </div>
-                        <h2 className="text-3xl font-bold text-primary">Understanding AI Risk</h2>
-                    </div>
-                    <p className="text-lg text-gray-600 mb-8 ml-15">
-                        Accessible introductions to the technical and policy challenges posed by advanced AI systems.
-                    </p>
+function ResourceFlipCard({ section }: { section: typeof resourceSections[0] }) {
+    const [flipped, setFlipped] = useState(false);
 
-
-                    {/* Resource Links */}
-                    <ul className="space-y-3">
-                        {introResources.map((resource, idx) => (
-                            <li key={idx}>
-                                <a
-                                    href={resource.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="surface-card group flex min-h-14 items-center justify-between rounded-xl p-4 hover:bg-slate-50"
-                                >
-                                    <div className="flex items-center gap-3">
-                                        {resource.type === "video" ? (
-                                            <Play size={16} className="text-red-500 flex-shrink-0" />
-                                        ) : (
-                                            <FileText size={16} className="text-blue-500 flex-shrink-0" />
-                                        )}
-                                        <span className="font-medium text-gray-700 group-hover:text-primary transition-colors">
-                                            {resource.title}
-                                        </span>
-                                    </div>
-                                    <ExternalLink size={18} className="text-gray-400 group-hover:text-secondary transition-colors flex-shrink-0" />
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </Section>
-
-            {/* Section 2: AI Policy & Risk News */}
-            <Section className="bg-slate-50 border-t border-gray-100">
-                <div className="max-w-4xl mx-auto">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center">
-                            <Newspaper className="w-6 h-6 text-primary" />
-                        </div>
-                        <h2 className="text-3xl font-bold text-primary">AI Policy & Risk News</h2>
-                    </div>
-                    <p className="text-lg text-gray-600 mb-8">
-                        Stay up to date with the latest developments in AI governance, risk research, and policy.
-                    </p>
-
-                    <ul className="space-y-3">
-                        {newsResources.map((resource, idx) => (
-                            <li key={idx}>
-                                <a
-                                    href={resource.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="surface-card group flex min-h-14 items-center justify-between rounded-xl bg-white p-4 hover:bg-gray-50"
-                                >
-                                    <div className="flex items-center gap-3">
-                                        {/*{resource.type === "video" ? (
-                                            <Play size={16} className="text-red-500 flex-shrink-0" />
-                                        ) : (
-                                            <FileText size={16} className="text-blue-500 flex-shrink-0" />
-                                        )}*/}
-                                        <FileText size={16} className="text-blue-500 flex-shrink-0" />
-                                        <span className="font-medium text-gray-700 group-hover:text-primary transition-colors">
-                                            {resource.title}
-                                        </span>
-                                    </div>
-                                    <ExternalLink size={18} className="text-gray-400 group-hover:text-secondary transition-colors flex-shrink-0" />
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                    
-                    {/* UVA-specific note */}
-                    <div className="mt-6 p-4 bg-blue-50 border border-blue-100 rounded-lg">
-                        <p className="text-sm text-gray-700">
-                            <span className="font-semibold text-primary">UVA Students:</span> If you have access to UVA&apos;s resources, we highly recommend <span className="font-medium">Inside AI Policy&apos;s Weekly Report</span> (accessible via ProQuest).
+    return (
+        <motion.div
+            className="cursor-pointer"
+            style={{ perspective: "1200px" }}
+            onClick={() => setFlipped((f) => !f)}
+            {...hoverLift}
+        >
+            <div
+                className="relative w-full"
+                style={{
+                    transformStyle: "preserve-3d",
+                    transition: "transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)",
+                    transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+                    aspectRatio: "4 / 5",
+                }}
+            >
+                {/* Front */}
+                <div
+                    className="absolute inset-0 rounded-2xl border-2 border-primary bg-white overflow-hidden flex flex-col"
+                    style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                >
+                    <div className="p-6 flex-shrink-0">
+                        <h3 className="text-3xl font-bold text-gray-900 leading-tight mb-2">{section.title}</h3>
+                        <p className="flex items-center gap-1.5 text-sm text-gray-400 select-none">
+                            <RotateCcw size={12} />
+                            Flip to see resources
                         </p>
                     </div>
-                </div>
-            </Section>
-
-            {/* Section 3: Career Resources */}
-            <Section className="bg-white border-t border-gray-100">
-                <div className="max-w-4xl mx-auto">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center">
-                            <Briefcase className="w-6 h-6 text-green-600" />
-                        </div>
-                        <h2 className="text-3xl font-bold text-primary">Career Resources</h2>
-                    </div>
-                    <p className="text-lg text-gray-600 mb-8">
-                        Explore career paths in AI governance, technical research, and policy. Find fellowships, job boards, and guidance.
-                    </p>
-
-                    <ul className="space-y-3">
-                        {careerResources.map((resource, idx) => (
-                            <li key={idx}>
-                                <a
-                                    href={resource.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="surface-card group flex min-h-14 items-center justify-between rounded-xl p-4 hover:bg-slate-50"
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <FileText size={16} className="text-blue-500 flex-shrink-0" />
-                                        <span className="font-medium text-gray-700 group-hover:text-primary transition-colors">
-                                            {resource.title}
-                                        </span>
-                                    </div>
-                                    <ExternalLink size={18} className="text-gray-400 group-hover:text-secondary transition-colors flex-shrink-0" />
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </Section>
-
-            {/* Contact CTA */}
-            <Section className="bg-primary text-white border-t border-blue-800">
-                <div className="max-w-3xl mx-auto text-center">
-                    <div className="flex justify-center mb-4">
-                        <div className="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center">
-                            <Mail className="w-6 h-6 text-white" />
-                        </div>
-                    </div>
-                    <h2 className="text-2xl font-bold mb-3">Get in Touch</h2>
-                    <p className="text-lg text-blue-100 mb-6">
-                        Interested in learning more or exploring opportunities in AI governance and technical research?
-                        Reach out with your background and interests.
-                    </p>
-                    <a
-                        href="mailto:vaisi.club@gmail.com"
-                        className="tap-scale button-raised inline-flex min-h-12 items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-primary hover:bg-blue-50"
+                    <div
+                        className="flex-1 relative"
+                        style={{ marginBottom: section.imagePaddingBottom ?? 0 }}
                     >
-                        <Mail size={18} />
-                        vaisi.club@gmail.com
-                    </a>
+                        <Image
+                            src={section.imageSrc}
+                            alt=""
+                            fill
+                            className="object-cover"
+                            style={{ objectPosition: section.imagePosition ?? "center" }}
+                        />
+                    </div>
+                </div>
+
+                {/* Back */}
+                <div
+                    className="absolute inset-0 rounded-2xl border-2 border-primary bg-white overflow-y-auto"
+                    style={{
+                        backfaceVisibility: "hidden",
+                        WebkitBackfaceVisibility: "hidden",
+                        transform: "rotateY(180deg)",
+                    }}
+                >
+                    <div className="p-6 pb-12">
+                        <p className="text-gray-500 text-base leading-relaxed mb-4">{section.description}</p>
+                        <ResourceList resources={section.resources} />
+                        {section.note && (
+                            <p className="mt-4 text-sm text-gray-500 leading-relaxed">{section.note}</p>
+                        )}
+                    </div>
+                    <p className="absolute bottom-4 left-6 flex items-center gap-1.5 text-sm text-gray-400 select-none">
+                        <RotateCcw size={12} />
+                        Flip back
+                    </p>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
+export default function ResourcesPage() {
+    return (
+        <div className="flex flex-col min-h-screen bg-white">
+            <PageHero
+                title="Resources"
+                subtitle="Curated materials on AI risk, governance, and security to help you get started."
+            />
+
+            <Section>
+                <div className="max-w-6xl mx-auto space-y-16">
+                    <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-8" stagger={0.15}>
+                        {resourceSections.map((section) => (
+                            <StaggerItem key={section.id}>
+                                <ResourceFlipCard section={section} />
+                            </StaggerItem>
+                        ))}
+                    </StaggerGroup>
+
+                    <hr className="border-gray-200" />
+
+                    {/* Contact CTA */}
+                    <Reveal className="text-center py-4">
+                        <h2 className="text-[40px] md:text-[64px] font-bold leading-tight text-gray-900 mb-3">Get in Touch</h2>
+                        <p className="text-gray-500 mb-5">
+                            Interested in learning more or exploring opportunities in AI governance and technical research?
+                        </p>
+                        <a
+                            href="mailto:vaisi.club@gmail.com"
+                            className="font-semibold underline underline-offset-4 text-gray-700 decoration-gray-300 hover:decoration-secondary hover:text-secondary transition-all"
+                        >
+                            vaisi.club@gmail.com
+                        </a>
+                    </Reveal>
                 </div>
             </Section>
         </div>

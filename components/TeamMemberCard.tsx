@@ -12,7 +12,7 @@ interface TeamMemberCardProps {
 
 export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, chatUrl, graduatingYear }: TeamMemberCardProps) {
     return (
-        <div className="surface-card flex items-center gap-4 rounded-3xl bg-white p-4">
+        <div className="surface-card flex items-center gap-4 rounded-3xl bg-white border border-gray-200 p-4">
             <div className="image-outline relative shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-gray-100">
                 {imageSrc ? (
                     <Image
@@ -23,14 +23,14 @@ export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, cha
                         className="object-cover object-top"
                     />
                 ) : (
-                    <div className="flex items-center justify-center h-full text-gray-300">
+                    <div className="flex items-center justify-center h-full text-gray-400">
                         <span className="text-3xl font-light">?</span>
                     </div>
                 )}
             </div>
 
             <div className="flex flex-col justify-center min-w-0">
-                <h3 className="text-base font-bold text-primary leading-tight">{name}</h3>
+                <h3 className="text-base font-bold text-gray-900 leading-tight">{name}</h3>
                 <p className="text-sm text-gray-500 mt-1">{title}</p>
                 {graduatingYear && (
                     <p className="text-xs text-gray-400 mt-0.5">{graduatingYear}</p>
@@ -60,7 +60,7 @@ export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, cha
                                 href={chatUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="tap-scale button-outline flex min-h-10 items-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-xs font-semibold text-primary hover:bg-primary hover:text-white"
+                                className="tap-scale flex min-h-10 items-center gap-1.5 whitespace-nowrap rounded-lg border border-gray-200 px-3 text-xs font-semibold text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                                 aria-label={`Schedule a chat with ${name}`}
                             >
                                 <CalendarDays className="w-3.5 h-3.5" />

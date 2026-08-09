@@ -1,7 +1,11 @@
 'use client';
 
 import Section from "@/components/Section";
+import PageHero from "@/components/PageHero";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { sectionTitleClass } from "@/components/sectionTitle";
 import Image from "next/image";
+import { createPortal } from "react-dom";
 import { Calendar, Camera, ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
 import { ReactNode, useCallback, useEffect, useState } from "react";
 
@@ -47,11 +51,11 @@ const pastEvents: PastEvent[] = [
         description: (
             <>
                 Professors{" "}
-                <a href="https://www.korinek.com/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">Anton Korinek</a>
+                <a href="https://www.korinek.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline decoration-secondary hover:text-primary transition-colors">Anton Korinek</a>
                 ,{" "}
-                <a href="https://www.cs.virginia.edu/~evans/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">David Evans</a>
+                <a href="https://www.cs.virginia.edu/~evans/" target="_blank" rel="noopener noreferrer" className="text-primary underline decoration-secondary hover:text-primary transition-colors">David Evans</a>
                 , and{" "}
-                <a href="https://www.daviddanks.org/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">David Danks</a>
+                <a href="https://www.daviddanks.org/" target="_blank" rel="noopener noreferrer" className="text-primary underline decoration-secondary hover:text-primary transition-colors">David Danks</a>
                 {" "}discussed the future of AI, moderated by VAISI president Jason Chin. Format: 5–6pm guided panel discussion, 6–6:30pm audience Q&A.
             </>
         ),
@@ -102,7 +106,7 @@ const pastEvents: PastEvent[] = [
         description: (
             <>
                 Eli Lifland, co-author of{" "}
-                <a href="https://ai-2027.com/" target="_blank" rel="noopener noreferrer" className="text-secondary underline hover:text-primary transition-colors">
+                <a href="https://ai-2027.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline decoration-secondary hover:text-primary transition-colors">
                     AI 2027
                 </a>
                 , spoke about his research, current projects in AI safety, and advice for students looking to contribute to the field. The talk was followed by an open Q&A session.
@@ -143,59 +147,60 @@ function PhotoLightbox({ photos, eventTitle, onClose }: { photos: string[]; even
         };
     }, [onClose, goNext, goPrev]);
 
-    return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80" onClick={onClose} role="dialog" aria-modal="true" aria-label={`${eventTitle} photo gallery`}>
-            <div className="relative w-full max-w-3xl mx-4" onClick={(e) => e.stopPropagation()}>
-                <button
-                    onClick={onClose}
-                    className="tap-scale absolute -top-12 right-0 flex size-11 items-center justify-center rounded-xl text-white/80 hover:bg-white/10 hover:text-white"
-                    aria-label="Close photo gallery"
-                >
-                    <X size={28} />
-                </button>
+    return createPortal(
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90" onClick={onClose} role="dialog" aria-modal="true" aria-label={`${eventTitle} photo gallery`}>
+            <button
+                onClick={onClose}
+                className="tap-scale fixed top-6 right-6 z-10 flex size-11 items-center justify-center rounded-xl text-white/80 hover:bg-white/10 hover:text-white"
+                aria-label="Close photo gallery"
+            >
+                <X size={28} />
+            </button>
 
-                <div className="bg-black rounded-lg overflow-hidden">
-                    <Image
-                        src={photos[currentIndex]}
-                        alt={`${eventTitle} photo ${currentIndex + 1}`}
-                        width={800}
-                        height={600}
-                    className="image-outline w-full h-auto"
-                    />
-                </div>
+            {photos.length > 1 && (
+                <>
+                    <button
+                        onClick={(e) => { e.stopPropagation(); goPrev(); }}
+                        className="tap-scale fixed left-2 sm:left-6 top-1/2 z-10 flex size-11 -translate-y-1/2 items-center justify-center rounded-xl text-white/80 hover:bg-white/10 hover:text-white"
+                        aria-label="Previous photo"
+                    >
+                        <ChevronLeft size={36} />
+                    </button>
+                    <button
+                        onClick={(e) => { e.stopPropagation(); goNext(); }}
+                        className="tap-scale fixed right-2 sm:right-6 top-1/2 z-10 flex size-11 -translate-y-1/2 items-center justify-center rounded-xl text-white/80 hover:bg-white/10 hover:text-white"
+                        aria-label="Next photo"
+                    >
+                        <ChevronRight size={36} />
+                    </button>
+                </>
+            )}
 
-                {photos.length > 1 && (
-                    <>
-                        <button
-                            onClick={goPrev}
-                            className="tap-scale absolute left-0 top-1/2 flex size-11 -translate-x-12 -translate-y-1/2 items-center justify-center rounded-xl text-white/80 hover:bg-white/10 hover:text-white"
-                            aria-label="Previous photo"
-                        >
-                            <ChevronLeft size={36} />
-                        </button>
-                        <button
-                            onClick={goNext}
-                            className="tap-scale absolute right-0 top-1/2 flex size-11 translate-x-12 -translate-y-1/2 items-center justify-center rounded-xl text-white/80 hover:bg-white/10 hover:text-white"
-                            aria-label="Next photo"
-                        >
-                            <ChevronRight size={36} />
-                        </button>
-                    </>
-                )}
-
-                <p className="mt-3 text-center text-sm text-white/70 tabular-nums">
-                    {currentIndex + 1} / {photos.length}
-                </p>
+            <div
+                className="relative w-[90vw] h-[80vh] max-w-6xl"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <Image
+                    src={photos[currentIndex]}
+                    alt={`${eventTitle} photo ${currentIndex + 1}`}
+                    fill
+                    className="object-contain"
+                />
             </div>
-        </div>
+
+            <p className="fixed bottom-6 left-1/2 -translate-x-1/2 text-sm text-white/70 tabular-nums">
+                {currentIndex + 1} / {photos.length}
+            </p>
+        </div>,
+        document.body
     );
 }
 
 function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
     return (
-        <div className="surface-card overflow-hidden rounded-2xl bg-white">
+        <div className="surface-card overflow-hidden rounded-2xl bg-white border border-gray-200">
             {event.imageSrc && (
-                <div className="bg-slate-100 flex items-center justify-center relative overflow-hidden" style={{ aspectRatio: '8.5 / 11' }}>
+                <div className="bg-gray-100 flex items-center justify-center relative overflow-hidden" style={{ aspectRatio: '8.5 / 11' }}>
                     <Image
                         src={event.imageSrc}
                         alt={event.title}
@@ -205,25 +210,25 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
                 </div>
             )}
 
-            <div className="p-6">
-                <h3 className="text-xl font-bold text-primary mb-1">{event.title}</h3>
-                <p className="text-sm font-medium text-secondary mb-1">{event.dateRange}</p>
+            <div className="p-4">
+                <h3 className="text-base font-bold text-gray-900 mb-1">{event.title}</h3>
+                <p className="text-xs font-medium text-secondary mb-1">{event.dateRange}</p>
                 {event.location && (
-                    <p className="text-sm font-medium text-secondary mb-3">{event.location}</p>
+                    <p className="text-xs font-medium text-secondary mb-2">{event.location}</p>
                 )}
-                <p className="text-gray-600">{event.description}</p>
+                <p className="text-sm text-gray-500">{event.description}</p>
 
                 {event.links && event.links.length > 0 && (
-                    <div className="mt-4 flex flex-wrap gap-3">
+                    <div className="mt-3 flex flex-wrap gap-4">
                         {event.links.map((link, idx) => (
                             <a
                                 key={idx}
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="tap-scale inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-secondary hover:text-primary"
+                                className="text-link-subtle inline-flex items-center gap-1.5 text-xs text-gray-500"
                             >
-                                <ExternalLink size={14} />
+                                <ExternalLink size={12} />
                                 {link.label}
                             </a>
                         ))}
@@ -239,8 +244,8 @@ function PastEventCard({ event }: { event: PastEvent }) {
 
     return (
         <>
-            <div className="surface-card overflow-hidden rounded-2xl bg-white">
-                <div className="bg-slate-100 flex items-center justify-center relative overflow-hidden" style={{ aspectRatio: '8.5 / 11' }}>
+            <div className="surface-card overflow-hidden rounded-2xl bg-white border border-gray-200">
+                <div className="bg-gray-100 flex items-center justify-center relative overflow-hidden" style={{ aspectRatio: '8.5 / 11' }}>
                     {event.imageSrc ? (
                         <Image
                             src={event.imageSrc}
@@ -249,30 +254,30 @@ function PastEventCard({ event }: { event: PastEvent }) {
                             className="image-outline object-cover"
                         />
                     ) : (
-                        <Calendar className="w-12 h-12 text-gray-300" />
+                        <Calendar className="w-12 h-12 text-gray-400" />
                     )}
                 </div>
 
-                <div className="p-6">
-                    <span className="inline-block text-xs font-semibold text-secondary bg-orange-50 px-2.5 py-1 rounded-full mb-3">
+                <div className="p-4">
+                    <span className="inline-block text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full mb-2">
                         {event.date}
                     </span>
-                    <h3 className="text-xl font-bold text-primary mb-2">
+                    <h3 className="text-base font-bold text-gray-900 mb-1">
                         {event.title}
                     </h3>
-                    <p className="text-gray-600">{event.description}</p>
+                    <p className="text-sm text-gray-500">{event.description}</p>
 
                     {event.links && event.links.length > 0 && (
-                        <div className="mt-3 flex flex-wrap gap-3">
+                        <div className="mt-2 flex flex-wrap gap-4">
                             {event.links.map((link, idx) => (
                                 <a
                                     key={idx}
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="tap-scale inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-secondary hover:text-primary"
+                                    className="text-link-subtle inline-flex items-center gap-1.5 text-xs text-gray-500"
                                 >
-                                    <ExternalLink size={14} />
+                                    <ExternalLink size={12} />
                                     {link.label}
                                 </a>
                             ))}
@@ -280,12 +285,12 @@ function PastEventCard({ event }: { event: PastEvent }) {
                     )}
 
                     {event.photos && event.photos.length > 0 && (
-                        <div className="mt-3">
+                        <div className="mt-2">
                             <button
                                 onClick={() => setLightboxOpen(true)}
-                                className="tap-scale inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-secondary hover:text-primary"
+                                className="text-link-subtle inline-flex items-center gap-1.5 text-xs text-gray-500"
                             >
-                                <Camera size={14} />
+                                <Camera size={12} />
                                 View photos ({event.photos.length})
                             </button>
                         </div>
@@ -306,38 +311,41 @@ function PastEventCard({ event }: { event: PastEvent }) {
 
 export default function EventsPage() {
     return (
-        <div className="flex flex-col min-h-screen">
-            {/* Page Header */}
-            <Section className="bg-primary text-white py-16">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">Events</h1>
-                    <p className="text-xl text-blue-100">
-                        Upcoming and past talks, workshops, and competitions.
-                    </p>
-                </div>
-            </Section>
+        <div className="flex flex-col min-h-screen bg-white">
+            <PageHero
+                title="Events"
+                subtitle="Upcoming and past talks, workshops, and competitions."
+            />
 
             {/* Upcoming Events */}
-            <Section className="bg-slate-100">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-primary mb-6">Upcoming Events</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Section className="bg-gray-50 border-b border-gray-200">
+                <div className="max-w-6xl mx-auto">
+                    <Reveal>
+                        <h2 className={`${sectionTitleClass} text-gray-900 mb-6`}>Upcoming Events</h2>
+                    </Reveal>
+                    <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {upcomingEvents.map((event, idx) => (
-                            <UpcomingEventCard key={idx} event={event} />
+                            <StaggerItem key={idx}>
+                                <UpcomingEventCard event={event} />
+                            </StaggerItem>
                         ))}
-                    </div>
+                    </StaggerGroup>
                 </div>
             </Section>
 
             {/* Past Events */}
             <Section className="bg-white">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-primary mb-6">Past Events</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="max-w-6xl mx-auto">
+                    <Reveal>
+                        <h2 className={`${sectionTitleClass} text-gray-900 mb-6`}>Past Events</h2>
+                    </Reveal>
+                    <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {pastEvents.map((event, idx) => (
-                            <PastEventCard key={idx} event={event} />
+                            <StaggerItem key={idx}>
+                                <PastEventCard event={event} />
+                            </StaggerItem>
                         ))}
-                    </div>
+                    </StaggerGroup>
                 </div>
             </Section>
         </div>
