@@ -1,14 +1,44 @@
-import Section from "@/components/Section";
-import { Calendar, Clock, BookOpen, Check, Users } from "lucide-react";
+'use client';
 
-// Event Types Data
+import Image from "next/image";
+import Section from "@/components/Section";
+import PageHero from "@/components/PageHero";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { sectionTitleClass } from "@/components/sectionTitle";
+import { Calendar, Clock, BookOpen, Check, Mail, Instagram } from "lucide-react";
+import { LinkedInIcon } from "@/components/Icons";
+
+const stayUpdatedCards = [
+    {
+        id: "mailing-list",
+        title: "Mailing List",
+        link: "https://lists.virginia.edu/sympa/subscribe/vaisi_announcements",
+        bg: "bg-secondary",
+    },
+    {
+        id: "groupme",
+        title: "GroupMe",
+        link: "https://groupme.com/join_group/110490963/bxseYw8L",
+        bg: "bg-[#00AFF0]",
+    },
+    {
+        id: "instagram",
+        title: "Instagram",
+        link: "https://www.instagram.com/vaisi_atuva/",
+        bg: "bg-[#E1306C]",
+    },
+    {
+        id: "linkedin",
+        title: "LinkedIn",
+        link: "https://www.linkedin.com/company/vaisi/",
+        bg: "bg-[#0A66C2]",
+    },
+];
+
 const eventTypes = [
     {
         id: 1,
         title: "Intro to AI Safety Fellowship",
-        icon: BookOpen,
-        iconBg: "bg-blue-50",
-        iconColor: "text-primary",
         details: {
             schedule: "Monday, Tuesday, or Wednesday",
             time: "6:15-8:15 PM",
@@ -28,9 +58,6 @@ const eventTypes = [
     {
         id: 2,
         title: "AI Policy Fellowship",
-        icon: BookOpen,
-        iconBg: "bg-orange-50",
-        iconColor: "text-secondary",
         details: {
             schedule: "Monday, Tuesday, or Thursday",
             time: "6:15-8:15 PM",
@@ -61,185 +88,151 @@ const membershipBenefits = [
 
 export default function GetInvolvedPage() {
     return (
-        <div className="flex flex-col min-h-screen">
-            {/* Hero Section */}
-            <Section className="bg-primary text-white py-20">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">Get Involved</h1>
+        <div className="flex flex-col min-h-screen bg-white">
+            <PageHero
+                title="Get Involved"
+                subtitle="Explore our fellowships, become a member, or stay connected through our community channels."
+            />
+
+            {/* Socials */}
+            <Section className="bg-white">
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-0">
+                    <div className="md:w-96 flex-shrink-0 md:pr-16">
+                        <Reveal>
+                            <h2 className="text-[50px] md:text-[86px] font-bold text-gray-900 leading-tight mb-4">Socials</h2>
+                            <p className="text-gray-500 text-lg">Stay up to date with everything we&apos;re involved in.</p>
+                        </Reveal>
+                    </div>
+                    <div className="hidden md:block w-px self-stretch bg-gray-200 flex-shrink-0" />
+                    <StaggerGroup className="md:pl-16 flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4" stagger={0.15}>
+                        {stayUpdatedCards.map((card) => (
+                            <StaggerItem key={card.id}>
+                                <a
+                                    href={card.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`${card.bg} tap-scale flex h-full flex-col items-center justify-center gap-3 rounded-2xl p-6 text-center`}
+                                >
+                                    {card.id === "groupme" && (
+                                        <Image src="/groupme.png" alt="" width={36} height={36} className="invert object-contain" />
+                                    )}
+                                    {card.id === "mailing-list" && (
+                                        <Mail className="w-9 h-9 text-white" />
+                                    )}
+                                    {card.id === "instagram" && (
+                                        <Instagram className="w-9 h-9 text-white" />
+                                    )}
+                                    {card.id === "linkedin" && (
+                                        <LinkedInIcon size={32} className="text-white" />
+                                    )}
+                                    <h3 className="text-base font-bold text-white">{card.title}</h3>
+                                </a>
+                            </StaggerItem>
+                        ))}
+                    </StaggerGroup>
                 </div>
             </Section>
 
             {/* Event Types Section */}
-            <Section className="bg-slate-50 border-t border-gray-100">
-                <h2 className="text-3xl font-bold text-primary mb-10 text-center">Ways to Get Involved</h2>
-                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Section className="bg-white border-t border-gray-200">
+                <Reveal className="max-w-6xl mx-auto">
+                    <h2 className={`${sectionTitleClass} text-gray-900 mb-8`}>Opportunities</h2>
+                </Reveal>
+                <StaggerGroup className="flex flex-col divide-y divide-gray-200 max-w-6xl mx-auto">
                     {eventTypes.map((event) => {
-                        const IconComponent = event.icon;
                         return (
-                            <div key={event.id} className="surface-card overflow-hidden rounded-2xl bg-white">
-                                {/* Header */}
-                                <div className="p-6 border-b border-gray-100">
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <div className={`w-12 h-12 ${event.iconBg} rounded-full flex items-center justify-center`}>
-                                            <IconComponent className={`w-6 h-6 ${event.iconColor}`} />
-                                        </div>
-                                        <h3 className="text-xl font-bold text-gray-800">{event.title}</h3>
-                                    </div>
+                            <StaggerItem key={event.id} className="py-8 first:pt-0">
+                                <div className="mb-4">
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{event.title}</h3>
 
-                                    {/* Details */}
-                                    <div className="space-y-2 text-sm">
-                                        <div className="flex items-center gap-2 text-gray-600">
-                                            <Calendar className="w-4 h-4 text-gray-400" />
+                                    <div className="space-y-2 text-base">
+                                        <div className="flex items-center gap-2 text-gray-500">
+                                            <Calendar className="w-4 h-4" />
                                             <span>{event.details.schedule}</span>
                                         </div>
-                                        <div className="flex items-center gap-2 text-gray-600">
-                                            <Clock className="w-4 h-4 text-gray-400" />
+                                        <div className="flex items-center gap-2 text-gray-500">
+                                            <Clock className="w-4 h-4" />
                                             <span>{event.details.time}</span>
                                         </div>
-                                        <div className="flex items-center gap-2 text-gray-600">
-                                            <BookOpen className="w-4 h-4 text-gray-400" />
+                                        <div className="flex items-center gap-2 text-gray-500">
+                                            <BookOpen className="w-4 h-4" />
                                             <span>{event.details.duration}</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Description */}
-                                <div className="p-6">
-                                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                                        {event.description}
-                                    </p>
-                                    <div className="mb-4 rounded-lg bg-blue-50 px-3 py-2.5 text-sm leading-relaxed text-primary">
-                                        {event.applicationNote}
-                                    </div>
-                                    <div className="flex flex-wrap gap-3">
-                                        <a
-                                            href={event.cta.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="tap-scale button-raised inline-flex min-h-10 items-center rounded-lg bg-primary px-6 py-2 text-sm font-bold text-white hover:bg-blue-900"
-                                        >
-                                            {event.cta.text}
-                                        </a>
-                                        <a
-                                            href={event.syllabus.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="tap-scale button-outline inline-flex min-h-10 items-center rounded-lg px-6 py-2 text-sm font-bold text-primary hover:bg-primary/5"
-                                        >
-                                            {event.syllabus.text}
-                                        </a>
-                                    </div>
+                                <p className="text-gray-500 text-base leading-relaxed mb-4">
+                                    {event.description}
+                                </p>
+                                <div className="mb-4 rounded-lg bg-gray-100 border border-gray-200 px-3 py-2.5 text-base leading-relaxed text-gray-700">
+                                    {event.applicationNote}
                                 </div>
-                            </div>
+                                <div className="flex flex-wrap gap-6 items-center">
+                                    <a
+                                        href={event.cta.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-link text-base text-gray-800"
+                                    >
+                                        {event.cta.text} →
+                                    </a>
+                                    <a
+                                        href={event.syllabus.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-link-subtle text-base text-gray-500"
+                                    >
+                                        {event.syllabus.text}
+                                    </a>
+                                </div>
+                            </StaggerItem>
                         );
                     })}
 
-                    <div className="surface-card md:col-span-2 overflow-hidden rounded-2xl bg-white">
-                        <div className="p-6 border-b border-gray-100">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center shrink-0">
-                                    <Users className="w-6 h-6 text-emerald-700" />
-                                </div>
-                                <h3 className="text-xl font-bold text-gray-800">VAISI Membership</h3>
-                            </div>
-                            <div className="grid sm:grid-cols-3 gap-2 text-sm">
-                                <div className="flex items-center gap-2 text-gray-600">
-                                    <Calendar className="w-4 h-4 text-gray-400 shrink-0" />
-                                    <span>Applications reviewed on a rolling basis</span>
-                                </div>
-                                <div className="flex items-center gap-2 text-gray-600">
-                                    <Clock className="w-4 h-4 text-gray-400 shrink-0" />
-                                    <span>Ongoing</span>
-                                </div>
-                                <div className="flex items-center gap-2 text-gray-600">
-                                    <BookOpen className="w-4 h-4 text-gray-400 shrink-0" />
-                                    <span>Active membership</span>
-                                </div>
-                            </div>
-                        </div>
+                    <StaggerItem className="py-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">VAISI Membership</h3>
 
-                        <div className="p-6">
-                            <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                                Join VAISI&apos;s core community. Strong applicants will have completed a VAISI fellowship or have equivalent experience. Members are expected to remain active through events, socials, co-working, workshops, and competitions.
-                            </p>
-                            <h4 className="text-sm font-bold text-gray-800 mb-3">Membership benefits</h4>
-                            <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 mb-6">
-                                {membershipBenefits.map((benefit) => (
-                                    <li key={benefit} className="flex items-start gap-2.5 text-sm text-gray-600 leading-relaxed">
-                                        <Check className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                                        <span>{benefit}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <a
-                                href="https://airtable.com/appM8XoHX2voW3LQe/pagzBI6YepuXbbfBr/form"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="tap-scale button-raised inline-flex min-h-10 items-center rounded-lg bg-primary px-6 py-2 text-sm font-bold text-white hover:bg-blue-900"
-                            >
-                                Apply for Membership
-                            </a>
+                        <p className="text-gray-500 text-base leading-relaxed mb-4">
+                            Join VAISI&apos;s core community. Strong applicants will have completed a VAISI fellowship or have equivalent experience. Members are expected to remain active through events, socials, co-working, workshops, and competitions.
+                        </p>
+                        <h4 className="text-base font-bold text-gray-900 mb-3">Membership benefits</h4>
+                        <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 mb-6">
+                            {membershipBenefits.map((benefit) => (
+                                <li key={benefit} className="flex items-start gap-2.5 text-base text-gray-500 leading-relaxed">
+                                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                    <span>{benefit}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="mb-4 rounded-lg bg-gray-100 border border-gray-200 px-3 py-2.5 text-base leading-relaxed text-gray-700">
+                            Applications are reviewed on a rolling basis.
                         </div>
-                    </div>
-                </div>
-            </Section>
-
-            {/* Stay Updated Section */}
-            <Section className="bg-white border-t border-gray-100">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-2xl font-bold text-primary mb-3">Stay Updated</h2>
-                    <p className="text-gray-700 mb-6">
-                        Get announcements about upcoming programs, events, and opportunities.
-                    </p>
-                    <div className="flex justify-center gap-4 flex-wrap">
                         <a
-                            href="https://groupme.com/join_group/110490963/bxseYw8L"
+                            href="https://airtable.com/appM8XoHX2voW3LQe/pagzBI6YepuXbbfBr/form"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="tap-scale button-raised inline-flex min-h-12 items-center rounded-lg bg-primary px-8 py-3 font-bold text-white hover:bg-blue-900"
+                            className="text-link text-base text-gray-800"
                         >
-                            Join our GroupMe
+                            Apply for Membership →
                         </a>
-                        <a
-                            href="https://lists.virginia.edu/sympa/subscribe/vaisi_announcements"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="tap-scale button-outline inline-flex min-h-12 items-center rounded-lg px-8 py-3 font-bold text-primary hover:bg-slate-50"
-                        >
-                            Join Mailing List
-                        </a>
-                    </div>
-                </div>
-            </Section>
-
-            {/* Calendar Section */}
-            <Section className="bg-slate-50 border-t border-gray-100">
-                <h2 className="text-3xl font-bold text-primary mb-8 text-center">Event Calendar</h2>
-                <div className="surface-panel max-w-5xl mx-auto overflow-hidden rounded-2xl bg-white">
-                    <iframe
-                        src="https://calendar.google.com/calendar/embed?src=vaisi.club%40gmail.com&ctz=America%2FNew_York"
-                        className="w-full border-0"
-                        style={{ height: "600px" }}
-                        title="VAISI Event Calendar"
-                        scrolling="no"
-                    />
-                </div>
+                    </StaggerItem>
+                </StaggerGroup>
             </Section>
 
             {/* Faculty Call to Action */}
-            <Section className="bg-slate-50 border-t border-gray-100">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-2xl font-bold text-primary mb-4">Faculty & Advisors</h2>
-                    <p className="text-gray-700 mb-6">
+            <Section className="bg-white border-t border-gray-200">
+                <Reveal className="max-w-6xl mx-auto text-center">
+                    <h2 className={`${sectionTitleClass} text-gray-900 mb-4`}>Faculty & Advisors</h2>
+                    <p className="text-gray-500 mb-6">
                         Are you a UVA professor or faculty member interested in AI governance and alignment? We are looking for passionate advisors and faculty champions to help guide our mission. Your expertise and mentorship would be invaluable to our community.
                     </p>
-                    <p className="text-gray-700">
+                    <p className="text-gray-500">
                         Contact us at{" "}
-                        <a href="mailto:vaisi.club@gmail.com" className="text-secondary font-semibold hover:underline">
+                        <a href="mailto:vaisi.club@gmail.com" className="text-primary font-semibold underline decoration-transparent hover:decoration-secondary transition-colors duration-200">
                             vaisi.club@gmail.com
                         </a>
                     </p>
-                </div>
+                </Reveal>
             </Section>
         </div>
     );

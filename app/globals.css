@@ -1,30 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  /* slate-50 */
-  --foreground: #232D4B;
-  /* UVA Blue for text */
+  --background: #ffffff;
+  --foreground: #1a1a1a;
   --primary: #232D4B;
-  --secondary: #E57200;
-  --accent-cream: #f8f5f0;
-  --text-dark: #1a1a1a;
+  --secondary: #dc6c3a;
+  --surface: #f5f5f5;
+  --surface-raised: #ebebeb;
+  --border: rgba(0, 0, 0, 0.08);
   --shadow-border:
-    0 0 0 1px rgba(0, 0, 0, 0.06),
-    0 1px 2px -1px rgba(0, 0, 0, 0.06),
-    0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-border-hover:
     0 0 0 1px rgba(0, 0, 0, 0.08),
-    0 1px 2px -1px rgba(0, 0, 0, 0.08),
-    0 4px 10px rgba(0, 0, 0, 0.07);
+    0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-border-hover:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.10);
   --shadow-raised:
-    0 0 0 1px rgba(0, 0, 0, 0.04),
-    0 2px 4px rgba(0, 0, 0, 0.08),
-    0 8px 20px rgba(35, 45, 75, 0.1);
-  --shadow-raised-hover:
     0 0 0 1px rgba(0, 0, 0, 0.06),
-    0 3px 6px rgba(0, 0, 0, 0.1),
-    0 12px 28px rgba(35, 45, 75, 0.14);
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 8px 20px rgba(0, 0, 0, 0.08);
+  --shadow-raised-hover:
+    0 0 0 1px rgba(0, 0, 0, 0.10),
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    0 16px 32px rgba(0, 0, 0, 0.10);
 }
 
 @theme inline {
@@ -32,8 +29,8 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: var(--font-neue-haas), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-neue-haas), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -78,6 +75,44 @@ body {
 }
 
 @layer utilities {
+  .text-link {
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: color-mix(in srgb, var(--secondary) 50%, transparent);
+    text-decoration-thickness: 1.5px;
+    transition: color 150ms, text-decoration-color 150ms;
+  }
+
+  .text-link:hover {
+    color: var(--primary);
+    text-decoration-color: var(--secondary);
+  }
+
+  .text-link-subtle {
+    font-weight: 500;
+    text-decoration-line: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
+    text-decoration-thickness: 1px;
+    transition: color 150ms, text-decoration-color 150ms;
+  }
+
+  .text-link-subtle:hover {
+    text-decoration-color: currentColor;
+  }
+
+
+  /* Smooth "bold on hover" for inline orange links inside bullet groups */
+  .bullet-link {
+    -webkit-text-stroke-width: 0px;
+    transition: -webkit-text-stroke-width 0.25s ease;
+  }
+
+  .group:hover .bullet-link {
+    -webkit-text-stroke-width: 0.45px;
+  }
+
   .surface-card {
     box-shadow: var(--shadow-border);
     transition-property: box-shadow, transform;
@@ -125,41 +160,19 @@ body {
     outline-offset: -1px;
   }
 
-  .hero-enter {
-    opacity: 0;
-    filter: blur(4px);
-    transform: translateY(12px);
-    animation: hero-enter 480ms cubic-bezier(0.2, 0, 0, 1) forwards;
-  }
-
-  .hero-enter-delay-1 {
-    animation-delay: 100ms;
-  }
-
-  .hero-enter-delay-2 {
-    animation-delay: 200ms;
-  }
-}
-
-@keyframes hero-enter {
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
+  .diamond-pattern {
+    background-image:
+      linear-gradient(45deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.07) 75%, rgba(255, 255, 255, 0.07)),
+      linear-gradient(45deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.07) 75%, rgba(255, 255, 255, 0.07));
+    background-size: 44px 44px;
+    background-position: 0 0, 22px 22px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .surface-card,
-  .tap-scale,
-  .hero-enter {
+  .tap-scale {
     animation: none;
     transition-duration: 0ms;
-  }
-
-  .hero-enter {
-    opacity: 1;
-    filter: none;
-    transform: none;
   }
 }

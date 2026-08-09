@@ -1,127 +1,121 @@
+'use client';
+
+import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import FlipCardSection from "@/components/FlipCardSection";
+import { Reveal, fadeSlideUp, fadeSlideRight, staggerContainer, heroTransition } from "@/components/motion";
+import { sectionTitleClass } from "@/components/sectionTitle";
+
+function CornerAccents({ tone = "white" }: { tone?: "white" | "primary" }) {
+  const border = tone === "white" ? "border-white/25" : "border-primary/15";
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.85 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+        className={`pointer-events-none absolute top-6 right-6 w-16 h-16 border-t-2 border-r-2 ${border}`}
+      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.85 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+        className={`pointer-events-none absolute bottom-6 left-6 w-16 h-16 border-b-2 border-l-2 ${border}`}
+      />
+    </>
+  );
+}
 
 export default function Home() {
+  const heroRef = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-background pt-8 pb-20 md:pt-12 md:pb-28 lg:pt-16 lg:pb-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 items-center">
-            {/* Text Content - takes more space (3/5) */}
-            <div className="text-left lg:col-span-3">
-              <h1 className="hero-enter font-[family-name:var(--font-playfair)] text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-[#1a1a1a] mb-8">
+    <div className="flex flex-col min-h-screen bg-white">
+      {/* Hero Banner */}
+      <section ref={heroRef} className="relative flex items-center min-h-[75vh] overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          style={reducedMotion ? undefined : { scale: heroScale, y: heroY }}
+        >
+          <Image
+            src="/vaisi_banner.JPG"
+            alt="VAISI Banner"
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#232D4B]/80 via-[#0c0c0c]/60 to-black/70" />
+        <CornerAccents tone="white" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer(0.12)}
+            className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12"
+          >
+            <motion.div variants={fadeSlideUp} transition={heroTransition} className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
                 A community at the University of Virginia dedicated to mitigating the{" "}
                 <span className="text-secondary">risks of advanced AI</span>.
               </h1>
-              <div className="hero-enter hero-enter-delay-1 flex flex-wrap gap-4">
-                <a
-                  href="https://groupme.com/join_group/110490963/bxseYw8L"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tap-scale button-raised flex min-h-12 items-center gap-2 rounded-lg bg-[#3c16d3] px-8 py-3 font-bold text-white hover:bg-[#3211b8]"
-                >
-                  Join GroupMe
-                </a>
-                <a
-                  href="https://lists.virginia.edu/sympa/subscribe/vaisi_announcements"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tap-scale button-outline flex min-h-12 items-center gap-2 rounded-lg bg-white px-8 py-3 font-bold text-primary hover:bg-slate-100"
-                >
-                  Join Mailing List
-                </a>
-                <Link
-                  href="/get-involved"
-                  className="tap-scale button-raised flex min-h-12 items-center gap-2 rounded-lg bg-secondary px-8 py-3 font-bold text-white hover:bg-orange-600"
-                >
-                  Get Involved <ArrowRight size={20} />
-                </Link>
-              </div>
-            </div>
+            </motion.div>
 
-            {/* Hero Graphic - takes less space (2/5) */}
-            <div className="hero-enter hero-enter-delay-2 flex justify-center lg:justify-end lg:col-span-2 -mt-10">
-              <Image
-                src="/VAISI_Logo_cropped_smaller_png.png"
-                alt="VAISI Logo"
-                width={500}
-                height={500}
-                className="w-full max-w-md lg:max-w-lg"
-                priority
-              />
-            </div>
-          </div>
+            <motion.div
+              variants={fadeSlideRight}
+              transition={heroTransition}
+              className="flex flex-col gap-6 lg:items-start"
+            >
+              <Link
+                href="/get-involved"
+                className="group inline-flex items-center gap-3 border-b-2 border-white pb-1.5 text-white hover:border-secondary hover:text-secondary transition-colors duration-150"
+              >
+                <span className="text-3xl font-semibold leading-none">Get Involved</span>
+                <ArrowRight className="size-7 flex-shrink-0 transition-transform duration-150 group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Problem & What We Do Section */}
-      <section className="bg-slate-50 border-t border-slate-200 py-16 md:py-20">
+      {/* Flip Cards */}
+      <section className="relative bg-white border-t border-gray-200 py-24 md:py-32">
+        <CornerAccents tone="primary" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-            {/* Why AI Safety? */}
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">An Under-Discussed Challenge</h2>
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">•</span>
-                  <span>
-                    Managing risks from advanced AI is one of the <a href="https://arxiv.org/pdf/2310.17688" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">most important issues</a> of our time.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">•</span>
-                  <span>
-                    Advanced AI could <a href="https://ai-2027.com/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">arrive sooner</a> <a href="https://open.substack.com/pub/helentoner/p/long-timelines-to-advanced-ai-have?utm_campaign=post-expanded-share&utm_medium=web" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">than expected</a>, bringing transformative benefits but also existential risks if developed without adequate safeguards and governance.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">•</span>
-                  <span>
-                    The field desperately needs more researchers, policymakers, and bridge-builders to tackle technical alignment challenges and create robust governance frameworks.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">•</span>
-                  <span>
-                    We&apos;re racing to ensure AI goes well for humanity during this critical window when thoughtful action can meaningfully influence our future.
-                  </span>
-                </li>
-              </ul>
-            </div>
+          <Reveal>
+            <FlipCardSection />
+          </Reveal>
+        </div>
+      </section>
 
-            {/* Our Approach */}
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Our Approach</h2>
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">•</span>
-                  <span>
-                    Equip the UVA community with the knowledge and skills needed to contribute to AI governance and risk reduction through structured learning programs, research opportunities, and public discourse.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">•</span>
-                  <span>
-                    Create clear pathways from interest to impact by connecting members with mentors, career opportunities, and projects in both technical alignment and AI policy/governance.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">•</span>
-                  <span>
-                    Develop both technical expertise and policy fluency in our members, preparing them to be the bridge-builders between researchers and decision-makers that the field lacks.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">•</span>
-                    <span>
-                    In short, we&apos;re UVA&apos;s home for talented, motivated individuals committed to ensuring advanced AI benefits humanity.
-                  </span>
-                </li>
-              </ul>
+      {/* Event Calendar */}
+      <section className="relative bg-white border-t border-gray-200 py-24 md:py-32">
+        <CornerAccents tone="primary" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <h2 className={`${sectionTitleClass} text-gray-900 mb-10`}>Event Calendar</h2>
+            <div className="overflow-hidden rounded-2xl border border-gray-200">
+              <iframe
+                src="https://calendar.google.com/calendar/embed?src=vaisi.club%40gmail.com&ctz=America%2FNew_York"
+                className="w-full border-0"
+                style={{ height: "600px" }}
+                title="VAISI Event Calendar"
+                scrolling="no"
+              />
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

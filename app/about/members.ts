@@ -169,7 +169,7 @@ export const facultyAdvisors: Member[] = [
     {
         id: 2,
         name: "Chirag Agarwal",
-        title: "Assistant Professor of Data Science, UVA",
+        title: "Asst. Professor of Data Science, UVA",
         imageSrc: "/faculty_advisors/chirag_agarwal.png",
         linkedinUrl: "https://www.linkedin.com/in/chirag-agarwal-0a6a43a1/"
     },
