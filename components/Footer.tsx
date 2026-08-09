@@ -1,8 +1,4 @@
-import { DiscordIcon, GroupMeIcon, LinkedInIcon } from './Icons';
-// Note: Discord icon is not in standard lucide-react export names sometimes, but let's try standard.
-// If Discord is missing, we can use a generic link or check docs. Lucide has 'MessageCircle' or similar.
-// Actually, Lucide does have 'Discord' in newer versions, or we can use SVG.
-// Let's stick to safe icons for now or standard Lucide ones.
+import { GroupMeIcon, LinkedInIcon } from './Icons';
 
 export default function Footer() {
     return (
@@ -15,10 +11,6 @@ export default function Footer() {
                         </p>
                     </div>
                     <div className="flex space-x-6">
-                        <a href="https://discord.gg/XyqmJE5emc" target="_blank" rel="noopener noreferrer" className="tap-scale flex size-11 items-center justify-center rounded-xl text-gray-400 hover:bg-white hover:text-[#5865F2]">
-                            <span className="sr-only">Discord</span>
-                            <DiscordIcon size={20} />
-                        </a>
                         <a href="https://groupme.com/join_group/110490963/bxseYw8L" target="_blank" rel="noopener noreferrer" className="tap-scale flex size-11 items-center justify-center rounded-xl text-gray-400 hover:bg-white hover:text-[#00AFF0]">
                             <span className="sr-only">GroupMe</span>
                             <GroupMeIcon size={20} />
