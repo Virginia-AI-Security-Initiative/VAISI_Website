@@ -12,6 +12,13 @@ const announcements: {
     link: string;
 }[] = [
     {
+        id: "interest-meeting-2026",
+        title: "Interest Meeting",
+        summary: "RSVP to our interest meeting on Wednesday, August 26 to learn more about our club! Dinner provided.",
+        link: "https://airtable.com/appM8XoHX2voW3LQe/pagic9ccJ72AZhRsF/form",
+        linkText: "RSVP here →",
+    },
+    {
         id: "fellowship-applications-open-2026",
         title: "Fellowship Applications Open",
         summary: "Apply by September 6 for our upcoming Intro to AI Safety and AI Policy fellowships!",

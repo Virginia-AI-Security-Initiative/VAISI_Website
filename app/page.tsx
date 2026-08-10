@@ -66,7 +66,7 @@ export default function Home() {
             className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12"
           >
             <motion.div variants={fadeSlideUp} transition={heroTransition} className="max-w-2xl">
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-white">
+              <h1 className="text-[2.75rem] md:text-[3.5rem] lg:text-6xl font-bold leading-[1.08] text-white">
                 A community at the University of Virginia dedicated to mitigating the{" "}
                 <span className="text-secondary">risks of advanced AI</span>.
               </h1>
