@@ -13,13 +13,13 @@ interface TeamMemberCardProps {
 export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, chatUrl, graduatingYear }: TeamMemberCardProps) {
     return (
         <div className="surface-card flex items-center gap-4 rounded-3xl bg-white border border-gray-200 p-4">
-            <div className="image-outline relative shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-gray-100">
+            <div className="image-outline relative size-28 shrink-0 overflow-hidden rounded-xl bg-gray-100 shadow-[0_8px_24px_rgba(0,0,0,0.10)]">
                 {imageSrc ? (
                     <Image
                         src={imageSrc}
                         alt={name}
                         fill
-                        sizes="96px"
+                        sizes="112px"
                         className="object-cover object-top"
                     />
                 ) : (

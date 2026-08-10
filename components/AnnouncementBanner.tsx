@@ -15,8 +15,8 @@ const announcements: {
         id: "fellowship-applications-open-2026",
         title: "Fellowship Applications Open",
         summary: "Apply by September 6 for our upcoming Intro to AI Safety and AI Policy fellowships!",
-        link: "https://docs.google.com/document/d/10HcHGxPJ5VpnWoK1sq2nQQ6N85vsy95vgF_T9XGw3Es/edit?usp=sharing",
-        linkText: "Fellowship Syllabi →",
+        link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form",
+        linkText: "Apply here →",
     },
 ];
 

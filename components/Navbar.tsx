@@ -28,9 +28,9 @@ export default function Navbar() {
                             <Image
                                 src="/vaisi_full.jpeg"
                                 alt="VAISI Logo"
-                                width={160}
-                                height={80}
-                                className="h-10 w-auto object-contain"
+                                width={224}
+                                height={112}
+                                className="h-14 w-auto object-contain"
                             />
                         </Link>
                     </div>
