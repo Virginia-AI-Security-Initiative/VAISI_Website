@@ -90,12 +90,11 @@ function ResourceFlipCard({ section }: { section: typeof resourceSections[0] }) 
             {...hoverLift}
         >
             <div
-                className="relative w-full"
+                className="relative w-full aspect-[3/4] md:aspect-[4/5]"
                 style={{
                     transformStyle: "preserve-3d",
                     transition: "transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)",
                     transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
-                    aspectRatio: "4 / 5",
                 }}
             >
                 {/* Front */}
@@ -104,7 +103,7 @@ function ResourceFlipCard({ section }: { section: typeof resourceSections[0] }) 
                     style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
                 >
                     <div className="p-6 flex-shrink-0">
-                        <h3 className="text-3xl font-bold text-gray-900 leading-tight mb-2">{section.title}</h3>
+                        <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-2">{section.title}</h3>
                         <p className="flex items-center gap-1.5 text-sm text-gray-400 select-none">
                             <RotateCcw size={12} />
                             Flip to see resources
