@@ -107,7 +107,7 @@ export default function FlipCardSection() {
         <h2 className="text-[45px] md:text-[75px] font-bold text-gray-900 leading-tight">The Case for AI Safety...</h2>
       </div>
       <div className="hidden md:block w-px self-stretch bg-gray-200 flex-shrink-0" />
-      <StaggerGroup className="md:pl-16 flex-1 grid grid-cols-2 gap-6" stagger={0.15}>
+      <StaggerGroup className="md:pl-16 w-full flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6" stagger={0.15}>
         {cards.map((card) => (
           <StaggerItem key={card.number}>
             <FlipCard card={card} />
