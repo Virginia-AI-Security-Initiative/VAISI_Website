@@ -12,13 +12,6 @@ const announcements: {
     link: string;
 }[] = [
     {
-        id: "summer-reading-group-eoi-2026",
-        title: "Summer Reading Group",
-        summary: "Interested in joining our summer reading group? Fill out our expression of interest form.",
-        link: "https://forms.gle/niHJ5AvKRZW51uHR7",
-        linkText: "Express Interest →",
-    },
-    {
         id: "fellowship-applications-open-2026",
         title: "Fellowship Applications Open",
         summary: "Apply by September 6 for our upcoming Intro to AI Safety and AI Policy fellowships!",
