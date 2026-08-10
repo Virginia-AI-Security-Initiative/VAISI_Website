@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import SiteChrome from "@/components/SiteChrome";
+import { getConfiguredSiteOrigin } from "@/lib/site-url";
 
 const neueHaas = localFont({
   src: [
@@ -16,8 +17,28 @@ const neueHaas = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getConfiguredSiteOrigin() ?? "http://localhost:3000"),
   title: "Virginia AI Security Initiative",
   description: "Official website for the Virginia AI Safety Initiative (VAISI) at the University of Virginia.",
+  openGraph: {
+    title: "Virginia AI Security Initiative",
+    description: "Official website for the Virginia AI Safety Initiative (VAISI) at the University of Virginia.",
+    type: "website",
+    images: [
+      {
+        url: "/vaisi-social-preview.png",
+        width: 1774,
+        height: 887,
+        alt: "Virginia AI Security Initiative logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Virginia AI Security Initiative",
+    description: "Official website for the Virginia AI Safety Initiative (VAISI) at the University of Virginia.",
+    images: ["/vaisi-social-preview.png"],
+  },
 };
 
 export default function RootLayout({
