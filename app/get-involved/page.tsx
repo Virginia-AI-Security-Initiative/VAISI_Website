@@ -96,15 +96,15 @@ export default function GetInvolvedPage() {
 
             {/* Socials */}
             <Section className="bg-white">
-                <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-0">
-                    <div className="md:w-96 flex-shrink-0 md:pr-16">
+                <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
+                    <div className="lg:w-96 flex-shrink-0 lg:pr-16">
                         <Reveal>
                             <h2 className="text-[50px] md:text-[86px] font-bold text-gray-900 leading-tight mb-4">Socials</h2>
                             <p className="text-gray-500 text-lg">Stay up to date with everything we&apos;re involved in.</p>
                         </Reveal>
                     </div>
-                    <div className="hidden md:block w-px self-stretch bg-gray-200 flex-shrink-0" />
-                    <StaggerGroup className="md:pl-16 flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4" stagger={0.15}>
+                    <div className="hidden lg:block w-px self-stretch bg-gray-200 flex-shrink-0" />
+                    <StaggerGroup className="lg:pl-16 w-full flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4" stagger={0.15}>
                         {stayUpdatedCards.map((card) => (
                             <StaggerItem key={card.id}>
                                 <a

@@ -44,7 +44,7 @@ function FlipCard({ card }: { card: typeof cards[0] }) {
       {...hoverLift}
     >
       <div
-        className="relative w-full aspect-[3/4] md:aspect-[2/3]"
+        className="relative w-full aspect-[3/4] lg:aspect-[2/3]"
         style={{
           transformStyle: 'preserve-3d',
           transition: 'transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -101,12 +101,12 @@ function FlipCard({ card }: { card: typeof cards[0] }) {
 
 export default function FlipCardSection() {
   return (
-    <div className="flex flex-col md:flex-row items-center gap-10 md:gap-0">
-      <div className="md:w-96 flex-shrink-0 md:pr-16">
+    <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
+      <div className="lg:w-96 flex-shrink-0 lg:pr-16">
         <h2 className="text-[45px] md:text-[75px] font-bold text-gray-900 leading-tight">The Case for AI Safety...</h2>
       </div>
-      <div className="hidden md:block w-px self-stretch bg-gray-200 flex-shrink-0" />
-      <StaggerGroup className="md:pl-16 w-full flex-1 grid grid-cols-1 md:grid-cols-2 gap-6" stagger={0.15}>
+      <div className="hidden lg:block w-px self-stretch bg-gray-200 flex-shrink-0" />
+      <StaggerGroup className="lg:pl-16 w-full flex-1 grid grid-cols-1 md:grid-cols-2 gap-6" stagger={0.15}>
         {cards.map((card) => (
           <StaggerItem key={card.number}>
             <FlipCard card={card} />
