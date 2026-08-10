@@ -103,7 +103,7 @@ export default function FlipCardSection() {
   return (
     <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
       <div className="lg:w-96 flex-shrink-0 lg:pr-16">
-        <h2 className="text-[45px] md:text-[75px] font-bold text-gray-900 leading-tight">The Case for AI Safety...</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">The Case for AI Safety...</h2>
       </div>
       <div className="hidden lg:block w-px self-stretch bg-gray-200 flex-shrink-0" />
       <StaggerGroup className="lg:pl-16 w-full flex-1 grid grid-cols-1 md:grid-cols-2 gap-6" stagger={0.15}>

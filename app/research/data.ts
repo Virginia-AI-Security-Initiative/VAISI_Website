@@ -157,13 +157,6 @@ export const fellowshipProjects: FellowshipProject[] = [
     fellowship: "AI Governance (Spring '26)",
     date: "2026-05-11",
     },
-    {
-    title: "Should I Work at a Frontier Lab?",
-    url: "/research/fellowship_projects/Should I Work At A Frontier Lab – Vincent Trang.pdf",
-    authors: "Vincent Trang",
-    fellowship: "AI Governance (Spring '26)",
-    date: "2026-04-21",
-    },
 ];
 
 export const allPublications: AnyPub[] = [

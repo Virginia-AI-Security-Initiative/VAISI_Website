@@ -4,7 +4,6 @@ import Image from "next/image";
 import Section from "@/components/Section";
 import PageHero from "@/components/PageHero";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { sectionTitleClass } from "@/components/sectionTitle";
 import { Calendar, Clock, BookOpen, Check, Mail, Instagram } from "lucide-react";
 import { LinkedInIcon } from "@/components/Icons";
 
@@ -92,40 +91,41 @@ export default function GetInvolvedPage() {
             <PageHero
                 title="Get Involved"
                 subtitle="Explore our fellowships, become a member, or stay connected through our community channels."
+                titleClassName="text-4xl md:text-5xl"
             />
 
             {/* Socials */}
             <Section className="bg-white">
-                <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
-                    <div className="lg:w-96 flex-shrink-0 lg:pr-16">
+                <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
+                    <div className="lg:w-80 flex-shrink-0 lg:pr-12">
                         <Reveal>
-                            <h2 className="text-[50px] md:text-[86px] font-bold text-gray-900 leading-tight mb-4">Socials</h2>
-                            <p className="text-gray-500 text-lg">Stay up to date with everything we&apos;re involved in.</p>
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">Socials</h2>
+                            <p className="text-base text-gray-500">Stay up to date with everything we&apos;re involved in.</p>
                         </Reveal>
                     </div>
                     <div className="hidden lg:block w-px self-stretch bg-gray-200 flex-shrink-0" />
-                    <StaggerGroup className="lg:pl-16 w-full flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4" stagger={0.15}>
+                    <StaggerGroup className="lg:pl-12 w-full flex-1 grid grid-cols-2 sm:grid-cols-4 gap-3" stagger={0.15}>
                         {stayUpdatedCards.map((card) => (
                             <StaggerItem key={card.id}>
                                 <a
                                     href={card.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`${card.bg} tap-scale flex h-full flex-col items-center justify-center gap-3 rounded-2xl p-6 text-center`}
+                                    className={`${card.bg} tap-scale flex h-full flex-col items-center justify-center gap-2 rounded-xl p-4 text-center`}
                                 >
                                     {card.id === "groupme" && (
-                                        <Image src="/groupme.png" alt="" width={36} height={36} className="invert object-contain" />
+                                        <Image src="/groupme.png" alt="" width={28} height={28} className="invert object-contain" />
                                     )}
                                     {card.id === "mailing-list" && (
-                                        <Mail className="w-9 h-9 text-white" />
+                                        <Mail className="size-7 text-white" />
                                     )}
                                     {card.id === "instagram" && (
-                                        <Instagram className="w-9 h-9 text-white" />
+                                        <Instagram className="size-7 text-white" />
                                     )}
                                     {card.id === "linkedin" && (
-                                        <LinkedInIcon size={32} className="text-white" />
+                                        <LinkedInIcon size={28} className="text-white" />
                                     )}
-                                    <h3 className="text-base font-bold text-white">{card.title}</h3>
+                                    <h3 className="text-sm font-bold text-white">{card.title}</h3>
                                 </a>
                             </StaggerItem>
                         ))}
@@ -135,9 +135,6 @@ export default function GetInvolvedPage() {
 
             {/* Event Types Section */}
             <Section className="bg-white border-t border-gray-200">
-                <Reveal className="max-w-6xl mx-auto">
-                    <h2 className={`${sectionTitleClass} text-gray-900 mb-8`}>Opportunities</h2>
-                </Reveal>
                 <StaggerGroup className="flex flex-col divide-y divide-gray-200 max-w-6xl mx-auto">
                     {eventTypes.map((event) => {
                         return (
@@ -222,7 +219,7 @@ export default function GetInvolvedPage() {
             {/* Faculty Call to Action */}
             <Section className="bg-white border-t border-gray-200">
                 <Reveal className="max-w-6xl mx-auto text-center">
-                    <h2 className={`${sectionTitleClass} text-gray-900 mb-4`}>Faculty & Advisors</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900 mb-4">Faculty & Advisors</h2>
                     <p className="text-gray-500 mb-6">
                         Are you a UVA professor or faculty member interested in AI governance and alignment? We are looking for passionate advisors and faculty champions to help guide our mission. Your expertise and mentorship would be invaluable to our community.
                     </p>

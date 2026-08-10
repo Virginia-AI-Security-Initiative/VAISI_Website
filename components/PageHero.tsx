@@ -10,6 +10,7 @@ interface PageHeroProps {
   align?: 'left' | 'center';
   aside?: ReactNode;
   size?: 'default' | 'compact';
+  titleClassName?: string;
   className?: string;
 }
 
@@ -28,6 +29,7 @@ export default function PageHero({
   align = 'center',
   aside,
   size = 'default',
+  titleClassName = 'text-5xl md:text-6xl lg:text-7xl',
   className = '',
 }: PageHeroProps) {
   const paddingY = size === 'compact' ? 'py-14 md:py-16' : 'py-20 md:py-24';
@@ -46,7 +48,7 @@ export default function PageHero({
                 animate="visible"
                 variants={fadeSlideUp}
                 transition={heroTransition}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white"
+                className={`${titleClassName} font-bold leading-tight text-white`}
               >
                 {title}
               </motion.h1>
@@ -78,7 +80,7 @@ export default function PageHero({
               animate="visible"
               variants={fadeSlideUp}
               transition={heroTransition}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white"
+              className={`${titleClassName} font-bold text-white`}
             >
               {title}
             </motion.h1>

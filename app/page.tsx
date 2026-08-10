@@ -7,7 +7,6 @@ import { ArrowRight } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import FlipCardSection from "@/components/FlipCardSection";
 import { Reveal, fadeSlideUp, fadeSlideRight, staggerContainer, heroTransition } from "@/components/motion";
-import { sectionTitleClass } from "@/components/sectionTitle";
 
 function CornerAccents({ tone = "white" }: { tone?: "white" | "primary" }) {
   const border = tone === "white" ? "border-white/25" : "border-primary/15";
@@ -67,7 +66,7 @@ export default function Home() {
             className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12"
           >
             <motion.div variants={fadeSlideUp} transition={heroTransition} className="max-w-2xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-white">
                 A community at the University of Virginia dedicated to mitigating the{" "}
                 <span className="text-secondary">risks of advanced AI</span>.
               </h1>
@@ -91,7 +90,7 @@ export default function Home() {
       </section>
 
       {/* Flip Cards */}
-      <section className="relative bg-white border-t border-gray-200 py-24 md:py-32">
+      <section className="relative bg-white border-t border-gray-200 py-16 md:py-20">
         <CornerAccents tone="primary" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
@@ -101,16 +100,15 @@ export default function Home() {
       </section>
 
       {/* Event Calendar */}
-      <section className="relative bg-white border-t border-gray-200 py-24 md:py-32">
+      <section className="relative bg-white border-t border-gray-200 py-16 md:py-20">
         <CornerAccents tone="primary" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <h2 className={`${sectionTitleClass} text-gray-900 mb-10`}>Event Calendar</h2>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900 mb-8">Event Calendar</h2>
             <div className="overflow-hidden rounded-2xl border border-gray-200">
               <iframe
                 src="https://calendar.google.com/calendar/embed?src=vaisi.club%40gmail.com&ctz=America%2FNew_York"
-                className="w-full border-0"
-                style={{ height: "600px" }}
+                className="h-[420px] w-full border-0 md:h-[480px]"
                 title="VAISI Event Calendar"
                 scrolling="no"
               />
