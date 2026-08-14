@@ -15,7 +15,7 @@ const announcements: {
         id: "interest-meeting-2026",
         title: "Interest Meeting",
         summary: "RSVP to our interest meeting on Wednesday, August 26 to learn more about our club! Dinner provided.",
-        link: "https://airtable.com/appM8XoHX2voW3LQe/pagic9ccJ72AZhRsF/form",
+        link: "https://airtable.com/appM8XoHX2voW3LQe/pag8klHsnJ1stf23q/form",
         linkText: "RSVP here →",
     },
     {
