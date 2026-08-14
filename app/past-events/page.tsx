@@ -32,7 +32,33 @@ interface PastEvent {
     links?: EventLink[];
 }
 
-const upcomingEvents: UpcomingEvent[] = [];
+const upcomingEvents: UpcomingEvent[] = [
+    {
+        title: "Interest Meeting",
+        dateRange: "August 26, 2026 at 6:30 PM",
+        location: "Location TBD",
+        description: (
+            <>
+                Come to learn more about VAISI&apos;s mission and ways to get involved. The VAISI team will stay to chat with interested students after the event. Pizza will be served.{" "}
+                <a
+                    href="https://airtable.com/appM8XoHX2voW3LQe/pag8klHsnJ1stf23q/form"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline decoration-secondary hover:text-primary transition-colors"
+                >
+                    RSVP here
+                </a>
+                .
+            </>
+        ),
+    },
+    {
+        title: "Estimathon",
+        dateRange: "September 1, 2026 at 6:30 PM",
+        location: "Location TBD",
+        description: "Come to test your estimation and calibration on AI-related questions! Pizza will be served. There will be $300 in prizes.",
+    },
+];
 
 const pastEvents: PastEvent[] = [
     {
