@@ -34,6 +34,28 @@ interface PastEvent {
 
 const upcomingEvents: UpcomingEvent[] = [
     {
+        title: "AI/ML Fair",
+        dateRange: "August 26, 2026, 3–6 PM",
+        location: "Ern Commons",
+        description: (
+            <>
+                VAISI will have a table at the AI/ML Fair, where you can meet representatives from a diverse set of perspectives on artificial intelligence, including{" "}
+                <a href="https://saiuva.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline decoration-secondary hover:text-primary transition-colors">
+                    Societal AI
+                </a>
+                ,{" "}
+                <a href="https://www.mlatuva.org/" target="_blank" rel="noopener noreferrer" className="text-primary underline decoration-secondary hover:text-primary transition-colors">
+                    ML@UVA
+                </a>
+                ,{" "}
+                <a href="https://www.bai-uva.org/" target="_blank" rel="noopener noreferrer" className="text-primary underline decoration-secondary hover:text-primary transition-colors">
+                    Business AI Institute
+                </a>
+                , and more! Stop by to chat and learn more about what we do.
+            </>
+        ),
+    },
+    {
         title: "Interest Meeting",
         dateRange: "August 26, 2026 at 6:30 PM",
         location: "Location TBD",

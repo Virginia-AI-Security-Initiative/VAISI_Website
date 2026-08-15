@@ -83,7 +83,7 @@ const membershipAccessBenefits = [
 ];
 
 const membershipInvitationBenefits = [
-    "Bi-weekly exclusive socials: catered food, games, movies, discussions, and occasional special guests",
+    "Bi-weekly exclusive socials: catered food, games, movies, activities, and occasional special guests",
     "Member-only talks and networking opportunities with professionals, faculty, and researchers",
     "Weekly member meetings discussing recent news and papers in AI safety, security, and policy",
 ];
