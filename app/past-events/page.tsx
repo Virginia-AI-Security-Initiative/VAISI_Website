@@ -35,7 +35,7 @@ interface PastEvent {
 const upcomingEvents: UpcomingEvent[] = [
     {
         title: "AI/ML Fair",
-        dateRange: "August 26, 2026, 3–6 PM",
+        dateRange: "August 26, 2026 from 3:00 to 6:00 PM",
         location: "Ern Commons",
         description: (
             <>
