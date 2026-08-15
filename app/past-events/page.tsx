@@ -56,7 +56,20 @@ const upcomingEvents: UpcomingEvent[] = [
         title: "Estimathon",
         dateRange: "September 1, 2026 at 6:30 PM",
         location: "Location TBD",
-        description: "Come to test your estimation and calibration on AI-related questions! Pizza will be served. There will be $300 in prizes.",
+        description: (
+            <>
+                Come to test your estimation and calibration on AI-related questions! Pizza will be served. There will be $300 in prizes.{" "}
+                <a
+                    href="https://airtable.com/appM8XoHX2voW3LQe/pag3tTTnen7yZU0yN/form"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline decoration-secondary hover:text-primary transition-colors"
+                >
+                    RSVP here
+                </a>
+                .
+            </>
+        ),
     },
 ];
 

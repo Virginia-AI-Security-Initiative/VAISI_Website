@@ -75,13 +75,16 @@ const eventTypes = [
     }
 ];
 
-const membershipBenefits = [
+const membershipAccessBenefits = [
     "Members-only Slack",
     "1:1 career advising and mentorship",
-    "Preferential access to travel grants for conferences such as EA Global and ControlConf",
-    "Applications for compute grants",
-    "Biweekly exclusive socials with catered food, games, movies, discussions, and occasional special guests",
-    "Member-only talks and networking opportunities",
+    "Applications for compute grants and other research expense funding",
+    "Free merch",
+];
+
+const membershipInvitationBenefits = [
+    "Bi-weekly exclusive socials: catered food, games, movies, discussions, and occasional special guests",
+    "Member-only talks and networking opportunities with professionals, faculty, and researchers",
     "Weekly member meetings discussing recent news and papers in AI safety, security, and policy",
 ];
 
@@ -192,9 +195,33 @@ export default function GetInvolvedPage() {
                         <p className="text-gray-500 text-base leading-relaxed mb-4">
                             Join VAISI&apos;s core community. Strong applicants will have completed a VAISI fellowship or have equivalent experience. Members are expected to remain active through events, socials, co-working, workshops, and competitions.
                         </p>
-                        <h4 className="text-base font-bold text-gray-900 mb-3">Membership benefits</h4>
+                        <h4 className="text-base font-bold text-gray-900 mb-3">Access to:</h4>
+                        <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 mb-5">
+                            {membershipAccessBenefits.slice(0, 2).map((benefit) => (
+                                <li key={benefit} className="flex items-start gap-2.5 text-base text-gray-500 leading-relaxed">
+                                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                    <span>{benefit}</span>
+                                </li>
+                            ))}
+                            <li className="flex items-start gap-2.5 text-base text-gray-500 leading-relaxed">
+                                <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                <span>
+                                    Eligibility for conference and travel funding to events such as{" "}
+                                    <a href="https://www.effectivealtruism.org/ea-global" target="_blank" rel="noopener noreferrer" className="text-link-subtle text-gray-700">EA Global</a>
+                                    {" "}and{" "}
+                                    <a href="https://controlconf.org/" target="_blank" rel="noopener noreferrer" className="text-link-subtle text-gray-700">ControlConf</a>
+                                </span>
+                            </li>
+                            {membershipAccessBenefits.slice(2).map((benefit) => (
+                                <li key={benefit} className="flex items-start gap-2.5 text-base text-gray-500 leading-relaxed">
+                                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                    <span>{benefit}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <h4 className="text-base font-bold text-gray-900 mb-3">Invitation to:</h4>
                         <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 mb-6">
-                            {membershipBenefits.map((benefit) => (
+                            {membershipInvitationBenefits.map((benefit) => (
                                 <li key={benefit} className="flex items-start gap-2.5 text-base text-gray-500 leading-relaxed">
                                     <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                                     <span>{benefit}</span>
