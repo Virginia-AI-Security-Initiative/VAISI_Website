@@ -40,10 +40,10 @@ export const teamMembers: MemberGroup[] = [
         },
         {
             id: 4,
-            name: "Kasia- Esmeralda Wasiak",
+            name: "Aran Jothi",
             title: "Operations Team",
-            imageSrc: "/team/kasia.jpeg",
-            linkedinUrl: "https://www.linkedin.com/in/kasia-esmeralda-wasiak-998268346/"
+            imageSrc: "/team/aran.jpeg",
+            linkedinUrl: "https://www.linkedin.com/in/aranjothi/"
         },
         {
             id: 5,
@@ -61,15 +61,15 @@ export const teamMembers: MemberGroup[] = [
         },
         {
             id: 7,
-            name: "Aran Jothi",
-            title: "Marketing Co-Lead",
-            imageSrc: "/team/aran.jpeg",
-            linkedinUrl: "https://www.linkedin.com/in/aranjothi/"
+            name: "Kasia- Esmeralda Wasiak",
+            title: "Marketing Lead",
+            imageSrc: "/team/kasia.jpeg",
+            linkedinUrl: "https://www.linkedin.com/in/kasia-esmeralda-wasiak-998268346/"
         },
         {
             id: 8,
             name: "Urav Tanna",
-            title: "Marketing Co-Lead",
+            title: "Social Lead",
             imageSrc: "/team/urav.jpeg",
             linkedinUrl: "https://www.linkedin.com/in/urav-tanna-459689257/"
         },
