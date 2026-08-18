@@ -12,6 +12,7 @@ import { ReactNode, useCallback, useEffect, useState } from "react";
 interface EventLink {
     label: string;
     url: string;
+    emphasis?: "primary" | "subtle";
 }
 
 interface UpcomingEvent {
@@ -34,64 +35,48 @@ interface PastEvent {
 
 const upcomingEvents: UpcomingEvent[] = [
     {
-        title: "AI/ML Fair",
+        title: "AI Fair",
         dateRange: "August 26, 2026 from 3:00 to 6:00 PM",
         location: "Ern Commons",
-        description: (
-            <>
-                VAISI will have a table at the AI/ML Fair, where you can meet representatives from a diverse set of perspectives on artificial intelligence, including{" "}
-                <a href="https://saiuva.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline decoration-secondary hover:text-primary transition-colors">
-                    Societal AI
-                </a>
-                ,{" "}
-                <a href="https://www.mlatuva.org/" target="_blank" rel="noopener noreferrer" className="text-primary underline decoration-secondary hover:text-primary transition-colors">
-                    ML@UVA
-                </a>
-                ,{" "}
-                <a href="https://www.bai-uva.org/" target="_blank" rel="noopener noreferrer" className="text-primary underline decoration-secondary hover:text-primary transition-colors">
-                    Business AI Institute
-                </a>
-                , and more! Stop by to chat and learn more about what we do.
-            </>
-        ),
+        description: "VAISI will have a table at the AI Fair! Stop by to chat and learn more about what we do.",
+        links: [
+            {
+                label: "See all participating organizations",
+                url: "http://saiuva.com/pages/fall-ai-fair.html",
+                emphasis: "subtle",
+            },
+            {
+                label: "RSVP",
+                url: "https://docs.google.com/forms/d/e/1FAIpQLSc_D3s053QVjZ6HQcSa6hglI_pr_mOXrlP9lfZ5NvtZ_pu4Rw/viewform",
+                emphasis: "primary",
+            },
+        ],
     },
     {
         title: "Interest Meeting",
         dateRange: "August 26, 2026 at 6:30 PM",
         location: "Location TBD",
-        description: (
-            <>
-                Come to learn more about VAISI&apos;s mission and ways to get involved. The VAISI team will stay to chat with interested students after the event. Pizza will be served.{" "}
-                <a
-                    href="https://airtable.com/appM8XoHX2voW3LQe/pag8klHsnJ1stf23q/form"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary underline decoration-secondary hover:text-primary transition-colors"
-                >
-                    RSVP here
-                </a>
-                .
-            </>
-        ),
+        description: "Come to learn more about VAISI's mission and ways to get involved. The VAISI team will stay to chat with interested students after the event. Pizza will be served.",
+        links: [
+            {
+                label: "RSVP",
+                url: "https://airtable.com/appM8XoHX2voW3LQe/pag8klHsnJ1stf23q/form",
+                emphasis: "primary",
+            },
+        ],
     },
     {
         title: "Estimathon",
         dateRange: "September 1, 2026 at 6:30 PM",
         location: "Location TBD",
-        description: (
-            <>
-                Come to test your estimation and calibration on AI-related questions! Pizza will be served. There will be $300 in prizes.{" "}
-                <a
-                    href="https://airtable.com/appM8XoHX2voW3LQe/pag3tTTnen7yZU0yN/form"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary underline decoration-secondary hover:text-primary transition-colors"
-                >
-                    RSVP here
-                </a>
-                .
-            </>
-        ),
+        description: "Come to test your estimation and calibration on AI-related questions! Pizza will be served. There will be $300 in prizes.",
+        links: [
+            {
+                label: "RSVP",
+                url: "https://airtable.com/appM8XoHX2voW3LQe/pag3tTTnen7yZU0yN/form",
+                emphasis: "primary",
+            },
+        ],
     },
 ];
 
@@ -280,19 +265,26 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
                 <p className="text-sm text-gray-500">{event.description}</p>
 
                 {event.links && event.links.length > 0 && (
-                    <div className="mt-3 flex flex-wrap gap-4">
-                        {event.links.map((link, idx) => (
-                            <a
-                                key={idx}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-link-subtle inline-flex items-center gap-1.5 text-xs text-gray-500"
-                            >
-                                <ExternalLink size={12} />
-                                {link.label}
-                            </a>
-                        ))}
+                    <div className="mt-4 flex flex-col items-start gap-2 border-t border-gray-100 pt-3">
+                        {event.links.map((link) => {
+                            const isPrimary = link.emphasis === "primary";
+
+                            return (
+                                <a
+                                    key={link.url}
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={isPrimary
+                                        ? "tap-scale inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-primary/8 px-3.5 py-2 text-sm font-medium text-primary hover:bg-primary/12"
+                                        : "text-link-subtle inline-flex min-h-11 items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary"
+                                    }
+                                >
+                                    {link.label}
+                                    <ExternalLink size={isPrimary ? 14 : 13} aria-hidden="true" />
+                                </a>
+                            );
+                        })}
                     </div>
                 )}
             </div>
