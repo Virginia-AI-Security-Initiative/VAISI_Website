@@ -39,6 +39,7 @@ const upcomingEvents: UpcomingEvent[] = [
         dateRange: "August 26, 2026 from 3:00 to 6:00 PM",
         location: "Ern Commons",
         description: "VAISI will have a table at the AI Fair! Stop by to chat and learn more about what we do.",
+        imageSrc: "/images/events/fall-ai-fair-2026.png",
         links: [
             {
                 label: "See all participating organizations",
@@ -246,11 +247,12 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
     return (
         <div className="surface-card overflow-hidden rounded-2xl bg-white border border-gray-200">
             {event.imageSrc && (
-                <div className="bg-gray-100 flex items-center justify-center relative overflow-hidden" style={{ aspectRatio: '8.5 / 11' }}>
+                <div className="relative overflow-hidden bg-gray-100" style={{ aspectRatio: "3 / 4" }}>
                     <Image
                         src={event.imageSrc}
-                        alt={event.title}
+                        alt={`${event.title} flyer`}
                         fill
+                        sizes="(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw"
                         className="image-outline object-cover"
                     />
                 </div>
