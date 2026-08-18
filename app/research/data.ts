@@ -78,6 +78,13 @@ export const policyBriefs: PolicyBrief[] = [
 
 export const techPapers: TechPaper[] = [
     {
+        title: "Identifying and Validating Emotion Concept Representations in Gemma 2 2B",
+        url: "https://substack.com/home/post/p-207494344",
+        authors: "Avery Li, Nia Mucher",
+        venue: "VAISI Substack",
+        date: "2026-08-13",
+    },
+    {
         title: "Geometric Concept Representations in Language Models: A 3D Hue-Saturation Manifold in Gemma 2 9B and Manifold Steering",
         url: "https://substack.com/home/post/p-202068395",
         authors: "Aarav Lodha",

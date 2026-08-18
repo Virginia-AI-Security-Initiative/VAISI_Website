@@ -1,10 +1,12 @@
 'use client';
 
+import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Section from "@/components/Section";
 import PageHero from "@/components/PageHero";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { Calendar, Clock, BookOpen, Check, Mail, Instagram } from "lucide-react";
+import { Calendar, Clock, BookOpen, Check, Mail, Instagram, ChevronLeft, ChevronRight } from "lucide-react";
 import { LinkedInIcon } from "@/components/Icons";
 
 const stayUpdatedCards = [
@@ -43,7 +45,7 @@ const eventTypes = [
             time: "6:15-8:15 PM",
             duration: "8 weeks"
         },
-        description: "Build a foundation in AI safety through a weekly reading and discussion group covering advanced AI risks and current safety research. Dinner is provided, there is no mandatory reading outside the fellowship, and participants may complete an optional capstone project.",
+        description: "Build a foundation in AI safety through a weekly reading and discussion group covering advanced AI risks and current safety research. Dinner is provided, there is no mandatory reading outside the fellowship, and participants may complete an optional capstone project. No technical background required.",
         applicationNote: "Applications are reviewed on a rolling basis.",
         cta: {
             text: "Apply by September 6",
@@ -62,7 +64,7 @@ const eventTypes = [
             time: "6:15-8:15 PM",
             duration: "10 weeks"
         },
-        description: "Explore AI policy and governance in a weekly cohort covering technical foundations, frontier policy, national security, safety regulation, corporate governance, and careers. Dinner is provided, with 0-30 minutes of weekly reading and an optional capstone project.",
+        description: "Explore AI policy and governance in a weekly cohort covering technical foundations, frontier policy, national security, safety regulation, corporate governance, and careers. Dinner is provided, with 0-30 minutes of weekly reading and an optional capstone project. No technical background required.",
         applicationNote: "Applications are reviewed on a rolling basis.",
         cta: {
             text: "Apply by September 6",
@@ -74,6 +76,43 @@ const eventTypes = [
         }
     }
 ];
+
+const fellowshipTestimonials = [
+    {
+        before: "VAISI's fellowship is an amazing opportunity to bridge your interest in AI with your interest in politics, governance, social science... everything! [...] it helped me turn my curiosity about AI into ",
+        emphasis: "concrete, actionable career steps that open doors into Washington, DC.",
+        after: "",
+        name: "Hovsep Seferian",
+        image: "/testimonials/hovsep-seferian.png",
+        published: false,
+    },
+    {
+        before: "VAISI connected me to people who showed me opportunities in AI Safety that might ",
+        emphasis: "dramatically change my career trajectory for the better!",
+        after: " 10/10 would recommend.",
+        name: "Vincent Trang",
+        image: "/testimonials/vincent-trang.png",
+        published: true,
+    },
+    {
+        before: "This fellowship gave me a grounding in AI that was immensely helpful. As a public policy major, I didn't know much about the field going in, but finished the program much ",
+        emphasis: "more confident in my approach to regulation and safety.",
+        after: "",
+        name: "Maeve Myers",
+        image: "/testimonials/maeve-myers.png",
+        published: false,
+    },
+    {
+        before: "It was great learn more about the governance and policy sphere, coming from a more technical background!",
+        emphasis: "",
+        after: "",
+        name: "Andrew Broughton",
+        image: "/testimonials/andrew-broughton.png",
+        published: true,
+    },
+];
+
+const publishedFellowshipTestimonials = fellowshipTestimonials.filter(({ published }) => published);
 
 const membershipAccessBenefits = [
     "Members-only Slack",
@@ -87,6 +126,98 @@ const membershipInvitationBenefits = [
     "Member-only talks and networking opportunities with professionals, faculty, and researchers",
     "Weekly member meetings discussing recent news and papers in AI safety, security, and policy",
 ];
+
+function FellowshipTestimonialCarousel() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const reducedMotion = useReducedMotion();
+    const testimonial = publishedFellowshipTestimonials[activeIndex];
+
+    const showPrevious = () => {
+        setActiveIndex((current) => (current - 1 + publishedFellowshipTestimonials.length) % publishedFellowshipTestimonials.length);
+    };
+
+    const showNext = () => {
+        setActiveIndex((current) => (current + 1) % publishedFellowshipTestimonials.length);
+    };
+
+    return (
+        <section
+            className="rounded-2xl bg-primary p-5 text-white shadow-[0_18px_48px_rgba(35,45,75,0.18)] sm:p-6"
+            aria-labelledby="fellowship-testimonials-heading"
+        >
+            <div className="flex items-center justify-between gap-4">
+                <h3 id="fellowship-testimonials-heading" className="text-lg font-bold">Fellowship testimonials</h3>
+                <span className="text-sm tabular-nums text-white/70" aria-live="polite">
+                    {activeIndex + 1} / {publishedFellowshipTestimonials.length}
+                </span>
+            </div>
+
+            <div className="mt-5 overflow-hidden rounded-lg bg-white/[0.08] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]">
+                <AnimatePresence initial={false} mode="wait">
+                    <motion.figure
+                        key={testimonial.name}
+                        initial={{ opacity: 0, x: reducedMotion ? 0 : 12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: reducedMotion ? 0 : -8 }}
+                        transition={{ duration: reducedMotion ? 0 : 0.22, ease: [0.2, 0, 0, 1] }}
+                        className="flex min-h-56 flex-col justify-between p-5 sm:min-h-52 sm:p-6"
+                    >
+                        <blockquote className="text-lg leading-relaxed text-white/85">
+                            &ldquo;{testimonial.before}{testimonial.emphasis && <strong className="font-bold text-white">{testimonial.emphasis}</strong>}{testimonial.after}&rdquo;
+                        </blockquote>
+                        <figcaption className="mt-5 flex items-center gap-3">
+                            <span className="shrink-0 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.16)]">
+                                <Image
+                                    src={testimonial.image}
+                                    alt={`Portrait of ${testimonial.name}`}
+                                    width={56}
+                                    height={56}
+                                    className="size-14 rounded-full object-cover"
+                                />
+                            </span>
+                            <span className="text-base font-bold text-white">{testimonial.name}</span>
+                        </figcaption>
+                    </motion.figure>
+                </AnimatePresence>
+            </div>
+
+            <div className="mt-4 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-2" aria-label="Choose a testimonial">
+                    {publishedFellowshipTestimonials.map((item, index) => (
+                        <button
+                            key={item.name}
+                            type="button"
+                            onClick={() => setActiveIndex(index)}
+                            className="tap-scale flex size-10 items-center justify-center rounded-full"
+                            aria-label={`Show testimonial from ${item.name}`}
+                            aria-current={index === activeIndex ? "true" : undefined}
+                        >
+                            <span className={`block size-2 rounded-full ${index === activeIndex ? "bg-white" : "bg-white/35"}`} />
+                        </button>
+                    ))}
+                </div>
+                <div className="flex items-center gap-2">
+                    <button
+                        type="button"
+                        onClick={showPrevious}
+                        className="tap-scale flex size-11 items-center justify-center rounded-full bg-white/10 text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] hover:bg-white/15"
+                        aria-label="Show previous testimonial"
+                    >
+                        <ChevronLeft className="size-5" aria-hidden="true" />
+                    </button>
+                    <button
+                        type="button"
+                        onClick={showNext}
+                        className="tap-scale flex size-11 items-center justify-center rounded-full bg-white/10 text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] hover:bg-white/15"
+                        aria-label="Show next testimonial"
+                    >
+                        <ChevronRight className="size-5" aria-hidden="true" />
+                    </button>
+                </div>
+            </div>
+        </section>
+    );
+}
 
 export default function GetInvolvedPage() {
     return (
@@ -138,58 +269,64 @@ export default function GetInvolvedPage() {
 
             {/* Event Types Section */}
             <Section className="bg-white border-t border-gray-200">
-                <StaggerGroup className="flex flex-col divide-y divide-gray-200 max-w-6xl mx-auto">
-                    {eventTypes.map((event) => {
-                        return (
-                            <StaggerItem key={event.id} className="py-8 first:pt-0">
-                                <div className="mb-4">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{event.title}</h3>
+                <div className="mx-auto max-w-6xl">
+                    <StaggerGroup className="flex flex-col divide-y divide-gray-200">
+                            {eventTypes.map((event) => {
+                                return (
+                                    <StaggerItem key={event.id} className="py-8 first:pt-0">
+                                        <div className="mb-4">
+                                            <h3 className="text-2xl font-bold text-gray-900 mb-4">{event.title}</h3>
 
-                                    <div className="space-y-2 text-base">
-                                        <div className="flex items-center gap-2 text-gray-500">
-                                            <Calendar className="w-4 h-4" />
-                                            <span>{event.details.schedule}</span>
+                                            <div className="space-y-2 text-base">
+                                                <div className="flex items-center gap-2 text-gray-500">
+                                                    <Calendar className="w-4 h-4" />
+                                                    <span>{event.details.schedule}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2 text-gray-500">
+                                                    <Clock className="w-4 h-4" />
+                                                    <span>{event.details.time}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2 text-gray-500">
+                                                    <BookOpen className="w-4 h-4" />
+                                                    <span>{event.details.duration}</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="flex items-center gap-2 text-gray-500">
-                                            <Clock className="w-4 h-4" />
-                                            <span>{event.details.time}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2 text-gray-500">
-                                            <BookOpen className="w-4 h-4" />
-                                            <span>{event.details.duration}</span>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <p className="text-gray-500 text-base leading-relaxed mb-4">
-                                    {event.description}
-                                </p>
-                                <div className="mb-4 rounded-lg bg-gray-100 border border-gray-200 px-3 py-2.5 text-base leading-relaxed text-gray-700">
-                                    {event.applicationNote}
-                                </div>
-                                <div className="flex flex-wrap gap-6 items-center">
-                                    <a
-                                        href={event.cta.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-link text-base text-gray-800"
-                                    >
-                                        {event.cta.text} →
-                                    </a>
-                                    <a
-                                        href={event.syllabus.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-link-subtle text-base text-gray-500"
-                                    >
-                                        {event.syllabus.text}
-                                    </a>
-                                </div>
-                            </StaggerItem>
-                        );
-                    })}
+                                        <p className="text-gray-500 text-base leading-relaxed mb-4">
+                                            {event.description}
+                                        </p>
+                                        <div className="mb-4 rounded-lg bg-gray-100 border border-gray-200 px-3 py-2.5 text-base leading-relaxed text-gray-700">
+                                            {event.applicationNote}
+                                        </div>
+                                        <div className="flex flex-wrap gap-6 items-center">
+                                            <a
+                                                href={event.cta.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-link text-base text-gray-800"
+                                            >
+                                                {event.cta.text} →
+                                            </a>
+                                            <a
+                                                href={event.syllabus.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-link-subtle text-base text-gray-500"
+                                            >
+                                                {event.syllabus.text}
+                                            </a>
+                                        </div>
+                                    </StaggerItem>
+                                );
+                            })}
+                    </StaggerGroup>
 
-                    <StaggerItem className="py-8">
+                    <Reveal className="mt-10">
+                        <FellowshipTestimonialCarousel />
+                    </Reveal>
+
+                    <Reveal className="mt-12 border-t border-gray-200 pt-12">
                         <h3 className="text-2xl font-bold text-gray-900 mb-4">VAISI Membership</h3>
 
                         <p className="text-gray-500 text-base leading-relaxed mb-4">
@@ -239,8 +376,8 @@ export default function GetInvolvedPage() {
                         >
                             Apply for Membership →
                         </a>
-                    </StaggerItem>
-                </StaggerGroup>
+                    </Reveal>
+                </div>
             </Section>
 
             {/* Faculty Call to Action */}
