@@ -56,8 +56,9 @@ const upcomingEvents: UpcomingEvent[] = [
     {
         title: "Interest Meeting",
         dateRange: "August 26, 2026 at 6:30 PM",
-        location: "Location TBD",
+        location: "Monroe 130",
         description: "Come to learn more about VAISI's mission and ways to get involved. The VAISI team will stay to chat with interested students after the event. Pizza will be served.",
+        imageSrc: "/images/events/interest-meeting-2026.png",
         links: [
             {
                 label: "RSVP",
