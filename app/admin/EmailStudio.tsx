@@ -48,6 +48,7 @@ type EditorDraft = {
   body: string;
   distributionContext: AdminEmailDistribution;
   audience: string;
+  recipient: string;
   status: AdminEmailStatus;
   sentDate: string;
   styleWeight: AdminEmailStyleWeight;
@@ -62,6 +63,7 @@ const emptyDraft: EditorDraft = {
   body: '',
   distributionContext: 'announcement_list',
   audience: 'VAISI announcement list',
+  recipient: '',
   status: 'draft',
   sentDate: '',
   styleWeight: 'primary',
@@ -77,6 +79,7 @@ function draftFromEmail(email: AdminEmail): EditorDraft {
     body: email.body,
     distributionContext: email.distribution_context,
     audience: email.audience,
+    recipient: email.recipient ?? '',
     status: email.status,
     sentDate: email.sent_date ?? '',
     styleWeight: email.style_weight,
@@ -90,6 +93,7 @@ function draftFromRevision(revision: AdminEmailRevision): EditorDraft {
     body: revision.body,
     distributionContext: revision.distribution_context,
     audience: revision.audience,
+    recipient: revision.recipient ?? '',
     status: revision.status,
     sentDate: revision.sent_date ?? '',
     styleWeight: revision.style_weight,
@@ -187,6 +191,7 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
         !normalizedQuery ||
         email.subject?.toLowerCase().includes(normalizedQuery) ||
         email.audience.toLowerCase().includes(normalizedQuery) ||
+        email.recipient?.toLowerCase().includes(normalizedQuery) ||
         email.body.toLowerCase().includes(normalizedQuery);
 
       return matchesContext && matchesStatus && matchesQuery;
@@ -406,7 +411,7 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search subject or audience"
+              placeholder="Search subject, audience, or recipient"
               className="min-h-11 w-full rounded-xl border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-sm outline-none transition-[border-color,box-shadow] duration-150 focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
             />
           </label>
@@ -589,6 +594,16 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
                     required
                     value={draft.audience}
                     onChange={(event) => updateDraft('audience', event.target.value)}
+                    className={inputClass}
+                  />
+                </label>
+                <label className="text-sm font-medium text-slate-700 sm:col-span-2">
+                  Recipient
+                  <input
+                    name="recipient"
+                    value={draft.recipient}
+                    onChange={(event) => updateDraft('recipient', event.target.value)}
+                    placeholder="person-or-list@virginia.edu"
                     className={inputClass}
                   />
                 </label>

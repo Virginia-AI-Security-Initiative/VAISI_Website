@@ -10,6 +10,7 @@ export type AdminEmailSeed = {
   body: string;
   distribution_context: AdminEmailDistribution;
   audience: string;
+  recipient?: string | null;
   status: AdminEmailStatus;
   sent_date: string | null;
   style_weight: AdminEmailStyleWeight;
@@ -306,6 +307,7 @@ Thanks,
 VAISI Officer Team`,
   distribution_context: 'external_list',
   audience: definition.audience,
+  recipient: definition.slug === 'outreach-ailist' ? 'aboutai@virginia.edu' : null,
   status: 'draft',
   sent_date: null,
   style_weight: 'excluded',

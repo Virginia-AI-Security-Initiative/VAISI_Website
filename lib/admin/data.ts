@@ -161,13 +161,13 @@ export async function getAdminDashboardData(
     supabase
       .from('admin_emails')
       .select(
-        'id, slug, subject, body, distribution_context, audience, status, sent_date, style_weight, source_notes, created_by, updated_by, created_at, updated_at'
+        'id, slug, subject, body, distribution_context, audience, recipient, status, sent_date, style_weight, source_notes, created_by, updated_by, created_at, updated_at'
       )
       .order('updated_at', { ascending: false }),
     supabase
       .from('admin_email_revisions')
       .select(
-        'id, email_id, subject, body, distribution_context, audience, status, sent_date, style_weight, source_notes, saved_by, saved_at'
+        'id, email_id, subject, body, distribution_context, audience, recipient, status, sent_date, style_weight, source_notes, saved_by, saved_at'
       )
       .order('saved_at', { ascending: false })
       .limit(250),

@@ -96,6 +96,7 @@ function emailFields(formData: FormData) {
       emailDistributionValues
     ),
     audience: requiredField(formData, 'audience', 'Audience'),
+    recipient: optionalTextField(formData, 'recipient'),
     status: enumField(formData, 'status', 'Status', emailStatusValues),
     sent_date: optionalDate(optionalTextField(formData, 'sentDate')),
     style_weight: enumField(
@@ -705,7 +706,7 @@ export async function restoreEmailRevision(formData: FormData): Promise<ActionRe
     const { data: revision, error: revisionError } = await supabase
       .from('admin_email_revisions')
       .select(
-        'subject, body, distribution_context, audience, status, sent_date, style_weight, source_notes'
+        'subject, body, distribution_context, audience, recipient, status, sent_date, style_weight, source_notes'
       )
       .eq('id', revisionId)
       .eq('email_id', emailId)

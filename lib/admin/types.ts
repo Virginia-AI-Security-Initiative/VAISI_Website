@@ -57,6 +57,7 @@ export type AdminEmail = {
   body: string;
   distribution_context: AdminEmailDistribution;
   audience: string;
+  recipient: string | null;
   status: AdminEmailStatus;
   sent_date: string | null;
   style_weight: AdminEmailStyleWeight;
@@ -74,6 +75,7 @@ export type AdminEmailRevision = {
   body: string;
   distribution_context: AdminEmailDistribution;
   audience: string;
+  recipient: string | null;
   status: AdminEmailStatus;
   sent_date: string | null;
   style_weight: AdminEmailStyleWeight;
