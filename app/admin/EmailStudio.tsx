@@ -23,6 +23,10 @@ import {
   restoreEmailRevision,
   updateEmail,
 } from '@/app/admin/actions';
+import RichTextEmailEditor, {
+  emailBodyToHtml,
+  emailBodyToPlainText,
+} from '@/app/admin/RichTextEmailEditor';
 import type {
   ActionResult,
   AdminEmail,
@@ -114,22 +118,6 @@ function formatTimestamp(value: string) {
   }).format(new Date(value));
 }
 
-function plainTextPreview(value: string) {
-  return value
-    .replace(/\*\*/g, '')
-    .replace(/\[([^\]]+)]\([^)]+\)/g, '$1')
-    .replace(/^#+\s+/gm, '');
-}
-
-function plainTextForCopy(value: string) {
-  return value
-    .replace(/\*\*/g, '')
-    .replace(/\[([^\]]+)]\(([^)]+)\)/g, (_match, label: string, url: string) =>
-      label === url ? url : `${label} (${url})`
-    )
-    .replace(/^#+\s+/gm, '');
-}
-
 function escapeHtml(value: string) {
   return value
     .replace(/&/g, '&amp;')
@@ -137,46 +125,6 @@ function escapeHtml(value: string) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
-}
-
-function inlineMarkdownHtml(value: string) {
-  return escapeHtml(value)
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(
-      /\[([^\]]+)]\((https?:\/\/[^)]+)\)/g,
-      '<a href="$2" style="color:#0563c1;text-decoration:underline">$1</a>'
-    );
-}
-
-function richEmailHtml(value: string) {
-  const blocks: string[] = [];
-  let orderedListOpen = false;
-
-  for (const line of value.split('\n')) {
-    const listItem = line.match(/^\d+\.\s+(.+)$/);
-
-    if (listItem) {
-      if (!orderedListOpen) {
-        blocks.push('<ol>');
-        orderedListOpen = true;
-      }
-      blocks.push(`<li>${inlineMarkdownHtml(listItem[1])}</li>`);
-      continue;
-    }
-
-    if (orderedListOpen) {
-      blocks.push('</ol>');
-      orderedListOpen = false;
-    }
-
-    blocks.push(line ? `<div>${inlineMarkdownHtml(line)}</div>` : '<div><br></div>');
-  }
-
-  if (orderedListOpen) {
-    blocks.push('</ol>');
-  }
-
-  return blocks.join('');
 }
 
 function statusIcon(status: AdminEmailStatus) {
@@ -344,16 +292,17 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
 
   async function copyEmail() {
     const subjectLine = draft.subject ? `Subject: ${draft.subject}\n\n` : '';
-    const plainText = `${subjectLine}${plainTextForCopy(draft.body)}`;
+    const plainText = `${subjectLine}${emailBodyToPlainText(draft.body)}`;
     const subjectHtml = draft.subject
       ? `<div><strong>Subject:</strong> ${escapeHtml(draft.subject)}</div><div><br></div>`
       : '';
+    const outlookHtml = `<html><body style="font-family:Arial,sans-serif;font-size:11pt;color:#000000">${subjectHtml}${emailBodyToHtml(draft.body)}</body></html>`;
 
     if ('ClipboardItem' in window && navigator.clipboard.write) {
       await navigator.clipboard.write([
         new ClipboardItem({
           'text/plain': new Blob([plainText], { type: 'text/plain' }),
-          'text/html': new Blob([`${subjectHtml}${richEmailHtml(draft.body)}`], {
+          'text/html': new Blob([outlookHtml], {
             type: 'text/html',
           }),
         }),
@@ -551,7 +500,7 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
                         {copied ? <Check size={17} aria-hidden="true" /> : <Copy size={17} aria-hidden="true" />}
                       </motion.span>
                     </AnimatePresence>
-                    {copied ? 'Copied' : 'Copy'}
+                    {copied ? 'Copied for Outlook' : 'Copy for Outlook'}
                   </button>
                   <button
                     type="submit"
@@ -655,20 +604,16 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
 
             <div className="grid gap-5 2xl:grid-cols-[minmax(0,1.15fr)_minmax(360px,0.85fr)]">
               <div className="rounded-2xl bg-white p-5 shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_2px_-1px_rgba(0,0,0,0.06),0_2px_4px_rgba(0,0,0,0.04)] sm:p-6">
-                <label className="text-sm font-medium text-slate-700">
+                <div className="text-sm font-medium text-slate-700">
                   Email body
-                  <textarea
-                    name="body"
-                    required
-                    rows={26}
+                  <input type="hidden" name="body" value={draft.body} />
+                  <RichTextEmailEditor
                     value={draft.body}
-                    onChange={(event) => updateDraft('body', event.target.value)}
-                    placeholder="Write the email here…"
-                    className={`${inputClass} resize-y font-sans leading-6`}
+                    onChange={(value) => updateDraft('body', value)}
                   />
-                </label>
+                </div>
                 <p className="mt-2 text-xs leading-5 text-slate-500">
-                  Markdown links and bold text are preserved. Copy produces clean plain text for pasting into an email composer.
+                  Format text and links here, then use Copy for Outlook to preserve them when pasting into Outlook.
                 </p>
                 <label className="mt-5 block text-sm font-medium text-slate-700">
                   Internal notes
@@ -698,9 +643,14 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
                         <p className="mt-1 text-pretty font-semibold text-slate-950">{draft.subject}</p>
                       </div>
                     ) : null}
-                    <div className="mt-4 whitespace-pre-wrap text-sm leading-6 text-slate-700">
-                      {plainTextPreview(draft.body) || 'Your email preview will appear here.'}
-                    </div>
+                    {draft.body ? (
+                      <div
+                        className="mt-4 text-sm leading-6 text-slate-700 [&_a]:text-[#0563c1] [&_a]:underline [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:pl-7 [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-7"
+                        dangerouslySetInnerHTML={{ __html: emailBodyToHtml(draft.body) }}
+                      />
+                    ) : (
+                      <p className="mt-4 text-sm leading-6 text-slate-500">Your email preview will appear here.</p>
+                    )}
                   </div>
                 </section>
 
