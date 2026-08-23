@@ -141,11 +141,25 @@ Click here to unsubscribe: ${unsubscribeUrl}`,
   },
 ];
 
-const sharedLogistics = `There are three places you can find us next week:
+const introFellowshipSyllabus =
+  '[Intro to AI Safety Fellowship](https://docs.google.com/document/d/10HcHGxPJ5VpnWoK1sq2nQQ6N85vsy95vgF_T9XGw3Es/edit?tab=t.0)';
+const policyFellowshipSyllabus =
+  '[AI Policy Fellowship](https://docs.google.com/document/d/10HcHGxPJ5VpnWoK1sq2nQQ6N85vsy95vgF_T9XGw3Es/edit?tab=t.uuornxg83lhk)';
 
-1. **Club Fair:** Monday, August 24 from 11 AM–3 PM at **table 59 on Peabody Lawn**. [Find us on the map.](https://www.instagram.com/p/DcR23nRiSpy/?igsh=MWEzZGVhMHE1NjN3Yw%3D%3D)
-2. **AI Fair:** Wednesday, August 26 from 3–6 PM in Ern Commons. [RSVP here.](https://docs.google.com/forms/d/e/1FAIpQLSc_D3s053QVjZ6HQcSa6hglI_pr_mOXrlP9lfZ5NvtZ_pu4Rw/viewform)
-3. **Interest Meeting:** Wednesday, August 26 at 6:30 PM in Monroe 130. Pizza will be served! [RSVP here.](https://airtable.com/appM8XoHX2voW3LQe/pag8klHsnJ1stf23q/form)`;
+function addFellowshipSyllabusLinks(value: string) {
+  return value
+    .replace(
+      'Intro to AI Safety and AI Policy fellowships',
+      `${introFellowshipSyllabus.replace(' Fellowship]', ']')} and ${policyFellowshipSyllabus.replace(' Fellowship]', ']')} fellowships`
+    )
+    .replace('Intro to AI Safety Fellowship', introFellowshipSyllabus)
+    .replace('AI Policy Fellowship', policyFellowshipSyllabus);
+}
+
+const sharedLogistics = `There are two places you can find us next week:
+
+1. **AI Fair:** Wednesday, August 26 from 3–6 PM in Ern Commons. [RSVP here.](https://docs.google.com/forms/d/e/1FAIpQLSc_D3s053QVjZ6HQcSa6hglI_pr_mOXrlP9lfZ5NvtZ_pu4Rw/viewform)
+2. **Interest Meeting:** Wednesday, August 26 at 6:30 PM in Monroe 130. Pizza will be served! [RSVP here.](https://airtable.com/appM8XoHX2voW3LQe/pag8klHsnJ1stf23q/form)`;
 
 const outreachDefinitions: Array<{
   slug: string;
@@ -282,7 +296,7 @@ const outreachEmails: AdminEmailSeed[] = outreachDefinitions.map((definition) =>
 
 ${definition.pitch}
 
-${definition.programs} Learn more at [vaisi.org](https://vaisi.org).
+${addFellowshipSyllabusLinks(definition.programs)} Learn more at [vaisi.org](https://vaisi.org).
 
 ${sharedLogistics}
 
