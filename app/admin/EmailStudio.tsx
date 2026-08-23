@@ -296,7 +296,7 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
     const subjectHtml = draft.subject
       ? `<div><strong>Subject:</strong> ${escapeHtml(draft.subject)}</div><div><br></div>`
       : '';
-    const outlookHtml = `<html><body style="font-family:Arial,sans-serif;font-size:11pt;color:#000000">${subjectHtml}${emailBodyToHtml(draft.body)}</body></html>`;
+    const outlookHtml = `<html><body>${subjectHtml}${emailBodyToHtml(draft.body)}</body></html>`;
 
     if ('ClipboardItem' in window && navigator.clipboard.write) {
       await navigator.clipboard.write([
