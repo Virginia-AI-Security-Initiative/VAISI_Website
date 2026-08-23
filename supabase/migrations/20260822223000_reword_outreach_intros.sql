@@ -92,3 +92,16 @@ from outreach_rewrites as rewrite
 where email.slug = rewrite.slug
   and email.distribution_context = 'external_list'
   and position(rewrite.old_pitch in email.body) > 0;
+
+update public.admin_emails
+set body = replace(
+  body,
+  'If you are interested in learning about questions like how we can evaluate, interpret, and control increasingly capable AI systems, we would love to introduce you to the Virginia AI Security Initiative (VAISI). We bring together UVA students interested in technical AI safety, AI governance, and the broader effects of advanced AI.',
+  'The Virginia AI Security Initiative (VAISI) is a UVA student organization focused on reducing risks from increasingly capable AI systems. Our technical work explores how we can evaluate, interpret, and control advanced models, alongside questions in AI governance and the broader effects of AI.'
+)
+where slug = 'outreach-computer-science'
+  and distribution_context = 'external_list'
+  and position(
+    'If you are interested in learning about questions like how we can evaluate, interpret, and control increasingly capable AI systems, we would love to introduce you to the Virginia AI Security Initiative (VAISI). We bring together UVA students interested in technical AI safety, AI governance, and the broader effects of advanced AI.'
+    in body
+  ) > 0;
