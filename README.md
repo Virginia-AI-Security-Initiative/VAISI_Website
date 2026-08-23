@@ -24,7 +24,7 @@ This is the official website for the Virginia AI Security Initiative at UVA. It 
 vaisi-website/
 ├── app/                         # App Router directory (routes & layout)
 │   ├── about/                   # /about — mission, team, "Our Path Forward" timeline
-│   ├── admin/                   # /admin — exec-only task/event dashboard (Supabase-gated)
+│   ├── admin/                   # /admin — exec-only email/task/event dashboard (Supabase-gated)
 │   ├── auth/                    # OAuth sign-in/callback/sign-out routes
 │   ├── blog/                    # /blog — redirects to the VAISI Substack
 │   ├── get-involved/            # /get-involved — socials, fellowships, membership
@@ -37,6 +37,7 @@ vaisi-website/
 │
 ├── components/                  # Reusable UI components (Navbar, Footer, PageHero, motion primitives, etc.)
 ├── lib/                         # Supabase clients, admin data layer, site-url resolution
+├── email_archive/               # Tracked email corpus, provenance, and fallback drafting guidance
 ├── public/                      # Static assets (images, icons)
 ├── supabase/migrations/         # Postgres schema for the admin dashboard
 │
@@ -52,6 +53,11 @@ See `CLAUDE.md` for the full architecture writeup (page-by-page breakdown, desig
 
 ### Content updates
 Static content (announcements, resource links, event listings, research publications, etc.) lives in plain arrays/objects at the top of each `app/<route>/page.tsx`, or in a dedicated `data.ts`/`members.ts` file for larger datasets (`app/about/members.ts`, `app/research/data.ts`). Edit those directly — there is no CMS.
+
+The exception is the authenticated admin email library. Current email drafts
+and sent versions are stored in Supabase through `/admin`; repository seed data
+lives in `lib/admin/email-seeds.ts`, and source provenance lives in
+`email_archive/`.
 
 ### Styling
 - **Colors**: CSS variables in `app/globals.css` — primary `#232D4B` (UVA navy), secondary `#dc6c3a` (UVA orange), background `#ffffff`.

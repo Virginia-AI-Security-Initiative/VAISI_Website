@@ -1,7 +1,11 @@
 import { redirect } from 'next/navigation';
 import { ShieldCheck } from 'lucide-react';
 import AdminDashboard from '@/app/admin/AdminDashboard';
-import { getAdminDashboardData, getCurrentExecAccess } from '@/lib/admin/data';
+import {
+  ensureAdminEmailSeeds,
+  getAdminDashboardData,
+  getCurrentExecAccess,
+} from '@/lib/admin/data';
 import { createSupabaseServerClient, getSupabaseConfig } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
@@ -40,7 +44,7 @@ function AdminSignIn() {
         </div>
         <h1 className="text-3xl font-semibold">VAISI Admin</h1>
         <p className="mt-4 max-w-lg text-slate-300">
-          Exec-only planning space for tasks, events, and calendar coordination.
+          Exec-only planning space for emails, tasks, events, and calendar coordination.
         </p>
         <div className="mt-8">
           <a
@@ -75,6 +79,7 @@ export default async function AdminPage() {
     redirect('/');
   }
 
+  await ensureAdminEmailSeeds(supabase, user.id);
   const data = await getAdminDashboardData(supabase);
 
   return (

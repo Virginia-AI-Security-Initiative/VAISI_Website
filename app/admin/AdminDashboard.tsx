@@ -13,6 +13,7 @@ import {
   Link as LinkIcon,
   ListChecks,
   LogOut,
+  Mail,
   MapPin,
   Pencil,
   Plus,
@@ -33,13 +34,15 @@ import {
   updateEvent,
   updateTask,
 } from '@/app/admin/actions';
+import EmailStudio from '@/app/admin/EmailStudio';
 import type { ActionResult, AdminDashboardData, AdminEvent, AdminTask, ExecMember } from '@/lib/admin/types';
 
-type TabKey = 'tasks' | 'events' | 'calendar' | 'exec';
+type TabKey = 'emails' | 'tasks' | 'events' | 'calendar' | 'exec';
 type FilterMode = 'all' | 'primary' | 'involved';
 type AdminAction = (formData: FormData) => Promise<ActionResult>;
 
 const tabItems: { key: TabKey; label: string; icon: LucideIcon }[] = [
+  { key: 'emails', label: 'Emails', icon: Mail },
   { key: 'tasks', label: 'Tasks', icon: ListChecks },
   { key: 'events', label: 'Events', icon: CalendarDays },
   { key: 'calendar', label: 'Calendar', icon: CalendarDays },
@@ -498,7 +501,7 @@ export default function AdminDashboard({
   data: AdminDashboardData;
 }) {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<TabKey>('tasks');
+  const [activeTab, setActiveTab] = useState<TabKey>('emails');
   const [taskFilterMode, setTaskFilterMode] = useState<FilterMode>('all');
   const [taskFilterMemberId, setTaskFilterMemberId] = useState('');
   const [eventFilterMode, setEventFilterMode] = useState<FilterMode>('all');
@@ -707,6 +710,10 @@ export default function AdminDashboard({
               </div>
             ) : null}
           </header>
+
+          {activeTab === 'emails' ? (
+            <EmailStudio emails={data.emails} revisions={data.emailRevisions} />
+          ) : null}
 
           {activeTab === 'tasks' ? (
             <div className="grid gap-5 xl:grid-cols-[380px_1fr]">

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "archive_purpose": "Historical VAISI listserv emails used for style calibration, not current event facts.",
+  "emails": [
+    {
+      "id": "001",
+      "file": "emails/001-general-body-reminder.md",
+      "provided_sample_numbers": [1, 5],
+      "duplicate_count": 2,
+      "date_sent": null,
+      "date_precision": "unknown",
+      "message_type": "reminder",
+      "event_type": "general-body",
+      "sender": "VAISI Officer Team",
+      "signature_mode": "organizational",
+      "has_unsubscribe_footer": true,
+      "related_site_sources": ["app/events/page.tsx"]
+    },
+    {
+      "id": "002",
+      "file": "emails/002-summer-reading-group-announcement.md",
+      "provided_sample_numbers": [2],
+      "duplicate_count": 1,
+      "date_sent": null,
+      "date_precision": "unknown",
+      "message_type": "announcement",
+      "event_type": "reading-group",
+      "sender": "Seth Lifland",
+      "signature_mode": "personal",
+      "has_unsubscribe_footer": false,
+      "related_site_sources": ["app/get-involved/page.tsx"]
+    },
+    {
+      "id": "003",
+      "file": "emails/003-semester-news-roundup.md",
+      "provided_sample_numbers": [3],
+      "duplicate_count": 1,
+      "date_sent": null,
+      "date_precision": "unknown",
+      "message_type": "roundup",
+      "event_type": "multi-topic",
+      "sender": "Seth Lifland",
+      "signature_mode": "personal",
+      "has_unsubscribe_footer": false,
+      "related_site_sources": ["app/get-involved/page.tsx", "app/events/page.tsx"]
+    },
+    {
+      "id": "004",
+      "file": "emails/004-open-general-body-announcement.md",
+      "provided_sample_numbers": [4],
+      "duplicate_count": 1,
+      "date_sent": null,
+      "date_precision": "unknown",
+      "message_type": "announcement",
+      "event_type": "general-body",
+      "sender": "VAISI Exec",
+      "signature_mode": "organizational",
+      "has_unsubscribe_footer": true,
+      "related_site_sources": ["app/events/page.tsx"]
+    },
+    {
+      "id": "005",
+      "file": "emails/005-three-places-to-find-vaisi.md",
+      "source_file": "sources/005-three-places-to-find-vaisi.png",
+      "provided_sample_numbers": [6],
+      "duplicate_count": 1,
+      "date_sent": "2026-08-21",
+      "date_precision": "exact",
+      "message_type": "announcement",
+      "event_type": "multi-event",
+      "audience": "previously-engaged",
+      "sender": "VAISI Officer Team",
+      "signature_mode": "organizational",
+      "has_unsubscribe_footer": true,
+      "has_listserv_explanation": false,
+      "related_site_sources": ["app/events/page.tsx"]
+    }
+  ]
+}

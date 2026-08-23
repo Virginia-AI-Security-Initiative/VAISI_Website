@@ -5,6 +5,10 @@ import { getCurrentExecAccess } from '@/lib/admin/data';
 import type { ActionResult } from '@/lib/admin/types';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
+const emailDistributionValues = new Set(['announcement_list', 'external_list']);
+const emailStatusValues = new Set(['draft', 'sent', 'archived']);
+const emailStyleWeightValues = new Set(['primary', 'secondary', 'excluded']);
+
 function actionFailure(error: unknown): ActionResult {
   const message = error instanceof Error ? error.message : 'The admin action failed.';
   return { ok: false, message };
@@ -59,6 +63,49 @@ function normalizeEmail(email: string) {
 
 function normalizeName(name: string) {
   return name.trim().toLowerCase();
+}
+
+function enumField(formData: FormData, key: string, label: string, values: Set<string>) {
+  const value = requiredField(formData, key, label);
+
+  if (!values.has(value)) {
+    throw new Error(`Choose a valid ${label.toLowerCase()}.`);
+  }
+
+  return value;
+}
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 72);
+}
+
+function emailFields(formData: FormData) {
+  return {
+    subject: optionalTextField(formData, 'subject'),
+    body: requiredField(formData, 'body', 'Email body'),
+    distribution_context: enumField(
+      formData,
+      'distributionContext',
+      'Distribution context',
+      emailDistributionValues
+    ),
+    audience: requiredField(formData, 'audience', 'Audience'),
+    status: enumField(formData, 'status', 'Status', emailStatusValues),
+    sent_date: optionalDate(optionalTextField(formData, 'sentDate')),
+    style_weight: enumField(
+      formData,
+      'styleWeight',
+      'Style influence',
+      emailStyleWeightValues
+    ),
+    source_notes: optionalTextField(formData, 'sourceNotes'),
+  };
 }
 
 function secondaryOwnerIds(formData: FormData, primaryOwnerId: string) {
@@ -532,6 +579,96 @@ export async function removeExecAccess(formData: FormData): Promise<ActionResult
 
     revalidatePath('/admin');
     return { ok: true, message: 'Exec access removed.' };
+  } catch (error) {
+    return actionFailure(error);
+  }
+}
+
+export async function createEmail(formData: FormData): Promise<ActionResult> {
+  try {
+    const { supabase, user } = await requireAdmin();
+    const fields = emailFields(formData);
+    const slugBase = slugify(fields.subject || fields.audience) || 'email';
+    const slug = `${slugBase}-${Date.now().toString(36)}`;
+
+    const { data, error } = await supabase
+      .from('admin_emails')
+      .insert({
+        ...fields,
+        slug,
+        created_by: user.id,
+        updated_by: user.id,
+      })
+      .select('id')
+      .single();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    revalidatePath('/admin');
+    return { ok: true, message: 'Email draft created.', id: data.id };
+  } catch (error) {
+    return actionFailure(error);
+  }
+}
+
+export async function updateEmail(formData: FormData): Promise<ActionResult> {
+  try {
+    const { supabase, user } = await requireAdmin();
+    const emailId = requiredField(formData, 'emailId', 'Email');
+    const fields = emailFields(formData);
+
+    const { error } = await supabase
+      .from('admin_emails')
+      .update({ ...fields, updated_by: user.id })
+      .eq('id', emailId);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    revalidatePath('/admin');
+    return { ok: true, message: 'Email saved. The previous version is in history.' };
+  } catch (error) {
+    return actionFailure(error);
+  }
+}
+
+export async function restoreEmailRevision(formData: FormData): Promise<ActionResult> {
+  try {
+    const { supabase, user } = await requireAdmin();
+    const emailId = requiredField(formData, 'emailId', 'Email');
+    const revisionId = requiredField(formData, 'revisionId', 'Revision');
+
+    const { data: revision, error: revisionError } = await supabase
+      .from('admin_email_revisions')
+      .select(
+        'subject, body, distribution_context, audience, status, sent_date, style_weight, source_notes'
+      )
+      .eq('id', revisionId)
+      .eq('email_id', emailId)
+      .maybeSingle();
+
+    if (revisionError) {
+      throw new Error(revisionError.message);
+    }
+
+    if (!revision) {
+      throw new Error('That saved version was not found.');
+    }
+
+    const { error } = await supabase
+      .from('admin_emails')
+      .update({ ...revision, updated_by: user.id })
+      .eq('id', emailId);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    revalidatePath('/admin');
+    return { ok: true, message: 'Saved version restored. Your newer version remains in history.' };
   } catch (error) {
     return actionFailure(error);
   }

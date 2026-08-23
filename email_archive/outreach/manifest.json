@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "distribution_context": "external-uva-academic-lists",
+  "announcement_list_style_weight": 0,
+  "rule": "Do not use these drafts to calibrate VAISI announcement-list emails. Drafts gain limited external-outreach style weight only after the user confirms they were sent.",
+  "campaigns": [
+    {
+      "id": "2026-08-fall-recruitment",
+      "status": "draft",
+      "file": "drafts/2026-08-fall-recruitment-tailored-emails.md",
+      "created_date": "2026-08-22",
+      "audiences": [
+        "AIlist",
+        "Computer Science",
+        "Batten/Public Policy",
+        "Data Science",
+        "PPL",
+        "PST",
+        "Philosophy",
+        "Economics",
+        "Politics/Pre-Law",
+        "Mathematics/Statistics",
+        "ECE/Computer Engineering/Cybersecurity",
+        "Systems Engineering",
+        "Cognitive Science/Psychology/Neuroscience",
+        "STS/Science Policy",
+        "McIntire/Entrepreneurship",
+        "Physics",
+        "Environmental Science/Sustainability"
+      ],
+      "sent_style_weight": 0,
+      "related_site_sources": [
+        "app/events/page.tsx",
+        "app/get-involved/page.tsx",
+        "app/about/page.tsx"
+      ]
+    }
+  ]
+}
