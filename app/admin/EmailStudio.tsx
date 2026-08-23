@@ -17,9 +17,11 @@ import {
   Save,
   Search,
   Send,
+  Trash2,
 } from 'lucide-react';
 import {
   createEmail,
+  deleteEmailDraft,
   restoreEmailRevision,
   updateEmail,
 } from '@/app/admin/actions';
@@ -290,6 +292,38 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
     });
   }
 
+  function handleDeleteDraft() {
+    if (!selectedEmail || draft.status !== 'draft') {
+      return;
+    }
+
+    const label = draft.subject || 'this untitled draft';
+    const confirmed = window.confirm(
+      `Permanently delete “${label}” and all of its version history? This cannot be undone.`
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.set('emailId', selectedEmail.id);
+    runAction(deleteEmailDraft, formData, () => {
+      const nextEmail = emails.find((email) => email.id !== selectedEmail.id) ?? null;
+      setSelectedId(nextEmail?.id ?? null);
+      setIsCreating(false);
+
+      if (nextEmail) {
+        const nextDraft = draftFromEmail(nextEmail);
+        setDraft(nextDraft);
+        setSavedDraft(nextDraft);
+      } else {
+        setDraft(emptyDraft);
+        setSavedDraft(emptyDraft);
+      }
+    });
+  }
+
   async function copyEmail() {
     const subjectLine = draft.subject ? `Subject: ${draft.subject}\n\n` : '';
     const plainText = `${subjectLine}${emailBodyToPlainText(draft.body)}`;
@@ -483,6 +517,17 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
                   ) : null}
                 </div>
                 <div className="flex flex-wrap gap-2">
+                  {selectedEmail && draft.status === 'draft' ? (
+                    <button
+                      type="button"
+                      onClick={handleDeleteDraft}
+                      disabled={isPending}
+                      className="tap-scale inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-white pl-4 pr-3.5 text-sm font-semibold text-red-700 shadow-[0_0_0_1px_rgba(185,28,28,0.22)] transition-[background-color,color,scale] duration-150 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <Trash2 size={17} aria-hidden="true" />
+                      Delete draft
+                    </button>
+                  ) : null}
                   <button
                     type="button"
                     onClick={() => void copyEmail()}

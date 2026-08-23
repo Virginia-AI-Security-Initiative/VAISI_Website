@@ -78,14 +78,28 @@ export async function ensureAdminEmailSeeds(
   supabase: SupabaseClient,
   userId: string
 ) {
-  const { data, error } = await supabase.from('admin_emails').select('slug');
+  const [emailsResult, deletionsResult] = await Promise.all([
+    supabase.from('admin_emails').select('slug'),
+    supabase.from('admin_email_deletions').select('slug'),
+  ]);
 
-  if (error) {
-    throw new Error(error.message);
+  if (emailsResult.error) {
+    throw new Error(emailsResult.error.message);
   }
 
-  const existingSlugs = new Set((data ?? []).map((row) => String(row.slug)));
-  const missingSeeds = adminEmailSeeds.filter((seed) => !existingSlugs.has(seed.slug));
+  if (deletionsResult.error) {
+    throw new Error(deletionsResult.error.message);
+  }
+
+  const existingSlugs = new Set(
+    (emailsResult.data ?? []).map((row) => String(row.slug))
+  );
+  const deletedSlugs = new Set(
+    (deletionsResult.data ?? []).map((row) => String(row.slug))
+  );
+  const missingSeeds = adminEmailSeeds.filter(
+    (seed) => !existingSlugs.has(seed.slug) && !deletedSlugs.has(seed.slug)
+  );
 
   if (missingSeeds.length === 0) {
     return;

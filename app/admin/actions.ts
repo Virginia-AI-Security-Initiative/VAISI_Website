@@ -635,6 +635,67 @@ export async function updateEmail(formData: FormData): Promise<ActionResult> {
   }
 }
 
+export async function deleteEmailDraft(formData: FormData): Promise<ActionResult> {
+  try {
+    const { supabase, user } = await requireAdmin();
+    const emailId = requiredField(formData, 'emailId', 'Email');
+
+    const { data: email, error: emailError } = await supabase
+      .from('admin_emails')
+      .select('id, slug, status')
+      .eq('id', emailId)
+      .maybeSingle();
+
+    if (emailError) {
+      throw new Error(emailError.message);
+    }
+
+    if (!email) {
+      throw new Error('That email draft was not found.');
+    }
+
+    if (email.status !== 'draft') {
+      throw new Error('Only draft emails can be permanently deleted.');
+    }
+
+    const { error: deletionRecordError } = await supabase
+      .from('admin_email_deletions')
+      .upsert({
+        slug: email.slug,
+        deleted_by: user.id,
+        deleted_at: new Date().toISOString(),
+      });
+
+    if (deletionRecordError) {
+      throw new Error(deletionRecordError.message);
+    }
+
+    const { data: deletedEmail, error: deleteError } = await supabase
+      .from('admin_emails')
+      .delete()
+      .eq('id', emailId)
+      .eq('status', 'draft')
+      .select('id')
+      .maybeSingle();
+
+    if (deleteError) {
+      throw new Error(deleteError.message);
+    }
+
+    if (!deletedEmail) {
+      throw new Error('The draft changed before it could be deleted. Refresh and try again.');
+    }
+
+    revalidatePath('/admin');
+    return {
+      ok: true,
+      message: 'Draft and its complete version history permanently deleted.',
+    };
+  } catch (error) {
+    return actionFailure(error);
+  }
+}
+
 export async function restoreEmailRevision(formData: FormData): Promise<ActionResult> {
   try {
     const { supabase, user } = await requireAdmin();
