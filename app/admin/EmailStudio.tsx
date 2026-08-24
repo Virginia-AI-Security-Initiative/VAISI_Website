@@ -73,6 +73,14 @@ const emptyDraft: EditorDraft = {
 const inputClass =
   'mt-2 min-h-11 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-950 outline-none transition-[border-color,box-shadow] duration-150 focus:border-orange-500 focus:ring-2 focus:ring-orange-200';
 
+const outlookBodyStyle = [
+  'font-family:Aptos,Calibri,sans-serif',
+  'font-size:12pt',
+  'font-weight:400',
+  'line-height:normal',
+  'color:windowtext',
+].join(';');
+
 function draftFromEmail(email: AdminEmail): EditorDraft {
   return {
     subject: email.subject ?? '',
@@ -335,7 +343,10 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
     const subjectHtml = draft.subject
       ? `<div><strong>Subject:</strong> ${escapeHtml(draft.subject)}</div><div><br></div>`
       : '';
-    const outlookHtml = `<html><body>${subjectHtml}${emailBodyToHtml(draft.body)}</body></html>`;
+    const outlookHtml =
+      `<html><body><div style="${outlookBodyStyle}">` +
+      `${subjectHtml}${emailBodyToHtml(draft.body)}` +
+      '</div></body></html>';
 
     if ('ClipboardItem' in window && navigator.clipboard.write) {
       await navigator.clipboard.write([
