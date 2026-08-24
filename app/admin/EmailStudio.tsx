@@ -75,10 +75,10 @@ const inputClass =
 
 const outlookBodyStyle = [
   'font-family:Aptos,Calibri,sans-serif',
-  'font-size:12pt',
+  'font-size:16px',
   'font-weight:400',
   'line-height:normal',
-  'color:windowtext',
+  'color:inherit',
 ].join(';');
 
 function draftFromEmail(email: AdminEmail): EditorDraft {
