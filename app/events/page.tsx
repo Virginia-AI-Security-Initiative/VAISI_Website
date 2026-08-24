@@ -70,7 +70,7 @@ const upcomingEvents: UpcomingEvent[] = [
     {
         title: "Estimathon",
         dateRange: "September 1, 2026 at 6:30 PM",
-        location: "Location TBD",
+        location: "Clark 108",
         description: "Come to test your estimation and calibration on AI-related questions! Pizza will be served. There will be $300 in prizes.",
         links: [
             {
