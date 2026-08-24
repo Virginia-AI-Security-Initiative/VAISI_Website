@@ -5,14 +5,24 @@ interface TeamMemberCardProps {
     name: string;
     title: string;
     imageSrc?: string;
+    personalWebsiteUrl?: string;
     linkedinUrl?: string;
     chatUrl?: string;
     graduatingYear?: string;
 }
 
-export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, chatUrl, graduatingYear }: TeamMemberCardProps) {
+export default function TeamMemberCard({ name, title, imageSrc, personalWebsiteUrl, linkedinUrl, chatUrl, graduatingYear }: TeamMemberCardProps) {
     return (
-        <div className="surface-card flex items-center gap-4 rounded-3xl bg-white border border-gray-200 p-4">
+        <div className={`surface-card group relative flex items-center gap-4 rounded-3xl bg-white border border-gray-200 p-4 ${personalWebsiteUrl ? 'cursor-pointer hover:border-gray-300' : ''}`}>
+            {personalWebsiteUrl && (
+                <a
+                    href={personalWebsiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 z-10 rounded-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+                    aria-label={`Visit ${name}'s personal website`}
+                />
+            )}
             <div className="image-outline relative size-28 shrink-0 overflow-hidden rounded-xl bg-gray-100 shadow-[0_8px_24px_rgba(0,0,0,0.10)]">
                 {imageSrc ? (
                     <Image
@@ -30,7 +40,7 @@ export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, cha
             </div>
 
             <div className="flex flex-col justify-center min-w-0">
-                <h3 className="text-base font-bold text-gray-900 leading-tight">{name}</h3>
+                <h3 className={`text-base font-bold text-gray-900 leading-tight ${personalWebsiteUrl ? 'group-hover:text-primary' : ''}`}>{name}</h3>
                 <p className="text-sm text-gray-500 mt-1">{title}</p>
                 {graduatingYear && (
                     <p className="text-xs text-gray-400 mt-0.5">{graduatingYear}</p>
@@ -42,7 +52,7 @@ export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, cha
                                 href={linkedinUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="tap-scale flex size-10 items-center justify-center rounded-lg hover:bg-gray-100"
+                                className="tap-scale relative z-20 flex size-10 items-center justify-center rounded-lg hover:bg-gray-100"
                                 aria-label={`${name}'s LinkedIn profile`}
                             >
                                 <svg
@@ -60,7 +70,7 @@ export default function TeamMemberCard({ name, title, imageSrc, linkedinUrl, cha
                                 href={chatUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="tap-scale flex min-h-10 items-center gap-1.5 whitespace-nowrap rounded-lg border border-gray-200 px-3 text-xs font-semibold text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                                className="tap-scale relative z-20 flex min-h-10 items-center gap-1.5 whitespace-nowrap rounded-lg border border-gray-200 px-3 text-xs font-semibold text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                                 aria-label={`Schedule a chat with ${name}`}
                             >
                                 <CalendarDays className="w-3.5 h-3.5" />

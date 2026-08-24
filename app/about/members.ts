@@ -3,6 +3,7 @@ export type Member = {
     name: string;
     title: string;
     imageSrc: string;
+    personalWebsiteUrl?: string;
     linkedinUrl?: string;
     chatUrl?: string;
     graduatingYear?: string;
@@ -20,6 +21,7 @@ export const teamMembers: MemberGroup[] = [
             name: "Seth Lifland",
             title: "President",
             imageSrc: "/team/seth.jpeg",
+            personalWebsiteUrl: "https://sethlifland.com/",
             linkedinUrl: "https://www.linkedin.com/in/seth-lifland-8a604b326/",
             chatUrl: "https://cal.com/seth-lifland"
         },
@@ -80,6 +82,7 @@ export const teamMembers: MemberGroup[] = [
             name: "Shubhrangshu Debsarkar",
             title: "Technical Team Lead",
             imageSrc: "/team/shubs1.JPG",
+            personalWebsiteUrl: "https://shubhrangshu.com/",
             linkedinUrl: "https://www.linkedin.com/in/shubhrangshu-debsarkar-204683257/",
             chatUrl: "https://cal.com/shubs-debsarkar/15min?overlayCalendar=true"
         },
