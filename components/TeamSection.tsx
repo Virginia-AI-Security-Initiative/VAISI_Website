@@ -23,7 +23,7 @@ function MemberGrid({ members }: { members: Member[] }) {
             : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
     return (
-        <StaggerGroup className={`${gridClass} gap-5`} stagger={0.06}>
+        <StaggerGroup className={`${gridClass} gap-5 pt-0.5`} stagger={0.06}>
             {members.map((member) => (
                 <StaggerItem key={member.id}>
                     <TeamMemberCard
