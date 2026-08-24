@@ -141,6 +141,28 @@ function escapeHtml(value: string) {
     .replace(/'/g, '&#039;');
 }
 
+function copyRichTextToSystemClipboard(plainText: string, html: string) {
+  let wroteClipboardData = false;
+
+  function handleCopy(event: ClipboardEvent) {
+    if (!event.clipboardData) {
+      return;
+    }
+
+    event.preventDefault();
+    event.clipboardData.setData('text/plain', plainText);
+    event.clipboardData.setData('text/html', html);
+    wroteClipboardData = true;
+  }
+
+  document.addEventListener('copy', handleCopy);
+  try {
+    return document.execCommand('copy') && wroteClipboardData;
+  } finally {
+    document.removeEventListener('copy', handleCopy);
+  }
+}
+
 function statusIcon(status: AdminEmailStatus) {
   if (status === 'sent') {
     return Send;
@@ -348,7 +370,9 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
       `${subjectHtml}${emailBodyToHtml(draft.body)}` +
       '</div></body></html>';
 
-    if ('ClipboardItem' in window && navigator.clipboard.write) {
+    const copiedToSystemClipboard = copyRichTextToSystemClipboard(plainText, outlookHtml);
+
+    if (!copiedToSystemClipboard && 'ClipboardItem' in window && navigator.clipboard.write) {
       await navigator.clipboard.write([
         new ClipboardItem({
           'text/plain': new Blob([plainText], { type: 'text/plain' }),
@@ -357,7 +381,7 @@ export default function EmailStudio({ emails, revisions }: EmailStudioProps) {
           }),
         }),
       ]);
-    } else {
+    } else if (!copiedToSystemClipboard) {
       await navigator.clipboard.writeText(plainText);
     }
     setCopied(true);
