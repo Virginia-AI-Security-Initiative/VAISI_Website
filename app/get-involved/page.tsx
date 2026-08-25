@@ -84,7 +84,7 @@ const fellowshipTestimonials = [
         after: "",
         name: "Hovsep Seferian",
         image: "/testimonials/hovsep-seferian.png",
-        published: false,
+        published: true,
     },
     {
         before: "VAISI connected me to people who showed me opportunities in AI Safety that might ",
