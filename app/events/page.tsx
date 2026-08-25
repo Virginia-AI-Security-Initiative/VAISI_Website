@@ -72,6 +72,7 @@ const upcomingEvents: UpcomingEvent[] = [
         dateRange: "September 1, 2026 at 6:30 PM",
         location: "Clark 108",
         description: "Come to test your estimation and calibration on AI-related questions! Pizza will be served. There will be $300 in prizes.",
+        imageSrc: "/images/events/estimathon-2026.png",
         links: [
             {
                 label: "RSVP",
