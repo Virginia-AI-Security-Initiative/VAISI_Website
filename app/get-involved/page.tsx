@@ -100,7 +100,7 @@ const fellowshipTestimonials = [
         after: "",
         name: "Maeve Myers",
         image: "/testimonials/maeve-myers.png",
-        published: false,
+        published: true,
     },
     {
         before: "It was great learn more about the governance and policy sphere, coming from a more technical background!",
