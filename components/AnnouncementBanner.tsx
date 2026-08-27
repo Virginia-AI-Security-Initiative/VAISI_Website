@@ -12,10 +12,10 @@ const announcements: {
     link: string;
 }[] = [
     {
-        id: "interest-meeting-2026",
-        title: "Interest Meeting",
-        summary: "RSVP to our interest meeting on Wednesday, August 26 to learn more about our club! Dinner provided.",
-        link: "https://airtable.com/appM8XoHX2voW3LQe/pag8klHsnJ1stf23q/form",
+        id: "estimathon-2026",
+        title: "Estimathon",
+        summary: "Test your estimation skills on September 1 at 6:30 PM in Clark 108! Pizza and $300 in prizes.",
+        link: "https://airtable.com/appM8XoHX2voW3LQe/pag3tTTnen7yZU0yN/form",
         linkText: "RSVP here →",
     },
     {
