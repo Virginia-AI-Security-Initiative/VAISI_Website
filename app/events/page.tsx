@@ -35,39 +35,6 @@ interface PastEvent {
 
 const upcomingEvents: UpcomingEvent[] = [
     {
-        title: "AI Fair",
-        dateRange: "August 26, 2026 from 3:00 to 6:00 PM",
-        location: "Ern Commons",
-        description: "VAISI will have a table at the AI Fair! Stop by to chat and learn more about what we do.",
-        imageSrc: "/images/events/fall-ai-fair-2026.png",
-        links: [
-            {
-                label: "See all participating organizations",
-                url: "http://saiuva.com/pages/fall-ai-fair.html",
-                emphasis: "subtle",
-            },
-            {
-                label: "RSVP",
-                url: "https://docs.google.com/forms/d/e/1FAIpQLSc_D3s053QVjZ6HQcSa6hglI_pr_mOXrlP9lfZ5NvtZ_pu4Rw/viewform",
-                emphasis: "primary",
-            },
-        ],
-    },
-    {
-        title: "Interest Meeting",
-        dateRange: "August 26, 2026 at 6:30 PM",
-        location: "Monroe 130",
-        description: "Come to learn more about VAISI's mission and ways to get involved. The VAISI team will stay to chat with interested students after the event. Pizza will be served.",
-        imageSrc: "/images/events/interest-meeting-2026.png",
-        links: [
-            {
-                label: "RSVP",
-                url: "https://airtable.com/appM8XoHX2voW3LQe/pag8klHsnJ1stf23q/form",
-                emphasis: "primary",
-            },
-        ],
-    },
-    {
         title: "Estimathon",
         dateRange: "September 1, 2026 at 6:30 PM",
         location: "Clark 108",
@@ -84,6 +51,25 @@ const upcomingEvents: UpcomingEvent[] = [
 ];
 
 const pastEvents: PastEvent[] = [
+    {
+        title: "Interest Meeting",
+        date: "August 26, 2026",
+        description: "Students learned more about VAISI's mission and ways to get involved, then stayed to chat with the VAISI team over pizza.",
+        imageSrc: "/images/events/interest-meeting-2026.png",
+    },
+    {
+        title: "AI Fair",
+        date: "August 26, 2026",
+        description: "VAISI hosted a table at the AI Fair, where students stopped by to chat and learn more about what we do.",
+        imageSrc: "/images/events/fall-ai-fair-2026.png",
+        links: [
+            {
+                label: "See all participating organizations",
+                url: "http://saiuva.com/pages/fall-ai-fair.html",
+                emphasis: "subtle",
+            },
+        ],
+    },
     {
         title: "AI Policy Hackathon",
         date: "March 28 – April 4, 2026",
