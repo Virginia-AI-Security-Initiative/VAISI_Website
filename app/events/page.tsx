@@ -29,8 +29,13 @@ interface PastEvent {
     date: string;
     description: string | ReactNode;
     imageSrc?: string;
-    photos?: string[];
+    photos?: Array<string | EventPhoto>;
     links?: EventLink[];
+}
+
+interface EventPhoto {
+    src: string;
+    alt: string;
 }
 
 const upcomingEvents: UpcomingEvent[] = [
@@ -62,6 +67,20 @@ const pastEvents: PastEvent[] = [
         date: "August 26, 2026",
         description: "VAISI hosted a table at the AI Fair, where students stopped by to chat and learn more about what we do.",
         imageSrc: "/images/events/fall-ai-fair-2026.png",
+        photos: [
+            {
+                src: "/images/past-events/AI Fair/vaisi-conversation-at-ai-fair.jpg",
+                alt: "A VAISI representative talks with a visitor beside the VAISI display board at the AI Fair.",
+            },
+            {
+                src: "/images/past-events/AI Fair/vaisi-table-at-ai-fair.jpg",
+                alt: "A VAISI member smiles in front of the VAISI table while two attendees talk beside the display.",
+            },
+            {
+                src: "/images/past-events/AI Fair/vaisi-team-at-ai-fair.jpg",
+                alt: "Two VAISI representatives smile near the VAISI display as students gather around the AI Fair table.",
+            },
+        ],
         links: [
             {
                 label: "See all participating organizations",
@@ -157,8 +176,13 @@ const pastEvents: PastEvent[] = [
     },
 ];
 
-function PhotoLightbox({ photos, eventTitle, onClose }: { photos: string[]; eventTitle: string; onClose: () => void }) {
+function PhotoLightbox({ photos, eventTitle, onClose }: { photos: Array<string | EventPhoto>; eventTitle: string; onClose: () => void }) {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const currentPhoto = photos[currentIndex];
+    const currentPhotoSrc = typeof currentPhoto === "string" ? currentPhoto : currentPhoto.src;
+    const currentPhotoAlt = typeof currentPhoto === "string"
+        ? `${eventTitle} photo ${currentIndex + 1}`
+        : currentPhoto.alt;
 
     const goNext = useCallback(() => {
         setCurrentIndex((i) => (i + 1) % photos.length);
@@ -216,8 +240,8 @@ function PhotoLightbox({ photos, eventTitle, onClose }: { photos: string[]; even
                 onClick={(e) => e.stopPropagation()}
             >
                 <Image
-                    src={photos[currentIndex]}
-                    alt={`${eventTitle} photo ${currentIndex + 1}`}
+                    src={currentPhotoSrc}
+                    alt={currentPhotoAlt}
                     fill
                     className="object-contain"
                 />
