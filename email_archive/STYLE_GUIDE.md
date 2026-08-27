@@ -104,6 +104,10 @@ Keep these links at the bottom of the email, after the signature. Historical
 emails below may use older footer formats and should remain unchanged as sent
 records.
 
+Format all four footer lines in italics at 10-point font. Markdown drafts should
+use italic link text; when pasting into an email editor, set the entire footer
+block to 10-point type.
+
 The supplied event announcements use one of these closely related explanations:
 
 ```text

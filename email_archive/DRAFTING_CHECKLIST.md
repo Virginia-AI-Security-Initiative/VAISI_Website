@@ -29,7 +29,8 @@
 - No transcription artifacts or accidental duplicated phrases remain.
 - Signature matches the actual sender.
 - For new VAISI announcement emails, the standard GroupMe, Instagram, website,
-  and unsubscribe links are included after the signature.
+  and unsubscribe links are included after the signature, with all four lines
+  italicized and set to 10-point font.
 
 ## Final verification
 
