@@ -28,7 +28,8 @@
 - No old logistics were copied from the style samples.
 - No transcription artifacts or accidental duplicated phrases remain.
 - Signature matches the actual sender.
-- Listserv explanation and unsubscribe footer are included when appropriate.
+- For new VAISI announcement emails, the standard GroupMe, Instagram, website,
+  and unsubscribe links are included after the signature.
 
 ## Final verification
 

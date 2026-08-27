@@ -91,6 +91,19 @@ title for every new draft.
 
 ## Listserv footer
 
+For new VAISI announcement emails, use this standard four-link footer:
+
+```text
+[Join our GroupMe](https://groupme.com/join_group/110490963/bxseYw8L)
+[Follow our Instagram](https://www.instagram.com/vaisi_atuva/)
+[Learn more at vaisi.org](http://vaisi.org/)
+[Click here to unsubscribe](https://lists.virginia.edu/sympa/signoff/vaisi_announcements)
+```
+
+Keep these links at the bottom of the email, after the signature. Historical
+emails below may use older footer formats and should remain unchanged as sent
+records.
+
 The supplied event announcements use one of these closely related explanations:
 
 ```text
