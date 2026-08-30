@@ -1,12 +1,17 @@
 'use client';
 
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import FlipCardSection from "@/components/FlipCardSection";
 import { Reveal, fadeSlideUp, fadeSlideRight, staggerContainer, heroTransition } from "@/components/motion";
+import { teamMembers } from "@/app/about/members";
+
+const chatContacts = teamMembers
+  .flatMap((group) => group.members)
+  .filter((member) => ["Seth Lifland", "Nia Mucher", "Shubhrangshu Debsarkar"].includes(member.name));
 
 function CornerAccents({ tone = "white" }: { tone?: "white" | "primary" }) {
   const border = tone === "white" ? "border-white/25" : "border-primary/15";
@@ -32,6 +37,7 @@ function CornerAccents({ tone = "white" }: { tone?: "white" | "primary" }) {
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const reducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -84,10 +90,78 @@ export default function Home() {
                 <span className="text-3xl font-semibold leading-none">Get Involved</span>
                 <ArrowRight className="size-7 flex-shrink-0 transition-transform duration-150 group-hover:translate-x-1" />
               </Link>
+              <button
+                type="button"
+                onClick={() => setIsChatOpen(true)}
+                className="group inline-flex items-center gap-3 border-b-2 border-white pb-1.5 text-white transition-colors duration-150 hover:border-secondary hover:text-secondary"
+              >
+                <span className="text-3xl font-semibold leading-none">Chat with us</span>
+                <ArrowRight className="size-7 flex-shrink-0 transition-transform duration-150 group-hover:translate-x-1" />
+              </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
+
+      <AnimatePresence initial={false}>
+        {isChatOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsChatOpen(false)}
+          >
+            <motion.section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="chat-with-us-heading"
+              className="relative w-full max-w-6xl rounded-3xl bg-white p-8 shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:p-10"
+              initial={{ opacity: 0, y: reducedMotion ? 0 : 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: reducedMotion ? 0 : 8 }}
+              transition={{ duration: reducedMotion ? 0 : 0.2, ease: [0.2, 0, 0, 1] }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setIsChatOpen(false)}
+                className="tap-scale absolute right-4 top-4 flex size-11 items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 hover:text-gray-900 sm:right-6 sm:top-6"
+                aria-label="Close chat options"
+              >
+                <X className="size-5" aria-hidden="true" />
+              </button>
+              <div className="pr-12">
+                <h2 id="chat-with-us-heading" className="text-4xl font-bold text-gray-900 sm:text-5xl">Chat with us</h2>
+                <p className="mt-4 text-xl leading-relaxed text-gray-500">
+                  Have a question about VAISI or want to talk through how to get involved? Book a time with one of us.
+                </p>
+              </div>
+              <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                {chatContacts.map((contact) => (
+                  <article key={contact.name} className="flex flex-col items-start gap-5 rounded-2xl bg-gray-50 p-6 shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
+                    <div className="image-outline relative size-24 shrink-0 overflow-hidden rounded-xl bg-gray-100">
+                      <Image src={contact.imageSrc} alt={`Portrait of ${contact.name}`} fill sizes="96px" className="object-cover object-top" />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="whitespace-nowrap text-xl font-bold leading-tight text-gray-900">{contact.name}</h3>
+                      <p className="mt-2 text-lg text-gray-500">{contact.title}</p>
+                      <a
+                        href={contact.chatUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex min-h-10 items-center text-lg font-semibold text-primary underline decoration-secondary decoration-2 underline-offset-4 transition-colors duration-150 hover:text-secondary"
+                      >
+                        Book a chat <span aria-hidden="true">→</span>
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </motion.section>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Flip Cards */}
       <section className="relative bg-white border-t border-gray-200 py-16 md:py-20">

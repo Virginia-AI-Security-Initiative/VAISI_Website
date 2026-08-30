@@ -138,13 +138,6 @@ export const teamMembers: MemberGroup[] = [
             linkedinUrl: "https://www.linkedin.com/in/owen-watzlavick/"
         },
         {
-            id: 5,
-            name: "Rishi Chandra",
-            title: "Policy Team",
-            imageSrc: "/team/rishi_chandra.jpeg",
-            linkedinUrl: "https://www.linkedin.com/in/rishi-chandra12/"
-        },
-        {
             id: 6,
             name: "Hovsep Seferian",
             title: "Policy Team",
