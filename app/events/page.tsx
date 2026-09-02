@@ -38,24 +38,15 @@ interface EventPhoto {
     alt: string;
 }
 
-const upcomingEvents: UpcomingEvent[] = [
-    {
-        title: "Estimathon",
-        dateRange: "September 1, 2026 at 6:30 PM",
-        location: "Clark 108",
-        description: "Come to test your estimation and calibration on AI-related questions! Pizza will be served. There will be $300 in prizes.",
-        imageSrc: "/images/events/estimathon-2026.png",
-        links: [
-            {
-                label: "RSVP",
-                url: "https://airtable.com/appM8XoHX2voW3LQe/pag3tTTnen7yZU0yN/form",
-                emphasis: "primary",
-            },
-        ],
-    },
-];
+const upcomingEvents: UpcomingEvent[] = [];
 
 const pastEvents: PastEvent[] = [
+    {
+        title: "Estimathon",
+        date: "September 1, 2026",
+        description: "Participants tested their estimation and calibration skills on AI-related questions while competing for $300 in prizes.",
+        imageSrc: "/images/events/estimathon-2026.png",
+    },
     {
         title: "Interest Meeting",
         date: "August 26, 2026",
@@ -384,21 +375,22 @@ export default function EventsPage() {
                 subtitle="Upcoming and past talks, workshops, and competitions."
             />
 
-            {/* Upcoming Events */}
-            <Section className="bg-gray-50 border-b border-gray-200">
-                <div className="max-w-6xl mx-auto">
-                    <Reveal>
-                        <h2 className={`${sectionTitleClass} text-gray-900 mb-6`}>Upcoming Events</h2>
-                    </Reveal>
-                    <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {upcomingEvents.map((event, idx) => (
-                            <StaggerItem key={idx}>
-                                <UpcomingEventCard event={event} />
-                            </StaggerItem>
-                        ))}
-                    </StaggerGroup>
-                </div>
-            </Section>
+            {upcomingEvents.length > 0 && (
+                <Section className="bg-gray-50 border-b border-gray-200">
+                    <div className="max-w-6xl mx-auto">
+                        <Reveal>
+                            <h2 className={`${sectionTitleClass} text-gray-900 mb-6`}>Upcoming Events</h2>
+                        </Reveal>
+                        <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {upcomingEvents.map((event, idx) => (
+                                <StaggerItem key={idx}>
+                                    <UpcomingEventCard event={event} />
+                                </StaggerItem>
+                            ))}
+                        </StaggerGroup>
+                    </div>
+                </Section>
+            )}
 
             {/* Past Events */}
             <Section className="bg-white">

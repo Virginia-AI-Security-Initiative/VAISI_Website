@@ -12,13 +12,6 @@ const announcements: {
     link: string;
 }[] = [
     {
-        id: "estimathon-2026",
-        title: "Estimathon",
-        summary: "Test your estimation skills on September 1 at 6:30 PM in Clark 108! Pizza and $300 in prizes.",
-        link: "https://airtable.com/appM8XoHX2voW3LQe/pag3tTTnen7yZU0yN/form",
-        linkText: "RSVP here →",
-    },
-    {
         id: "fellowship-applications-open-2026",
         title: "Fellowship Applications Open",
         summary: "Apply by September 6 for our upcoming Intro to AI Safety and AI Policy fellowships!",
