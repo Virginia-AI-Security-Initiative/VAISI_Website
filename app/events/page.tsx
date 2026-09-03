@@ -46,7 +46,7 @@ const upcomingEvents: UpcomingEvent[] = [
         description: "Work with a team to open up and stress-test AI systems, then build an evaluation around an interpretability, safety, or cybersecurity question. No prior interpretability experience required.",
         imageSrc: "/images/events/ai-safety-hackathon-2026.png",
         links: [
-            { label: "RSVP here", url: "https://forms.gle/cPgRN1kDqv9oPWd7A", emphasis: "primary" },
+            { label: "Register here", url: "https://forms.gle/cPgRN1kDqv9oPWd7A", emphasis: "primary" },
             { label: "Learn more here", url: "https://sig-uva.github.io/", emphasis: "subtle" },
         ],
     },
