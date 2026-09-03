@@ -38,7 +38,19 @@ interface EventPhoto {
     alt: string;
 }
 
-const upcomingEvents: UpcomingEvent[] = [];
+const upcomingEvents: UpcomingEvent[] = [
+    {
+        title: "AI Safety Hackathon",
+        dateRange: "October 9-16, 2026",
+        location: "Kickoff Oct. 9; build day at the Capital One Hub Oct. 16",
+        description: "Work with a team to open up and stress-test AI systems, then build an evaluation around an interpretability, safety, or cybersecurity question. No prior interpretability experience required.",
+        imageSrc: "/images/events/ai-safety-hackathon-2026.png",
+        links: [
+            { label: "RSVP here", url: "https://forms.gle/cPgRN1kDqv9oPWd7A", emphasis: "primary" },
+            { label: "Learn more here", url: "https://sig-uva.github.io/", emphasis: "subtle" },
+        ],
+    },
+];
 
 const pastEvents: PastEvent[] = [
     {
@@ -250,13 +262,13 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
     return (
         <div className="surface-card overflow-hidden rounded-2xl bg-white border border-gray-200">
             {event.imageSrc && (
-                <div className="relative overflow-hidden bg-gray-100" style={{ aspectRatio: "3 / 4" }}>
+                <div className="relative overflow-hidden bg-gray-100" style={{ aspectRatio: "8.5 / 11" }}>
                     <Image
                         src={event.imageSrc}
                         alt={`${event.title} flyer`}
                         fill
                         sizes="(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw"
-                        className="image-outline object-cover"
+                        className="image-outline object-contain"
                     />
                 </div>
             )}
@@ -286,7 +298,6 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
                                     }
                                 >
                                     {link.label}
-                                    <ExternalLink size={isPrimary ? 14 : 13} aria-hidden="true" />
                                 </a>
                             );
                         })}
