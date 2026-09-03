@@ -1,0 +1,82 @@
+.citationGroup {
+  white-space: nowrap;
+}
+
+:global(.publication-body) .citationLink,
+:global(.publication-body) .referenceNumber {
+  scroll-margin-top: 10rem;
+  color: var(--secondary);
+  font-size: 0.8em;
+  font-weight: 750;
+  text-decoration-line: none;
+}
+
+:global(.publication-body) .citationLink {
+  border-bottom: 1px solid color-mix(in srgb, var(--secondary) 45%, transparent);
+}
+
+:global(.publication-body) .citationLink:hover,
+:global(.publication-body) .citationLink:focus-visible,
+:global(.publication-body) .referenceNumber:hover,
+:global(.publication-body) .referenceNumber:focus-visible {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.referencesSection {
+  margin-top: 4.5rem;
+  border-top: 2px solid var(--primary);
+  padding-top: 1.75rem;
+}
+
+:global(.publication-body) .referencesSection h2 {
+  margin: 0;
+  font-size: clamp(1.65rem, 4vw, 2.1rem);
+}
+
+.referenceList {
+  margin-top: 1.5rem;
+}
+
+.referenceEntry {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0.65rem;
+  scroll-margin-top: 10rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-block: 0.9rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.referenceEntry:first-child {
+  border-top: 0;
+}
+
+.referenceEntry:target {
+  border-radius: 0.25rem;
+  background: color-mix(in srgb, var(--secondary) 10%, transparent);
+  box-shadow: 0 0 0 0.55rem color-mix(in srgb, var(--secondary) 10%, transparent);
+}
+
+:global(.publication-body) .referenceText {
+  min-width: 0;
+  margin: 0;
+}
+
+:global(.publication-body) .referenceText a {
+  color: #3f4657;
+  font-weight: 450;
+  text-decoration-color: color-mix(in srgb, var(--secondary) 35%, transparent);
+  text-underline-offset: 3px;
+}
+
+:global(.publication-body) .referenceText a:hover {
+  color: var(--primary);
+}
+
+.referenceNumber {
+  align-self: start;
+  font-size: 0.8rem;
+  line-height: 1.7;
+}

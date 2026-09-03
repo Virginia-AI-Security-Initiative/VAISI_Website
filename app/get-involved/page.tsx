@@ -224,8 +224,6 @@ export default function GetInvolvedPage() {
         <div className="flex flex-col min-h-screen bg-white">
             <PageHero
                 title="Get Involved"
-                subtitle="Explore our fellowships, become a member, or stay connected through our community channels."
-                titleClassName="text-4xl md:text-5xl"
             />
 
             {/* Socials */}

@@ -154,7 +154,6 @@ export default function ResourcesPage() {
         <div className="flex flex-col min-h-screen bg-white">
             <PageHero
                 title="Resources"
-                subtitle="Curated materials on AI risk, governance, and security to help you get started."
             />
 
             <Section>

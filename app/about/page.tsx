@@ -25,11 +25,18 @@ export default function AboutPage() {
     return (
         <div className="flex flex-col min-h-screen bg-white">
             <PageHero
-                title="Mission"
-                subtitle="Mitigate catastrophic risks from advanced AI."
+                title="About"
             />
             <Section className="bg-white">
                 <div className="max-w-6xl mx-auto">
+                    <div className="mb-20">
+                        <Reveal>
+                            <h2 className="mb-6 text-[40px] font-bold leading-tight text-gray-900 md:text-[64px]">Mission</h2>
+                            <p className="max-w-3xl text-xl leading-relaxed text-gray-600 md:text-2xl">
+                                Mitigate catastrophic risks from advanced AI.
+                            </p>
+                        </Reveal>
+                    </div>
                     <div className="mb-16">
                         <Reveal>
                             <h2 className="text-[40px] md:text-[64px] font-bold text-gray-900 leading-tight mb-14">Our Path Forward</h2>

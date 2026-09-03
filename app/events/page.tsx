@@ -372,7 +372,6 @@ export default function EventsPage() {
         <div className="flex flex-col min-h-screen bg-white">
             <PageHero
                 title="Events"
-                subtitle="Upcoming and past talks, workshops, and competitions."
             />
 
             {upcomingEvents.length > 0 && (
