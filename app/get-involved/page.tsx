@@ -226,12 +226,12 @@ export default function GetInvolvedPage() {
                 title="Get Involved"
             />
 
-            {/* Socials */}
+            {/* Stay Informed */}
             <Section className="bg-white">
                 <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
                     <div className="lg:w-80 flex-shrink-0 lg:pr-12">
                         <Reveal>
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">Socials</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">Stay Informed</h2>
                             <p className="text-base text-gray-500">Stay up to date with everything we&apos;re involved in.</p>
                         </Reveal>
                     </div>
