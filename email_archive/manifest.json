@@ -74,6 +74,22 @@
       "has_unsubscribe_footer": true,
       "has_listserv_explanation": false,
       "related_site_sources": ["app/events/page.tsx"]
+    },
+    {
+      "id": "006",
+      "file": "emails/006-fellowship-applications-close-tomorrow.md",
+      "provided_sample_numbers": [7],
+      "duplicate_count": 1,
+      "date_sent": "2026-09-05",
+      "date_precision": "exact",
+      "message_type": "reminder",
+      "event_type": "fellowship",
+      "audience": "general",
+      "sender": "Seth Lifland",
+      "signature_mode": "personal",
+      "has_unsubscribe_footer": true,
+      "has_listserv_explanation": false,
+      "related_site_sources": ["app/get-involved/page.tsx"]
     }
   ]
 }
