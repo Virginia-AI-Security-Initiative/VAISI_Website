@@ -90,6 +90,22 @@
       "has_unsubscribe_footer": true,
       "has_listserv_explanation": false,
       "related_site_sources": ["app/get-involved/page.tsx"]
+    },
+    {
+      "id": "007",
+      "file": "emails/007-ai-safety-hackathon.md",
+      "provided_sample_numbers": [8],
+      "duplicate_count": 1,
+      "date_sent": "2026-09-07",
+      "date_precision": "exact",
+      "message_type": "announcement",
+      "event_type": "other",
+      "audience": "general",
+      "sender": "VAISI Officer Team",
+      "signature_mode": "organizational",
+      "has_unsubscribe_footer": true,
+      "has_listserv_explanation": false,
+      "related_site_sources": ["app/events/page.tsx"]
     }
   ]
 }
