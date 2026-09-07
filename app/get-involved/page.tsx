@@ -46,11 +46,7 @@ const eventTypes = [
             duration: "8 weeks"
         },
         description: "Build a foundation in AI safety through a weekly reading and discussion group covering advanced AI risks and current safety research. Dinner is provided, there is no mandatory reading outside the fellowship, and participants may complete an optional capstone project. No technical background required.",
-        applicationNote: "Applications are reviewed on a rolling basis.",
-        cta: {
-            text: "Apply by September 6",
-            link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form"
-        },
+        applicationNote: "Fellowship applications are closed for this semester. Applications will reopen next semester.",
         syllabus: {
             text: "Syllabus",
             link: "https://docs.google.com/document/d/10HcHGxPJ5VpnWoK1sq2nQQ6N85vsy95vgF_T9XGw3Es/edit?tab=t.0"
@@ -65,11 +61,7 @@ const eventTypes = [
             duration: "10 weeks"
         },
         description: "Explore AI policy and governance in a weekly cohort covering technical foundations, frontier policy, national security, safety regulation, corporate governance, and careers. Dinner is provided, with 0-30 minutes of weekly reading and an optional capstone project. No technical background required.",
-        applicationNote: "Applications are reviewed on a rolling basis.",
-        cta: {
-            text: "Apply by September 6",
-            link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form"
-        },
+        applicationNote: "Fellowship applications are closed for this semester. Applications will reopen next semester.",
         syllabus: {
             text: "Syllabus",
             link: "https://docs.google.com/document/d/10HcHGxPJ5VpnWoK1sq2nQQ6N85vsy95vgF_T9XGw3Es/edit?tab=t.uuornxg83lhk"
@@ -298,14 +290,6 @@ export default function GetInvolvedPage() {
                                             {event.applicationNote}
                                         </div>
                                         <div className="flex flex-wrap gap-6 items-center">
-                                            <a
-                                                href={event.cta.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-link text-base text-gray-800"
-                                            >
-                                                {event.cta.text} →
-                                            </a>
                                             <a
                                                 href={event.syllabus.link}
                                                 target="_blank"
