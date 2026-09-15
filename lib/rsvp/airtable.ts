@@ -171,3 +171,17 @@ export async function createRsvp(submission: RsvpSubmission) {
     }),
   });
 }
+
+export async function recordGroupmeClick(slug: string) {
+  return airtableFetch<{ records: AirtableRecord[] }>(AIRTABLE_TABLES.groupmeClicks, {
+    method: "POST",
+    body: JSON.stringify({
+      records: [{
+        fields: {
+          [AIRTABLE_FIELDS.groupmeClicks.eventSlug]: slug,
+          [AIRTABLE_FIELDS.groupmeClicks.clickedAt]: new Date().toISOString(),
+        },
+      }],
+    }),
+  });
+}

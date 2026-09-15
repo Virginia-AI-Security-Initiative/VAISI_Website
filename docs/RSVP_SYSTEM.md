@@ -1,6 +1,6 @@
 # VAISI RSVP system
 
-Public RSVP links use `https://vaisi.org/events/<event-name-slug>`. Opening that URL loads the event from Airtable and opens the RSVP modal immediately. Closing the modal leaves the visitor on the event page.
+Public RSVP links use `https://vaisi.org/events/<event-name-slug>`. Opening that URL loads the event from Airtable and opens the RSVP modal over the Events page immediately. Closing the modal returns the visitor to `/events`.
 
 ## Create an event
 
@@ -23,7 +23,9 @@ The resulting URL is printed for use in emails and QR codes. Event pages derive 
 
 The website writes one row to `RSVPs`, including the linked `Event` and a `Pending` sync status. The enabled **RSVP to People** Airtable automation then finds a Person by email and links the RSVP to that person, or creates a new Person when none exists. The legacy Estimathon and Interest Meeting “Stamp Event” automations are not copied: they only add the event link that those old Airtable forms could not supply. The embedded website form supplies it directly.
 
-The visible questions match the existing Estimathon RSVP: Name, Email, Academic Status, Major/Minor, and How did you hear about this event? After submission, the modal confirms the RSVP and links to the VAISI GroupMe.
+The visible questions match the existing Estimathon RSVP: Name, Email, Academic Status, Major/Minor, and How did you hear about this event? After submission, the modal confirms the RSVP and links to the VAISI GroupMe. The confirmation button visits `/go/groupme/<event-slug>`, records one anonymous row in Airtable's **GroupMe Clicks** table, then redirects to GroupMe. Filter or group that table by **Event slug** to see per-event click totals. This counts button clicks, not confirmed GroupMe joins.
+
+The Airtable row stores only an event slug and timestamp; it does not store attendee identity. If logging fails, the visitor is still redirected to GroupMe. The production `airtable_api` token needs record-create access to **GroupMe Clicks** in addition to the existing RSVP tables.
 
 ## Environment
 

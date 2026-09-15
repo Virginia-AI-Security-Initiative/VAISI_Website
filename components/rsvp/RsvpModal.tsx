@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CalendarDays, Check, MapPin, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
-import { ACADEMIC_STATUSES, GROUPME_URL } from "@/lib/rsvp/config";
+import { ACADEMIC_STATUSES } from "@/lib/rsvp/config";
 import type { PublicEvent } from "@/lib/rsvp/airtable";
 
 function formatEventTime(start: string, end: string) {
@@ -184,7 +184,7 @@ export default function RsvpModal({
                       Join the VAISI GroupMe to stay up to date with future club news.
                     </p>
                     <a
-                      href={GROUPME_URL}
+                      href={`/go/groupme/${event.slug}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="tap-scale button-raised mt-6 inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary/92"

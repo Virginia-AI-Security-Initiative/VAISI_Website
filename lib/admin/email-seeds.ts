@@ -215,6 +215,37 @@ VAISI Officer Team
   },
 ];
 
+const finalAnnouncementDrafts: AdminEmailSeed[] = [
+  {
+    slug: 'are-we-in-control-2026-announcement',
+    subject: null,
+    body: `TLDR: [RSVP here](https://vaisi.org/events/are-we-in-control) for our upcoming event on Wednesday, September 23 from 6:30-7:30 PM discussing the Hugging Face Incident and it’s implications.
+
+Hello everyone,
+
+The past few weeks have been a rollercoaster; agents breaking out of sandboxes and hacking other companies, models solving millennium prize problems, and lab CEOs calling for slowdown publicly while Trump resists.
+
+If you’re looking for a place to understand some of this better, join us on **Wednesday, September 23, from 6:30–7:30 PM in Nau Hall 211** to discuss the recent Hugging Face incident and what it raises about AI control and security. Pizza will be provided! [RSVP here](https://vaisi.org/events/are-we-in-control).
+
+We’d love to see you there!
+
+Thanks,
+VAISI Officer Team
+
+*[Join our GroupMe](https://groupme.com/join_group/110490963/bxseYw8L)*
+*[Follow our Instagram](https://www.instagram.com/vaisi_atuva/)*
+*[Learn more at vaisi.org](https://vaisi.org/)*
+*[Click here to unsubscribe](${unsubscribeUrl})*`,
+    distribution_context: 'announcement_list',
+    audience: 'VAISI announcement list',
+    recipient: 'vaisi_announcements',
+    status: 'draft',
+    sent_date: null,
+    style_weight: 'secondary',
+    source_notes: 'User-provided final draft on September 15, 2026. No subject or send confirmation supplied. Footer links should be 10-point italic. Wording preserved in email_archive/drafts/2026-09-23-are-we-in-control-final.md.',
+  },
+];
+
 const introFellowshipSyllabus =
   '[Intro to AI Safety Fellowship](https://docs.google.com/document/d/10HcHGxPJ5VpnWoK1sq2nQQ6N85vsy95vgF_T9XGw3Es/edit?tab=t.0)';
 const policyFellowshipSyllabus =
@@ -389,5 +420,6 @@ VAISI Officer Team`,
 
 export const adminEmailSeeds: AdminEmailSeed[] = [
   ...historicalEmails,
+  ...finalAnnouncementDrafts,
   ...outreachEmails,
 ];

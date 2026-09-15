@@ -3,6 +3,7 @@ export const AIRTABLE_BASE_ID = "appM8XoHX2voW3LQe";
 export const AIRTABLE_TABLES = {
   people: "tbl0itJagOOY71AQn",
   rsvps: "tblyHx9ABxEwUSL8w",
+  groupmeClicks: "tblGsZg6wdxFEj970",
   publicEvents: "tblh1H6GK4pHcKB8j",
   internalCalendar: "tblJJtTFMQ30Cmwj5",
 } as const;
@@ -28,6 +29,10 @@ export const AIRTABLE_FIELDS = {
     name: "fldwPNmbW1y0GmBRd",
     start: "fldQVKekZUCwIZIw9",
     end: "fld4NLNThhwCbxOr3",
+  },
+  groupmeClicks: {
+    eventSlug: "fldRoLhyE5Kh6r0lK",
+    clickedAt: "fldF4T9VXd1VYJbW6",
   },
 } as const;
 
