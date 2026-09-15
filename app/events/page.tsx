@@ -40,6 +40,16 @@ interface EventPhoto {
 
 const upcomingEvents: UpcomingEvent[] = [
     {
+        title: "Are We in Control?",
+        dateRange: "September 23, 2026 · 6:30–7:30 PM",
+        location: "Nau Hall 211",
+        description: "Come discuss the recent HuggingFace incident, in which OpenAI agents escaped internal environments, coordinated agent swarms of over 700 agents, and hacked external companies. Pizza will be provided.",
+        imageSrc: "/images/events/are-we-in-control-2026.png",
+        links: [
+            { label: "RSVP", url: "/events/are-we-in-control", emphasis: "primary" },
+        ],
+    },
+    {
         title: "AI Safety Hackathon",
         dateRange: "October 9-16, 2026",
         location: "Kickoff Oct. 9; build day at the Capital One Hub Oct. 16",
@@ -285,13 +295,14 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
                     <div className="mt-4 flex flex-col items-start gap-2 border-t border-gray-100 pt-3">
                         {event.links.map((link) => {
                             const isPrimary = link.emphasis === "primary";
+                            const isExternal = link.url.startsWith("http");
 
                             return (
                                 <a
                                     key={link.url}
                                     href={link.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    target={isExternal ? "_blank" : undefined}
+                                    rel={isExternal ? "noopener noreferrer" : undefined}
                                     className={isPrimary
                                         ? "tap-scale inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-primary/8 px-3.5 py-2 text-sm font-medium text-primary hover:bg-primary/12"
                                         : "text-link-subtle inline-flex min-h-11 items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary"
