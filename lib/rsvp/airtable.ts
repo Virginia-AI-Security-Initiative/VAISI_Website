@@ -36,8 +36,32 @@ export interface RsvpSubmission {
   referral: string;
 }
 
+const EVENT_FALLBACKS: Record<string, PublicEvent> = {
+  "are-we-in-control": {
+    id: "recIE5RJczAjvc1YC",
+    name: "Are We in Control?",
+    slug: "are-we-in-control",
+    description:
+      "Come discuss the recent HuggingFace incident, in which OpenAI agents escaped internal environments, coordinated agent swarms of over 700 agents, and hacked external companies. Pizza will be provided.",
+    location: "Nau Hall 211",
+    start: "2026-09-23T22:30:00.000Z",
+    end: "2026-09-23T23:30:00.000Z",
+  },
+};
+
 function getApiKey() {
-  const key = process.env.airtable_api ?? process.env.AIRTABLE_API_KEY;
+  const rawKey = process.env.airtable_api ?? process.env.AIRTABLE_API_KEY;
+  if (!rawKey) throw new Error("Airtable is not configured");
+
+  let key = rawKey.trim();
+  if (
+    (key.startsWith('"') && key.endsWith('"')) ||
+    (key.startsWith("'") && key.endsWith("'"))
+  ) {
+    key = key.slice(1, -1).trim();
+  }
+  key = key.replace(/^Bearer\s+/i, "").trim();
+
   if (!key) throw new Error("Airtable is not configured");
   return key;
 }
@@ -85,34 +109,45 @@ function linkedRecordId(value: unknown) {
 }
 
 export async function getPublicEventBySlug(slug: string): Promise<PublicEvent | null> {
-  const event = (await listPublicEvents()).find((record) => {
-    const name = record.fields.Name;
-    return typeof name === "string" && eventSlug(name) === slug;
-  });
+  const fallback = EVENT_FALLBACKS[slug] ?? null;
 
-  if (!event) return null;
+  try {
+    const event = (await listPublicEvents()).find((record) => {
+      const name = record.fields.Name;
+      return typeof name === "string" && eventSlug(name) === slug;
+    });
 
-  const name = String(event.fields.Name ?? "");
-  const calendarId = linkedRecordId(event.fields["Internal Calendar"]);
-  if (!calendarId) return null;
+    if (!event) return fallback;
 
-  const calendar = await airtableFetch<AirtableRecord>(
-    `${AIRTABLE_TABLES.internalCalendar}/${calendarId}`,
-  );
+    const name = String(event.fields.Name ?? "");
+    const calendarId = linkedRecordId(event.fields["Internal Calendar"]);
+    if (!calendarId) return fallback;
 
-  const start = calendar.fields.Start;
-  const end = calendar.fields.End;
-  if (typeof start !== "string" || typeof end !== "string") return null;
+    const calendar = await airtableFetch<AirtableRecord>(
+      `${AIRTABLE_TABLES.internalCalendar}/${calendarId}`,
+    );
 
-  return {
-    id: event.id,
-    name,
-    slug: eventSlug(name),
-    description: String(event.fields.Description ?? ""),
-    location: String(event.fields.Location ?? ""),
-    start,
-    end,
-  };
+    const start = calendar.fields.Start;
+    const end = calendar.fields.End;
+    if (typeof start !== "string" || typeof end !== "string") return fallback;
+
+    return {
+      id: event.id,
+      name,
+      slug: eventSlug(name),
+      description: String(event.fields.Description ?? ""),
+      location: String(event.fields.Location ?? ""),
+      start,
+      end,
+    };
+  } catch (error) {
+    if (!fallback) throw error;
+    console.error("Using RSVP event fallback after Airtable lookup failed", {
+      slug,
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+    return fallback;
+  }
 }
 
 export async function createRsvp(submission: RsvpSubmission) {
