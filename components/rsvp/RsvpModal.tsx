@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { CalendarDays, Check, MapPin, X } from "lucide-react";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { ACADEMIC_STATUSES, GROUPME_URL } from "@/lib/rsvp/config";
 import type { PublicEvent } from "@/lib/rsvp/airtable";
 
@@ -24,11 +25,26 @@ function formatEventTime(start: string, end: string) {
   return `${date}, ${time.format(startDate)}–${time.format(endDate)}`;
 }
 
-export default function RsvpModal({ event }: { event: PublicEvent }) {
+export default function RsvpModal({
+  event,
+  showTrigger = true,
+  closeHref,
+}: {
+  event: PublicEvent;
+  showTrigger?: boolean;
+  closeHref?: string;
+}) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
   const [status, setStatus] = useState<"form" | "submitting" | "confirmed">("form");
   const [error, setError] = useState("");
   const dialogRef = useRef<HTMLDivElement>(null);
+  const navigateAfterCloseRef = useRef(false);
+
+  const closeModal = useCallback(() => {
+    navigateAfterCloseRef.current = Boolean(closeHref);
+    setIsOpen(false);
+  }, [closeHref]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -37,7 +53,7 @@ export default function RsvpModal({ event }: { event: PublicEvent }) {
     dialogRef.current?.focus();
 
     const handleKey = (keyboardEvent: KeyboardEvent) => {
-      if (keyboardEvent.key === "Escape") setIsOpen(false);
+      if (keyboardEvent.key === "Escape") closeModal();
       if (keyboardEvent.key !== "Tab") return;
 
       const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
@@ -59,7 +75,7 @@ export default function RsvpModal({ event }: { event: PublicEvent }) {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKey);
     };
-  }, [isOpen]);
+  }, [closeModal, isOpen]);
 
   async function submit(formEvent: FormEvent<HTMLFormElement>) {
     formEvent.preventDefault();
@@ -97,15 +113,25 @@ export default function RsvpModal({ event }: { event: PublicEvent }) {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setIsOpen(true)}
-        className="tap-scale button-raised inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary/92"
-      >
-        RSVP
-      </button>
+      {showTrigger && (
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="tap-scale button-raised inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary/92"
+        >
+          RSVP
+        </button>
+      )}
 
-      <AnimatePresence initial={false}>
+      <AnimatePresence
+        initial={false}
+        onExitComplete={() => {
+          if (navigateAfterCloseRef.current && closeHref) {
+            navigateAfterCloseRef.current = false;
+            router.replace(closeHref, { scroll: false });
+          }
+        }}
+      >
         {isOpen && (
           <motion.div
             className="fixed inset-0 z-[100] flex items-end justify-center bg-primary/55 p-0 backdrop-blur-[2px] sm:items-center sm:p-6"
@@ -114,7 +140,7 @@ export default function RsvpModal({ event }: { event: PublicEvent }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
             onMouseDown={(mouseEvent) => {
-              if (mouseEvent.target === mouseEvent.currentTarget) setIsOpen(false);
+              if (mouseEvent.target === mouseEvent.currentTarget) closeModal();
             }}
           >
             <motion.div
@@ -131,7 +157,7 @@ export default function RsvpModal({ event }: { event: PublicEvent }) {
             >
               <button
                 type="button"
-                onClick={() => setIsOpen(false)}
+                onClick={closeModal}
                 className="tap-scale absolute right-3 top-3 flex size-11 items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 hover:text-primary sm:right-5 sm:top-5"
                 aria-label="Close RSVP"
               >

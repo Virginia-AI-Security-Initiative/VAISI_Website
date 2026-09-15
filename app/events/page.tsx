@@ -5,6 +5,7 @@ import PageHero from "@/components/PageHero";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { sectionTitleClass } from "@/components/sectionTitle";
 import Image from "next/image";
+import Link from "next/link";
 import { createPortal } from "react-dom";
 import { Calendar, Camera, ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
 import { ReactNode, useCallback, useEffect, useState } from "react";
@@ -297,16 +298,25 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
                             const isPrimary = link.emphasis === "primary";
                             const isExternal = link.url.startsWith("http");
 
+                            const className = isPrimary
+                                ? "tap-scale inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-primary/8 px-3.5 py-2 text-sm font-medium text-primary hover:bg-primary/12"
+                                : "text-link-subtle inline-flex min-h-11 items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary";
+
+                            if (!isExternal) {
+                                return (
+                                    <Link key={link.url} href={link.url} scroll={false} className={className}>
+                                        {link.label}
+                                    </Link>
+                                );
+                            }
+
                             return (
                                 <a
                                     key={link.url}
                                     href={link.url}
-                                    target={isExternal ? "_blank" : undefined}
-                                    rel={isExternal ? "noopener noreferrer" : undefined}
-                                    className={isPrimary
-                                        ? "tap-scale inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-primary/8 px-3.5 py-2 text-sm font-medium text-primary hover:bg-primary/12"
-                                        : "text-link-subtle inline-flex min-h-11 items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary"
-                                    }
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={className}
                                 >
                                     {link.label}
                                 </a>
