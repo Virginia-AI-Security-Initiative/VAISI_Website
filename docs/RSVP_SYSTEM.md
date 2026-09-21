@@ -4,6 +4,25 @@ Public RSVP links use `https://vaisi.org/events/<event-name-slug>`. Opening that
 
 ## Create an event
 
+Approved VAISI exec members can create and manage events at
+`https://vaisi.org/eventcreator`. Google sign-in uses the same allowlist as the
+existing admin dashboard. The portal creates the linked Internal Calendar and
+Public Events records, publishes the event in chronological order on `/events`,
+and provides the standard `/events/<event-name-slug>` RSVP flow.
+
+The portal also supports editing, show/hide controls, and flyer upload/removal.
+Event data, visibility, and flyers are stored entirely in Airtable. Managed
+event flyers use the linked Internal Calendar attachment field, and visibility
+uses Public Events → Website Visibility.
+
+Website-only events remain in `lib/events/static-events.ts` and do not become
+Public Events records. Portal edits for them are stored in Airtable's Website
+Event Settings table. If a Public Events record has the same slug, the Airtable
+version supplies its current logistics while retaining the tracked event media
+as a fallback.
+
+### Command-line fallback
+
 Run this from the repository with the production Airtable token available as `airtable_api`:
 
 ```bash
