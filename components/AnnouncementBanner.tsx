@@ -12,11 +12,11 @@ const announcements: {
     link: string;
 }[] = [
     {
-        id: "fellowship-applications-open-2026",
-        title: "Fellowship Applications Open",
-        summary: "Apply by September 6 for our upcoming Intro to AI Safety and AI Policy fellowships!",
-        link: "https://airtable.com/appM8XoHX2voW3LQe/pag7pdRcPx9uhaRnF/form",
-        linkText: "Apply here →",
+        id: "are-we-in-control-2026",
+        title: "Are We in Control?",
+        summary: "Wednesday, September 23, 6:30–7:30 PM in Nau Hall 211. Join us to discuss the recent Hugging Face incident. Pizza provided!",
+        link: "/events/are-we-in-control",
+        linkText: "RSVP →",
     },
 ];
 
