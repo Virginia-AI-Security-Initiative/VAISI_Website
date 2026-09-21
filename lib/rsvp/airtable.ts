@@ -391,6 +391,27 @@ export async function getWebsiteEventSettings(): Promise<WebsiteEventSetting[]> 
   })).filter((setting) => setting.slug);
 }
 
+export async function getEventCreatorAccessConfig() {
+  const params = new URLSearchParams({
+    pageSize: "10",
+    returnFieldsByFieldId: "true",
+  });
+  const page = await airtableFetch<AirtableListResponse>(
+    `${AIRTABLE_TABLES.websiteAdminAccess}?${params}`,
+  );
+  const record = page.records.find((candidate) =>
+    stringField(candidate.fields, AIRTABLE_FIELDS.websiteAdminAccess.portal, "Portal") === "Event Creator"
+    && checkboxField(candidate.fields, AIRTABLE_FIELDS.websiteAdminAccess.active, "Active"),
+  );
+  if (!record) return null;
+  const passwordHash = stringField(
+    record.fields,
+    AIRTABLE_FIELDS.websiteAdminAccess.passwordHash,
+    "Password Hash",
+  );
+  return /^[a-f0-9]{64}$/.test(passwordHash) ? { passwordHash } : null;
+}
+
 export async function updateWebsiteEventSetting(
   slug: string,
   fields: Partial<Omit<WebsiteEventSetting, "id" | "slug" | "imageSrc">>,

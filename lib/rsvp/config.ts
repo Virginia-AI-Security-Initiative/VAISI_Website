@@ -7,6 +7,7 @@ export const AIRTABLE_TABLES = {
   publicEvents: "tblh1H6GK4pHcKB8j",
   internalCalendar: "tblJJtTFMQ30Cmwj5",
   websiteEventSettings: "tbl2A3t3C7gs2jmpw",
+  websiteAdminAccess: "tbl1E5n9vwXi18t43",
 } as const;
 
 export const AIRTABLE_FIELDS = {
@@ -53,6 +54,11 @@ export const AIRTABLE_FIELDS = {
     end: "fldlJztcKKeDneia9",
     flyer: "fldJ8jMjYCy3g0Vrn",
     flyerRemoved: "fldwSCVxMW7DTdS0T",
+  },
+  websiteAdminAccess: {
+    portal: "fldVtooC8aiJPEwKG",
+    passwordHash: "fld8TOLZMuriirKZ5",
+    active: "fld8KGSxR5KqekAiK",
   },
 } as const;
 

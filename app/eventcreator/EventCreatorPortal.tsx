@@ -33,7 +33,7 @@ function EventFields({ event }: { event?: WebsiteEvent }) {
   </div>;
 }
 
-export default function EventCreatorPortal({ events, currentEmail }: { events: WebsiteEvent[]; currentEmail: string }) {
+export default function EventCreatorPortal({ events }: { events: WebsiteEvent[] }) {
   const [isPending, startTransition] = useTransition();
   const [notice, setNotice] = useState<EventCreatorResult | null>(null);
 
@@ -57,8 +57,8 @@ export default function EventCreatorPortal({ events, currentEmail }: { events: W
   return <main className="min-h-screen bg-slate-100 px-4 py-10 text-slate-950 sm:px-6">
     <div className="mx-auto max-w-5xl">
       <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div><p className="text-sm font-semibold uppercase tracking-[0.16em] text-orange-700">VAISI internal</p><h1 className="mt-1 text-3xl font-semibold tracking-tight">Event Creator</h1><p className="mt-2 text-sm text-slate-600">Times are entered and displayed in Eastern Time. Signed in as {currentEmail}.</p></div>
-        <div className="flex gap-4 text-sm"><Link href="/events" className="text-link-subtle min-h-11 py-3">View events</Link><a href="/auth/sign-out" className="text-link-subtle min-h-11 py-3">Sign out</a></div>
+        <div><p className="text-sm font-semibold uppercase tracking-[0.16em] text-orange-700">VAISI internal</p><h1 className="mt-1 text-3xl font-semibold tracking-tight">Event Creator</h1><p className="mt-2 text-sm text-slate-600">Times are entered and displayed in Eastern Time.</p></div>
+        <div className="flex gap-4 text-sm"><Link href="/events" className="text-link-subtle min-h-11 py-3">View events</Link><a href="/eventcreator/sign-out" className="text-link-subtle min-h-11 py-3">Sign out</a></div>
       </header>
 
       {notice && <div role="status" className={`mt-6 rounded-lg px-4 py-3 text-sm font-medium shadow-[0_0_0_1px_rgba(0,0,0,0.08)] ${notice.ok ? "bg-emerald-50 text-emerald-900" : "bg-red-50 text-red-900"}`}>{notice.message}</div>}

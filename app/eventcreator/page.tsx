@@ -1,9 +1,9 @@
-import { redirect } from "next/navigation";
 import { CalendarPlus, ShieldCheck } from "lucide-react";
 import EventCreatorPortal from "@/app/eventcreator/EventCreatorPortal";
-import { getCurrentExecAccess } from "@/lib/admin/data";
+import { signInToEventCreator } from "@/app/eventcreator/auth-actions";
+import { hasEventCreatorSession } from "@/lib/eventcreator/auth";
 import { getWebsiteEvents } from "@/lib/events/data";
-import { createSupabaseServerClient, getSupabaseConfig } from "@/lib/supabase/server";
+import { isAirtableConfigured } from "@/lib/rsvp/airtable";
 
 export const dynamic = "force-dynamic";
 
@@ -11,26 +11,29 @@ function SetupMessage() {
   return <main className="min-h-screen bg-slate-950 px-6 py-12 text-white"><div className="mx-auto flex min-h-[70vh] max-w-2xl flex-col justify-center">
     <ShieldCheck className="mb-6" size={40} />
     <h1 className="text-3xl font-semibold">Event Creator</h1>
-    <p className="mt-4 text-slate-300">Supabase is not configured for this environment.</p>
+    <p className="mt-4 text-slate-300">Airtable is not configured for this environment.</p>
   </div></main>;
 }
 
-function SignIn() {
-  return <main className="min-h-screen bg-slate-950 px-6 py-12 text-white"><div className="mx-auto flex min-h-[70vh] max-w-2xl flex-col justify-center">
+function SignIn({ invalid }: { invalid: boolean }) {
+  return <main className="min-h-screen bg-slate-950 px-6 py-12 text-white"><div className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center">
     <CalendarPlus className="mb-6" size={40} />
     <h1 className="text-3xl font-semibold">Event Creator</h1>
-    <p className="mt-4 max-w-lg text-slate-300">Create and manage VAISI website events and their standard RSVP pages.</p>
-    <a href="/auth/sign-in?next=/eventcreator" className="tap-scale mt-8 inline-flex min-h-12 w-fit items-center rounded-md bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-slate-100">Continue with Google</a>
+    <p className="mt-4 text-slate-300">Enter the VAISI Event Creator password.</p>
+    <form action={signInToEventCreator} className="mt-8">
+      <label htmlFor="event-creator-password" className="mb-2 block text-sm font-semibold text-slate-200">Password</label>
+      <input id="event-creator-password" name="password" type="password" required autoComplete="current-password" className="min-h-12 w-full rounded-lg bg-white px-4 text-base text-slate-950 outline-none shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)] focus:shadow-[inset_0_0_0_2px_#dc6c3a]" />
+      {invalid && <p role="alert" className="mt-3 text-sm font-medium text-red-300">That password is incorrect.</p>}
+      <button type="submit" className="tap-scale mt-5 inline-flex min-h-12 items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-slate-100">Continue</button>
+    </form>
   </div></main>;
 }
 
-export default async function EventCreatorPage() {
-  if (!getSupabaseConfig()) return <SetupMessage />;
-  const supabase = await createSupabaseServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user?.email) return <SignIn />;
-  const access = await getCurrentExecAccess(supabase, user.email);
-  if (!access) redirect("/");
+export default async function EventCreatorPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
+  if (!isAirtableConfigured()) return <SetupMessage />;
+  if (!(await hasEventCreatorSession())) {
+    return <SignIn invalid={(await searchParams).error === "invalid-password"} />;
+  }
   const events = await getWebsiteEvents({ includeHidden: true });
-  return <EventCreatorPortal events={events} currentEmail={user.email} />;
+  return <EventCreatorPortal events={events} />;
 }

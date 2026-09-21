@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { getCurrentExecAccess } from "@/lib/admin/data";
+import { requireEventCreatorSession } from "@/lib/eventcreator/auth";
 import { eventSlug } from "@/lib/rsvp/config";
 import {
   createManagedEvent,
@@ -13,20 +13,10 @@ import {
   uploadManagedEventFlyer,
   uploadWebsiteEventFlyer,
 } from "@/lib/rsvp/airtable";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export type EventCreatorResult = { ok: boolean; message: string };
 
 const allowedFlyerTypes = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
-
-async function requireEventCreator() {
-  const supabase = await createSupabaseServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user?.email) throw new Error("Sign in with an approved Google account first.");
-  const access = await getCurrentExecAccess(supabase, user.email);
-  if (!access) throw new Error("This account is not approved for the VAISI event portal.");
-  return { supabase, user };
-}
 
 function requiredText(formData: FormData, name: string, label: string, maxLength: number) {
   const value = String(formData.get(name) ?? "").trim();
@@ -83,7 +73,7 @@ function failure(error: unknown): EventCreatorResult {
 
 export async function createPortalEvent(formData: FormData): Promise<EventCreatorResult> {
   try {
-    await requireEventCreator();
+    await requireEventCreatorSession();
     const input = eventInput(formData);
     const slug = eventSlug(input.name);
     if (!slug) throw new Error("Event name must contain letters or numbers.");
@@ -106,7 +96,7 @@ export async function createPortalEvent(formData: FormData): Promise<EventCreato
 
 export async function updatePortalEvent(formData: FormData): Promise<EventCreatorResult> {
   try {
-    await requireEventCreator();
+    await requireEventCreatorSession();
     const source = requiredText(formData, "source", "Source", 20);
     const id = requiredText(formData, "eventId", "Event", 100);
     const oldSlug = requiredText(formData, "oldSlug", "Event slug", 100);
@@ -142,7 +132,7 @@ export async function updatePortalEvent(formData: FormData): Promise<EventCreato
 
 export async function togglePortalEvent(formData: FormData): Promise<EventCreatorResult> {
   try {
-    await requireEventCreator();
+    await requireEventCreatorSession();
     const slug = requiredText(formData, "slug", "Event slug", 100);
     const source = requiredText(formData, "source", "Source", 20);
     const airtableEventId = String(formData.get("airtableEventId") ?? "").trim();
@@ -164,7 +154,7 @@ export async function togglePortalEvent(formData: FormData): Promise<EventCreato
 
 export async function deletePortalFlyer(formData: FormData): Promise<EventCreatorResult> {
   try {
-    await requireEventCreator();
+    await requireEventCreatorSession();
     const slug = requiredText(formData, "slug", "Event slug", 100);
     const source = requiredText(formData, "source", "Source", 20);
     const id = requiredText(formData, "eventId", "Event", 100);

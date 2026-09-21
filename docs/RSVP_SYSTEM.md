@@ -4,11 +4,12 @@ Public RSVP links use `https://vaisi.org/events/<event-name-slug>`. Opening that
 
 ## Create an event
 
-Approved VAISI exec members can create and manage events at
-`https://vaisi.org/eventcreator`. Google sign-in uses the same allowlist as the
-existing admin dashboard. The portal creates the linked Internal Calendar and
-Public Events records, publishes the event in chronological order on `/events`,
-and provides the standard `/events/<event-name-slug>` RSVP flow.
+VAISI organizers can create and manage events at
+`https://vaisi.org/eventcreator`. The password gate is configured in Airtable's
+Website Admin Access table; only its SHA-256 hash is stored. The portal creates
+the linked Internal Calendar and Public Events records, publishes the event in
+chronological order on `/events`, and provides the standard
+`/events/<event-name-slug>` RSVP flow.
 
 The portal also supports editing, show/hide controls, and flyer upload/removal.
 Event data, visibility, and flyers are stored entirely in Airtable. Managed
