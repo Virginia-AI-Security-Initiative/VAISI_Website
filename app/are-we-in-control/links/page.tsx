@@ -105,16 +105,13 @@ export default function AreWeInControlLinksPage() {
                       className="group flex h-full min-h-28 items-center gap-3 overflow-hidden rounded-xl border border-gray-200 bg-white p-3 text-primary transition-[border-color,box-shadow,color] duration-150 hover:border-gray-300 hover:text-secondary hover:shadow-sm lg:block lg:p-0"
                     >
                       <LinkVisual visual={item.visual} />
-                      <span className="flex min-w-0 flex-1 items-start gap-2 lg:min-h-32 lg:p-4">
-                        <span className="min-w-0 flex-1">
-                          <span className="block text-lg font-medium leading-snug underline decoration-transparent underline-offset-4 group-hover:decoration-current">
-                            {item.label}
-                          </span>
-                          <span className="mt-1 block text-sm leading-snug text-gray-500">
-                            {item.detail}
-                          </span>
+                      <span className="block min-w-0 flex-1 lg:min-h-32 lg:p-4">
+                        <span className="block text-lg font-medium leading-snug underline decoration-transparent underline-offset-4 group-hover:decoration-current">
+                          {item.label}
                         </span>
-                        <span aria-hidden="true" className="shrink-0 text-lg leading-none">↗</span>
+                        <span className="mt-1 block text-sm leading-snug text-gray-500">
+                          {item.detail}
+                        </span>
                       </span>
                     </a>
                   </li>
