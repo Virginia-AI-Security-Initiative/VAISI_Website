@@ -68,7 +68,14 @@ function LinkVisual({ visual }: { visual: string }) {
 
   return (
     <span className="flex h-16 w-24 shrink-0 items-center justify-center rounded-lg bg-[#edf5fa] image-outline sm:h-20 sm:w-32">
-      <Image src="/groupme.png" alt="GroupMe" width={44} height={44} className="size-10 object-contain sm:size-11" />
+      <span
+        aria-hidden="true"
+        className="size-10 bg-[#00aff0] sm:size-11"
+        style={{
+          mask: "url(/groupme.png) center / contain no-repeat",
+          WebkitMask: "url(/groupme.png) center / contain no-repeat",
+        }}
+      />
     </span>
   );
 }
