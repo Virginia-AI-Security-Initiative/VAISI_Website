@@ -12,18 +12,18 @@ const links = [
     items: [
       {
         label: "VAISI GroupMe",
-        detail: "Club updates and future events",
+        detail: "Join the Virginia AI Security Initiative GroupMe",
         href: "https://groupme.com/join_group/110490963/bxseYw8L",
       },
       {
         label: "Societal AI GroupMe",
-        detail: "Keep talking about AI with the broader group",
+        detail: "Join the Societal AI GroupMe",
         href: "https://groupme.com/join_group/103135952/Hm23l608",
       },
     ],
   },
   {
-    heading: "Go deeper",
+    heading: "Learn more",
     items: [
       {
         label: "Ajeya Cotra on the Dwarkesh Podcast",
@@ -43,14 +43,11 @@ export default function AreWeInControlLinksPage() {
   return (
     <div className="min-h-[70vh] bg-white px-5 py-16 sm:py-20">
       <div className="mx-auto max-w-2xl">
-        <p className="mb-4 text-sm font-bold uppercase tracking-[0.14em] text-secondary">
-          VAISI discussion
-        </p>
         <h1 className="text-4xl font-bold leading-tight text-primary sm:text-5xl">
           Are We in Control?
         </h1>
         <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-600">
-          A few links for the conversation and for anyone who wants to keep exploring afterward.
+          Links to stay involved and learn more about the incident discussed today.
         </p>
 
         <div className="mt-12 space-y-12">
