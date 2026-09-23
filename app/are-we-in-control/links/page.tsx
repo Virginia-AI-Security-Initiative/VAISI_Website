@@ -50,27 +50,27 @@ function LinkVisual({ visual }: { visual: string }) {
       <Image
         src="/images/are-we-in-control/ajeya-cotra-podcast.jpg"
         alt="Ajeya Cotra podcast thumbnail"
-        width={128}
-        height={80}
-        className="h-16 w-24 shrink-0 rounded-lg object-cover image-outline sm:h-20 sm:w-32"
+        width={320}
+        height={180}
+        className="h-20 w-24 shrink-0 rounded-lg object-cover image-outline lg:h-36 lg:w-full lg:rounded-none"
       />
     );
   }
 
   if (visual === "report") {
     return (
-      <span className="flex h-16 w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-lg bg-gray-50 px-2 image-outline sm:h-20 sm:w-32 sm:gap-1.5">
-        <Image src="/images/are-we-in-control/metr-logo.svg" alt="METR" width={93} height={21} className="h-auto w-[76px] sm:w-[100px]" />
-        <Image src="/images/are-we-in-control/redwood-logo.svg" alt="Redwood Research" width={104} height={27} className="h-auto w-[79px] sm:w-[106px]" />
+      <span className="flex h-20 w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-lg bg-gray-50 px-2 image-outline lg:h-36 lg:w-full lg:gap-3 lg:rounded-none">
+        <Image src="/images/are-we-in-control/metr-logo.svg" alt="METR" width={151} height={33} className="h-auto w-[76px] lg:w-[145px]" />
+        <Image src="/images/are-we-in-control/redwood-logo.svg" alt="Redwood Research" width={279} height={73} className="h-auto w-[79px] lg:w-[155px]" />
       </span>
     );
   }
 
   return (
-    <span className="flex h-16 w-24 shrink-0 items-center justify-center rounded-lg bg-[#edf5fa] image-outline sm:h-20 sm:w-32">
+    <span className="flex h-20 w-24 shrink-0 items-center justify-center rounded-lg bg-[#edf5fa] image-outline lg:h-36 lg:w-full lg:rounded-none">
       <span
         aria-hidden="true"
-        className="size-10 bg-[#00aff0] sm:size-11"
+        className="size-11 bg-[#00aff0] lg:size-16"
         style={{
           mask: "url(/groupme.png) center / contain no-repeat",
           WebkitMask: "url(/groupme.png) center / contain no-repeat",
@@ -82,8 +82,8 @@ function LinkVisual({ visual }: { visual: string }) {
 
 export default function AreWeInControlLinksPage() {
   return (
-    <div className="min-h-[70vh] bg-white px-5 py-16 sm:py-20">
-      <div className="mx-auto max-w-2xl">
+    <div className="min-h-[70vh] bg-white px-5 py-16 sm:px-6 sm:py-20">
+      <div className="mx-auto max-w-6xl">
         <h1 className="text-4xl font-bold leading-tight text-primary sm:text-5xl">
           Are We in Control?
         </h1>
@@ -91,29 +91,31 @@ export default function AreWeInControlLinksPage() {
           Links to stay involved and learn more about the incident discussed today.
         </p>
 
-        <div className="mt-12 space-y-12">
+        <div className="mt-12 space-y-10 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
           {links.map((section) => (
             <section key={section.heading} aria-label={section.heading}>
-              <h2 className="mb-3 text-xl font-bold text-primary">{section.heading}</h2>
-              <ul className="border-t border-gray-200">
+              <h2 className="mb-4 text-xl font-bold text-primary">{section.heading}</h2>
+              <ul className="grid gap-3 lg:grid-cols-2 lg:gap-4">
                 {section.items.map((item) => (
-                  <li key={item.href} className="border-b border-gray-200">
+                  <li key={item.href} className="min-w-0">
                     <a
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex min-h-24 items-center gap-3 py-3 text-primary transition-colors duration-150 hover:text-secondary sm:gap-5 sm:py-4"
+                      className="group flex h-full min-h-28 items-center gap-3 overflow-hidden rounded-xl border border-gray-200 bg-white p-3 text-primary transition-[border-color,box-shadow,color] duration-150 hover:border-gray-300 hover:text-secondary hover:shadow-sm lg:block lg:p-0"
                     >
                       <LinkVisual visual={item.visual} />
-                      <span className="min-w-0 flex-1">
-                        <span className="block text-lg font-medium leading-snug underline decoration-transparent underline-offset-4 group-hover:decoration-current">
-                          {item.label}
+                      <span className="flex min-w-0 flex-1 items-start gap-2 lg:min-h-32 lg:p-4">
+                        <span className="min-w-0 flex-1">
+                          <span className="block text-lg font-medium leading-snug underline decoration-transparent underline-offset-4 group-hover:decoration-current">
+                            {item.label}
+                          </span>
+                          <span className="mt-1 block text-sm leading-snug text-gray-500">
+                            {item.detail}
+                          </span>
                         </span>
-                        <span className="mt-1 block text-sm leading-snug text-gray-500">
-                          {item.detail}
-                        </span>
+                        <span aria-hidden="true" className="shrink-0 text-lg leading-none">↗</span>
                       </span>
-                      <span aria-hidden="true" className="shrink-0 self-start pt-1 text-lg leading-none sm:self-center sm:pt-0">↗</span>
                     </a>
                   </li>
                 ))}
