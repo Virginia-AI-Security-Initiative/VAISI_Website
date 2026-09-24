@@ -11,13 +11,6 @@ const announcements: {
     linkText: string;
     link: string;
 }[] = [
-    {
-        id: "are-we-in-control-2026",
-        title: "Are We in Control?",
-        summary: "Wednesday, September 23, 6:30–7:30 PM in Nau Hall 211. Join us to discuss the recent Hugging Face incident. Pizza provided!",
-        link: "/events/are-we-in-control",
-        linkText: "RSVP →",
-    },
 ];
 
 export default function AnnouncementBanner() {

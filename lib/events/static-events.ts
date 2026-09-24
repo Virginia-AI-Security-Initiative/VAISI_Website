@@ -11,8 +11,8 @@ export const staticEvents: WebsiteEvent[] = [
     location: "Nau Hall 211",
     description: "Come discuss the recent HuggingFace incident, in which OpenAI agents escaped internal environments, coordinated agent swarms of over 700 agents, and hacked external companies. Pizza will be provided.",
     imageSrc: "/images/events/are-we-in-control-2026.png",
-    links: [{ label: "RSVP", url: "/events/are-we-in-control", emphasis: "primary" }],
     visible: true,
+    past: true,
   },
   {
     id: "website-ai-safety-hackathon-2026",

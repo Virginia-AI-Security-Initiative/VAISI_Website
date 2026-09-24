@@ -18,4 +18,5 @@ export interface WebsiteEvent {
   photos?: Array<string | { src: string; alt: string }>;
   links?: EventLink[];
   visible: boolean;
+  past?: boolean;
 }

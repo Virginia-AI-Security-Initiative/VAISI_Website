@@ -1,0 +1,164 @@
+{"kind":"deck","id":"pr/5bv6oj","name":"Deck"}
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"simple-light-2","type":"master","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"TITLE","type":"title","placeholders":[{"name":"title","type":"title"},{"name":"subtitle","type":"subtitle"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout2.xml","name":"SECTION_HEADER","type":"secHead","placeholders":[{"name":"title","type":"title"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout3.xml","name":"TITLE_AND_BODY","type":"tx","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout4.xml","name":"TITLE_AND_TWO_COLUMNS","type":"twoColTx","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"},{"name":"body","type":"body"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout5.xml","name":"TITLE_ONLY","type":"titleOnly","placeholders":[{"name":"title","type":"title"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout6.xml","name":"ONE_COLUMN_TEXT","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout7.xml","name":"MAIN_POINT","placeholders":[{"name":"title","type":"title"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout8.xml","name":"SECTION_TITLE_AND_DESCRIPTION","placeholders":[{"name":"title","type":"title"},{"name":"subtitle","type":"subtitle"},{"name":"body","type":"body"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout9.xml","name":"CAPTION_ONLY","placeholders":[{"name":"body","type":"body"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout10.xml","name":"BIG_NUMBER","placeholders":[{"name":"title","type":"title","textPreview":"xx%"},{"name":"body","type":"body"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout11.xml","name":"BLANK","type":"blank","placeholders":[{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout12.xml","name":"DEFAULT"}
+{"kind":"slide","id":"sl/y90nupkv","slide":1,"title":"Pre-event Poll","textShapes":1}
+{"kind":"shape","id":"sh/yt8fyl87","slide":1,"name":"Google Shape;56;p14","bbox":[0,0,960,540]}
+{"kind":"textbox","id":"sh/xsfy5grm","slide":1,"name":"Google Shape;59;p14","text":"Pre-event Poll","textPreview":"Pre-event Poll","textChars":14,"textLines":1,"bbox":[279.57,448.6,400.85,54.93]}
+{"kind":"image","id":"im/2poza1sb","slide":1,"name":"Google Shape;57;p14","bbox":[798.13,392.33,153.29,133.36]}
+{"kind":"image","id":"im/3qh0369w","slide":1,"name":"Google Shape;58;p14","bbox":[279.58,47.76,400.84,400.84]}
+{"kind":"image","id":"im/orq1cbah","slide":1,"name":"Google Shape;60;p14","bbox":[279.58,47.76,400.84,400.84]}
+{"kind":"notes","id":"nt/y90nupkv","slide":1,"text":""}
+{"kind":"slide","id":"sl/hwbqtkby","slide":2,"title":"Hugging Face","textShapes":2}
+{"kind":"shape","id":"sh/ved0jihs","slide":2,"name":"Google Shape;66;p15","bbox":[0,0,960,540]}
+{"kind":"shape","id":"sh/ad4zadg7","slide":2,"name":"Google Shape;67;p15","bbox":[0,532.8,960,7.21]}
+{"kind":"shape","id":"sh/yxkfi9wz","slide":2,"name":"Google Shape;70;p15","bbox":[110.11,22.62,675.84,46.8]}
+{"kind":"shape","id":"sh/zytgbexk","slide":2,"name":"Google Shape;71;p15","bbox":[421.21,365.76,53.64,0]}
+{"kind":"shape","id":"sh/0j2xkje5","slide":2,"name":"Google Shape;72;p15","bbox":[486.37,365.76,53.64,0]}
+{"kind":"shape","id":"sh/lkbyd4fq","slide":2,"name":"Google Shape;73;p15","bbox":[478.09,363.24,5.04,5.04]}
+{"kind":"textbox","id":"sh/bu9w7uxo","slide":2,"name":"Google Shape;75;p15","text":"Hugging Face\nAnd\nAI Collectives","textPreview":"Hugging Face | And | AI Collectives","textChars":31,"textLines":3,"bbox":[120.75,37.46,719.72,46.8]}
+{"kind":"textbox","id":"sh/cv2xgzet","slide":2,"name":"Google Shape;76;p15","text":"Hosted by","textPreview":"Hosted by","textChars":9,"textLines":1,"bbox":[167.02,374.86,625.95,48.47]}
+{"kind":"image","id":"im/yt03yxgj","slide":2,"name":"Google Shape;68;p15","bbox":[140.96,393.77,321.24,122.6]}
+{"kind":"image","id":"im/xsr25szy","slide":2,"name":"Google Shape;69;p15","bbox":[0,0,168.47,146.57]}
+{"kind":"image","id":"im/crilwnyd","slide":2,"name":"Google Shape;74;p15","geometry":"ellipse","bbox":[502.44,423.34,210.77,93.04]}
+{"kind":"notes","id":"nt/hwbqtkby","slide":2,"text":""}
+{"kind":"slide","id":"sl/ofy9wn61","slide":3,"title":"AI in the News","textShapes":1}
+{"kind":"shape","id":"sh/ih43alwv","slide":3,"name":"Google Shape;82;p16","bbox":[0,0,960,540]}
+{"kind":"textbox","id":"sh/hgvm1gvq","slide":3,"name":"Google Shape;85;p16","text":"AI in the News","textPreview":"AI in the News","textChars":14,"textLines":1,"bbox":[56.16,223.2,568.82,68.41]}
+{"kind":"shape","id":"sh/ud436lwz","slide":3,"name":"Google Shape;86;p16","bbox":[56.16,344.16,50.05,0]}
+{"kind":"shape","id":"sh/ved4zqdk","slide":3,"name":"Google Shape;87;p16","bbox":[117.72,344.16,50.05,0]}
+{"kind":"shape","id":"sh/0bq5kfu9","slide":3,"name":"Google Shape;88;p16","bbox":[109.44,341.64,5.04,5.04]}
+{"kind":"image","id":"im/2p8re547","slide":3,"name":"Google Shape;83;p16","bbox":[39.6,32.4,144,54.96]}
+{"kind":"image","id":"im/sj2hsryt","slide":3,"name":"Google Shape;84;p16","bbox":[709.22,93.6,223.2,194.19]}
+{"kind":"notes","id":"nt/ofy9wn61","slide":3,"text":""}
+{"kind":"slide","id":"sl/jyx0ra1s","slide":4,"title":"Slide 4","textShapes":0}
+{"kind":"shape","id":"sh/83upc7q1","slide":4,"name":"Google Shape;94;p17","bbox":[-1.82,0,960,540]}
+{"kind":"shape","id":"sh/943q5crm","slide":4,"name":"Google Shape;95;p17","bbox":[0,0,960,5.04]}
+{"kind":"shape","id":"sh/m1c7ah8v","slide":4,"name":"Google Shape;96;p17","bbox":[0,532.8,960,7.21]}
+{"kind":"image","id":"im/w3ih4f29","slide":4,"name":"Google Shape;97;p17","bbox":[774.02,41.76,147.6,128.41]}
+{"kind":"image","id":"im/7y9g7als","slide":4,"name":"Google Shape;98;p17","bbox":[869.78,446.4,39.6,34.56]}
+{"kind":"image","id":"im/mx0zy5k7","slide":4,"name":"Google Shape;99;p17","bbox":[181.18,120.34,597.63,299.32]}
+{"kind":"notes","id":"nt/jyx0ra1s","slide":4,"text":""}
+{"kind":"slide","id":"sl/i107q5of","slide":5,"title":"Slide 5","textShapes":0}
+{"kind":"shape","id":"sh/36povax4","slide":5,"name":"Google Shape;105;p18","bbox":[0,0,960,540]}
+{"kind":"shape","id":"sh/o7yp4fe9","slide":5,"name":"Google Shape;106;p18","bbox":[0,0,960,5.04]}
+{"kind":"shape","id":"sh/ps76xkfu","slide":5,"name":"Google Shape;107;p18","bbox":[0,532.8,960,7.21]}
+{"kind":"image","id":"im/3ulcn6x4","slide":5,"name":"Google Shape;108;p18","bbox":[774.02,41.76,147.6,128.41]}
+{"kind":"image","id":"im/itsbu1wj","slide":5,"name":"Google Shape;109;p18","bbox":[869.78,446.4,39.6,34.56]}
+{"kind":"image","id":"im/83618nq5","slide":5,"name":"Google Shape;110;p18","bbox":[491.46,275.08,430.16,214.93]}
+{"kind":"image","id":"im/9ozih8rq","slide":5,"name":"Google Shape;111;p18","bbox":[14.61,60,443.14,203.18]}
+{"kind":"image","id":"im/m1oj6d8z","slide":5,"name":"Google Shape;112;p18","bbox":[14.61,327.25,465.39,170.36]}
+{"kind":"image","id":"im/72x0fi9k","slide":5,"name":"Google Shape;113;p18","bbox":[467.51,74,449.92,165.54]}
+{"kind":"notes","id":"nt/i107q5of","slide":5,"text":""}
+{"kind":"slide","id":"sl/x8f69ofe","slide":6,"title":"Slide 6","textShapes":0}
+{"kind":"shape","id":"sh/nehgvedw","slide":6,"name":"Google Shape;119;p19","bbox":[0,0,960,540]}
+{"kind":"shape","id":"sh/rixw3ato","slide":6,"name":"Google Shape;120;p19","bbox":[0,0,960,5.04]}
+{"kind":"shape","id":"sh/qhovu5s3","slide":6,"name":"Google Shape;121;p19","bbox":[0,532.8,960,7.21]}
+{"kind":"image","id":"im/0n2l4zmt","slide":6,"name":"Google Shape;122;p19","bbox":[774.02,41.76,147.6,128.41]}
+{"kind":"image","id":"im/lobmd4ne","slide":6,"name":"Google Shape;123;p19","bbox":[869.78,446.4,39.6,34.56]}
+{"kind":"image","id":"im/qx03ep4r","slide":6,"name":"Google Shape;124;p19","bbox":[233.31,50.86,493.37,438.28]}
+{"kind":"notes","id":"nt/x8f69ofe","slide":6,"text":""}
+{"kind":"slide","id":"sl/gnmp4jqx","slide":7,"title":"Slide 7","textShapes":0}
+{"kind":"shape","id":"sh/m1k36pov","slide":7,"name":"Google Shape;130;p20","bbox":[0,0,960,540]}
+{"kind":"shape","id":"sh/n2dkfupg","slide":7,"name":"Google Shape;131;p20","bbox":[0,0,960,5.04]}
+{"kind":"shape","id":"sh/o3ml8z61","slide":7,"name":"Google Shape;132;p20","bbox":[0,532.8,960,7.21]}
+{"kind":"image","id":"im/grmlov6t","slide":7,"name":"Google Shape;133;p20","bbox":[774.02,41.76,147.6,128.41]}
+{"kind":"image","id":"im/rmtkr65w","slide":7,"name":"Google Shape;134;p20","bbox":[869.78,446.4,39.6,34.56]}
+{"kind":"image","id":"im/6lkji1or","slide":7,"name":"Google Shape;135;p20","bbox":[377.71,30.42,531.67,287.76]}
+{"kind":"image","id":"im/tov2tgn2","slide":7,"name":"Google Shape;136;p20","bbox":[22.73,156.78,328.31,328.31]}
+{"kind":"notes","id":"nt/gnmp4jqx","slide":7,"text":""}
+{"kind":"slide","id":"sl/fu1gfa1s","slide":8,"title":"July 16","textShapes":8}
+{"kind":"shape","id":"sh/sz2xszad","slide":8,"name":"Google Shape;142;p21","bbox":[0,0,960,540]}
+{"kind":"shape","id":"sh/d0by14ry","slide":8,"name":"Google Shape;143;p21","bbox":[0,0,960,5.04]}
+{"kind":"shape","id":"sh/e1kfu9sj","slide":8,"name":"Google Shape;144;p21","bbox":[0,532.8,960,7.21]}
+{"kind":"shape","id":"sh/xkfix8bi","slide":8,"name":"Timeline line","bbox":[138,257,684,3]}
+{"kind":"textbox","id":"sh/wj61onux","slide":8,"name":"Timeline date 1","text":"July 16","textPreview":"July 16","textChars":7,"textLines":1,"bbox":[46,200,184,40]}
+{"kind":"shape","id":"sh/byx0vitc","slide":8,"name":"Timeline marker 1","bbox":[129,250,18,18]}
+{"kind":"textbox","id":"sh/axojmdcr","slide":8,"name":"Timeline event 1","text":"Hugging Face announces agents hacked its site","textPreview":"Hugging Face announces agents hacked its site","textChars":45,"textLines":1,"bbox":[36,288,204,124]}
+{"kind":"textbox","id":"sh/lozi1sbe","slide":8,"name":"Timeline date 2","text":"July 21","textPreview":"July 21","textChars":7,"textLines":1,"bbox":[274,200,184,40]}
+{"kind":"shape","id":"sh/knq1snut","slide":8,"name":"Timeline marker 2","bbox":[357,250,18,18]}
+{"kind":"textbox","id":"sh/jmh0zit8","slide":8,"name":"Timeline event 2","text":"OpenAI says its models were responsible","textPreview":"OpenAI says its models were responsible","textChars":39,"textLines":1,"bbox":[264,288,204,124]}
+{"kind":"textbox","id":"sh/ylojqdc3","slide":8,"name":"Timeline date 3","text":"August 5","textPreview":"August 5","textChars":8,"textLines":1,"bbox":[502,200,184,40]}
+{"kind":"shape","id":"sh/1svipoba","slide":8,"name":"Timeline marker 3","bbox":[585,250,18,18]}
+{"kind":"textbox","id":"sh/0rm1g3up","slide":8,"name":"Timeline event 3","text":"OpenAI shares more details at Black Hat","textPreview":"OpenAI shares more details at Black Hat","textChars":39,"textLines":1,"bbox":[492,288,204,124]}
+{"kind":"textbox","id":"sh/sbq1c32l","slide":8,"name":"Timeline date 4","text":"August 26","textPreview":"August 26","textChars":9,"textLines":1,"bbox":[730,200,184,40]}
+{"kind":"shape","id":"sh/tczi58j6","slide":8,"name":"Timeline marker 4","bbox":[813,250,18,18]}
+{"kind":"textbox","id":"sh/698jatkf","slide":8,"name":"Timeline event 4","text":"METR/Redwood and OpenAI reports reveal the wider scale","textPreview":"METR/Redwood and OpenAI reports reveal the wider scale","textChars":54,"textLines":1,"bbox":[720,288,204,124]}
+{"kind":"image","id":"im/3ahon2dg","slide":8,"name":"Google Shape;145;p21","bbox":[774.02,41.76,147.6,128.41]}
+{"kind":"image","id":"im/2po7exwv","slide":8,"name":"Google Shape;146;p21","bbox":[869.78,446.4,39.6,34.56]}
+{"kind":"notes","id":"nt/fu1gfa1s","slide":8,"text":""}
+{"kind":"slide","id":"sl/udsvah03","slide":9,"title":"Felony Bench","textShapes":2}
+{"kind":"shape","id":"sh/ilwbm5or","slide":9,"name":"Google Shape;153;p22","bbox":[0,0,960,540]}
+{"kind":"shape","id":"sh/hk3adk76","slide":9,"name":"Google Shape;154;p22","bbox":[0,0,960,5.04]}
+{"kind":"shape","id":"sh/wjutkf61","slide":9,"name":"Google Shape;155;p22","bbox":[0,532.8,960,7.21]}
+{"kind":"textbox","id":"sh/vilsbapg","slide":9,"name":"Google Shape;156;p22","text":"Felony Bench","textPreview":"Felony Bench","textChars":12,"textLines":1,"bbox":[118.8,61.92,361.2,34.55]}
+{"kind":"shape","id":"sh/uhcbi5ov","slide":9,"name":"Google Shape;157;p22","bbox":[118.8,123.84,47.53,0]}
+{"kind":"shape","id":"sh/1g7up47q","slide":9,"name":"Google Shape;158;p22","bbox":[177.84,123.84,47.53,0]}
+{"kind":"shape","id":"sh/0fytwz65","slide":9,"name":"Google Shape;159;p22","bbox":[169.56,121.32,5.04,5.04]}
+{"kind":"textbox","id":"sh/0j6ds3eh","slide":9,"name":"Google Shape;160;p22","text":"“counts unique instances where AI agents inadvertently compromise or affect third-party entities.”","textPreview":"“counts unique instances where AI agents inadvertently compromise or affect third-party entities.”","textChars":98,"textLines":1,"bbox":[168.55,478.25,622.9,58.17]}
+{"kind":"image","id":"im/kvyx0j2p","slide":9,"name":"Google Shape;161;p22","bbox":[173.24,135.31,613.52,342.94]}
+{"kind":"image","id":"im/jupg7e14","slide":9,"name":"Google Shape;162;p22","bbox":[774.02,41.76,147.6,128.41]}
+{"kind":"image","id":"im/itwfy9kj","slide":9,"name":"Google Shape;163;p22","bbox":[869.78,446.4,39.6,34.56]}
+{"kind":"notes","id":"nt/udsvah03","slide":9,"text":""}
+{"kind":"slide","id":"sl/m90b6t0r","slide":10,"title":"Coxon","textShapes":1}
+{"kind":"shape","id":"sh/1wvqp8jm","slide":10,"name":"Google Shape;169;p23","bbox":[0,0,960,540]}
+{"kind":"shape","id":"sh/j6tszylo","slide":10,"name":"Google Shape;170;p23","bbox":[0,532.8,960,7.21]}
+{"kind":"shape","id":"sh/5sba183e","slide":10,"name":"Google Shape;172;p23","bbox":[110.11,22.62,675.84,46.8]}
+{"kind":"textbox","id":"sh/4r2983m9","slide":10,"name":"Google Shape;173;p23","text":"Coxon\nLab agreement\nDario v trump\nMillennium prizes\nHF context\nFelony bench\nTimeline\nBreach\nDisclosure\nBlackhat\nreport","textPreview":"Coxon | Lab agreement | Dario v trump | Millennium prizes | HF context | Felony bench | Timeline | Breach | Disclosure | Blackhat | report","textChars":118,"textLines":11,"bbox":[29.77,22.62,902.55,46.8]}
+{"kind":"image","id":"im/il4ny5wv","slide":10,"name":"Google Shape;171;p23","bbox":[791.53,386.23,168.47,146.57]}
+{"kind":"notes","id":"nt/m90b6t0r","slide":10,"text":""}
+{"kind":"slide","id":"sl/jetc3ut0","slide":11,"title":"Slide 11","textShapes":0}
+{"kind":"shape","id":"sh/mlov6doj","slide":11,"name":"Google Shape;179;p24","bbox":[0,0,960,540]}
+{"kind":"image","id":"im/zetgnah8","slide":11,"name":"Google Shape;180;p24","bbox":[119.67,67.32,720.66,405.37]}
+{"kind":"notes","id":"nt/jetc3ut0","slide":11,"text":""}
+{"kind":"slide","id":"sl/8f2psfyx","slide":12,"title":"How closely do these models fit with your idea of a misaligned AI?","textShapes":1}
+{"kind":"shape","id":"sh/sbuhw76h","slide":12,"name":"Google Shape;186;p25","bbox":[0,0,960,540]}
+{"kind":"shape","id":"sh/dc3ips72","slide":12,"name":"Google Shape;187;p25","bbox":[0,532.8,960,7.21]}
+{"kind":"shape","id":"sh/bmp0zmpg","slide":12,"name":"Google Shape;189;p25","bbox":[110.11,22.62,675.84,46.8]}
+{"kind":"textbox","id":"sh/lcbulkvu","slide":12,"name":"Google Shape;190;p25","text":"How closely do these models fit with your idea of a misaligned AI?\nCould an unregulated AI collective be valuable if it was more aligned? Or is it inherently dangerous?\nShould OpenAI be held legally liable for this incident?","textPreview":"How closely do these models fit with your idea of a misaligned AI? | Could an unregulated AI collective be valuable if it was more aligne...","textChars":224,"textLines":3,"bbox":[29.77,22.62,902.55,46.8]}
+{"kind":"image","id":"im/p8zmtwna","slide":12,"name":"Google Shape;188;p25","bbox":[791.53,386.23,168.47,146.57]}
+{"kind":"notes","id":"nt/8f2psfyx","slide":12,"text":""}
+{"kind":"slide","id":"sl/hgzapcr6","slide":13,"title":"Are we anthropomorphizing models too much? How does this affect our understan...","textShapes":1}
+{"kind":"shape","id":"sh/0vmhknel","slide":13,"name":"Google Shape;196;p26","bbox":[0,0,960,540]}
+{"kind":"shape","id":"sh/1wfytsf6","slide":13,"name":"Google Shape;197;p26","bbox":[0,532.8,960,7.21]}
+{"kind":"shape","id":"sh/jqh03md4","slide":13,"name":"Google Shape;199;p26","bbox":[110.11,22.62,675.84,46.8]}
+{"kind":"textbox","id":"sh/q98v21c3","slide":13,"name":"Google Shape;200;p26","text":"Are we anthropomorphizing models too much? How does this affect our understanding of them?\nIs reward-hacking inherently problematic?\nIs too much persistence in models a bad thing?\nWhat do these incidents imply about advancing AI capabilities?","textPreview":"Are we anthropomorphizing models too much? How does this affect our understanding of them? | Is reward-hacking inherently problematic? | ...","textChars":242,"textLines":4,"bbox":[29.77,22.62,902.55,46.8]}
+{"kind":"image","id":"im/65s3i5cj","slide":13,"name":"Google Shape;198;p26","bbox":[791.53,386.23,168.47,146.57]}
+{"kind":"notes","id":"nt/hgzapcr6","slide":13,"text":""}
+{"kind":"slide","id":"sl/6lsnupw7","slide":14,"title":"Post-event Poll","textShapes":1}
+{"kind":"shape","id":"sh/7mp4b6x0","slide":14,"name":"Google Shape;206;p27","bbox":[0,0,960,540]}
+{"kind":"textbox","id":"sh/obel8ry1","slide":14,"name":"Google Shape;209;p27","text":"Post-event Poll","textPreview":"Post-event Poll","textChars":15,"textLines":1,"bbox":[279.57,448.6,400.85,54.93]}
+{"kind":"image","id":"im/7mxgb2l8","slide":14,"name":"Google Shape;207;p27","bbox":[798.13,392.33,153.29,133.36]}
+{"kind":"image","id":"im/6lof2x4n","slide":14,"name":"Google Shape;208;p27","bbox":[279.58,47.76,400.84,400.84]}
+{"kind":"image","id":"im/tofydc3y","slide":14,"name":"Google Shape;210;p27","bbox":[279.58,47.76,400.84,400.84]}
+{"kind":"notes","id":"nt/6lsnupw7","slide":14,"text":""}
+{"kind":"slide","id":"sl/vaxsvy10","slide":15,"title":"Stay connected and learn more!","textShapes":1}
+{"kind":"shape","id":"sh/k7md0r6t","slide":15,"name":"Google Shape;216;p28","bbox":[0,0,960,540]}
+{"kind":"textbox","id":"sh/zatcf2p4","slide":15,"name":"Google Shape;219;p28","text":"Stay connected and learn more!","textPreview":"Stay connected and learn more!","textChars":30,"textLines":1,"bbox":[279.57,448.6,400.85,90.49]}
+{"kind":"image","id":"im/mtk3y1sb","slide":15,"name":"Google Shape;217;p28","bbox":[798.13,392.33,153.29,133.36]}
+{"kind":"image","id":"im/nut4r6tw","slide":15,"name":"Google Shape;218;p28","bbox":[279.58,47.76,400.84,400.84]}
+{"kind":"notes","id":"nt/vaxsvy10","slide":15,"text":""}
+{"kind":"slide","id":"sl/gny5sjyp","slide":16,"title":"VAISI Groupme","textShapes":2}
+{"kind":"shape","id":"sh/zq9sz218","slide":16,"name":"Google Shape;225;p29","bbox":[0,0,960,540]}
+{"kind":"textbox","id":"sh/yl4b2h0r","slide":16,"name":"Google Shape;228;p29","text":"VAISI Groupme","textPreview":"VAISI Groupme","textChars":13,"textLines":1,"bbox":[77.81,28.4,296.22,48.47]}
+{"kind":"textbox","id":"sh/jmdsbm1c","slide":16,"name":"Google Shape;229;p29","text":"SAI Groupme","textPreview":"SAI Groupme","textChars":11,"textLines":1,"bbox":[542.75,28.4,382.43,48.47]}
+{"kind":"image","id":"im/4zu1kzmd","slide":16,"name":"Google Shape;226;p29","bbox":[798.13,392.33,153.29,133.36]}
+{"kind":"image","id":"im/p0nitk3y","slide":16,"name":"Google Shape;227;p29","bbox":[66.13,76.26,336.68,339.42]}
+{"kind":"image","id":"im/2xcjip47","slide":16,"name":"Google Shape;230;p29","bbox":[542.75,76.26,336.68,336.68]}
+{"kind":"notes","id":"nt/gny5sjyp","slide":16,"text":""}
+{"kind":"slide","id":"sl/14bup87q","slide":17,"title":"Full interview with Ajeya Cotra","textShapes":1}
+{"kind":"shape","id":"sh/q5w3ahcv","slide":17,"name":"Google Shape;236;p30","bbox":[0,0,960,540]}
+{"kind":"textbox","id":"sh/xormh0bq","slide":17,"name":"Google Shape;239;p30","text":"Full interview with Ajeya Cotra","textPreview":"Full interview with Ajeya Cotra","textChars":31,"textLines":1,"bbox":[288.79,37.22,382.43,48.47]}
+{"kind":"image","id":"im/0butwvmd","slide":17,"name":"Google Shape;237;p30","bbox":[798.13,392.33,153.29,133.36]}
+{"kind":"image","id":"im/lc3a50ni","slide":17,"name":"Google Shape;238;p30","bbox":[278.02,105.11,403.96,405.69]}
+{"kind":"notes","id":"nt/14bup87q","slide":17,"text":""}

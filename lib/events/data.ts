@@ -48,6 +48,7 @@ export async function getWebsiteEvents(options?: { includeHidden?: boolean }) {
         photos: staticFallback?.photos,
         links: [{ label: "RSVP", url: `/events/${event.slug}`, emphasis: "primary" }],
         visible: event.visible ?? true,
+        past: event.status === "Past" || staticFallback?.past,
       };
     });
 
@@ -60,9 +61,9 @@ export async function getWebsiteEvents(options?: { includeHidden?: boolean }) {
 export function partitionWebsiteEvents(events: WebsiteEvent[]) {
   const now = Date.now();
   return {
-    upcoming: events.filter((event) => new Date(event.end).getTime() >= now),
+    upcoming: events.filter((event) => !event.past && new Date(event.end).getTime() >= now),
     past: events
-      .filter((event) => new Date(event.end).getTime() < now)
+      .filter((event) => event.past || new Date(event.end).getTime() < now)
       .sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime()),
   };
 }
