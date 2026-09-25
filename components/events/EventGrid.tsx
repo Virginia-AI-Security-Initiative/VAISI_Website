@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Camera, ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
+import { Camera, ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
 import { createPortal } from "react-dom";
 import { useCallback, useEffect, useState } from "react";
 import Section from "@/components/Section";
@@ -69,13 +69,15 @@ function PhotoLightbox({ photos, title, onClose }: { photos: EventPhoto[]; title
 }
 
 function Flyer({ event, cover = false }: { event: WebsiteEvent; cover?: boolean }) {
+  if (!event.imageSrc) return null;
+
   return <div className="relative flex items-center justify-center overflow-hidden bg-gray-100" style={{ aspectRatio: "8.5 / 11" }}>
-    {event.imageSrc ? (event.imageSrc.startsWith("http")
+    {event.imageSrc.startsWith("http")
       // Remote flyer hosts vary (Airtable and the configured Supabase project), so this cannot use a fixed Next Image allowlist.
       // eslint-disable-next-line @next/next/no-img-element
       ? <img src={event.imageSrc} alt={`${event.title} flyer`} className={`image-outline absolute inset-0 size-full ${cover ? "object-cover" : "object-contain"}`} />
       : <Image src={event.imageSrc} alt={`${event.title} flyer`} fill sizes="(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw" className={`image-outline ${cover ? "object-cover" : "object-contain"}`} />
-    ) : <Calendar className="size-12 text-gray-400" />}
+    }
   </div>;
 }
 
