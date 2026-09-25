@@ -1,4 +1,5 @@
 import "server-only";
+import { unstable_cache } from "next/cache";
 
 import {
   getAllPublicEvents,
@@ -8,7 +9,9 @@ import {
 import { staticEvents } from "@/lib/events/static-events";
 import type { WebsiteEvent } from "@/lib/events/types";
 
-export async function getWebsiteEvents(options?: { includeHidden?: boolean }) {
+export const WEBSITE_EVENTS_CACHE_TAG = "website-events";
+
+const getCachedWebsiteEvents = unstable_cache(async (includeHidden: boolean) => {
   const [airtableEvents, settings] = isAirtableConfigured()
     ? await Promise.all([getAllPublicEvents(), getWebsiteEventSettings()])
     : [[], []];
@@ -54,8 +57,12 @@ export async function getWebsiteEvents(options?: { includeHidden?: boolean }) {
 
   const managedSlugs = new Set(managedEvents.map((event) => event.slug));
   return [...managedEvents, ...websiteEvents.filter((event) => !managedSlugs.has(event.slug))]
-    .filter((event) => options?.includeHidden || event.visible)
+    .filter((event) => includeHidden || event.visible)
     .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
+}, [WEBSITE_EVENTS_CACHE_TAG], { revalidate: 300, tags: [WEBSITE_EVENTS_CACHE_TAG] });
+
+export function getWebsiteEvents(options?: { includeHidden?: boolean }) {
+  return getCachedWebsiteEvents(options?.includeHidden ?? false);
 }
 
 export function partitionWebsiteEvents(events: WebsiteEvent[]) {

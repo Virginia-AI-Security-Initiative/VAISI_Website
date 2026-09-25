@@ -1,6 +1,7 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
+import { WEBSITE_EVENTS_CACHE_TAG } from "@/lib/events/data";
 import { requireEventCreatorSession } from "@/lib/eventcreator/auth";
 import { eventSlug } from "@/lib/rsvp/config";
 import {
@@ -62,6 +63,7 @@ function validatedFlyer(formData: FormData) {
 }
 
 function refreshEvents() {
+  updateTag(WEBSITE_EVENTS_CACHE_TAG);
   revalidatePath("/events");
   revalidatePath("/events/[slug]", "page");
   revalidatePath("/eventcreator");

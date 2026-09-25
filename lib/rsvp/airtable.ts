@@ -152,23 +152,44 @@ function checkboxField(fields: Record<string, unknown>, id: string, name: string
   return (fields[id] ?? fields[name]) === true;
 }
 
-async function getCalendarRecord(id: string) {
-  return airtableFetch<AirtableRecord>(
-    `${AIRTABLE_TABLES.internalCalendar}/${id}?returnFieldsByFieldId=true`,
-  );
+async function getCalendarRecords(ids: string[]) {
+  const uniqueIds = [...new Set(ids)];
+  const batches: string[][] = [];
+  for (let index = 0; index < uniqueIds.length; index += 25) {
+    batches.push(uniqueIds.slice(index, index + 25));
+  }
+
+  const pages = await Promise.all(batches.map(async (batch) => {
+    const formula = `OR(${batch.map((id) => `RECORD_ID()=${JSON.stringify(id)}`).join(",")})`;
+    const params = new URLSearchParams({
+      pageSize: "100",
+      returnFieldsByFieldId: "true",
+      filterByFormula: formula,
+    });
+    return airtableFetch<AirtableListResponse>(`${AIRTABLE_TABLES.internalCalendar}?${params}`);
+  }));
+
+  return new Map(pages.flatMap((page) => page.records).map((record) => [record.id, record]));
 }
 
 export async function getAllPublicEvents(): Promise<PublicEvent[]> {
   const records = await listPublicEvents();
+  const calendarIds = records
+    .map((event) => linkedRecordId(
+      event.fields[AIRTABLE_FIELDS.publicEvents.internalCalendar] ?? event.fields["Internal Calendar"],
+    ))
+    .filter((id): id is string => id !== null);
+  const calendars = await getCalendarRecords(calendarIds);
 
-  const events: Array<PublicEvent | null> = await Promise.all(records.map(async (event): Promise<PublicEvent | null> => {
+  const events: Array<PublicEvent | null> = records.map((event): PublicEvent | null => {
     const name = stringField(event.fields, AIRTABLE_FIELDS.publicEvents.name, "Name");
     const calendarId = linkedRecordId(
       event.fields[AIRTABLE_FIELDS.publicEvents.internalCalendar] ?? event.fields["Internal Calendar"],
     );
     if (!name || !calendarId) return null;
 
-    const calendar = await getCalendarRecord(calendarId);
+    const calendar = calendars.get(calendarId);
+    if (!calendar) return null;
     const start = stringField(calendar.fields, AIRTABLE_FIELDS.internalCalendar.start, "Start");
     const end = stringField(calendar.fields, AIRTABLE_FIELDS.internalCalendar.end, "End");
     if (!start || !end) return null;
@@ -188,7 +209,7 @@ export async function getAllPublicEvents(): Promise<PublicEvent[]> {
         calendar.fields[AIRTABLE_FIELDS.internalCalendar.flyer] ?? calendar.fields.Flyer,
       ),
     } satisfies PublicEvent;
-  }));
+  });
   return events.filter((event): event is PublicEvent => event !== null);
 }
 
