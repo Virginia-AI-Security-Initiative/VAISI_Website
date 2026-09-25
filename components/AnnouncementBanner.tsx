@@ -11,6 +11,13 @@ const announcements: {
     linkText: string;
     link: string;
 }[] = [
+    {
+        id: "andy-masley-2026",
+        title: "Andy Masley: Tipping Point or Plateau?",
+        summary: "Oct. 1, 6–7:30 PM · Dell 1, Room 105 · Dinner served",
+        linkText: "RSVP →",
+        link: "/events/tipping-point-or-plateau-andy-masley-speaker-event",
+    },
 ];
 
 export default function AnnouncementBanner() {
@@ -47,15 +54,15 @@ export default function AnnouncementBanner() {
                 >
                     <div className="px-6 py-3 flex items-center">
                         <div className="flex-1" />
-                        <div className="flex items-center gap-3">
-                            <span className="text-sm font-semibold text-white whitespace-nowrap">
+                        <div className="flex min-w-0 items-center gap-3">
+                            <span className="text-sm font-semibold text-white sm:whitespace-nowrap">
                                 {announcement.title}
                             </span>
-                            <span className="hidden sm:block w-px h-3.5 bg-white/30 flex-shrink-0" />
-                            <span className="hidden sm:inline text-sm text-white/75 whitespace-nowrap">
+                            <span className="hidden lg:block w-px h-3.5 bg-white/30 flex-shrink-0" />
+                            <span className="hidden lg:inline text-sm text-white/75 whitespace-nowrap">
                                 {announcement.summary}
                             </span>
-                            <span className="hidden sm:block w-px h-3.5 bg-white/30 flex-shrink-0" />
+                            <span className="hidden lg:block w-px h-3.5 bg-white/30 flex-shrink-0" />
                             <Link
                                 href={announcement.link}
                                 target={announcement.link.startsWith("http") ? "_blank" : undefined}
