@@ -493,7 +493,7 @@ export async function createRsvp(submission: RsvpSubmission) {
   });
 }
 
-export async function recordGroupmeClick(slug: string) {
+export async function recordGroupmeClick(slug: string, groupme: "VAISI" | "Effective Altruism") {
   return airtableFetch<{ records: AirtableRecord[] }>(AIRTABLE_TABLES.groupmeClicks, {
     method: "POST",
     body: JSON.stringify({
@@ -501,6 +501,7 @@ export async function recordGroupmeClick(slug: string) {
         fields: {
           [AIRTABLE_FIELDS.groupmeClicks.eventSlug]: slug,
           [AIRTABLE_FIELDS.groupmeClicks.clickedAt]: new Date().toISOString(),
+          [AIRTABLE_FIELDS.groupmeClicks.groupme]: groupme,
         },
       }],
     }),

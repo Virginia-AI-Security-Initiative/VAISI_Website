@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CalendarDays, Check, MapPin, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
-import { ACADEMIC_STATUSES } from "@/lib/rsvp/config";
+import { ACADEMIC_STATUSES, EA_COHOSTED_EVENT_SLUG } from "@/lib/rsvp/config";
 import type { PublicEvent } from "@/lib/rsvp/airtable";
 
 function formatEventTime(start: string, end: string) {
@@ -181,16 +181,30 @@ export default function RsvpModal({
                       You’re RSVPed
                     </h2>
                     <p className="mx-auto mt-3 max-w-sm text-base leading-relaxed text-gray-600">
-                      Join the VAISI GroupMe to stay up to date with future club news.
+                      {event.slug === EA_COHOSTED_EVENT_SLUG
+                        ? "Join either cohost’s GroupMe to stay up to date with future events."
+                        : "Join the VAISI GroupMe to stay up to date with future club news."}
                     </p>
-                    <a
-                      href={`/go/groupme/${event.slug}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="tap-scale button-raised mt-6 inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary/92"
-                    >
-                      Join GroupMe
-                    </a>
+                    <div className="mt-6 flex flex-wrap justify-center gap-3">
+                      <a
+                        href={`/go/groupme/${event.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tap-scale button-raised inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary/92"
+                      >
+                        {event.slug === EA_COHOSTED_EVENT_SLUG ? "Join VAISI GroupMe" : "Join GroupMe"}
+                      </a>
+                      {event.slug === EA_COHOSTED_EVENT_SLUG && (
+                        <a
+                          href={`/go/groupme/${event.slug}/ea`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="tap-scale button-raised inline-flex min-h-11 items-center justify-center rounded-xl bg-secondary px-5 py-2.5 font-medium text-white hover:bg-secondary/92"
+                        >
+                          Join EA GroupMe
+                        </a>
+                      )}
+                    </div>
                   </motion.div>
                 ) : (
                   <motion.div

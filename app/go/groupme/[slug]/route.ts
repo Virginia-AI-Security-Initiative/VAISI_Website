@@ -21,7 +21,7 @@ export async function GET(
   const { slug } = await params;
   if (/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
     try {
-      await recordGroupmeClick(slug);
+      await recordGroupmeClick(slug, "VAISI");
     } catch (error) {
       console.error("Could not record GroupMe click", {
         slug,

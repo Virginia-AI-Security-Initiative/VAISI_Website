@@ -43,6 +43,7 @@ export const AIRTABLE_FIELDS = {
   groupmeClicks: {
     eventSlug: "fldRoLhyE5Kh6r0lK",
     clickedAt: "fldF4T9VXd1VYJbW6",
+    groupme: "fldPqgBIxDtdF9aS6",
   },
   websiteEventSettings: {
     slug: "fldTlfhPGOg2oel2V",
@@ -77,6 +78,8 @@ export const ACADEMIC_STATUSES = [
 ] as const;
 
 export const GROUPME_URL = "https://groupme.com/join_group/110490963/bxseYw8L";
+export const EA_GROUPME_URL = "https://groupme.com/join_group/116855990/kE5yy4jJ";
+export const EA_COHOSTED_EVENT_SLUG = "tipping-point-or-plateau-andy-masley-speaker-event";
 
 export function eventSlug(name: string) {
   return name
