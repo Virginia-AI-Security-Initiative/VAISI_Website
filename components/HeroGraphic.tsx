@@ -5,7 +5,7 @@ export default function HeroGraphic({ className = "" }: { className?: string }) 
         <div className={`relative w-full aspect-square max-w-lg mx-auto flex items-center justify-center ${className}`}>
             <Image
                 src="/logo.png"
-                alt="Virginia AI Safety Initiative Logo"
+                alt="Virginia AI Security Initiative Logo"
                 width={500}
                 height={500}
                 className="object-contain mix-blend-multiply opacity-90"

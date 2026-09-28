@@ -19,10 +19,10 @@ const neueHaas = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(getConfiguredSiteOrigin() ?? "http://localhost:3000"),
   title: "Virginia AI Security Initiative",
-  description: "Official website for the Virginia AI Safety Initiative (VAISI) at the University of Virginia.",
+  description: "Official website for the Virginia AI Security Initiative (VAISI) at the University of Virginia.",
   openGraph: {
     title: "Virginia AI Security Initiative",
-    description: "Official website for the Virginia AI Safety Initiative (VAISI) at the University of Virginia.",
+    description: "Official website for the Virginia AI Security Initiative (VAISI) at the University of Virginia.",
     type: "website",
     images: [
       {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Virginia AI Security Initiative",
-    description: "Official website for the Virginia AI Safety Initiative (VAISI) at the University of Virginia.",
+    description: "Official website for the Virginia AI Security Initiative (VAISI) at the University of Virginia.",
     images: ["/vaisi-social-preview.png"],
   },
 };
