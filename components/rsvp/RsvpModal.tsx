@@ -185,16 +185,16 @@ export default function RsvpModal({
                         ? "Join either cohost’s GroupMe to stay up to date with future events."
                         : "Join the VAISI GroupMe to stay up to date with future club news."}
                     </p>
-                    <div className="mt-6 flex flex-wrap justify-center gap-3">
-                      <a
-                        href={`/go/groupme/${event.slug}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="tap-scale button-raised inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary/92"
-                      >
-                        {event.slug === EA_COHOSTED_EVENT_SLUG ? "Join VAISI GroupMe" : "Join GroupMe"}
-                      </a>
-                      {event.slug === EA_COHOSTED_EVENT_SLUG && (
+                    {event.slug === EA_COHOSTED_EVENT_SLUG ? (
+                      <div className="mt-6 flex flex-wrap justify-center gap-3">
+                        <a
+                          href={`/go/groupme/${event.slug}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="tap-scale button-raised inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary/92"
+                        >
+                          Join VAISI GroupMe
+                        </a>
                         <a
                           href={`/go/groupme/${event.slug}/ea`}
                           target="_blank"
@@ -203,8 +203,17 @@ export default function RsvpModal({
                         >
                           Join EA GroupMe
                         </a>
-                      )}
-                    </div>
+                      </div>
+                    ) : (
+                      <a
+                        href={`/go/groupme/${event.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tap-scale button-raised mt-6 inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary/92"
+                      >
+                        Join GroupMe
+                      </a>
+                    )}
                   </motion.div>
                 ) : (
                   <motion.div
