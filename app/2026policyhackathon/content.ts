@@ -293,7 +293,7 @@ export const hackathon = {
   ],
   uvaPrize: {
     title: "Highest Placing UVA Student(s)",
-    body: "Automatic acceptance to the Fall 2026 VAISI Intro to Technical Governance Fellowship",
+    body: "Automatic acceptance to the Spring 2027 AI Policy Fellowship",
   },
 
   track: {
