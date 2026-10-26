@@ -32,6 +32,23 @@ export const staticEvents: WebsiteEvent[] = [
     visible: true,
   },
   {
+    id: "website-ai-safety-hackathon-2026",
+    source: "website",
+    title: "AI Safety Hackathon",
+    slug: "ai-safety-hackathon",
+    start: "2026-10-09T13:00:00-04:00",
+    end: "2026-10-16T20:00:00-04:00",
+    dateLabel: "October 9–16, 2026",
+    location: "Kickoff Oct. 9; build day at the Capital One Hub Oct. 16",
+    description: "Work with a team to open up and stress-test AI systems, then build an evaluation around an interpretability, safety, or cybersecurity question. No prior interpretability experience required.",
+    imageSrc: "/images/events/ai-safety-hackathon-2026.png",
+    links: [
+      { label: "Register here", url: "https://forms.gle/cPgRN1kDqv9oPWd7A", emphasis: "primary" },
+      { label: "Learn more here", url: "https://sig-uva.github.io/", emphasis: "subtle" },
+    ],
+    visible: true,
+  },
+  {
     id: "website-estimathon-2026",
     source: "website",
     title: "Estimathon",
