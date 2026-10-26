@@ -33,6 +33,12 @@ export async function POST(request: Request) {
     const event = await getPublicEventBySlug(slug);
     if (!event) return NextResponse.json({ error: "This event is not available." }, { status: 404 });
 
+    // Local testing switch: validate the submission but skip writing to Airtable.
+    if (process.env.RSVP_DRY_RUN === "1") {
+      console.info("RSVP_DRY_RUN: skipped Airtable write", { slug, academicStatus });
+      return NextResponse.json({ ok: true });
+    }
+
     await createRsvp({ eventId: event.id, name, email, academicStatus, majorMinor, referral });
     return NextResponse.json({ ok: true });
   } catch (error) {

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import EventsPreload from '@/components/events/EventsPreload';
+import AnnouncementBanner from '@/components/AnnouncementBanner';
 
 export default function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -19,6 +20,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
       {!pathname?.startsWith('/events') && <EventsPreload />}
       <Navbar />
       <main className="flex-grow pt-16">
+        <AnnouncementBanner />
         {children}
       </main>
       <Footer />

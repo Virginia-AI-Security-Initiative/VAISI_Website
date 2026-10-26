@@ -2,88 +2,106 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, X } from "lucide-react";
 
+// Site-wide announcement that drops down under the navbar on every page.
+// To retire one, delete its entry. Changing `id` shows it again to people who dismissed an earlier one.
 const announcements: {
     id: string;
     title: string;
     summary: string;
     linkText: string;
     link: string;
+    hideOn?: string; // don't show on this page (the page it links to)
 }[] = [
     {
-        id: "andy-masley-2026",
-        title: "Andy Masley: Tipping Point or Plateau?",
-        summary: "Oct. 1, 6–7:30 PM · Dell 1, Room 105 · Dinner served",
-        linkText: "RSVP →",
-        link: "/events/tipping-point-or-plateau-andy-masley-speaker-event",
+        id: "policy-hackathon-2026",
+        title: "2026 AI Policy Competition",
+        summary: "November 15–21, with $1,000 in prizes for teams of up to 3",
+        linkText: "Learn more & register",
+        link: "/2026policyhackathon",
+        hideOn: "/2026policyhackathon",
     },
 ];
 
-export default function AnnouncementBanner() {
-    const [dismissedIds, setDismissedIds] = useState<Set<string>>(new Set());
-    const [exitingIds, setExitingIds] = useState<Set<string>>(new Set());
+const STORAGE_KEY = "vaisi-dismissed-announcements";
 
-    const visibleAnnouncements = announcements.filter(
-        (a) => !dismissedIds.has(a.id)
-    );
+function readDismissed(): string[] {
+    try {
+        return JSON.parse(window.localStorage.getItem(STORAGE_KEY) ?? "[]");
+    } catch {
+        return [];
+    }
+}
+
+function saveDismissed(ids: string[]) {
+    try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
+    } catch {
+        // Storage can be unavailable (private mode); the bar simply returns next visit.
+    }
+}
+
+export default function AnnouncementBanner() {
+    const pathname = usePathname();
+    const reducedMotion = useReducedMotion();
+    // null until mounted, so dismissed bars never flash in on load.
+    const [dismissed, setDismissed] = useState<string[] | null>(null);
 
     useEffect(() => {
-        if (exitingIds.size === 0) return;
-        const t = window.setTimeout(() => {
-            setDismissedIds((prev) => new Set([...prev, ...exitingIds]));
-            setExitingIds(new Set());
-        }, 250);
-        return () => window.clearTimeout(t);
-    }, [exitingIds]);
+        const timer = window.setTimeout(() => setDismissed(readDismissed()), reducedMotion ? 0 : 500);
+        return () => window.clearTimeout(timer);
+    }, [reducedMotion]);
 
-    if (visibleAnnouncements.length === 0) return null;
+    const visible = (dismissed ? announcements : []).filter(
+        (announcement) => !dismissed?.includes(announcement.id) && !(announcement.hideOn && pathname?.startsWith(announcement.hideOn))
+    );
+
+    const dismiss = (id: string) => {
+        const next = [...(dismissed ?? []), id];
+        setDismissed(next);
+        saveDismissed(next);
+    };
 
     return (
-        <div className="flex flex-col" aria-live="polite">
-            {visibleAnnouncements.map((announcement, idx) => (
-                <div
-                    key={announcement.id}
-                    className={`w-full bg-primary transition-all duration-250 ease-out overflow-hidden ${
-                        idx < visibleAnnouncements.length - 1 ? "border-b border-white/20" : ""
-                    } ${
-                        exitingIds.has(announcement.id)
-                            ? "opacity-0 max-h-0 pointer-events-none"
-                            : "opacity-100 max-h-24"
-                    }`}
-                >
-                    <div className="px-6 py-3 flex items-center">
-                        <div className="flex-1" />
-                        <div className="flex min-w-0 items-center gap-3">
-                            <span className="text-sm font-semibold text-white sm:whitespace-nowrap">
-                                {announcement.title}
-                            </span>
-                            <span className="hidden lg:block w-px h-3.5 bg-white/30 flex-shrink-0" />
-                            <span className="hidden lg:inline text-sm text-white/75 whitespace-nowrap">
-                                {announcement.summary}
-                            </span>
-                            <span className="hidden lg:block w-px h-3.5 bg-white/30 flex-shrink-0" />
-                            <Link
-                                href={announcement.link}
-                                target={announcement.link.startsWith("http") ? "_blank" : undefined}
-                                rel={announcement.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                                className="text-sm font-semibold text-white underline underline-offset-2 decoration-white/50 hover:decoration-white whitespace-nowrap transition-colors"
-                            >
-                                {announcement.linkText}
-                            </Link>
-                        </div>
-                        <div className="flex-1 flex justify-end">
+        <div aria-live="polite">
+            <AnimatePresence initial={!reducedMotion}>
+                {visible.map((announcement) => (
+                    <motion.div
+                        key={announcement.id}
+                        initial={reducedMotion ? false : { height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ type: "spring", duration: 0.5, bounce: 0.15 }}
+                        className="overflow-hidden bg-primary text-white"
+                    >
+                        <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
+                            <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-3 gap-y-1 sm:justify-center">
+                                <span className="text-sm font-semibold">{announcement.title}</span>
+                                <span className="hidden h-3.5 w-px bg-white/30 md:block" />
+                                <span className="hidden text-sm text-white/75 md:inline">{announcement.summary}</span>
+                                <Link
+                                    href={announcement.link}
+                                    className="tap-scale group inline-flex min-h-8 items-center gap-1.5 rounded-lg bg-secondary px-3 text-sm font-semibold text-white hover:bg-secondary/90"
+                                >
+                                    {announcement.linkText}
+                                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                                </Link>
+                            </div>
                             <button
-                                onClick={() => setExitingIds((prev) => new Set(prev).add(announcement.id))}
-                                className="flex size-6 items-center justify-center rounded-full text-white/60 hover:bg-white/15 hover:text-white transition-colors"
-                                aria-label={`Dismiss ${announcement.title}`}
+                                type="button"
+                                onClick={() => dismiss(announcement.id)}
+                                className="flex size-8 shrink-0 items-center justify-center rounded-full text-white/60 transition-colors hover:bg-white/15 hover:text-white"
+                                aria-label={`Dismiss ${announcement.title} announcement`}
                             >
-                                <X size={12} />
+                                <X size={14} />
                             </button>
                         </div>
-                    </div>
-                </div>
-            ))}
+                    </motion.div>
+                ))}
+            </AnimatePresence>
         </div>
     );
 }

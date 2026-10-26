@@ -8,20 +8,10 @@ import { useCallback, useEffect, useState } from "react";
 import Section from "@/components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { sectionTitleClass } from "@/components/sectionTitle";
+import { Flyer, formatDateRange } from "@/components/events/eventDisplay";
 import type { EventLink, WebsiteEvent } from "@/lib/events/types";
 
 type EventPhoto = string | { src: string; alt: string };
-
-function formatDateRange(start: string, end: string, includeTime: boolean) {
-  const startDate = new Date(start);
-  const endDate = new Date(end);
-  const date = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/New_York" });
-  const time = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/New_York" });
-  const sameDay = date.format(startDate) === date.format(endDate);
-  if (!includeTime) return sameDay ? date.format(startDate) : `${date.format(startDate)} – ${date.format(endDate)}`;
-  if (sameDay) return `${date.format(startDate)} · ${time.format(startDate)}–${time.format(endDate)}`;
-  return `${date.format(startDate)}, ${time.format(startDate)} – ${date.format(endDate)}, ${time.format(endDate)}`;
-}
 
 function EventLinks({ links }: { links?: EventLink[] }) {
   if (!links?.length) return null;
@@ -32,7 +22,7 @@ function EventLinks({ links }: { links?: EventLink[] }) {
         : "text-link-subtle inline-flex min-h-11 items-center text-sm font-medium text-gray-600 hover:text-primary";
       return link.url.startsWith("http")
         ? <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className={className}>{link.label}</a>
-        : <Link key={link.url} href={link.url} scroll={false} className={className}>{link.label}</Link>;
+        : <Link key={link.url} href={link.url} className={className}>{link.label}</Link>;
     })}
   </div>;
 }
@@ -68,22 +58,9 @@ function PhotoLightbox({ photos, title, onClose }: { photos: EventPhoto[]; title
   );
 }
 
-function Flyer({ event, cover = false }: { event: WebsiteEvent; cover?: boolean }) {
-  if (!event.imageSrc) return null;
-
-  return <div className="relative flex items-center justify-center overflow-hidden bg-gray-100" style={{ aspectRatio: "8.5 / 11" }}>
-    {event.imageSrc.startsWith("http")
-      // Remote flyer hosts vary (Airtable and the configured Supabase project), so this cannot use a fixed Next Image allowlist.
-      // eslint-disable-next-line @next/next/no-img-element
-      ? <img src={event.imageSrc} alt={`${event.title} flyer`} className={`image-outline absolute inset-0 size-full ${cover ? "object-cover" : "object-contain"}`} />
-      : <Image src={event.imageSrc} alt={`${event.title} flyer`} fill sizes="(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw" className={`image-outline ${cover ? "object-cover" : "object-contain"}`} />
-    }
-  </div>;
-}
-
 function UpcomingCard({ event }: { event: WebsiteEvent }) {
   return <article className="surface-card overflow-hidden rounded-2xl border border-gray-200 bg-white">
-    <Flyer event={event} />
+    <Flyer src={event.imageSrc} title={event.title} />
     <div className="p-4">
       <h3 className="mb-1 text-base font-bold text-gray-900">{event.title}</h3>
       <p className="mb-1 text-xs font-medium text-secondary tabular-nums">{event.dateLabel ?? formatDateRange(event.start, event.end, true)}</p>
@@ -98,7 +75,7 @@ function PastCard({ event }: { event: WebsiteEvent }) {
   const [open, setOpen] = useState(false);
   return <>
     <article className="surface-card overflow-hidden rounded-2xl border border-gray-200 bg-white">
-      <Flyer event={event} cover />
+      <Flyer src={event.imageSrc} title={event.title} cover />
       <div className="p-4">
         <span className="mb-2 inline-block rounded-full bg-primary/8 px-2 py-0.5 text-xs font-semibold text-primary tabular-nums">{event.dateLabel ?? formatDateRange(event.start, event.end, false)}</span>
         <h3 className="mb-1 text-base font-bold text-gray-900">{event.title}</h3>
