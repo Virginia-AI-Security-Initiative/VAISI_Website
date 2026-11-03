@@ -24,7 +24,7 @@ export const staticEvents: WebsiteEvent[] = [
     dateLabel: "November 15–22, 2026",
     location: "Final judging at the Lower West Oval Room, Rotunda",
     description: "Our second AI Policy Competition! Work solo or in a team of up to 3 to write a 2-page policy brief. The top 6 teams present to judges on November 22, with $1,000 in prizes.",
-    // Flyer coming soon: add imageSrc: "/images/events/<file>.png" once it's in public/images/events/.
+    imageSrc: "/images/events/ai-policy-competition-2026.webp",
     links: [
       { label: "Register", url: "/2026policyhackathon#register", emphasis: "primary" },
       { label: "Learn more", url: "/2026policyhackathon", emphasis: "subtle" },

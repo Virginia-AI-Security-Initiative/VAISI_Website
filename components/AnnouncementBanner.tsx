@@ -11,7 +11,7 @@ import { ArrowRight, X } from "lucide-react";
 const announcements: {
     id: string;
     title: string;
-    summary: string;
+    summary?: string;
     linkText: string;
     link: string;
     hideOn?: string; // don't show on this page (the page it links to)
@@ -19,7 +19,6 @@ const announcements: {
     {
         id: "policy-hackathon-2026",
         title: "2026 AI Policy Competition",
-        summary: "November 15–22, with $1,000 in prizes for teams of up to 3",
         linkText: "Learn more & register",
         link: "/2026policyhackathon",
         hideOn: "/2026policyhackathon",
@@ -80,8 +79,12 @@ export default function AnnouncementBanner() {
                         <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
                             <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-3 gap-y-1 sm:justify-center">
                                 <span className="text-sm font-semibold">{announcement.title}</span>
-                                <span className="hidden h-3.5 w-px bg-white/30 md:block" />
-                                <span className="hidden text-sm text-white/75 md:inline">{announcement.summary}</span>
+                                {announcement.summary && (
+                                    <>
+                                        <span className="hidden h-3.5 w-px bg-white/30 md:block" />
+                                        <span className="hidden text-sm text-white/75 md:inline">{announcement.summary}</span>
+                                    </>
+                                )}
                                 <Link
                                     href={announcement.link}
                                     className="tap-scale group inline-flex min-h-8 items-center gap-1.5 rounded-lg bg-secondary px-3 text-sm font-semibold text-white hover:bg-secondary/90"

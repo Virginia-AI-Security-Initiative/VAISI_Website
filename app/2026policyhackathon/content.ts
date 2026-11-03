@@ -229,7 +229,7 @@ export const storyboard = {
 export const hackathon = {
   title: "AI Policy Competition",
   tagline:
-    "Join us, and participate in our annual AI Policy Competition. You will design a 2 page brief to address the guiding question working solo or in teams of up to three people. Six teams will be chosen to present to a panel of judges on November 22nd.",
+    "Join us, and participate in our annual AI Policy Competition! You will design a 2 page brief to address the guiding question working solo or in teams of up to three people. Six teams will be chosen to present to a panel of judges on November 22nd.",
   facts: [
     { label: "Prizes", value: "$1,000" },
     { label: "Max team size", value: "3 members" },
