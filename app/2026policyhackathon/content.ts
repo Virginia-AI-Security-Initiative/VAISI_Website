@@ -75,9 +75,9 @@ const timeline: TimelineItem[] = [
     body: "Teams selected for in-person judging get their time slots.",
   },
   {
-    date: "2026-11-21",
+    date: "2026-11-22",
     title: "Judging",
-    time: "12:00–4:00 PM",
+    time: "1:00–3:00 PM",
     location: ROTUNDA_ROOM,
     body: "You must show up for your slot to be eligible for prizes. Have a conflict? Let us know as soon as possible.",
     calendar: {
@@ -85,14 +85,14 @@ const timeline: TimelineItem[] = [
       title: "AI Policy Competition judging (top 6 teams)",
       description: "In-person judging for the top 6 teams. Check your assigned time slot.",
       location: ROTUNDA,
-      start: "2026-11-21T17:00:00Z",
-      end: "2026-11-21T21:00:00Z",
+      start: "2026-11-22T18:00:00Z",
+      end: "2026-11-22T20:00:00Z",
     },
   },
   {
-    date: "2026-11-21",
+    date: "2026-11-22",
     title: "Winner announced",
-    time: "4:00–5:00 PM",
+    time: "3:00–4:00 PM",
     location: ROTUNDA_ROOM,
     body: "We'll announce the winner of the competition. We'd love to see you there!",
     calendar: {
@@ -100,8 +100,8 @@ const timeline: TimelineItem[] = [
       title: "AI Policy Competition winner announcement",
       description: "VAISI announces the winner of the 2026 AI Policy Competition.",
       location: ROTUNDA,
-      start: "2026-11-21T21:00:00Z",
-      end: "2026-11-21T22:00:00Z",
+      start: "2026-11-22T20:00:00Z",
+      end: "2026-11-22T21:00:00Z",
     },
   },
 ];
@@ -229,12 +229,12 @@ export const storyboard = {
 export const hackathon = {
   title: "AI Policy Competition",
   tagline:
-    "Our second AI Policy Competition! Work solo or in a team of up to 3 to write a 2-page policy brief. The top 6 teams present to judges on November 21.",
+    "Join us, and participate in our annual AI Policy Competition. You will design a 2 page brief to address the guiding question working solo or in teams of up to three people. Six teams will be chosen to present to a panel of judges on November 22nd.",
   facts: [
     { label: "Prizes", value: "$1,000" },
     { label: "Max team size", value: "3 members" },
     { label: "Expected time", value: "10 hours per team" },
-    { label: "Judging", value: "12–4 PM, November 21" },
+    { label: "Judging", value: "1–3 PM, November 22" },
   ],
 
   intro:
@@ -316,7 +316,7 @@ export const hackathon = {
   ],
   judging: {
     heading: "Judging",
-    body: "The top 6 teams present in person on November 21 from 12–4 PM in the Lower West Oval Room of the Rotunda. Be ready to answer questions from the judges and defend your recommendation. If you can't make certain time slots, let us know before the brief deadline.",
+    body: "The top 6 teams present in person on November 22 from 1–3 PM in the Lower West Oval Room of the Rotunda. Be ready to answer questions from the judges and defend your recommendation. If you can't make certain time slots, let us know before the brief deadline.",
   },
 
   teamsHeading: "Teams",

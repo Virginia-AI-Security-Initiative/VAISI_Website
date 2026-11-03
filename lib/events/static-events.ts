@@ -20,10 +20,10 @@ export const staticEvents: WebsiteEvent[] = [
     title: "2026 AI Policy Competition",
     slug: "ai-policy-competition-2026",
     start: "2026-11-15T12:00:00-05:00",
-    end: "2026-11-21T17:00:00-05:00",
-    dateLabel: "November 15–21, 2026",
+    end: "2026-11-22T16:00:00-05:00",
+    dateLabel: "November 15–22, 2026",
     location: "Final judging at the Lower West Oval Room, Rotunda",
-    description: "Our second AI Policy Competition! Work solo or in a team of up to 3 to write a 2-page policy brief. The top 6 teams present to judges on November 21, with $1,000 in prizes.",
+    description: "Our second AI Policy Competition! Work solo or in a team of up to 3 to write a 2-page policy brief. The top 6 teams present to judges on November 22, with $1,000 in prizes.",
     // Flyer coming soon: add imageSrc: "/images/events/<file>.png" once it's in public/images/events/.
     links: [
       { label: "Register", url: "/2026policyhackathon#register", emphasis: "primary" },

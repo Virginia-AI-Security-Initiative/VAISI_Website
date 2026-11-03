@@ -19,7 +19,7 @@ const announcements: {
     {
         id: "policy-hackathon-2026",
         title: "2026 AI Policy Competition",
-        summary: "November 15–21, with $1,000 in prizes for teams of up to 3",
+        summary: "November 15–22, with $1,000 in prizes for teams of up to 3",
         linkText: "Learn more & register",
         link: "/2026policyhackathon",
         hideOn: "/2026policyhackathon",
