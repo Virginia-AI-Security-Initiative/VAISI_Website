@@ -268,6 +268,16 @@ export default async function PolicyHackathonPage() {
                       {rule}
                     </li>
                   ))}
+                  <li className="flex gap-3 leading-relaxed text-gray-600">
+                    <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-secondary" />
+                    <span>
+                      Feel free to use our{" "}
+                      <a href={h.groupmeUrl} target="_blank" rel="noopener noreferrer" className="text-primary underline">
+                        GroupMe
+                      </a>{" "}
+                      to find teammates.
+                    </span>
+                  </li>
                 </ul>
               </Reveal>
               <Reveal delay={0.08}>
