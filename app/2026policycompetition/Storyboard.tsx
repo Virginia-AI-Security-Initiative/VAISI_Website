@@ -40,7 +40,7 @@ const POSITIONS = [
 ];
 
 function markIntroSeen() {
-  document.cookie = `${INTRO_SEEN_COOKIE}=1; path=/2026policyhackathon; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
+  document.cookie = `${INTRO_SEEN_COOKIE}=1; path=/2026policycompetition; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
 }
 
 function goToHackathon(smooth = true) {

@@ -20,8 +20,8 @@ const announcements: {
         id: "policy-hackathon-2026",
         title: "2026 AI Policy Competition",
         linkText: "Learn more & register",
-        link: "/2026policyhackathon",
-        hideOn: "/2026policyhackathon",
+        link: "/2026policycompetition",
+        hideOn: "/2026policycompetition",
     },
 ];
 

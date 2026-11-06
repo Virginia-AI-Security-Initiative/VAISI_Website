@@ -1,8 +1,8 @@
 import { toIcs } from "../../calendar";
 import { allCalendarEvents } from "../../content";
 
-// Serves .ics files for Apple Calendar, Outlook and others: /2026policyhackathon/calendar/<event id>.ics,
-// or /2026policyhackathon/calendar/all.ics for the whole schedule.
+// Serves .ics files for Apple Calendar, Outlook and others: /2026policycompetition/calendar/<event id>.ics,
+// or /2026policycompetition/calendar/all.ics for the whole schedule.
 export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
   const id = (await params).id.replace(/\.ics$/, "");
   const events = allCalendarEvents();

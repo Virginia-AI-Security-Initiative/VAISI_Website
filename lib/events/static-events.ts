@@ -26,8 +26,8 @@ export const staticEvents: WebsiteEvent[] = [
     description: "Our second AI Policy Competition! Work solo or in a team of up to 3 to write a 2-page policy brief. The top 6 teams present to judges on November 22, with $1,000 in prizes.",
     imageSrc: "/images/events/ai-policy-competition-2026.webp",
     links: [
-      { label: "Register", url: "/2026policyhackathon#register", emphasis: "primary" },
-      { label: "Learn more", url: "/2026policyhackathon", emphasis: "subtle" },
+      { label: "Register", url: "/2026policycompetition#register", emphasis: "primary" },
+      { label: "Learn more", url: "/2026policycompetition", emphasis: "subtle" },
     ],
     visible: true,
   },

@@ -43,7 +43,7 @@ function AddToCalendar({ event, light = false }: { event: CalendarEvent; light?:
       <a href={googleCalendarUrl(event)} target="_blank" rel="noopener noreferrer" className={linkClass}>
         Google Calendar
       </a>
-      <a href={`/2026policyhackathon/calendar/${event.id}.ics`} className={linkClass}>
+      <a href={`/2026policycompetition/calendar/${event.id}.ics`} className={linkClass}>
         Apple / Outlook
       </a>
     </div>
@@ -130,7 +130,7 @@ export default async function PolicyHackathonPage() {
           <Dropdown id="schedule" number={1} title="Schedule">
             <p className="mb-6 max-w-3xl text-gray-600">{h.schedule.intro}</p>
             <a
-              href="/2026policyhackathon/calendar/all.ics"
+              href="/2026policycompetition/calendar/all.ics"
               className="tap-scale mb-5 inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary/92"
             >
               {h.schedule.addAll}

@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/2026policyhackathon/:path*",
+        destination: "/2026policycompetition/:path*",
+        permanent: true,
+      },
+    ];
+  },
   reactCompiler: true,
 };
 

@@ -1,6 +1,6 @@
 # AI Policy Competition: Airtable setup
 
-Registration and brief uploads on `/2026policyhackathon` are stored in **one table, "AI Policy Competition 2026"**,
+Registration and brief uploads on `/2026policycompetition` are stored in **one table, "AI Policy Competition 2026"**,
 in the club's Airtable base (`appM8XoHX2voW3LQe`). Nothing else in that base is read or changed.
 
 Each row is one of two types:
