@@ -5,7 +5,7 @@ in the club's Airtable base (`appM8XoHX2voW3LQe`). Nothing else in that base is 
 
 Each row is one of two types:
 
-- **Participant**: one per registered person (name, email, academic status, school, major/minor) with
+- **Participant**: one per registered person (name, email, academic status, school, major/minor, optional referral answer) with
   their Team Name, Team Code and Solo flag.
 - **Submission**: one per brief upload, with the Team Name, Team Code, the PDF, and judging score fields.
 
@@ -36,6 +36,8 @@ node --env-file=.env.local scripts/setup-hackathon-airtable.mjs
 ```
 
 Safe to re-run: if the table exists it only adds missing fields.
+Before deploying the referral question, run the setup script or add a single-line text field
+named `How did you hear about us?` to the existing competition table.
 
 ## Rules the website enforces
 

@@ -167,6 +167,8 @@ export function Field({
   autoComplete,
   placeholder,
   hint,
+  required = true,
+  maxLength,
 }: {
   label: string;
   name: string;
@@ -174,6 +176,8 @@ export function Field({
   autoComplete?: string;
   placeholder?: string;
   hint?: string;
+  required?: boolean;
+  maxLength?: number;
 }) {
   return (
     <label className="block">
@@ -183,7 +187,8 @@ export function Field({
         type={type}
         autoComplete={autoComplete}
         placeholder={placeholder}
-        required
+        required={required}
+        maxLength={maxLength}
         className={fieldClassName}
       />
       {hint && <span className="mt-1.5 block text-xs text-gray-500">{hint}</span>}

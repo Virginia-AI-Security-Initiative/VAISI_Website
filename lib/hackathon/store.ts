@@ -19,6 +19,7 @@ export type Participant = {
   academicStatus: string;
   school: string;
   majorMinor: string;
+  referral: string;
 };
 
 export type RegisteredTeam = { name: string; code: string; memberNames: string[] };

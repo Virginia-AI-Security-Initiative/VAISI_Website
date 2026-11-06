@@ -33,6 +33,7 @@ const FIELDS = [
   { name: "Academic Status", type: "singleSelect", options: { choices: ACADEMIC_STATUSES.map((name) => ({ name })) } },
   { name: "School", type: "singleLineText" },
   { name: "Major/Minor", type: "singleLineText" },
+  { name: "How did you hear about us?", type: "singleLineText" },
   { name: "Timestamp", ...dateTime, description: "When the person registered, or when the brief was uploaded." },
   { name: "Brief PDF", type: "multipleAttachments", options: { isReversed: false } },
   { name: "Filename", type: "singleLineText" },

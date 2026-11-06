@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Check, Copy } from "lucide-react";
 import { FormEvent, useState } from "react";
 import { Field, fieldClassName } from "@/components/rsvp/RsvpForm";
+import { MAX_REFERRAL_LENGTH } from "@/lib/hackathon/rules";
 import { ACADEMIC_STATUSES } from "@/lib/rsvp/config";
 
 type Mode = "create" | "join" | "solo";
@@ -171,6 +172,12 @@ export default function RegisterForm({ groupmeUrl }: { groupmeUrl: string }) {
           </div>
 
           <Field label="Major/Minor" name="majorMinor" />
+          <Field
+            label="How did you hear about this? (optional)"
+            name="referral"
+            required={false}
+            maxLength={MAX_REFERRAL_LENGTH}
+          />
 
           {error && <p role="alert" className="text-sm font-medium text-red-700">{error}</p>}
 

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { ACADEMIC_STATUSES } from "@/lib/rsvp/config";
 import { createTeam, HackathonError, joinTeam, MAX_TEAM_SIZE } from "@/lib/hackathon/store";
-import { DEADLINES, isOpen } from "@/lib/hackathon/rules";
+import { DEADLINES, isOpen, MAX_REFERRAL_LENGTH } from "@/lib/hackathon/rules";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -26,6 +26,7 @@ export async function POST(request: Request) {
       academicStatus: clean(body.academicStatus, 50),
       school: clean(body.school, 160),
       majorMinor: clean(body.majorMinor, 160),
+      referral: clean(body.referral, MAX_REFERRAL_LENGTH),
     };
 
     if (!participant.name || !emailPattern.test(participant.email) || !participant.academicStatus || !participant.school || !participant.majorMinor) {

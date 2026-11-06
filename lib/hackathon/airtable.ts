@@ -1,4 +1,5 @@
 import "server-only";
+import type { Participant } from "@/lib/hackathon/store";
 
 // Airtable storage for the AI Policy Competition: a single table in the club's base, created by
 // scripts/setup-hackathon-airtable.mjs (field names here must match it). Each row is either a
@@ -93,7 +94,7 @@ export async function hasSubmission(code: string) {
 
 export async function createParticipant(
   team: { name: string; code: string; solo: boolean },
-  participant: { name: string; email: string; academicStatus: string; school: string; majorMinor: string },
+  participant: Participant,
 ) {
   return create({
     Name: participant.name,
@@ -105,6 +106,7 @@ export async function createParticipant(
     "Academic Status": participant.academicStatus,
     School: participant.school,
     "Major/Minor": participant.majorMinor,
+    ...(participant.referral && { "How did you hear about us?": participant.referral }),
     Timestamp: new Date().toISOString(),
   });
 }

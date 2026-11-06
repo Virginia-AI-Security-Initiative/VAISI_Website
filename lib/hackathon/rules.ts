@@ -4,6 +4,7 @@
 // team code and form overhead, so the file itself must stay a little under that.
 export const MAX_BRIEF_LABEL = "4.5 MB";
 export const MAX_BRIEF_BYTES = 4_400_000;
+export const MAX_REFERRAL_LENGTH = 200;
 
 export const DEADLINES = {
   // 11:59 PM Eastern on November 15, 2026 (EST is UTC-5).
