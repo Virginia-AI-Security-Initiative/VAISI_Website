@@ -507,7 +507,7 @@ export default async function PublicationPage({
 
       <div className="px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,46rem)_16rem] lg:items-start lg:justify-between">
-          <div>
+          <div className="min-w-0">
             {body.format === "html" ? (
               <div
                 className="publication-body"

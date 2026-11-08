@@ -4,12 +4,13 @@ export type Publication = {
   slug: string;
   title: string;
   authors: string;
+  cardAuthors?: string;
   kind: PublicationKind;
   collection: string;
   date: string;
   topics: string[];
   sourceUrl: string;
-  sourceLabel: "Original Substack" | "Original PDF";
+  sourceLabel: "Original Substack" | "Original PDF" | "Original arXiv paper";
   heroImage?: string;
   heroImageAlt?: string;
   award?: "1st" | "2nd" | "3rd";
@@ -24,6 +25,34 @@ export const KIND_LABELS: Record<PublicationKind, string> = {
 
 export const publications: Publication[] = [
   {
+    slug: "simple-features-ai-control-monitors",
+    title: "Simple Features Beat Most AI Control Monitors",
+    authors: "Shubhrangshu Debsarkar, Valmik Nahata",
+    kind: "technical",
+    collection: "EvoRobust workshop at NeurIPS 2026 · Equal contribution",
+    date: "2026-10-30",
+    topics: ["AI control", "Evaluation validity", "Code monitoring"],
+    sourceUrl: "https://arxiv.org/abs/2610.41713",
+    sourceLabel: "Original arXiv paper",
+    heroImage: "/research/articles/simple-features-ai-control-monitors/figure-1.svg",
+    heroImageAlt: "Comparison of monitor scores, authorship classifiers, and backdoor detection on the APPS benchmark",
+    featuredRank: 1,
+  },
+  {
+    slug: "agentcollabbench",
+    title: "AgentCollabBench: Diagnosing When Good Agents Make Bad Collaborators",
+    authors: "Aritra Mazumder, Shubhashis Roy Dipta, Nusrat Jahan Lia, Tanzila Khan, Kainat Raisa Hossain, Nehaa Shri, Shubhrangshu Debsarkar, Humayra Tasnim, Gour Gupal Talukder Shawon, Debjoty Mitra, Sumaiya Ahmed Rani, Al Jami Islam Anik, Al Nafeu Khan",
+    cardAuthors: "Aritra Mazumder, Shubhashis Roy Dipta, Shubhrangshu Debsarkar et al.",
+    kind: "technical",
+    collection: "arXiv preprint · May 2026",
+    date: "2026-05-09",
+    topics: ["Multi-agent systems", "Behavioral evaluation", "AI safety"],
+    sourceUrl: "https://arxiv.org/abs/2605.08647",
+    sourceLabel: "Original arXiv paper",
+    heroImage: "/research/articles/agentcollabbench/figure-2.svg",
+    heroImageAlt: "Behavioral profiles of four models across instruction decay, tracer durability, consensus pollution, and context leakage",
+  },
+  {
     slug: "emotion-concepts-gemma-2",
     title: "Identifying and Validating Emotion Concept Representations in Gemma 2 2B",
     authors: "Avery Li, Nia Mucher",
@@ -35,7 +64,7 @@ export const publications: Publication[] = [
     sourceLabel: "Original Substack",
     heroImage: "/research/articles/emotion-concepts-gemma-2/figure-1.png",
     heroImageAlt: "Bar chart of mean Gemma 2 emotion-vector activations on LMSYS text",
-    featuredRank: 1,
+    featuredRank: 2,
   },
   {
     slug: "cross-model-steering-vectors",
@@ -50,7 +79,7 @@ export const publications: Publication[] = [
     sourceLabel: "Original Substack",
     heroImage: "/research/articles/cross-model-steering-vectors/figure-1.png",
     heroImageAlt: "Diagram showing a steering vector mapped from one language model to another",
-    featuredRank: 2,
+    featuredRank: 3,
   },
   {
     slug: "hue-saturation-manifold-gemma-2",
@@ -65,7 +94,7 @@ export const publications: Publication[] = [
     sourceLabel: "Original Substack",
     heroImage: "/research/articles/hue-saturation-manifold-gemma-2/figure-1.png",
     heroImageAlt: "Circular arrangement of color concepts in a two-dimensional probe space",
-    featuredRank: 3,
+    featuredRank: 4,
   },
   {
     slug: "ai-evaluations-landscape",

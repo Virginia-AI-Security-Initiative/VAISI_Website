@@ -957,6 +957,12 @@ def extract_pdf(
 def main() -> None:
     pdf_only = "--pdf-only" in sys.argv[1:]
     content: dict[str, object] = {}
+    # Pinned arXiv articles have their own structured HTML importer.
+    if OUTPUT.exists():
+        existing = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        for slug in ("simple-features-ai-control-monitors", "agentcollabbench"):
+            if slug in existing:
+                content[slug] = existing[slug]
     if pdf_only and OUTPUT.exists():
         existing = json.loads(OUTPUT.read_text(encoding="utf-8"))
         content.update({slug: existing[slug] for slug in POSTS if slug in existing})

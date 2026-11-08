@@ -298,6 +298,140 @@ body {
     font-size: 0.9rem;
     line-height: 1.6;
   }
+
+  .arxiv-paper {
+    overflow-wrap: anywhere;
+  }
+
+  .arxiv-paper [id] {
+    scroll-margin-top: 8rem;
+  }
+
+  .arxiv-paper math {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    vertical-align: middle;
+  }
+
+  .arxiv-paper .ltx_font_bold {
+    font-weight: 700;
+  }
+
+  .arxiv-paper .ltx_font_italic {
+    font-style: italic;
+  }
+
+  .arxiv-paper .ltx_font_typewriter {
+    font-family: monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+  }
+
+  .arxiv-paper .paper-table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-block: 1.5rem;
+    overscroll-behavior-x: contain;
+  }
+
+  .arxiv-paper table {
+    margin-block: 0;
+    line-height: 1.5;
+  }
+
+  .arxiv-paper .ltx_table table {
+    width: max-content;
+    min-width: 100%;
+    overflow-wrap: normal;
+  }
+
+  .arxiv-paper .ltx_table th,
+  .arxiv-paper .ltx_table td {
+    min-width: 5rem;
+    max-width: 22rem;
+  }
+
+  .arxiv-paper .ltx_table tr > :first-child {
+    min-width: 11rem;
+  }
+
+  .arxiv-paper .ltx_align_right {
+    text-align: right;
+  }
+
+  .arxiv-paper .ltx_align_center {
+    text-align: center;
+  }
+
+  .arxiv-paper .ltx_border_tt {
+    border-top: 2px solid var(--primary);
+  }
+
+  .arxiv-paper .ltx_border_bb {
+    border-bottom: 2px solid var(--primary);
+  }
+
+  .arxiv-paper .ltx_table figcaption {
+    text-align: left;
+  }
+
+  .arxiv-paper .ltx_figure_panel {
+    margin-block: 1.5rem;
+  }
+
+  .arxiv-paper .paper-example {
+    margin-block: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: left;
+    white-space: pre-wrap;
+  }
+
+  .arxiv-paper pre {
+    background: var(--primary);
+    color: #fff;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .arxiv-paper .ltx_bibliography {
+    margin-block: 4rem;
+    border-top: 2px solid var(--primary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .arxiv-paper .ltx_biblist {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .arxiv-paper .ltx_bibitem {
+    padding-block: 0.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .arxiv-paper .ltx_tag_bibitem {
+    font-weight: 700;
+  }
+
+  .arxiv-paper .ltx_note {
+    font-size: 0.85em;
+  }
+
+  .arxiv-paper .ltx_note_content .ltx_note_mark,
+  .arxiv-paper .ltx_note_content .ltx_tag_note {
+    display: none;
+  }
+
+  .arxiv-paper .paper-attribution {
+    margin-top: 3rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 1.5rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

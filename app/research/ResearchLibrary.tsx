@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FileText, FlaskConical, Landmark, Search } from "lucide-react";
 import {
   formatPublicationDate,
+  featuredPublications,
   KIND_LABELS,
   publications,
   type Publication,
@@ -112,7 +113,7 @@ function TechnicalCard({ publication }: { publication: Publication }) {
           {publication.title}
         </h3>
         <div className="mt-5 text-sm text-gray-500">
-          <p className="font-semibold text-gray-800">{publication.authors}</p>
+          <p className="font-semibold text-gray-800">{publication.cardAuthors ?? publication.authors}</p>
           <p className="mt-1">{formatPublicationDate(publication.date)}</p>
         </div>
         <span className="mt-auto inline-flex items-center pt-7 text-sm font-bold text-primary">
@@ -232,7 +233,7 @@ export default function ResearchLibrary() {
   const technical = publications.filter((publication) => publication.kind === "technical");
   const policy = publications.filter((publication) => publication.kind === "policy");
   const fellowship = publications.filter((publication) => publication.kind === "fellowship");
-  const featured = technical[0];
+  const featured = featuredPublications[0] ?? technical[0];
 
   const normalizedQuery = query.trim().toLowerCase();
   const filteredPublications = publications.filter((publication) => {
