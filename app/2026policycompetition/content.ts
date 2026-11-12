@@ -348,17 +348,11 @@ export const hackathon = {
   scoring: {
     heading: "Scoring",
     summary: "Your final score combines the judges' scores on your written brief and, for the top 6, your presentation and Q&A.",
-    writtenLabel: "Written brief",
-    written: [
-      { title: "Technical feasibility", body: "Does your solution accurately grapple with the reality of the technology? Are the right agencies empowered?" },
-      { title: "Legal feasibility", body: "Does your solution violate the law or the Constitution?" },
-      { title: "Addresses the task", body: "Does your policy accomplish a clearly stated goal for either of the dual tasks?" },
-    ],
-    presentationLabel: "Presentation and Q&A",
-    presentation: [
-      { title: "Comprehension", body: "Do you clearly understand the brief you submitted?" },
-      { title: "Defense", body: "Can you give thoughtful counterarguments to the judges' objections?" },
-      { title: "Preparation", body: "Are you ready to summarize and present your topic?" },
+    criteriaIntro: "Both the written brief and the presentation and Q&A will be judged on these three criteria:",
+    criteria: [
+      { title: "Feasibility (legal and technical)", body: "Does your proposal account for the realities of the technology and provide a workable path to implementation within the law and the Constitution?" },
+      { title: "Effective", body: "Does your policy accomplish a clearly stated goal that addresses the competition's task?" },
+      { title: "Original", body: "Does your proposal offer a unique approach or add something novel to existing proposals?" },
     ],
   },
   materialsHeading: "Helpful materials",

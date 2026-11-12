@@ -328,22 +328,15 @@ export default async function PolicyHackathonPage() {
                 <div className="surface-panel h-full rounded-2xl bg-white p-6">
                   <h3 className="text-lg font-bold text-primary">{h.scoring.heading}</h3>
                   <p className="mt-1 text-sm text-gray-600">{h.scoring.summary}</p>
-                  {[
-                    { label: h.scoring.writtenLabel, items: h.scoring.written },
-                    { label: h.scoring.presentationLabel, items: h.scoring.presentation },
-                  ].map((group) => (
-                    <div key={group.label} className="mt-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">{group.label}</p>
-                      <dl className="mt-2 divide-y divide-gray-100">
-                        {group.items.map((item) => (
-                          <div key={item.title} className="py-2.5">
-                            <dt className="font-semibold text-primary">{item.title}</dt>
-                            <dd className="mt-0.5 text-sm text-gray-600">{item.body}</dd>
-                          </div>
-                        ))}
-                      </dl>
-                    </div>
-                  ))}
+                  <p className="mt-5 text-sm text-gray-600">{h.scoring.criteriaIntro}</p>
+                  <dl className="mt-2 divide-y divide-gray-100">
+                    {h.scoring.criteria.map((item) => (
+                      <div key={item.title} className="py-2.5">
+                        <dt className="font-semibold text-primary">{item.title}</dt>
+                        <dd className="mt-0.5 text-sm text-gray-600">{item.body}</dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
               </Reveal>
             </div>
