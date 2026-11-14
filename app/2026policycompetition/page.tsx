@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import Section from "@/components/Section";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { type CalendarEvent, dateTile, googleCalendarUrl } from "./calendar";
-import { type Copy, hackathon, INTRO_SEEN_COOKIE } from "./content";
+import { type Copy, hackathon, INTRO_SEEN_COOKIE, type RichParagraph } from "./content";
 import Dropdown from "./Dropdown";
 import HeroNetwork from "./HeroNetwork";
 import Storyboard from "./Storyboard";
@@ -23,6 +23,15 @@ function Text({ value }: { value: Copy }) {
     <span className="inline-flex items-center rounded-md border border-dashed border-secondary/70 bg-secondary/8 px-1.5 py-0.5 text-[0.85em] font-medium text-secondary">
       TBD: {value.tbd}
     </span>
+  );
+}
+
+function Rich({ value }: { value: RichParagraph }) {
+  return value.map((part, i) =>
+    typeof part === "string"
+      ? <span key={i}>{part}</span>
+      // Only outside pages open in a new tab; #section and mailto: links stay put.
+      : <a key={i} href={part.url} {...(part.url.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })} className="font-medium text-primary underline decoration-primary/30 underline-offset-2 hover:decoration-primary">{part.text}</a>
   );
 }
 
@@ -68,6 +77,9 @@ function LinkOrTbd({ label, url }: { label: string; url: Copy }) {
 export default async function PolicyHackathonPage() {
   const h = hackathon;
   const introSeen = (await cookies()).get(INTRO_SEEN_COOKIE)?.value === "1";
+  // The page renders per request (it reads cookies), so the guiding question appears at release time.
+  const released = new Date() >= h.track.releasesAt ? h.track.released : null;
+  const track = released ?? h.track;
   return (
     <div className="flex min-h-screen flex-col bg-white">
       {/* Hero */}
@@ -166,41 +178,13 @@ export default async function PolicyHackathonPage() {
                 );
               })}
             </StaggerGroup>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div className="mt-6">
               <Reveal>
                 <div className="h-full rounded-2xl bg-primary p-6 text-white">
                   <CardHeading light>{h.coworking.heading}</CardHeading>
                   <p className="text-sm font-semibold text-white/90">{h.coworking.when} in {h.coworking.where}</p>
                   <p className="mt-2 text-sm leading-relaxed text-white/75">{h.coworking.body}</p>
                   <AddToCalendar event={h.coworking.calendar} light />
-                </div>
-              </Reveal>
-              <Reveal delay={0.06}>
-                <div className="surface-panel h-full rounded-2xl bg-white p-6">
-                  <CardHeading>{h.workshops.heading}</CardHeading>
-                  <p className="text-sm leading-relaxed text-gray-600">{h.workshops.body}</p>
-                  <ul className="mt-4 divide-y divide-gray-100 border-t border-gray-100">
-                    {h.workshops.events.map((event) => (
-                      <li key={event.title} className="flex flex-wrap items-center justify-between gap-3 py-3">
-                        <div className="min-w-0">
-                          <p className="font-semibold text-primary">{event.title}</p>
-                          <p className="mt-0.5 flex flex-wrap gap-x-3 gap-y-1 text-xs font-medium text-gray-500">
-                            <span>When: <Text value={event.when} /></span>
-                            <span>Where: <Text value={event.where} /></span>
-                          </p>
-                        </div>
-                        {event.slug ? (
-                          <a href={`/events/${event.slug}`} className="tap-scale button-raised inline-flex min-h-10 shrink-0 items-center rounded-xl bg-primary px-4 text-sm font-semibold text-white hover:bg-primary/92">
-                            {h.workshops.rsvp}
-                          </a>
-                        ) : (
-                          <span className="inline-flex min-h-10 shrink-0 items-center rounded-xl bg-gray-100 px-4 text-sm font-semibold text-gray-500">
-                            {h.workshops.rsvpPending}
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </Reveal>
             </div>
@@ -230,11 +214,33 @@ export default async function PolicyHackathonPage() {
           <Dropdown id="track" number={3} title="Track & deliverables">
             <Reveal>
               <div className="rounded-2xl bg-primary p-6 text-white sm:p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">{h.track.label}</p>
-                <p className="mt-3 text-2xl font-bold leading-snug sm:text-3xl"><Text value={h.track.question} /></p>
-                <p className="mt-4 text-white/75"><Text value={h.track.context} /></p>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
+                  {h.track.label}{released && <> · {released.title}</>}
+                </p>
+                <p className="mt-3 text-2xl font-bold leading-snug sm:text-3xl"><Text value={track.question} /></p>
+                {track.context && <p className="mt-4 text-white/75"><Text value={track.context} /></p>}
               </div>
             </Reveal>
+            {released?.sections.map((section) => (
+              <Reveal key={section.heading} className="mt-6">
+                <div className="surface-panel rounded-2xl bg-white p-6">
+                  <CardHeading>{section.heading}</CardHeading>
+                  {"list" in section && section.list ? (
+                    <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-600 marker:text-secondary">
+                      {section.paragraphs.map((paragraph, i) => (
+                        <li key={i}><Rich value={paragraph} /></li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <div className="space-y-3 text-sm leading-relaxed text-gray-600">
+                      {section.paragraphs.map((paragraph, i) => (
+                        <p key={i}><Rich value={paragraph} /></p>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </Reveal>
+            ))}
             <p className="mt-6 font-semibold text-primary">{h.deliverablesIntro}</p>
             <StaggerGroup className="mt-3 grid gap-4 sm:grid-cols-2">
               {h.deliverables.map((item) => {

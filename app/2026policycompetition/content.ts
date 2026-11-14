@@ -10,6 +10,8 @@ export type Copy = string | { tbd: string };
 
 export const tbd = (note: string): Copy => ({ tbd: note });
 
+export type RichParagraph = (string | { text: string; url: string })[];
+
 const ROTUNDA = "Lower West Oval Room, Rotunda"; // full address for calendar invites
 const ROTUNDA_ROOM = "Lower West Oval Room"; // shown on the page as "at the Lower West Oval Room"
 
@@ -48,12 +50,6 @@ const timeline: TimelineItem[] = [
       start: "2026-11-16T04:30:00Z",
       end: "2026-11-16T04:59:00Z",
     },
-  },
-  {
-    date: null,
-    title: "Related presentation to be announced",
-    time: "Time TBA",
-    body: "Details and RSVP coming soon under Workshops & talks.",
   },
   {
     date: "2026-11-20",
@@ -269,22 +265,6 @@ export const hackathon = {
       rrule: "FREQ=DAILY;COUNT=5",
     } satisfies CalendarEvent,
   },
-  workshops: {
-    heading: "Workshops & talks",
-    body: "Please RSVP to any workshop or event you plan on attending.",
-    // Related events. RSVPs use the site's existing event system: create the event at /eventcreator,
-    // then set `slug` to its URL name (vaisi.org/events/<slug>) and the RSVP button goes live.
-    events: [
-      {
-        title: "Related presentation to be announced",
-        when: "TBA" as Copy,
-        where: "TBA" as Copy,
-        slug: null as string | null,
-      },
-    ],
-    rsvp: "RSVP",
-    rsvpPending: "RSVP opens soon",
-  },
 
   prizes: [
     { place: "1st Place", amount: "$550" },
@@ -300,6 +280,81 @@ export const hackathon = {
     label: "Guiding question",
     question: "Released 12 PM, November 15" as Copy,
     context: "Please don't start working on your brief before then, as it will result in disqualification." as Copy,
+    // The page swaps in `released` on its own at this time (12 PM Eastern on November 15), no deploy needed.
+    releasesAt: new Date("2026-11-15T17:00:00.000Z"),
+    released: {
+      title: "Reducing AI Risk",
+      question: "How should the U.S. government balance innovation with mitigating Chemical, Biological, Radiological, or Nuclear (CBRN) risks and cyberwarfare risks from Large Language Models (LLMs)?" as Copy,
+      context: "" as Copy,
+      // Paragraphs are lists of plain text and { text, url } links.
+      sections: [
+        {
+          heading: "Your task",
+          paragraphs: [
+            ["Propose one policy that would reduce risk associated with AI models and advanced CBRN or cybersecurity capabilities. Your policy may propose legislation, or show how existing agencies and departments can address these threats using authorities they already have, such as sanctions, procurement, standards-setting, or existing biosecurity programs."],
+            ["In your analysis, consider tradeoffs across different policy strategies. Relevant considerations may include: where to intervene, scope, costs to openness, implementation, durability."],
+            ["You do not need to cover every factor exhaustively, but you should show thoughtful prioritization and reasoning."],
+          ] as RichParagraph[],
+        },
+        {
+          heading: "Motivation",
+          paragraphs: [
+            [
+              "AI development is progressing rapidly, and ",
+              { text: "recent evidence suggests it’s accelerating", url: "https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/#executive-summary" },
+              " as ",
+              { text: "AI takes a larger role", url: "https://www.anthropic.com/institute/measuring-pace-of-ai-development" },
+              " in its own research and development. LLMs have sent shockwaves through fields including ",
+              { text: "mathematics", url: "https://openai.com/index/navier-stokes-solution/" },
+              " and ",
+              { text: "cybersecurity", url: "https://www.bbc.com/news/articles/c3qjnwye0ep5o" },
+              ", and are advancing rapidly in areas like ",
+              { text: "robotics", url: "https://www.anthropic.com/claude-fable-and-mythos-5-2" },
+              ". Transformer-based models have also made advances in other areas, ",
+              { text: "like virology", url: "https://www.bbc.com/news/articles/c5y3j3ngevmo" },
+              ", which could clearly pose threats to human lives; as AI models become capable of constructing new viruses, and assisting humans in the creations of those viruses, the threat of new biological weapons rises.",
+            ],
+            ["Proprietary models are usually released with guardrails, which prevent them from answering questions which could lead to harmful development of bioweapons or proliferation of dangerous cyberattacks. However, once an open-weight model is released, it cannot be recalled. Anyone can download it, and its safety training can be removed cheaply through fine-tuning. As these models get better at reasoning, coding, and autonomous action, they could give non-state actors two dangerous capabilities. The first is the expert troubleshooting that has historically kept chemical, biological, radiological, and nuclear weapons out of reach. The second is offensive cyber capability once limited to nation-states."],
+            [
+              "In addition to open-weight models, ",
+              { text: "frontier labs information security is lagging behind where it needs to be", url: "https://www.justice.gov/opa/pr/saudi-national-arrested-installing-surreptitious-audio-recording-device-openai" },
+              ", threatening the theft and misuse of their own proprietary and highly capable models. Finally, labs have demonstrated that they do not know how to align or control their internal models, ",
+              { text: "leading to incidents where internal models broke out of evaluation environments", url: "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/" },
+              " and autonomously conducted cyberattacks on the internet.",
+            ],
+            ["Despite these risks, AI drives innovation and American competitiveness, and open-weight models are crucial for research outside of frontier labs. The United States needs a policy that meaningfully reduces catastrophic risk while preserving the benefits of AI models. If we wait for a major incident before taking action, it could cost millions of lives."],
+          ] as RichParagraph[],
+        },
+        {
+          heading: "Possible starting points",
+          list: true,
+          paragraphs: [
+            [{ text: "Agentic Artificial Intelligence and Cyberattacks", url: "https://www.congress.gov/crs-product/IF13151" }, " (Congressional Research Service)"],
+            [{ text: "Artificial Intelligence and Biosecurity Issues", url: "https://www.congress.gov/crs-product/IF13269" }, " (Congressional Research Service)"],
+            [{ text: "Building a Defense-in-Depth Biosecurity Strategy for the AI Era", url: "https://www.rand.org/pubs/research_reports/RRA4999-1.html" }, " (RAND)"],
+            [{ text: "Recursive Self-Improvement Signals: Security Implications", url: "https://labs.cloudsecurityalliance.org/research/ai-recursive-self-improvement-security-implications-v1-0-csa/" }, " (Cloud Security Alliance)"],
+            [{ text: "Progress on provable inference for large language models", url: "https://www.anthropic.com/research/provable-inference" }, " (Anthropic)"],
+            [{ text: "GLM-5.3 and the spread of advanced cyber capabilities", url: "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities" }, " (Anthropic)"],
+          ] as RichParagraph[],
+        },
+        {
+          heading: "Organizer's note",
+          paragraphs: [
+            [
+              "The use of AI is not explicitly banned; however, be ready to defend everything in your brief when you present. Also, be sure to look at the ",
+              { text: "example brief", url: "https://www.vaisi.org/research/policy_briefs/Logan%20Bradley,%20Ishan%20Ajwani%20-%20AI%20Safety%20Investigation%20Act%20Brief.pdf" },
+              ", which won a prior competition. We also encourage you to review the ",
+              { text: "rubric", url: "#brief" },
+              " before submitting. Feel free to leave any questions in our ",
+              { text: "GroupMe", url: "/go/groupme/2026-policy-hackathon" },
+              " or ",
+              { text: "stop by Clemons", url: "#schedule" },
+              ". Good luck!",
+            ],
+          ] as RichParagraph[],
+        },
+      ],
+    },
   },
   deliverablesIntro: "You'll be judged on two deliverables:",
   deliverables: [
@@ -358,7 +413,7 @@ export const hackathon = {
   materialsHeading: "Helpful materials",
   resources: [
     { label: "What is a Policy Brief?", url: "https://writingcenter.unc.edu/tips-and-tools/policy-briefs/" as Copy },
-    { label: "Example brief", url: "https://drive.google.com/file/d/1v9s5pg3l0JucKTH9hkpxmjyp__KnTAjP/view?usp=share_link" as Copy },
+    { label: "Example brief", url: "https://www.vaisi.org/research/policy_briefs/Logan%20Bradley,%20Ishan%20Ajwani%20-%20AI%20Safety%20Investigation%20Act%20Brief.pdf" as Copy },
   ],
   exampleWarning:
     "The example shows what an excellent brief looks like, but please don't copy it or its policy (that will result in disqualification). Your brief doesn't need to follow the same structure.",
