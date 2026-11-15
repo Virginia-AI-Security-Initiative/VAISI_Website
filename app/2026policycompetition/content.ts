@@ -324,22 +324,6 @@ export const hackathon = {
             [{ text: "GLM-5.3 and the spread of advanced cyber capabilities", url: "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities" }, " (Anthropic)"],
           ] as RichParagraph[],
         },
-        {
-          heading: "Organizer's note",
-          paragraphs: [
-            [
-              "The use of AI is not explicitly banned; however, be ready to defend everything in your brief when you present. Also, be sure to look at the ",
-              { text: "example brief", url: "https://www.vaisi.org/research/policy_briefs/Logan%20Bradley,%20Ishan%20Ajwani%20-%20AI%20Safety%20Investigation%20Act%20Brief.pdf" },
-              ", which won a prior competition. We also encourage you to review the ",
-              { text: "rubric", url: "#brief" },
-              " before submitting. Feel free to leave any questions in our ",
-              { text: "GroupMe", url: "/go/groupme/2026-policy-hackathon" },
-              " or ",
-              { text: "stop by Clemons", url: "#schedule" },
-              ". Good luck!",
-            ],
-          ] as RichParagraph[],
-        },
       ],
     },
   },
