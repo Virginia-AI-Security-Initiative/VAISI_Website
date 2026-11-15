@@ -39,19 +39,6 @@ const timeline: TimelineItem[] = [
     },
   },
   {
-    date: "2026-11-15",
-    title: "Team signup and registration close",
-    time: "11:59 PM",
-    body: "Every competitor, solo or on a team, needs to be registered by now. Still looking for teammates? Feel free to use the time until then.",
-    calendar: {
-      id: "hackathon-team-signup",
-      title: "AI Policy Competition team signup and registration close",
-      description: "Every competitor needs to be registered on a team by 11:59 PM.",
-      start: "2026-11-16T04:30:00Z",
-      end: "2026-11-16T04:59:00Z",
-    },
-  },
-  {
     date: "2026-11-20",
     title: "Briefs due",
     time: "5:00 PM EST",
@@ -378,7 +365,6 @@ export const hackathon = {
   teams: [
     "Teams are optional, and the max is 3 members.",
     "Prize money is split evenly between teammates unless you ask otherwise.",
-    "Team signup and registration close at 11:59 PM on November 15.",
   ],
 
   briefContentsHeading: "Your brief should include:",

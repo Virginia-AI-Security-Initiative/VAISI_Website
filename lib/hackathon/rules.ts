@@ -7,8 +7,8 @@ export const MAX_BRIEF_BYTES = 4_400_000;
 export const MAX_REFERRAL_LENGTH = 200;
 
 export const DEADLINES = {
-  // 11:59 PM Eastern on November 15, 2026 (EST is UTC-5).
-  registration: { closesAt: new Date("2026-11-16T04:59:59.999Z"), message: "Team signup and registration closed at 11:59 PM on November 15." },
+  // Stays open until briefs are due (5:00 PM Eastern on November 20, 2026); no separate signup deadline.
+  registration: { closesAt: new Date("2026-11-20T22:00:00.000Z"), message: "Registration closed when briefs were due at 5:00 PM EST on November 20." },
   // 5:00 PM Eastern on November 20, 2026.
   submission: { closesAt: new Date("2026-11-20T22:00:00.000Z"), message: "Brief submissions closed at 5:00 PM EST on November 20." },
 } as const;
