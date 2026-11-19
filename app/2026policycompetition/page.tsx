@@ -373,7 +373,7 @@ export default async function PolicyHackathonPage() {
               </Reveal>
               <Reveal delay={0.08}>
                 <div className="surface-panel rounded-[28px] bg-white p-5 sm:p-8">
-                  {isOpen("submission") ? <SubmitBriefForm /> : <ClosedNotice message={DEADLINES.submission.message} />}
+                  {isOpen("submission") ? <SubmitBriefForm exampleBriefUrl={h.exampleBriefUrl} /> : <ClosedNotice message={DEADLINES.submission.message} />}
                 </div>
               </Reveal>
             </div>

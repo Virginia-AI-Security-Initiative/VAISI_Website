@@ -12,6 +12,7 @@ export const tbd = (note: string): Copy => ({ tbd: note });
 
 export type RichParagraph = (string | { text: string; url: string })[];
 
+const EXAMPLE_BRIEF_URL = "https://www.vaisi.org/research/policy_briefs/Logan%20Bradley,%20Ishan%20Ajwani%20-%20AI%20Safety%20Investigation%20Act%20Brief.pdf";
 const ROTUNDA = "Lower West Oval Room, Rotunda"; // full address for calendar invites
 const ROTUNDA_ROOM = "Lower West Oval Room"; // shown on the page as "at the Lower West Oval Room"
 
@@ -383,8 +384,9 @@ export const hackathon = {
   materialsHeading: "Helpful materials",
   resources: [
     { label: "What is a Policy Brief?", url: "https://writingcenter.unc.edu/tips-and-tools/policy-briefs/" as Copy },
-    { label: "Example brief", url: "https://www.vaisi.org/research/policy_briefs/Logan%20Bradley,%20Ishan%20Ajwani%20-%20AI%20Safety%20Investigation%20Act%20Brief.pdf" as Copy },
+    { label: "Example brief", url: EXAMPLE_BRIEF_URL as Copy },
   ],
+  exampleBriefUrl: EXAMPLE_BRIEF_URL, // also linked from the submission checklist
   exampleWarning:
     "The example shows what an excellent brief looks like, but please don't copy it or its policy (that will result in disqualification). Your brief doesn't need to follow the same structure.",
   credit: "Credit to BASIS for some of these guidelines and materials.",

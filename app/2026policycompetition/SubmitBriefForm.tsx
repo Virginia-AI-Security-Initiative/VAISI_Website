@@ -11,7 +11,18 @@ function formatSize(bytes: number) {
   return bytes < 1024 * 1024 ? `${Math.round(bytes / 1024)} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
 
-export default function SubmitBriefForm() {
+// Every box must be ticked before the brief can be submitted. Mirrors the formatting requirements on the page.
+const CHECKLIST = [
+  "Is your font 12-point Times New Roman?",
+  "Do you have 1-inch margins?",
+  "Is your line spacing 1.15?",
+  "Is your brief 2 pages or fewer (citations don't count)?",
+  "Did you leave out names and other identifying information?",
+];
+
+export default function SubmitBriefForm({ exampleBriefUrl }: { exampleBriefUrl: string }) {
+  const [checked, setChecked] = useState<boolean[]>(() => Array(CHECKLIST.length + 1).fill(false));
+  const allChecked = checked.every(Boolean);
   const [team, setTeam] = useState<TeamLookup | null>(null);
   const [lookupError, setLookupError] = useState("");
   const [file, setFile] = useState<File | null>(null);
@@ -46,6 +57,10 @@ export default function SubmitBriefForm() {
     formEvent.preventDefault();
     if (!team) {
       setError("Enter a valid team code first.");
+      return;
+    }
+    if (!allChecked) {
+      setError("Check every item in the checklist before submitting.");
       return;
     }
     setStatus("submitting");
@@ -136,14 +151,40 @@ export default function SubmitBriefForm() {
             <input name="brief" type="file" accept="application/pdf,.pdf" required onChange={chooseFile} className="sr-only" />
           </label>
 
+          <fieldset className="rounded-xl border border-gray-200 bg-gray-50 p-4">
+            <legend className="px-1 text-sm font-medium text-primary">Before you submit</legend>
+            <div className="space-y-2.5">
+              {[
+                ...CHECKLIST,
+                <>
+                  Did you look at the{" "}
+                  <a href={exampleBriefUrl} target="_blank" rel="noopener noreferrer" className="font-medium text-primary underline decoration-primary/30 underline-offset-2 hover:decoration-primary">
+                    example brief
+                  </a>
+                  ?
+                </>,
+              ].map((item, i) => (
+                <label key={i} className="flex cursor-pointer items-start gap-3 text-sm leading-snug text-gray-700">
+                  <input
+                    type="checkbox"
+                    checked={checked[i]}
+                    onChange={(event) => setChecked((current) => current.map((value, j) => (j === i ? event.target.checked : value)))}
+                    className="mt-0.5 size-4 shrink-0 cursor-pointer accent-primary"
+                  />
+                  <span>{item}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
           {error && <p role="alert" className="text-sm font-medium text-red-700">{error}</p>}
 
           <button
             type="submit"
-            disabled={status === "submitting"}
-            className="tap-scale button-raised flex min-h-12 w-full items-center justify-center rounded-xl bg-primary px-5 py-3 font-medium text-white hover:bg-primary/92 disabled:cursor-wait disabled:opacity-65"
+            disabled={status === "submitting" || !allChecked}
+            className="tap-scale button-raised flex min-h-12 w-full items-center justify-center rounded-xl bg-primary px-5 py-3 font-medium text-white hover:bg-primary/92 disabled:cursor-not-allowed disabled:opacity-65"
           >
-            {status === "submitting" ? "Uploading…" : "Submit brief"}
+            {status === "submitting" ? "Uploading…" : allChecked ? "Submit brief" : "Check every item to submit"}
           </button>
         </motion.form>
       )}
