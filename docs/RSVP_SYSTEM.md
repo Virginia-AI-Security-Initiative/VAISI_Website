@@ -1,6 +1,6 @@
 # VAISI RSVP system
 
-Public RSVP links use `https://vaisi.org/events/<event-name-slug>`. Opening that URL loads the event from Airtable and opens the RSVP modal over the Events page immediately. Closing the modal returns the visitor to `/events`.
+Public RSVP links use `https://vaisi.org/events/<event-name-slug>`. Opening that URL loads the event from Airtable and opens the RSVP modal over the Events page immediately. Closing the modal returns the visitor to `/events`. For an event that has ended or was cancelled, the modal shows a short notice instead of the form.
 
 ## Create an event
 

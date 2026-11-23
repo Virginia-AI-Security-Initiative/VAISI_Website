@@ -22,7 +22,7 @@ function EventLinks({ links }: { links?: EventLink[] }) {
         : "text-link-subtle inline-flex min-h-11 items-center text-sm font-medium text-gray-600 hover:text-primary";
       return link.url.startsWith("http")
         ? <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className={className}>{link.label}</a>
-        : <Link key={link.url} href={link.url} className={className}>{link.label}</Link>;
+        : <Link key={link.url} href={link.url} scroll={false} className={className}>{link.label}</Link>;
     })}
   </div>;
 }

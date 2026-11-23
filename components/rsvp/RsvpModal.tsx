@@ -25,14 +25,28 @@ function formatEventTime(start: string, end: string) {
   return `${date}, ${time.format(startDate)}–${time.format(endDate)}`;
 }
 
+const CLOSED_NOTICES = {
+  cancelled: {
+    title: "This event was cancelled",
+    body: "Check out what else VAISI has coming up.",
+  },
+  past: {
+    title: "This event has already happened",
+    body: "RSVPs are closed. Check out what VAISI has coming up next.",
+  },
+};
+
 export default function RsvpModal({
   event,
   showTrigger = true,
   closeHref,
+  closed,
 }: {
   event: PublicEvent;
   showTrigger?: boolean;
   closeHref?: string;
+  // Set when RSVPs are no longer open: the popup explains why instead of showing the form.
+  closed?: keyof typeof CLOSED_NOTICES;
 }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
@@ -74,6 +88,29 @@ export default function RsvpModal({
       window.removeEventListener("keydown", handleKey);
     };
   }, [closeModal, isOpen]);
+
+  const header = (
+    <>
+      <div className="pr-11">
+        <h1 id="rsvp-title" className="text-3xl font-bold tracking-[-0.025em] text-primary sm:text-4xl">
+          {event.name}
+        </h1>
+      </div>
+      <div className="mt-4 space-y-2 text-sm font-medium text-gray-600">
+        <p className="flex items-start gap-2">
+          <CalendarDays className="mt-0.5 size-4 shrink-0 text-secondary" />
+          <span className="tabular-nums">{formatEventTime(event.start, event.end)}</span>
+        </p>
+        {event.location && (
+          <p className="flex items-start gap-2">
+            <MapPin className="mt-0.5 size-4 shrink-0 text-secondary" />
+            <span>{event.location}</span>
+          </p>
+        )}
+      </div>
+      {event.description && <p className="mt-4 text-base leading-relaxed text-gray-600">{event.description}</p>}
+    </>
+  );
 
   return (
     <>
@@ -128,33 +165,28 @@ export default function RsvpModal({
             <X size={22} />
           </button>
 
-          <RsvpForm
-            event={event}
-            header={
-              <>
-                    <div className="pr-11">
-                      <h1 id="rsvp-title" className="text-3xl font-bold tracking-[-0.025em] text-primary sm:text-4xl">
-                        {event.name}
-                      </h1>
-                    </div>
-                    <div className="mt-4 space-y-2 text-sm font-medium text-gray-600">
-                      <p className="flex items-start gap-2">
-                        <CalendarDays className="mt-0.5 size-4 shrink-0 text-secondary" />
-                        <span className="tabular-nums">{formatEventTime(event.start, event.end)}</span>
-                      </p>
-                      <p className="flex items-start gap-2">
-                        <MapPin className="mt-0.5 size-4 shrink-0 text-secondary" />
-                        <span>{event.location}</span>
-                      </p>
-                    </div>
-                    <p className="mt-4 text-base leading-relaxed text-gray-600">{event.description}</p>
-                  </>
-                }
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          {closed ? (
+            <>
+              {header}
+              <div className="mt-6 border-t border-gray-100 pt-6 text-center">
+                <h2 className="text-xl font-bold tracking-[-0.02em] text-primary">{CLOSED_NOTICES[closed].title}</h2>
+                <p className="mx-auto mt-2 max-w-sm text-base leading-relaxed text-gray-600">{CLOSED_NOTICES[closed].body}</p>
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="tap-scale button-raised mt-6 inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary/92"
+                >
+                  See upcoming events
+                </button>
+              </div>
+            </>
+          ) : (
+            <RsvpForm event={event} header={header} />
+          )}
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
     </>
   );
 }
