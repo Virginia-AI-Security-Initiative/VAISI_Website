@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createRsvp, getPublicEventBySlug } from "@/lib/rsvp/airtable";
-import { ACADEMIC_STATUSES } from "@/lib/rsvp/config";
+import { ACADEMIC_STATUSES, RSVP_SPEAKER_QUESTIONS } from "@/lib/rsvp/config";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -21,6 +21,8 @@ export async function POST(request: Request) {
     const academicStatus = clean(body.academicStatus, 50);
     const majorMinor = clean(body.majorMinor, 160);
     const referral = clean(body.referral, 240);
+    // Optional, and only kept for events that ask it.
+    const speakerQuestion = RSVP_SPEAKER_QUESTIONS[slug] ? clean(body.speakerQuestion, 1000) : "";
 
     if (!slug || !name || !emailPattern.test(email) || !academicStatus || !majorMinor || !referral) {
       return NextResponse.json({ error: "Please complete every field." }, { status: 400 });
@@ -39,7 +41,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
 
-    await createRsvp({ eventId: event.id, name, email, academicStatus, majorMinor, referral });
+    await createRsvp({ eventId: event.id, name, email, academicStatus, majorMinor, referral, speakerQuestion });
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("RSVP submission failed", error);

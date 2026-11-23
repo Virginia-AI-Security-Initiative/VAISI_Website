@@ -19,6 +19,7 @@ export const AIRTABLE_FIELDS = {
     referral: "fld3V2nql2wVZ09YQ",
     syncStatus: "fldc2fG9b0HoEGvX8",
     event: "fldHjE9cAqXf5Mm1A",
+    speakerQuestion: "fld6Sq4avObzW8dYb",
   },
   publicEvents: {
     name: "fldYAT3UTpxeJsusn",
@@ -80,6 +81,12 @@ export const ACADEMIC_STATUSES = [
 export const GROUPME_URL = "https://groupme.com/join_group/110490963/bxseYw8L";
 export const EA_GROUPME_URL = "https://groupme.com/join_group/116855990/kE5yy4jJ";
 export const EA_COHOSTED_EVENT_SLUG = "tipping-point-or-plateau-andy-masley-speaker-event";
+
+// Optional extra question shown on specific events' RSVP forms. Answers are saved to the
+// RSVPs table's "Question for speaker" field. Add an entry keyed by event slug to reuse it.
+export const RSVP_SPEAKER_QUESTIONS: Record<string, string> = {
+  "nikola-jurkovic-speaker-event": "What is a question you would like to ask Nikola?",
+};
 
 export function eventSlug(name: string) {
   return name

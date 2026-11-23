@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { FormEvent, ReactNode, useState } from "react";
-import { ACADEMIC_STATUSES, EA_COHOSTED_EVENT_SLUG } from "@/lib/rsvp/config";
+import { ACADEMIC_STATUSES, EA_COHOSTED_EVENT_SLUG, RSVP_SPEAKER_QUESTIONS } from "@/lib/rsvp/config";
 import type { PublicEvent } from "@/lib/rsvp/airtable";
 
 export default function RsvpForm({
@@ -17,6 +17,7 @@ export default function RsvpForm({
 }) {
   const [status, setStatus] = useState<"form" | "submitting" | "confirmed">("form");
   const [error, setError] = useState("");
+  const speakerQuestionLabel = RSVP_SPEAKER_QUESTIONS[event.slug];
 
   async function submit(formEvent: FormEvent<HTMLFormElement>) {
     formEvent.preventDefault();
@@ -35,6 +36,7 @@ export default function RsvpForm({
           academicStatus: form.get("academicStatus"),
           majorMinor: form.get("majorMinor"),
           referral: form.get("referral"),
+          speakerQuestion: form.get("speakerQuestion"),
           website: form.get("website"),
         }),
       });
@@ -140,6 +142,20 @@ export default function RsvpForm({
 
             <Field label="Major/Minor" name="majorMinor" autoComplete="organization-title" />
             <Field label="How did you hear about this event?" name="referral" />
+
+            {speakerQuestionLabel && (
+              <label className="block">
+                <span className="mb-1.5 block text-sm font-medium text-primary">
+                  {speakerQuestionLabel} <span className="font-normal text-gray-500">(optional)</span>
+                </span>
+                <textarea
+                  name="speakerQuestion"
+                  rows={3}
+                  maxLength={1000}
+                  className={`${fieldClassName} py-2.5`}
+                />
+              </label>
+            )}
 
             {error && <p role="alert" className="text-sm font-medium text-red-700">{error}</p>}
 
