@@ -8,7 +8,11 @@ const COOKIE_NAME = "vaisi_event_creator_session";
 const SESSION_LENGTH_MS = 7 * 24 * 60 * 60 * 1000;
 
 function airtableSigningSecret() {
-  const raw = process.env.airtable_api ?? process.env.AIRTABLE_API_KEY;
+  // Requests use HACKATHON_AIRTABLE_TOKEN first (lib/rsvp/airtable.ts). Signing keeps airtable_api
+  // first so existing sessions stay valid, and only uses the competition token when it is the
+  // only one set.
+  const raw = [process.env.airtable_api, process.env.AIRTABLE_API_KEY, process.env.HACKATHON_AIRTABLE_TOKEN]
+    .find((value) => value?.trim());
   if (!raw) throw new Error("Airtable is not configured.");
   return raw.trim().replace(/^Bearer\s+/i, "").replace(/^['\"]|['\"]$/g, "");
 }

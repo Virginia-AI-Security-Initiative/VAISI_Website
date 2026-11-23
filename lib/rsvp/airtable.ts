@@ -66,25 +66,36 @@ const EVENT_FALLBACKS: Record<string, PublicEvent> = {
   },
 };
 
-function getApiKey() {
-  const rawKey = process.env.airtable_api ?? process.env.AIRTABLE_API_KEY;
-  if (!rawKey) throw new Error("Airtable is not configured");
-
-  let key = rawKey.trim();
+// Events, RSVPs and the event creator share the club base with the policy competition, so they
+// prefer the competition's token (HACKATHON_AIRTABLE_TOKEN), which has read and write access to
+// the base, and fall back to the older airtable_api token when it is not set.
+function cleanToken(raw: string | undefined) {
+  let key = (raw ?? "").trim();
   if (
     (key.startsWith('"') && key.endsWith('"')) ||
     (key.startsWith("'") && key.endsWith("'"))
   ) {
     key = key.slice(1, -1).trim();
   }
-  key = key.replace(/^Bearer\s+/i, "").trim();
+  return key.replace(/^Bearer\s+/i, "").trim();
+}
 
+function findApiKey() {
+  return (
+    cleanToken(process.env.HACKATHON_AIRTABLE_TOKEN) ||
+    cleanToken(process.env.airtable_api) ||
+    cleanToken(process.env.AIRTABLE_API_KEY)
+  );
+}
+
+function getApiKey() {
+  const key = findApiKey();
   if (!key) throw new Error("Airtable is not configured");
   return key;
 }
 
 export function isAirtableConfigured() {
-  return Boolean(process.env.airtable_api?.trim() || process.env.AIRTABLE_API_KEY?.trim());
+  return Boolean(findApiKey());
 }
 
 async function airtableFetch<T>(path: string, init?: RequestInit): Promise<T> {
