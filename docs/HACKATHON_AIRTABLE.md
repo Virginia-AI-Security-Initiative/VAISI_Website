@@ -29,6 +29,9 @@ The token needs `data.records:read` and `data.records:write` on the base (plus `
 `schema.bases:write` only when running the setup script). Optional: `HACKATHON_AIRTABLE_TABLE` to use a
 differently named table.
 
+The website's events, RSVPs and event creator also use `HACKATHON_AIRTABLE_TOKEN` when it is set (see
+`docs/RSVP_SYSTEM.md`), so keep its access at the whole base rather than narrowing it to the competition.
+
 ## Creating or repairing the table
 
 ```

@@ -24,7 +24,7 @@ as a fallback.
 
 ### Command-line fallback
 
-Run this from the repository with the production Airtable token available as `airtable_api`:
+Run this from the repository with the production Airtable token available as `HACKATHON_AIRTABLE_TOKEN` (or `airtable_api`):
 
 ```bash
 node scripts/create-rsvp-event.mjs \
@@ -45,8 +45,10 @@ The website writes one row to `RSVPs`, including the linked `Event` and a `Pendi
 
 The visible questions match the existing Estimathon RSVP: Name, Email, Academic Status, Major/Minor, and How did you hear about this event? After submission, the modal confirms the RSVP and links to the VAISI GroupMe. The confirmation button visits `/go/groupme/<event-slug>`, records one anonymous row in Airtable's **GroupMe Clicks** table with **GroupMe** set to `VAISI`, then redirects to GroupMe. The Andy Masley cohosted RSVP also offers an Effective Altruism button at `/go/groupme/<event-slug>/ea`; those clicks are logged with **GroupMe** set to `Effective Altruism`. Filter or group that table by **Event slug** and **GroupMe** to see separate click totals. Older rows with a blank **GroupMe** are VAISI clicks from before the field was added. This counts button clicks, not confirmed GroupMe joins.
 
-The Airtable row stores only an event slug, destination GroupMe, and timestamp; it does not store attendee identity. If logging fails, the visitor is still redirected to GroupMe. The production `airtable_api` token needs record-create access to **GroupMe Clicks** in addition to the existing RSVP tables.
+The Airtable row stores only an event slug, destination GroupMe, and timestamp; it does not store attendee identity. If logging fails, the visitor is still redirected to GroupMe. The production Airtable token (see Environment) needs record-create access to **GroupMe Clicks** in addition to the existing RSVP tables.
 
 ## Environment
 
-`airtable_api` is server-only. Never prefix it with `NEXT_PUBLIC_` or expose it in client code. The token needs read access to Public Events and Internal Calendar and record-create access to RSVPs.
+Events, RSVPs and the event creator call Airtable with `HACKATHON_AIRTABLE_TOKEN`, the same token the policy competition uses (see `docs/HACKATHON_AIRTABLE.md`). If that variable is not set, they fall back to `airtable_api`. The event creator's session cookie is still signed with `airtable_api` when it is set, so changing which token makes the requests does not sign anyone out.
+
+Both variables are server-only. Never prefix them with `NEXT_PUBLIC_` or expose them in client code. The token in use needs `data.records:read` and `data.records:write` on the base: the site reads Public Events and Internal Calendar, creates RSVPs and GroupMe Clicks, and the event creator creates and edits events and uploads flyers.

@@ -3,7 +3,10 @@
 const BASE_ID = "appM8XoHX2voW3LQe";
 const CALENDAR_TABLE = "tblJJtTFMQ30Cmwj5";
 const EVENTS_TABLE = "tblh1H6GK4pHcKB8j";
-const apiKey = process.env.airtable_api ?? process.env.AIRTABLE_API_KEY;
+// Same order as lib/rsvp/airtable.ts: the competition token first, then the older airtable_api.
+const apiKey = [process.env.HACKATHON_AIRTABLE_TOKEN, process.env.airtable_api, process.env.AIRTABLE_API_KEY]
+  .map((value) => (value ?? "").trim().replace(/^['"]|['"]$/g, "").replace(/^Bearer\s+/i, "").trim())
+  .find(Boolean);
 
 function readArgs(args) {
   const values = {};
@@ -40,7 +43,7 @@ async function findEvent(name) {
 }
 
 async function main() {
-  if (!apiKey) throw new Error("Set airtable_api before running this script.");
+  if (!apiKey) throw new Error("Set HACKATHON_AIRTABLE_TOKEN (or airtable_api) before running this script.");
   const input = readArgs(process.argv.slice(2));
   for (const required of ["name", "description", "location", "start", "end"]) {
     if (!input[required]) throw new Error(`Missing --${required}`);
