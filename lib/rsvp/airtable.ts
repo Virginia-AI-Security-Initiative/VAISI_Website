@@ -51,6 +51,7 @@ export interface RsvpSubmission {
   academicStatus: string;
   majorMinor: string;
   referral: string;
+  speakerQuestion?: string;
 }
 
 const EVENT_FALLBACKS: Record<string, PublicEvent> = {
@@ -496,6 +497,9 @@ export async function createRsvp(submission: RsvpSubmission) {
             [AIRTABLE_FIELDS.rsvps.referral]: submission.referral,
             [AIRTABLE_FIELDS.rsvps.syncStatus]: "Pending",
             [AIRTABLE_FIELDS.rsvps.event]: [submission.eventId],
+            ...(submission.speakerQuestion
+              ? { [AIRTABLE_FIELDS.rsvps.speakerQuestion]: submission.speakerQuestion }
+              : {}),
           },
         },
       ],
