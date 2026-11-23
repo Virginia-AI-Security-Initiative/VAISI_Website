@@ -17,11 +17,12 @@ const announcements: {
     hideOn?: string; // don't show on this page (the page it links to)
 }[] = [
     {
-        id: "policy-hackathon-2026",
-        title: "2026 AI Policy Competition",
-        linkText: "Learn more & register",
-        link: "/2026policycompetition",
-        hideOn: "/2026policycompetition",
+        id: "nikola-jurkovic-speaker-event-2026",
+        title: "Nikola Jurkovic Speaker Event",
+        summary: "Dec 3, 7:00 PM · Monroe 130 · Mellow Mushroom provided",
+        linkText: "RSVP",
+        link: "/events/nikola-jurkovic-speaker-event",
+        hideOn: "/events/nikola-jurkovic-speaker-event",
     },
 ];
 
